@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent } from "@/components/ui/card"
-import { Star, Heart, Edit, Settings, ChevronRight } from "lucide-react"
+import { Star, Heart, Edit, ChevronRight } from "lucide-react"
 import Link from "next/link"
 
 
@@ -51,9 +51,6 @@ export default function MyPage() {
             <Button variant="outline" size="sm">
               <Edit className="mr-1 h-4 w-4" />
               프로필 수정
-            </Button>
-            <Button variant="ghost" size="icon">
-              <Settings className="h-5 w-5" />
             </Button>
           </div>
         </div>
