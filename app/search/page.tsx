@@ -2,11 +2,8 @@
 
 import { Header } from "@/components/header"
 import { MovieCard } from "@/components/movie-card"
-import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Badge } from "@/components/ui/badge"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Search, SlidersHorizontal, X } from "lucide-react"
+import { Search } from "lucide-react"
 import { useState } from "react"
 
 const allMovies = [
@@ -28,22 +25,11 @@ const allMovies = [
   { id: "18", title: "포레스트 검프", year: "1994", rating: 4.7, genre: "드라마", posterUrl: "https://image.tmdb.org/t/p/w500/arw2vcBveWOVZr6pxd9XTd1TdQa.jpg" },
 ]
 
-const genres = ["전체", "액션", "드라마", "SF", "스릴러", "로맨스", "코미디", "범죄", "판타지", "전기"]
-
 export default function SearchPage() {
   const [searchQuery, setSearchQuery] = useState("")
-  const [selectedGenre, setSelectedGenre] = useState("전체")
-  const [sortBy, setSortBy] = useState("popular")
-  const [showFilters, setShowFilters] = useState(false)
 
   const filteredMovies = allMovies.filter((movie) => {
-    const matchesSearch = movie.title.toLowerCase().includes(searchQuery.toLowerCase())
-    const matchesGenre = selectedGenre === "전체" || movie.genre === selectedGenre
-    return matchesSearch && matchesGenre
-  }).sort((a, b) => {
-    if (sortBy === "rating") return b.rating - a.rating
-    if (sortBy === "recent") return parseInt(b.year) - parseInt(a.year)
-    return 0
+    return movie.title.toLowerCase().includes(searchQuery.toLowerCase())
   })
 
   return (
@@ -54,11 +40,11 @@ export default function SearchPage() {
         {/* Search Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold">영화 탐색</h1>
-          <p className="mt-2 text-muted-foreground">원하는 영화를 검색하고 필터링하세요</p>
+          <p className="mt-2 text-muted-foreground">원하는 영화를 검색하세요</p>
         </div>
 
         {/* Search Bar */}
-        <div className="flex gap-2">
+        <div>
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
             <Input
@@ -68,70 +54,7 @@ export default function SearchPage() {
               className="pl-10"
             />
           </div>
-          <Button
-            variant="outline"
-            onClick={() => setShowFilters(!showFilters)}
-            className="gap-2"
-          >
-            <SlidersHorizontal className="h-4 w-4" />
-            필터
-          </Button>
         </div>
-
-        {/* Filters */}
-        {showFilters && (
-          <div className="mt-4 rounded-xl bg-card p-4">
-            <div className="flex flex-wrap items-center gap-4">
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-muted-foreground">장르:</span>
-                <div className="flex flex-wrap gap-2">
-                  {genres.map((genre) => (
-                    <Badge
-                      key={genre}
-                      variant={selectedGenre === genre ? "default" : "secondary"}
-                      className="cursor-pointer"
-                      onClick={() => setSelectedGenre(genre)}
-                    >
-                      {genre}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-muted-foreground">정렬:</span>
-                <Select value={sortBy} onValueChange={setSortBy}>
-                  <SelectTrigger className="w-32">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="popular">인기순</SelectItem>
-                    <SelectItem value="recent">최신순</SelectItem>
-                    <SelectItem value="rating">평점순</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Active Filters */}
-        {(selectedGenre !== "전체" || searchQuery) && (
-          <div className="mt-4 flex flex-wrap items-center gap-2">
-            <span className="text-sm text-muted-foreground">적용된 필터:</span>
-            {searchQuery && (
-              <Badge variant="secondary" className="gap-1">
-                검색: {searchQuery}
-                <X className="h-3 w-3 cursor-pointer" onClick={() => setSearchQuery("")} />
-              </Badge>
-            )}
-            {selectedGenre !== "전체" && (
-              <Badge variant="secondary" className="gap-1">
-                장르: {selectedGenre}
-                <X className="h-3 w-3 cursor-pointer" onClick={() => setSelectedGenre("전체")} />
-              </Badge>
-            )}
-          </div>
-        )}
 
         {/* Results */}
         <div className="mt-8">
@@ -147,7 +70,7 @@ export default function SearchPage() {
           ) : (
             <div className="rounded-xl bg-card p-12 text-center">
               <p className="text-lg font-medium">검색 결과가 없습니다</p>
-              <p className="mt-2 text-muted-foreground">다른 검색어나 필터를 시도해보세요</p>
+              <p className="mt-2 text-muted-foreground">다른 검색어를 시도해보세요</p>
             </div>
           )}
         </div>
