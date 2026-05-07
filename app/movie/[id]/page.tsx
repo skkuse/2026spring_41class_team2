@@ -18,7 +18,6 @@ const movieData: Record<string, {
   country: string
   director: string
   cast: string[]
-  actors?: { name: string; character: string }[]
   synopsis: string
   posterUrl: string
   reviews: { id: string; user: string; rating: number; content: string; date: string; likes: number }[]
@@ -33,10 +32,6 @@ const movieData: Record<string, {
     country: "한국",
     director: "봉준호",
     cast: ["송강호", "이선균", "조여정", "최우식", "박소담"],
-    actors: [
-      { name: "송강호", character: "기택" },
-      { name: "이선균", character: "박 사장" },
-    ],
     synopsis: "전원 백수로 살 길 막막하지만 사이는 좋은 기택 가족. 장남 기우에게 명문대생 친구가 과외 자리를 소개해준다. 고액 과외로 적잖은 수입을 올리게 된 기우는 온 가족의 운명을 바꿀 계획을 세우는데...",
     posterUrl: "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
     reviews: [
@@ -55,10 +50,6 @@ const movieData: Record<string, {
     country: "미국",
     director: "데이미언 셔젤",
     cast: ["엠마 스톤", "라이언 고슬링", "존 레전드"],
-    actors: [
-      { name: "엠마 스톤", character: "미아" },
-      { name: "라이언 고슬링", character: "세바스찬" },
-    ],
     synopsis: "꿈을 쫓는 재즈 뮤지션 세바스찬과 배우 지망생 미아가 LA에서 만나 사랑에 빠지지만, 각자의 꿈을 향해 나아가면서 사랑과 꿈 사이의 갈림길에 서게 된다.",
     posterUrl: "https://image.tmdb.org/t/p/w500/uDO8zWDhfWwoFdKS4fzkUJt0Rf0.jpg",
     reviews: [
@@ -76,10 +67,6 @@ const movieData: Record<string, {
     country: "미국",
     director: "크리스토퍼 놀란",
     cast: ["매튜 맥커너히", "앤 해서웨이", "제시카 차스테인", "마이클 케인"],
-    actors: [
-      { name: "매튜 맥커너히", character: "쿠퍼" },
-      { name: "앤 해서웨이", character: "브랜드 박사" },
-    ],
     synopsis: "세계 각국의 정부와 경제가 완전히 붕괴된 미래가 다가온다. 지난 20세기에 범한 잘못이 전 세계적인 식량 부족을 불러왔고, NASA도 해체되었다. 이때 시공간에 불가사의한 틈이 열리고, 남은 자들에게는 이 틈을 탐험해 인류를 구해야 하는 임무가 주어진다.",
     posterUrl: "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
     reviews: [
@@ -97,10 +84,6 @@ const movieData: Record<string, {
     country: "미국",
     director: "크리스토퍼 놀란",
     cast: ["크리스천 베일", "히스 레저", "아론 에크하트", "마이클 케인"],
-    actors: [
-      { name: "크리스천 베일", character: "배트맨" },
-      { name: "히스 레저", character: "조커" },
-    ],
     synopsis: "고담시의 영웅 배트맨은 검사 하비 덴트와 함께 범죄 조직을 소탕하려 하지만, 조커라는 이름의 악당이 나타나 고담을 혼돈으로 몰아넣는다.",
     posterUrl: "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
     reviews: [
@@ -118,10 +101,6 @@ const movieData: Record<string, {
     country: "미국",
     director: "프랭크 다라본트",
     cast: ["팀 로빈스", "모건 프리먼", "밥 건튼", "윌리엄 새들러"],
-    actors: [
-      { name: "팀 로빈스", character: "앤디 듀프레인" },
-      { name: "모건 프리먼", character: "레드" },
-    ],
     synopsis: "억울하게 종신형을 선고받고 쇼생크 교도소에 수감된 앤디 듀프레인이 20여 년에 걸쳐 희망을 잃지 않고 자유를 향해 나아가는 이야기.",
     posterUrl: "https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg",
     reviews: [
@@ -268,27 +247,6 @@ export default function MovieDetailPage({ params }: { params: Promise<{ id: stri
           </div>
         </div>
       </section>
-
-      {/* Actor Recommendation */}
-      {movie.actors && movie.actors.length > 0 && (
-        <section className="border-t border-border py-12">
-          <div className="container mx-auto px-4">
-            <h2 className="text-xl font-semibold">배우 추천</h2>
-            <div className="mt-6 flex flex-col gap-3">
-              {movie.actors.map((actor, idx) => (
-                <Link key={idx} href={`/chat?q=${encodeURIComponent(`${actor.name}이 등장한 영화 추천해줘`)}`}>
-                  <Button variant="outline" className="w-full justify-start text-left">
-                    <div>
-                      <p className="font-medium">{actor.name}</p>
-                      <p className="text-xs text-muted-foreground">이 영화에서: {actor.character}</p>
-                    </div>
-                  </Button>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* Write Review */}
       <section className="border-t border-border py-12">
