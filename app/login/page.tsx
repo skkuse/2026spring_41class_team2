@@ -4,8 +4,19 @@ import { Header } from "@/components/header"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Film } from "lucide-react"
+import { useRouter } from "next/navigation"
+
+const authStorageKey = "cinemate:isLoggedIn"
 
 export default function LoginPage() {
+  const router = useRouter()
+
+  const handleLogin = () => {
+    window.localStorage.setItem(authStorageKey, "true")
+    window.dispatchEvent(new Event("cinemate-auth-change"))
+    router.push("/")
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -25,7 +36,7 @@ export default function LoginPage() {
           </CardHeader>
 
           <CardContent className="space-y-3">
-            <Button variant="outline" className="w-full justify-center gap-3" size="lg">
+            <Button variant="outline" className="w-full justify-center gap-3" size="lg" onClick={handleLogin}>
               <svg className="h-5 w-5" viewBox="0 0 24 24">
                 <path
                   fill="currentColor"
@@ -46,7 +57,12 @@ export default function LoginPage() {
               </svg>
               Google로 계속하기
             </Button>
-            <Button variant="outline" className="w-full justify-center gap-3 bg-[#FEE500] hover:bg-[#FEE500]/90 text-[#000000] border-[#FEE500]" size="lg">
+            <Button
+              variant="outline"
+              className="w-full justify-center gap-3 bg-[#FEE500] hover:bg-[#FEE500]/90 text-[#000000] border-[#FEE500]"
+              size="lg"
+              onClick={handleLogin}
+            >
               <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 3C6.477 3 2 6.463 2 10.691c0 2.758 1.86 5.173 4.645 6.51-.147.53-.54 1.927-.618 2.228-.097.372.137.367.287.267.118-.078 1.876-1.27 2.63-1.782.672.096 1.37.146 2.056.146 5.523 0 10-3.463 10-7.369C21 6.463 17.523 3 12 3z" />
               </svg>

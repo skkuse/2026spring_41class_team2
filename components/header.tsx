@@ -2,9 +2,38 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { User, Film } from "lucide-react"
+import { User, Film, LogOut } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
+
+const authStorageKey = "cinemate:isLoggedIn"
 
 export function Header() {
+  const router = useRouter()
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  useEffect(() => {
+    const syncAuthState = () => {
+      setIsLoggedIn(window.localStorage.getItem(authStorageKey) === "true")
+    }
+
+    syncAuthState()
+    window.addEventListener("storage", syncAuthState)
+    window.addEventListener("cinemate-auth-change", syncAuthState)
+
+    return () => {
+      window.removeEventListener("storage", syncAuthState)
+      window.removeEventListener("cinemate-auth-change", syncAuthState)
+    }
+  }, [])
+
+  const handleLogout = () => {
+    window.localStorage.removeItem(authStorageKey)
+    window.dispatchEvent(new Event("cinemate-auth-change"))
+    setIsLoggedIn(false)
+    router.push("/")
+  }
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
@@ -39,11 +68,18 @@ export function Header() {
               <User className="h-5 w-5" />
             </Button>
           </Link>
-          <Link href="/login">
-            <Button variant="outline" size="sm" className="hidden md:flex">
-              로그인
+          {isLoggedIn ? (
+            <Button variant="outline" size="sm" className="gap-2" onClick={handleLogout}>
+              <LogOut className="h-4 w-4" />
+              로그아웃
             </Button>
-          </Link>
+          ) : (
+            <Link href="/login">
+              <Button variant="outline" size="sm" className="hidden md:flex">
+                로그인
+              </Button>
+            </Link>
+          )}
         </div>
       </div>
     </header>
