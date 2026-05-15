@@ -1,352 +1,205 @@
 "use client"
 
-import { useState, useRef } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { 
-  Sword, 
-  Laugh, 
-  Theater, 
-  Rocket, 
-  Heart, 
-  Ghost, 
-  Zap, 
-  Sparkles, 
-  Skull, 
-  Clapperboard,
-  ShoppingBasket,
-  Check,
-  ArrowRight
-} from "lucide-react"
-import Link from "next/link"
+import { Badge } from "@/components/ui/badge"
+import { MovieCard } from "@/components/movie-card"
+import { Sparkles, CheckCircle2 } from "lucide-react"
 
-const genres = [
-  { id: "action", name: "액션", icon: Sword, color: "from-red-500 to-orange-500", description: "추격전, 격투 등 긴박감 넘치는" },
-  { id: "comedy", name: "코미디", icon: Laugh, color: "from-yellow-400 to-amber-500", description: "웃음을 유발하여 재미를 주는" },
-  { id: "drama", name: "드라마", icon: Theater, color: "from-blue-500 to-cyan-500", description: "인물 간의 갈등과 감정선 중심" },
-  { id: "scifi", name: "SF/공상과학", icon: Rocket, color: "from-indigo-500 to-purple-500", description: "과학적 상상력의 미래, 우주, 기술" },
-  { id: "romance", name: "로맨스", icon: Heart, color: "from-pink-500 to-rose-500", description: "남녀 간의 사랑 이야기" },
-  { id: "horror", name: "공포/호러", icon: Ghost, color: "from-slate-600 to-slate-800", description: "공포심이나 오싹함을 느끼게 하는" },
-  { id: "thriller", name: "스릴러", icon: Zap, color: "from-emerald-500 to-teal-600", description: "긴장감과 서스펜스를 유발하는" },
-  { id: "fantasy", name: "판타지", icon: Sparkles, color: "from-violet-500 to-fuchsia-500", description: "마법, 초자연적 현상의 세계" },
-  { id: "crime", name: "범죄/느와르", icon: Skull, color: "from-zinc-600 to-neutral-800", description: "범죄 사건과 그 이면을 다루는" },
-  { id: "animation", name: "애니메이션", icon: Clapperboard, color: "from-sky-400 to-blue-500", description: "그림이나 모형으로 움직임을 구현" },
+const ONBOARDING_COMPLETE_KEY = "cinemate:onboardingCompleted"
+const SELECTED_MOVIES_KEY = "cinemate:selectedMovieIds"
+const REQUIRED_SELECTION_COUNT = 5
+
+const popularMovies = [
+  { id: "1", title: "기생충", year: "2019", rating: 4.8, genre: "드라마", posterUrl: "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg" },
+  { id: "2", title: "올드보이", year: "2003", rating: 4.7, genre: "스릴러", posterUrl: "https://image.tmdb.org/t/p/w500/pWDtjs568ZfOTMbURQBYuT4Qxka.jpg" },
+  { id: "3", title: "인터스텔라", year: "2014", rating: 4.9, genre: "SF", posterUrl: "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" },
+  { id: "4", title: "어벤져스: 엔드게임", year: "2019", rating: 4.6, genre: "액션", posterUrl: "https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg" },
+  { id: "5", title: "라라랜드", year: "2016", rating: 4.5, genre: "로맨스", posterUrl: "https://image.tmdb.org/t/p/w500/uDO8zWDhfWwoFdKS4fzkUJt0Rf0.jpg" },
+  { id: "6", title: "듄", year: "2021", rating: 4.4, genre: "SF", posterUrl: "https://image.tmdb.org/t/p/w500/d5NXSklXo0qyIYkgV94XAgMIckC.jpg" },
+  { id: "7", title: "오펜하이머", year: "2023", rating: 4.7, genre: "전기", posterUrl: "https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg" },
+  { id: "8", title: "더 배트맨", year: "2022", rating: 4.3, genre: "액션", posterUrl: "https://image.tmdb.org/t/p/w500/74xTEgt7R36Fvez61z2GElSvjIz.jpg" },
+  { id: "9", title: "탑건: 매버릭", year: "2022", rating: 4.6, genre: "액션", posterUrl: "https://image.tmdb.org/t/p/w500/62HCnUTziyWcpDaBO2i1DX17ljH.jpg" },
+  { id: "10", title: "스파이더맨: 노 웨이 홈", year: "2021", rating: 4.5, genre: "액션", posterUrl: "https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg" },
+  { id: "13", title: "쇼생크 탈출", year: "1994", rating: 4.9, genre: "드라마", posterUrl: "https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg" },
+  { id: "14", title: "대부", year: "1972", rating: 4.9, genre: "범죄", posterUrl: "https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg" },
 ]
 
-interface FlyingGenre {
-  id: string
-  name: string
-  icon: typeof Sword
-  color: string
-  startX: number
-  startY: number
-}
-
 export default function OnboardingPage() {
-  const [selectedGenres, setSelectedGenres] = useState<string[]>([])
-  const [flyingGenres, setFlyingGenres] = useState<FlyingGenre[]>([])
-  const basketRef = useRef<HTMLDivElement>(null)
+  const router = useRouter()
+  const [selectedMovieIds, setSelectedMovieIds] = useState<string[]>([])
 
-  const handleGenreClick = (
-    genre: typeof genres[0],
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    const rect = event.currentTarget.getBoundingClientRect()
-    const startX = rect.left + rect.width / 2
-    const startY = rect.top + rect.height / 2
-
-    if (selectedGenres.includes(genre.id)) {
-      // Remove from selection
-      setSelectedGenres(prev => prev.filter(id => id !== genre.id))
-    } else {
-      // Add flying animation
-      const flyingGenre: FlyingGenre = {
-        id: `${genre.id}-${Date.now()}`,
-        name: genre.name,
-        icon: genre.icon,
-        color: genre.color,
-        startX,
-        startY,
-      }
-      setFlyingGenres(prev => [...prev, flyingGenre])
-
-      // Add to selection after a delay
-      setTimeout(() => {
-        setSelectedGenres(prev => [...prev, genre.id])
-        setFlyingGenres(prev => prev.filter(f => f.id !== flyingGenre.id))
-      }, 600)
+  useEffect(() => {
+    const onboardingCompleted = window.localStorage.getItem(ONBOARDING_COMPLETE_KEY) === "true"
+    if (onboardingCompleted) {
+      router.replace("/recommend")
+      return
     }
+
+    const storedSelections = window.localStorage.getItem(SELECTED_MOVIES_KEY)
+    if (storedSelections) {
+      try {
+        const parsed = JSON.parse(storedSelections)
+        if (Array.isArray(parsed)) {
+          setSelectedMovieIds(parsed.filter((id): id is string => typeof id === "string"))
+        }
+      } catch {
+        window.localStorage.removeItem(SELECTED_MOVIES_KEY)
+      }
+    }
+  }, [router])
+
+  const selectedMovieSet = new Set(selectedMovieIds)
+  const selectedCount = selectedMovieIds.length
+  const selectionLocked = selectedCount >= REQUIRED_SELECTION_COUNT
+  const isReadyToStart = selectedCount === REQUIRED_SELECTION_COUNT
+
+  const toggleMovie = (movieId: string) => {
+    setSelectedMovieIds((prev) => {
+      if (prev.includes(movieId)) {
+        return prev.filter((id) => id !== movieId)
+      }
+
+      if (prev.length >= REQUIRED_SELECTION_COUNT) {
+        return prev
+      }
+
+      return [...prev, movieId]
+    })
   }
 
-  const getBasketPosition = () => {
-    if (basketRef.current) {
-      const rect = basketRef.current.getBoundingClientRect()
-      return {
-        x: rect.left + rect.width / 2,
-        y: rect.top + rect.height / 2,
-      }
+  const handleStart = () => {
+    if (!isReadyToStart) {
+      return
     }
-    return { x: window.innerWidth - 100, y: 100 }
+
+    window.localStorage.setItem(ONBOARDING_COMPLETE_KEY, "true")
+    window.localStorage.setItem(SELECTED_MOVIES_KEY, JSON.stringify(selectedMovieIds))
+    router.push("/recommend")
   }
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-      {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute -top-24 left-[-8rem] h-80 w-80 rounded-full bg-primary/10 blur-3xl" />
+        <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
       </div>
 
-      {/* Flying genres animation */}
-      <AnimatePresence>
-        {flyingGenres.map((genre) => {
-          const basketPos = getBasketPosition()
-          const Icon = genre.icon
-          return (
-            <motion.div
-              key={genre.id}
-              className={`fixed z-50 flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r ${genre.color} text-white font-medium shadow-lg`}
-              initial={{
-                x: genre.startX - 60,
-                y: genre.startY - 20,
-                scale: 1,
-                opacity: 1,
-              }}
-              animate={{
-                x: basketPos.x - 60,
-                y: basketPos.y - 20,
-                scale: 0.5,
-                opacity: 0.8,
-              }}
-              exit={{
-                scale: 0,
-                opacity: 0,
-              }}
-              transition={{
-                duration: 0.6,
-                ease: [0.25, 0.46, 0.45, 0.94],
-              }}
-            >
-              <Icon className="w-5 h-5" />
-              <span>{genre.name}</span>
-            </motion.div>
-          )
-        })}
-      </AnimatePresence>
-
-      <div className="relative z-10 container mx-auto px-4 py-8">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
-              어떤 영화를 좋아하세요?
-            </h1>
-            <p className="text-muted-foreground text-lg">
-              선호하는 장르를 선택하면 맞춤 영화를 추천해 드릴게요
-            </p>
-          </motion.div>
+      <div className="relative z-10 container mx-auto px-4 py-10">
+        <div className="mb-8 max-w-2xl">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
+            <Sparkles className="h-4 w-4" />
+            온보딩
+          </div>
+          <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
+            좋아하는 영화 5개를 선택해주세요
+          </h1>
+          <p className="mt-3 text-base text-muted-foreground md:text-lg">
+            선택한 영화들을 바탕으로 맞춤 추천을 준비할게요.
+          </p>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Genre Selection Grid */}
-          <div className="flex-1">
-            <motion.div
-              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-4"
-              initial="hidden"
-              animate="visible"
-              variants={{
-                visible: {
-                  transition: {
-                    staggerChildren: 0.05,
-                  },
-                },
-              }}
-            >
-              {genres.map((genre) => {
-                const Icon = genre.icon
-                const isSelected = selectedGenres.includes(genre.id)
-                const isFlying = flyingGenres.some(f => f.id.startsWith(genre.id))
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
+          <section>
+            <div className="mb-4 flex items-center justify-between">
+              <p className="text-sm text-muted-foreground">
+                인기 영화 목록에서 마음에 드는 작품을 골라주세요.
+              </p>
+              <Badge variant="secondary" className="rounded-full px-3 py-1 text-sm">
+                {selectedCount}/{REQUIRED_SELECTION_COUNT}
+              </Badge>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4">
+              {popularMovies.map((movie) => {
+                const selected = selectedMovieSet.has(movie.id)
 
                 return (
-                  <motion.div
-                    key={genre.id}
-                    variants={{
-                      hidden: { opacity: 0, y: 20, scale: 0.9 },
-                      visible: { opacity: 1, y: 0, scale: 1 },
-                    }}
-                  >
-                    <motion.button
-                      onClick={(e) => handleGenreClick(genre, e)}
-                      disabled={isFlying}
-                      className={`
-                        relative w-full p-5 rounded-2xl border-2 transition-all duration-300
-                        ${isSelected
-                          ? "border-primary bg-primary/10"
-                          : "border-border bg-card hover:border-primary/50 hover:bg-accent"
-                        }
-                        ${isFlying ? "opacity-50" : ""}
-                        group
-                      `}
-                      whileHover={{ scale: isFlying ? 1 : 1.02 }}
-                      whileTap={{ scale: isFlying ? 1 : 0.98 }}
-                    >
-                      {/* Selected checkmark */}
-                      <AnimatePresence>
-                        {isSelected && (
-                          <motion.div
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            exit={{ scale: 0 }}
-                            className="absolute top-3 right-3 w-6 h-6 bg-primary rounded-full flex items-center justify-center"
-                          >
-                            <Check className="w-4 h-4 text-primary-foreground" />
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-
-                      <div className="flex flex-col items-center text-center gap-3">
-                        <div
-                          className={`
-                            w-14 h-14 rounded-xl flex items-center justify-center
-                            bg-gradient-to-br ${genre.color}
-                            shadow-lg transition-transform duration-300
-                            ${isSelected ? "scale-110" : "group-hover:scale-105"}
-                          `}
-                        >
-                          <Icon className="w-7 h-7 text-white" />
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-foreground mb-1">
-                            {genre.name}
-                          </h3>
-                          <p className="text-xs text-muted-foreground line-clamp-2">
-                            {genre.description}
-                          </p>
-                        </div>
-                      </div>
-                    </motion.button>
-                  </motion.div>
+                  <MovieCard
+                    key={movie.id}
+                    {...movie}
+                    selectable
+                    selected={selected}
+                    disabled={selectionLocked && !selected}
+                    showLikeButton={false}
+                    onClick={() => toggleMovie(movie.id)}
+                  />
                 )
               })}
-            </motion.div>
-          </div>
+            </div>
+          </section>
 
-          {/* Basket / Selection Summary */}
-          <div className="lg:w-80">
-            <motion.div
-              ref={basketRef}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3 }}
-              className="sticky top-8"
-            >
-              <div className="bg-card border border-border rounded-2xl p-6 shadow-lg">
-                {/* Basket Header */}
-                <div className="flex items-center gap-3 mb-4">
-                  <motion.div
-                    className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center"
-                    animate={{
-                      scale: flyingGenres.length > 0 ? [1, 1.2, 1] : 1,
-                    }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <ShoppingBasket className="w-6 h-6 text-primary" />
-                  </motion.div>
-                  <div>
-                    <h2 className="font-semibold text-foreground">내 취향 바구니</h2>
-                    <p className="text-sm text-muted-foreground">
-                      {selectedGenres.length}개 선택됨
-                    </p>
-                  </div>
+          <aside className="lg:sticky lg:top-8 h-fit">
+            <div className="rounded-2xl border border-border bg-card p-6 shadow-lg">
+              <div className="mb-4 flex items-center gap-3">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                  <CheckCircle2 className="h-5 w-5" />
                 </div>
-
-                {/* Selected Genres */}
-                <div className="min-h-[200px] mb-4">
-                  {selectedGenres.length === 0 ? (
-                    <div className="h-[200px] flex flex-col items-center justify-center text-center">
-                      <motion.div
-                        animate={{ y: [0, -5, 0] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                      >
-                        <ShoppingBasket className="w-12 h-12 text-muted-foreground/30 mb-3" />
-                      </motion.div>
-                      <p className="text-muted-foreground text-sm">
-                        좋아하는 장르를 클릭해서
-                        <br />
-                        바구니에 담아보세요
-                      </p>
-                    </div>
-                  ) : (
-                    <motion.div className="flex flex-wrap gap-2" layout>
-                      <AnimatePresence mode="popLayout">
-                        {selectedGenres.map((genreId) => {
-                          const genre = genres.find(g => g.id === genreId)
-                          if (!genre) return null
-                          const Icon = genre.icon
-
-                          return (
-                            <motion.button
-                              key={genreId}
-                              layout
-                              initial={{ scale: 0, opacity: 0 }}
-                              animate={{ scale: 1, opacity: 1 }}
-                              exit={{ scale: 0, opacity: 0 }}
-                              whileHover={{ scale: 1.05 }}
-                              whileTap={{ scale: 0.95 }}
-                              onClick={() => setSelectedGenres(prev => prev.filter(id => id !== genreId))}
-                              className={`
-                                flex items-center gap-2 px-3 py-2 rounded-full
-                                bg-gradient-to-r ${genre.color} text-white
-                                text-sm font-medium shadow-md
-                                hover:shadow-lg transition-shadow
-                              `}
-                            >
-                              <Icon className="w-4 h-4" />
-                              <span>{genre.name}</span>
-                              <span className="ml-1 opacity-70">×</span>
-                            </motion.button>
-                          )
-                        })}
-                      </AnimatePresence>
-                    </motion.div>
-                  )}
+                <div>
+                  <h2 className="font-semibold">선택 현황</h2>
+                  <p className="text-sm text-muted-foreground">{selectedCount}개 선택됨</p>
                 </div>
-
-                {/* Action Buttons */}
-                <div className="space-y-3">
-                  <Button
-                    asChild
-                    className="w-full"
-                    size="lg"
-                    disabled={selectedGenres.length === 0}
-                  >
-                    <Link href="/">
-                      <span>시작하기</span>
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Link>
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    className="w-full"
-                    asChild
-                  >
-                    <Link href="/">
-                      나중에 할게요
-                    </Link>
-                  </Button>
-                </div>
-
-                {/* Tip */}
-                <p className="text-xs text-muted-foreground text-center mt-4">
-                  선택한 장르는 마이페이지에서 변경할 수 있어요
-                </p>
               </div>
-            </motion.div>
-          </div>
+
+              <div className="mb-5">
+                <div className="mb-2 flex items-center justify-between text-sm">
+                  <span className="text-muted-foreground">선택 개수</span>
+                  <span className="font-medium text-foreground">
+                    {selectedCount}/{REQUIRED_SELECTION_COUNT}
+                  </span>
+                </div>
+                <div className="h-2 w-full overflow-hidden rounded-full bg-secondary">
+                  <div
+                    className="h-full rounded-full bg-primary transition-all"
+                    style={{ width: `${(selectedCount / REQUIRED_SELECTION_COUNT) * 100}%` }}
+                  />
+                </div>
+              </div>
+
+              <div className="mb-5 min-h-24 rounded-xl border border-dashed border-border bg-background/60 p-4">
+                {selectedMovieIds.length > 0 ? (
+                  <div className="flex flex-wrap gap-2">
+                    {selectedMovieIds.map((movieId) => {
+                      const movie = popularMovies.find((item) => item.id === movieId)
+                      if (!movie) {
+                        return null
+                      }
+
+                      return (
+                        <button
+                          key={movie.id}
+                          type="button"
+                          onClick={() => toggleMovie(movie.id)}
+                          className="inline-flex items-center gap-2 rounded-full bg-primary px-3 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                        >
+                          <span className="max-w-[10rem] truncate">{movie.title}</span>
+                          <span className="opacity-70">×</span>
+                        </button>
+                      )
+                    })}
+                  </div>
+                ) : (
+                  <div className="flex h-24 items-center justify-center text-center text-sm text-muted-foreground">
+                    5개를 선택하면 시작할 수 있어요.
+                  </div>
+                )}
+              </div>
+
+              <Button
+                className="w-full"
+                size="lg"
+                disabled={!isReadyToStart}
+                onClick={handleStart}
+              >
+                {isReadyToStart ? "시작하기" : "5개를 선택해주세요"}
+              </Button>
+
+              <p className="mt-3 text-center text-xs text-muted-foreground">
+                정확히 5개를 선택해야 다음 화면으로 이동할 수 있어요.
+              </p>
+            </div>
+          </aside>
         </div>
       </div>
     </div>

@@ -3,13 +3,15 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { User, Film, LogOut } from "lucide-react"
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 
 const authStorageKey = "cinemate:isLoggedIn"
+const onboardingCompleteKey = "cinemate:onboardingCompleted"
 
 export function Header() {
   const router = useRouter()
+  const pathname = usePathname()
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
@@ -26,6 +28,17 @@ export function Header() {
       window.removeEventListener("cinemate-auth-change", syncAuthState)
     }
   }, [])
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      return
+    }
+
+    const onboardingCompleted = window.localStorage.getItem(onboardingCompleteKey) === "true"
+    if (!onboardingCompleted && pathname !== "/onboarding") {
+      router.replace("/onboarding")
+    }
+  }, [isLoggedIn, pathname, router])
 
   const handleLogout = () => {
     window.localStorage.removeItem(authStorageKey)

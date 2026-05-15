@@ -1,5 +1,4 @@
 "use client"
-
 import { Header } from "@/components/header"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -7,6 +6,7 @@ import { Film } from "lucide-react"
 import { useRouter } from "next/navigation"
 
 const authStorageKey = "cinemate:isLoggedIn"
+const onboardingCompleteKey = "cinemate:onboardingCompleted"
 
 export default function LoginPage() {
   const router = useRouter()
@@ -14,7 +14,8 @@ export default function LoginPage() {
   const handleLogin = () => {
     window.localStorage.setItem(authStorageKey, "true")
     window.dispatchEvent(new Event("cinemate-auth-change"))
-    router.push("/")
+    const onboardingCompleted = window.localStorage.getItem(onboardingCompleteKey) === "true"
+    router.push(onboardingCompleted ? "/recommend" : "/onboarding")
   }
 
   return (
