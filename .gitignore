@@ -31,3 +31,6 @@ next-env.d.ts
 
 # local Codex workspace
 /.codex/
+
+# local Obsidian workspace
+/.obsidian/
