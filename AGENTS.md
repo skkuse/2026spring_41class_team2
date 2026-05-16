@@ -11,7 +11,6 @@
 - 패키지 매니저는 `pnpm`을 사용한다.
 - 의존성 추가/변경은 `pnpm add`, `pnpm add -D`, `pnpm remove`를 사용한다.
 - `package-lock.json`, `yarn.lock`, `bun.lockb`를 생성하지 않는다.
-- 변경 후 가능한 경우 `pnpm lint`를 실행한다.
 
 # 프로젝트 작업 원칙
 
