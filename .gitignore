@@ -18,6 +18,7 @@ yarn-error.log*
 
 # env files
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -28,6 +29,12 @@ next-env.d.ts
 
 # local datasets
 /ml-latest/
+/tmdb-api.json
+/data/seeds/movie-catalog/cache/
+/data/seeds/movie-catalog/reports/
+
+# local Supabase workspace
+/supabase/.temp/
 
 # local Codex workspace
 /.codex/
