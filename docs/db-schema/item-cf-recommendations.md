@@ -35,7 +35,7 @@ rating =
 
 - 분모가 0이면 `rating`은 0 또는 null로 응답한다.
 
-## movielens_item_similarities
+## movie_similarities
 
 Item CF 추천 결과를 미리 저장하는 테이블이다.
 

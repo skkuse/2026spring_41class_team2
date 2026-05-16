@@ -54,12 +54,12 @@
 
 ## 추천 조회 로직
 
-백엔드는 DB에 미리 적재된 `movielens_item_similarities`를 기준으로 Item CF 추천을 조회한다.
+백엔드는 DB에 미리 적재된 `movie_similarities`를 기준으로 Item CF 추천을 조회한다.
 
 조회 흐름:
 
 1. 온보딩에서 선택한 영화 중 `seedLimit`개를 기준 영화로 사용한다. 기본은 `position`이 빠른 3개다.
-2. 기준 영화별로 `movielens_item_similarities.source_tmdb_id`를 조회한다.
+2. 기준 영화별로 `movie_similarities.source_tmdb_id`를 조회한다.
 3. Item CF 후보는 `score DESC`, `co_rating_count DESC`, `target_tmdb_id ASC` 순으로 정렬한다.
 4. 최종 추천 결과에서 제외할 영화는 후보에서 제거한다.
 5. 후보가 `limitPerSeed`보다 부족하면 fallback으로 빈칸을 채운다.

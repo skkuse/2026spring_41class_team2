@@ -53,7 +53,7 @@ movies
   ├─ movie_bookmarks
   ├─ reviews
   ├─ movie_stats
-  │   └─ movielens_item_similarities
+  │   └─ movie_similarities
   ├─ movie_tag_relevances
   ├─ user_onboarding_movies
   ├─ recommendation_chat_conversation_message_movies

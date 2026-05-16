@@ -14,7 +14,7 @@
 | `reviews` | 전체 공개 | 로그인 사용자 본인 작성 |
 | `review_likes` | 전체 공개 또는 집계 공개 | 로그인 사용자 본인 생성/삭제 |
 | `movie_stats` | 전체 공개 | 일반 사용자 불가 |
-| `movielens_item_similarities` | 전체 공개 | 일반 사용자 불가 |
+| `movie_similarities` | 전체 공개 | 일반 사용자 불가 |
 | `movie_tags` | 전체 공개 | 일반 사용자 불가 |
 | `movie_tag_relevances` | 전체 공개 | 일반 사용자 불가 |
 | `recommendation_chat_conversations` | 본인 | 본인 |
