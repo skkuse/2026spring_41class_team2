@@ -12,7 +12,10 @@
     "seed:movie-catalog:upload-csv-to-supabase": "tsx scripts/seeds/movie-catalog/upload-csv-to-supabase.ts",
     "seed:movie-credits:generate-csv-from-tmdb": "tsx scripts/seeds/movie-credits/generate-csv-from-tmdb.ts",
     "seed:movie-credits:validate-upload-csv-to-supabase": "tsx scripts/seeds/movie-credits/upload-csv-to-supabase.ts --validate-only",
-    "seed:movie-credits:upload-csv-to-supabase": "tsx scripts/seeds/movie-credits/upload-csv-to-supabase.ts"
+    "seed:movie-credits:upload-csv-to-supabase": "tsx scripts/seeds/movie-credits/upload-csv-to-supabase.ts",
+    "seed:movie-recommendation:generate-csv-from-movielens": "tsx scripts/seeds/movie-recommendation/generate-csv-from-movielens.ts",
+    "seed:movie-recommendation:validate-upload-csv-to-supabase": "tsx scripts/seeds/movie-recommendation/upload-csv-to-supabase.ts --validate-only",
+    "seed:movie-recommendation:upload-csv-to-supabase": "tsx scripts/seeds/movie-recommendation/upload-csv-to-supabase.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
