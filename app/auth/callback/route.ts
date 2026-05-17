@@ -21,6 +21,7 @@ export async function GET(request: NextRequest) {
   const supabase = await createSupabaseServerClient()
   const { error: exchangeError } = await supabase.auth.exchangeCodeForSession(code)
   if (exchangeError) {
+    logAuthCallbackError("exchange_code_for_session", exchangeError)
     return redirectToLogin(requestUrl, "session_exchange_failed")
   }
 
@@ -30,6 +31,7 @@ export async function GET(request: NextRequest) {
   } = await supabase.auth.getUser()
 
   if (userError || !user) {
+    logAuthCallbackError("get_user_after_exchange", userError ?? new Error("User is missing after session exchange"))
     return redirectToLogin(requestUrl, "session_exchange_failed")
   }
 
@@ -58,3 +60,18 @@ function redirectToLogin(requestUrl: URL, error: string) {
   return NextResponse.redirect(loginUrl)
 }
 
+function logAuthCallbackError(stage: string, error: unknown) {
+  if (error instanceof Error) {
+    const authError = error as Error & { status?: number; code?: string }
+    console.error("[auth/callback]", {
+      stage,
+      name: authError.name,
+      status: authError.status,
+      code: authError.code,
+      message: authError.message,
+    })
+    return
+  }
+
+  console.error("[auth/callback]", { stage, error })
+}
