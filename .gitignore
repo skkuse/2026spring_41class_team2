@@ -38,8 +38,6 @@ next-env.d.ts
 # local Supabase workspace
 /supabase/.temp/
 
-# local Codex workspace
-/.codex/
 /.agents/
 /skills-lock.json
 
