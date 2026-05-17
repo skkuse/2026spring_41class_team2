@@ -17,6 +17,7 @@
 - 사용자는 프론트엔드 구현 세부를 Codex에게 위임한다.
 - Codex는 기존 UI/UX 패턴을 먼저 파악한 뒤 구현한다.
 - 사용자가 명시하지 않은 세부 UI는 Next.js, React, 접근성, 반응형 UI 관점에서 합리적으로 결정한다.
+- 문서 수정 작업 시 `docs/software-requirements-spec/**`는 아카이브된 산출물로 간주하고 수정하지 않는다.
 
 # Next.js 작업 규칙
 
