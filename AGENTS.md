@@ -52,6 +52,10 @@
 - 서버 측 DB 접근은 `server/db`의 Drizzle 클라이언트와 도메인별 `repository`를 통해 수행한다.
 - Supabase Auth와 Storage는 Supabase client를 사용하고, 일반 DB 비즈니스 쿼리는 Drizzle을 우선 사용한다.
 - Vercel Serverless 환경에서는 Supabase Connection Pooler 사용을 전제로 하고, Drizzle 연결에는 transaction pool 제약을 고려한다.
+- DB 테이블/컬럼/인덱스 정의는 Drizzle schema(`server/db/schema.ts`)를 우선 source of truth로 삼는다.
+- Supabase migration SQL은 가능한 한 Drizzle schema에서 생성한 결과를 사용하고, 생성된 SQL은 적용 전 리뷰한다.
+- RLS, grant, trigger, `auth.users` FK처럼 Drizzle로 표현하기 어렵거나 Supabase 전용인 항목은 별도 manual migration으로 관리한다.
+- 동일 테이블 구조를 Drizzle schema와 Supabase migration SQL 양쪽에서 손으로 따로 수정하지 않는다.
 - ORM Entity/Row는 영속성 모델로 간주하고 비즈니스 로직을 넣지 않는다.
 - ORM model과 별도의 도메인 객체는 처음부터 만들지 않고, 불변식/상태 전이가 복잡해진 도메인에만 도입을 검토한다.
 - service/rules 테스트는 DB나 ORM 없이 실행 가능해야 한다.
