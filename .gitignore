@@ -38,6 +38,8 @@ next-env.d.ts
 
 # local Codex workspace
 /.codex/
+/.agents/
+/skills-lock.json
 
 # local Obsidian workspace
-/.obsidian/
+.obsidian/
