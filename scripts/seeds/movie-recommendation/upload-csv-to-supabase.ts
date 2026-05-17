@@ -620,11 +620,11 @@ async function main() {
   await loadEnvFiles();
 
   const validateOnly = process.argv.includes("--validate-only");
-  const supabaseUrl = process.env.SUPABASE_URL;
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
   if (!validateOnly && !supabaseUrl) {
-    throw new Error("SUPABASE_URL 환경 변수가 필요합니다.");
+    throw new Error("NEXT_PUBLIC_SUPABASE_URL 환경 변수가 필요합니다.");
   }
 
   if (!validateOnly && !serviceRoleKey) {
