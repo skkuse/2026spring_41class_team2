@@ -59,8 +59,8 @@
 조회 흐름:
 
 1. 온보딩에서 선택한 영화 중 `seedLimit`개를 기준 영화로 사용한다. 기본은 `position`이 빠른 3개다.
-2. 기준 영화별로 `movie_similarities.source_tmdb_id`를 조회한다.
-3. Item CF 후보는 `score DESC`, `co_rating_count DESC`, `target_tmdb_id ASC` 순으로 정렬한다.
+2. 기준 영화별로 `movie_similarities.source_movie_id`를 조회한다.
+3. Item CF 후보는 `score DESC`, `co_rating_count DESC`, `target_movie_id ASC` 순으로 정렬한다.
 4. 최종 추천 결과에서 제외할 영화는 후보에서 제거한다.
 5. 후보가 `limitPerSeed`보다 부족하면 fallback으로 빈칸을 채운다.
 6. 백엔드가 영화 상세 필드, 장르, `isBookmarked`, `reason`, `source`, `score`, `coRatingCount`를 조립해 응답한다.
@@ -83,7 +83,7 @@ fallback 정렬:
 ```text
 movielens_rating_count DESC,
 movielens_avg_rating DESC,
-tmdb_id ASC
+movie_id ASC
 ```
 
 `source`가 `item_cf`인 추천은 `score`와 `coRatingCount`를 포함한다.

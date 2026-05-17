@@ -8,7 +8,7 @@
 
 | 컬럼 | 타입 | 제약 | 설명 |
 |---|---|---|---|
-| `tmdb_id` | bigint | PK, FK `movies(id)` | TMDB movie id |
+| `movie_id` | bigint | PK, FK `movies(id)` | Movie id |
 | `movielens_avg_rating` | numeric(3,2) | not null | MovieLens 평균 평점 |
 | `movielens_rating_count` | integer | not null, default 0 | MovieLens 평점 수 |
 | `cinemate_rating_sum` | numeric(10,2) | not null, default 0 | Cinemate 리뷰 평점 합 |
@@ -19,7 +19,7 @@
 
 제약/메모:
 
-- 구현계획 문서에서는 `movie_stats.tmdb_id`를 추천 테이블의 FK 대상으로 사용한다.
+- 구현계획 문서에서는 `movie_stats.movie_id`를 추천 테이블의 FK 대상으로 사용한다.
 - `movies`는 TMDB 카탈로그 필드만 저장하고, 평점/리뷰/tag 집계는 이 테이블에 둔다.
 - 리뷰 생성/수정/삭제 시 `cinemate_rating_sum`, `cinemate_review_count`를 갱신한다.
 - fallback 정렬 인덱스는 `(movielens_rating_count DESC, movielens_avg_rating DESC)`를 둔다.
@@ -41,12 +41,12 @@ Item CF 추천 결과를 미리 저장하는 테이블이다.
 
 | 컬럼 | 타입 | 제약 | 설명 |
 |---|---|---|---|
-| `source_tmdb_id` | bigint | PK, FK `movie_stats(tmdb_id)` | 기준 영화 |
-| `target_tmdb_id` | bigint | PK, FK `movie_stats(tmdb_id)` | 함께 추천할 영화 |
+| `source_movie_id` | bigint | PK, FK `movie_stats(movie_id)` | 기준 영화 |
+| `target_movie_id` | bigint | PK, FK `movie_stats(movie_id)` | 함께 추천할 영화 |
 | `score` | real | not null | Item CF 유사도 점수 |
 | `co_rating_count` | integer | not null | 두 영화를 함께 평가한 사용자 수 |
 
 제약/메모:
 
-- 기준 영화별 조회 인덱스는 `(source_tmdb_id, score DESC)`를 둔다.
+- 기준 영화별 조회 인덱스는 `(source_movie_id, score DESC)`를 둔다.
 - `/recommend`의 온보딩 기반 추천은 이 테이블을 기준으로 조회한다.

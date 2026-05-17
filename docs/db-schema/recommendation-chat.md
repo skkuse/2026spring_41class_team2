@@ -25,15 +25,15 @@ RLS:
 
 | 컬럼 | 타입 | 제약 | 설명 |
 |---|---|---|---|
-| `tmdb_id` | bigint | PK, FK `movies(id)` | TMDB movie id |
+| `movie_id` | bigint | PK, FK `movies(id)` | Movie id |
 | `tag_id` | integer | PK, FK `movie_tags(tag_id)` | MovieLens Tag Genome tag id |
 | `relevance` | real | not null | tag와 영화의 관련도 점수 |
 
 제약/메모:
 
-- `tmdb_id`는 MovieLens subset에 포함된 영화만 저장한다.
-- 추천 채팅의 tag 기반 후보 조회 인덱스는 `(tag_id, relevance DESC, tmdb_id)`를 둔다.
-- 영화별 tag 조회 인덱스는 `(tmdb_id, relevance DESC)`를 둔다.
+- `movie_id`는 MovieLens subset에 포함된 영화만 저장한다.
+- 추천 채팅의 tag 기반 후보 조회 인덱스는 `(tag_id, relevance DESC, movie_id)`를 둔다.
+- 영화별 tag 조회 인덱스는 `(movie_id, relevance DESC)`를 둔다.
 - relevance는 MovieLens `genome-scores.csv`의 값을 사용한다.
 
 RLS:
