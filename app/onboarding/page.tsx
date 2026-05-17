@@ -7,7 +7,6 @@ import { Badge } from "@/components/ui/badge"
 import { MovieCard } from "@/components/movie-card"
 import { Sparkles, CheckCircle2 } from "lucide-react"
 
-const ONBOARDING_COMPLETE_KEY = "cinemate:onboardingCompleted"
 const SELECTED_MOVIES_KEY = "cinemate:selectedMovieIds"
 const REQUIRED_SELECTION_COUNT = 5
 
@@ -29,13 +28,39 @@ const popularMovies = [
 export default function OnboardingPage() {
   const router = useRouter()
   const [selectedMovieIds, setSelectedMovieIds] = useState<string[]>([])
+  const [allowed, setAllowed] = useState(false)
 
   useEffect(() => {
-    const onboardingCompleted = window.localStorage.getItem(ONBOARDING_COMPLETE_KEY) === "true"
-    if (onboardingCompleted) {
-      router.replace("/recommend")
-      return
+    let cancelled = false
+
+    async function checkAuth() {
+      try {
+        const response = await fetch("/api/me", { cache: "no-store" })
+        const me = await response.json()
+
+        if (cancelled) {
+          return
+        }
+
+        if (!response.ok || !me.authenticated) {
+          router.replace("/login?returnTo=%2Fonboarding")
+          return
+        }
+
+        if (me.user.onboardingCompleted) {
+          router.replace("/recommend")
+          return
+        }
+
+        setAllowed(true)
+      } catch {
+        if (!cancelled) {
+          router.replace("/login?returnTo=%2Fonboarding")
+        }
+      }
     }
+
+    checkAuth()
 
     const storedSelections = window.localStorage.getItem(SELECTED_MOVIES_KEY)
     if (storedSelections) {
@@ -47,6 +72,10 @@ export default function OnboardingPage() {
       } catch {
         window.localStorage.removeItem(SELECTED_MOVIES_KEY)
       }
+    }
+
+    return () => {
+      cancelled = true
     }
   }, [router])
 
@@ -74,9 +103,12 @@ export default function OnboardingPage() {
       return
     }
 
-    window.localStorage.setItem(ONBOARDING_COMPLETE_KEY, "true")
     window.localStorage.setItem(SELECTED_MOVIES_KEY, JSON.stringify(selectedMovieIds))
     router.push("/recommend")
+  }
+
+  if (!allowed) {
+    return null
   }
 
   return (

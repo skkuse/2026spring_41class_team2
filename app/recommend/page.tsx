@@ -1,14 +1,12 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { useRouter } from "next/navigation"
 import { Header } from "@/components/header"
+import { ProtectedPage } from "@/components/auth/protected-page"
 import { MovieCard } from "@/components/movie-card"
 import { Badge } from "@/components/ui/badge"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Sparkles } from "lucide-react"
-
-const ONBOARDING_COMPLETE_KEY = "cinemate:onboardingCompleted"
 
 interface RecommendationMovie {
   id: string
@@ -170,33 +168,21 @@ function RecommendationCardSkeleton() {
 }
 
 export default function RecommendPage() {
-  const router = useRouter()
   const [loading, setLoading] = useState(true)
-  const [isAllowed, setIsAllowed] = useState(false)
 
   useEffect(() => {
-    const onboardingCompleted = window.localStorage.getItem(ONBOARDING_COMPLETE_KEY) === "true"
-    if (!onboardingCompleted) {
-      router.replace("/onboarding")
-      return
-    }
-
-    setIsAllowed(true)
     const timer = window.setTimeout(() => {
       setLoading(false)
     }, 650)
 
     return () => window.clearTimeout(timer)
-  }, [router])
-
-  if (!isAllowed) {
-    return null
-  }
+  }, [])
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
 
+      <ProtectedPage requireOnboardingCompleted>
       <main className="container mx-auto px-4 py-8">
         <div className="mb-10 max-w-3xl">
           <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
@@ -253,6 +239,7 @@ export default function RecommendPage() {
           ))}
         </div>
       </main>
+      </ProtectedPage>
     </div>
   )
 }

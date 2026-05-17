@@ -1,51 +1,67 @@
 "use client"
 
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { User, Film, LogOut } from "lucide-react"
-import { usePathname, useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
+import { usePathname, useRouter } from "next/navigation"
+import { Button } from "@/components/ui/button"
+import { signOut } from "@/lib/auth/auth-client"
+import { Film, LogOut, User } from "lucide-react"
 
-const authStorageKey = "cinemate:isLoggedIn"
-const onboardingCompleteKey = "cinemate:onboardingCompleted"
+type HeaderUser = {
+  name: string
+}
+
+type MeResponse =
+  | { authenticated: false; user: null }
+  | { authenticated: true; user: HeaderUser }
 
 export function Header() {
   const router = useRouter()
   const pathname = usePathname()
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [user, setUser] = useState<HeaderUser | null>(null)
 
   useEffect(() => {
-    const syncAuthState = () => {
-      setIsLoggedIn(window.localStorage.getItem(authStorageKey) === "true")
+    let cancelled = false
+
+    async function syncAuthState() {
+      try {
+        const response = await fetch("/api/me", { cache: "no-store" })
+        if (!response.ok) {
+          return
+        }
+
+        const me = (await response.json()) as MeResponse
+        if (!cancelled) {
+          setUser(me.authenticated ? me.user : null)
+        }
+      } catch {
+        if (!cancelled) {
+          setUser(null)
+        }
+      }
     }
 
     syncAuthState()
-    window.addEventListener("storage", syncAuthState)
-    window.addEventListener("cinemate-auth-change", syncAuthState)
+    window.addEventListener("focus", syncAuthState)
 
     return () => {
-      window.removeEventListener("storage", syncAuthState)
-      window.removeEventListener("cinemate-auth-change", syncAuthState)
+      cancelled = true
+      window.removeEventListener("focus", syncAuthState)
     }
   }, [])
 
-  useEffect(() => {
-    if (!isLoggedIn) {
+  const handleLogout = async () => {
+    const { error } = await signOut()
+    if (error) {
       return
     }
 
-    const onboardingCompleted = window.localStorage.getItem(onboardingCompleteKey) === "true"
-    if (!onboardingCompleted && pathname !== "/onboarding") {
-      router.replace("/onboarding")
-    }
-  }, [isLoggedIn, pathname, router])
-
-  const handleLogout = () => {
-    window.localStorage.removeItem(authStorageKey)
-    window.dispatchEvent(new Event("cinemate-auth-change"))
-    setIsLoggedIn(false)
+    setUser(null)
     router.push("/")
+    router.refresh()
   }
+
+  const loginHref = pathname === "/login" ? "/login" : `/login?returnTo=${encodeURIComponent(pathname)}`
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -77,17 +93,17 @@ export function Header() {
 
         <div className="flex items-center gap-2">
           <Link href="/mypage">
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" aria-label="마이페이지">
               <User className="h-5 w-5" />
             </Button>
           </Link>
-          {isLoggedIn ? (
+          {user ? (
             <Button variant="outline" size="sm" className="gap-2" onClick={handleLogout}>
               <LogOut className="h-4 w-4" />
               로그아웃
             </Button>
           ) : (
-            <Link href="/login">
+            <Link href={loginHref}>
               <Button variant="outline" size="sm" className="hidden md:flex">
                 로그인
               </Button>

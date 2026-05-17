@@ -1,6 +1,7 @@
 "use client"
 
 import { Header } from "@/components/header"
+import { ProtectedPage } from "@/components/auth/protected-page"
 import { Button } from "@/components/ui/button"
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -27,6 +28,7 @@ export default function MyPage() {
     <div className="min-h-screen bg-background">
       <Header />
 
+      <ProtectedPage>
       <main className="container mx-auto px-4 py-8">
         {/* Profile Header */}
         <div className="flex flex-col items-center gap-6 md:flex-row md:items-start">
@@ -135,6 +137,7 @@ export default function MyPage() {
           </TabsContent>
         </Tabs>
       </main>
+      </ProtectedPage>
     </div>
   )
 }
