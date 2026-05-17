@@ -7,9 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "seed:movie-catalog": "tsx scripts/seeds/generate-movie-catalog-seed.ts",
-    "seed:movie-catalog:validate-upload": "tsx scripts/seeds/upload-movie-catalog-seed.ts --validate-only",
-    "seed:movie-catalog:upload": "tsx scripts/seeds/upload-movie-catalog-seed.ts"
+    "seed:movie-catalog:generate-csv-from-movielens": "tsx scripts/seeds/generate-csv-from-movielens.ts",
+    "seed:movie-catalog:validate-upload-csv-to-supabase": "tsx scripts/seeds/upload-csv-to-supabase.ts --validate-only",
+    "seed:movie-catalog:upload-csv-to-supabase": "tsx scripts/seeds/upload-csv-to-supabase.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
