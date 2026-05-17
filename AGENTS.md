@@ -73,6 +73,13 @@
 
 - 폴더 구조와 모듈 설계는 테스트 작성 용이성을 최우선 기준으로 정한다.
 - 테스트 파일은 대상 코드 옆에 `*.test.ts` 또는 `*.test.tsx`로 둔다.
+- 기능 개발은 TDD를 기본으로 한다.
+- Backend는 `rules/service/schema`, Frontend는 작은 Client Component/API client/상태 전이 테스트를 우선한다.
+- Route Handler 테스트는 인증, 입력 검증, 에러 매핑만 얇게 작성한다.
+- Repository integration test는 unit test와 분리한다.
+- 조회 중심 integration test는 원격 Supabase seed data를 참조할 수 있고, 쓰기 테스트는 전용 데이터와 cleanup을 사용한다.
+- E2E는 Playwright로 핵심 사용자 흐름만 검증한다.
+- LLM 자동 테스트는 fake/stub client를 사용한다.
 - Next.js에는 NestJS식 DI 컨테이너를 기본 도입하지 않는다.
 - Service는 `createXService(deps)` factory를 제공하여 테스트에서 의존성을 fake/mock으로 주입할 수 있게 한다.
 - 기본 런타임용 인스턴스는 `export const xService = createXService(defaultDeps)`로 제공한다.
