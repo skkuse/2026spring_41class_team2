@@ -18,6 +18,21 @@
 - 사용자가 명시하지 않은 세부 UI는 Next.js, React, 접근성, 반응형 UI 관점에서 합리적으로 결정한다.
 - 문서 수정 작업 시 `docs/software-requirements-spec/**`는 아카이브된 산출물로 간주하고 수정하지 않는다.
 
+# 로그 규칙
+
+- 서버 로그는 `server/logger.ts`의 공통 logger를 사용하고, route/service에서 `console.*`를 직접 호출하지 않는다.
+- 로그 레벨은 `debug`, `info`, `warn`, `error`를 사용한다.
+- 개발단계(`NODE_ENV !== "production"`)에서는 `debug`를 포함해 상세 로그를 남기고, 배포단계(`NODE_ENV === "production"`)에서는 `debug`를 출력하지 않는다.
+- 개발단계에서는 request body, query params, 주요 중간값을 `debug` 로그에 적극적으로 남긴다.
+- 배포단계에서는 request body를 로그에 남기지 않는다.
+- 성공 로그는 중요 이벤트만 `info`로 남긴다.
+- 비정상 흐름은 `warn`, 실패/예외는 `error`로 남긴다.
+- 로그에는 가능한 한 `requestId`, `route`, `userId`, `event`를 포함한다.
+- 이메일, 토큰, 쿠키, authorization header, password, secret, api key류는 로그에 남기지 않는다.
+- `requestId`는 route 시작 시점에 생성하고 `RequestContext`에 전달한다.
+- 로그 호출부는 한 줄로 작성한다.
+- 로그는 일반 기능 테스트의 검증 대상이 아니다.
+
 # Next.js 작업 규칙
 
 - App Router 기준으로 구현한다.
