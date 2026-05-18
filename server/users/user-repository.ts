@@ -1,8 +1,8 @@
 import "server-only"
 
-import { eq } from "drizzle-orm"
+import { count, eq } from "drizzle-orm"
 import { getDb } from "@/server/db/client"
-import { profiles, type ProfileRow } from "@/server/db/schema"
+import { movieBookmarks, profiles, reviews, type ProfileRow } from "@/server/db/schema"
 import type {
   CreateProfileRepoParams,
   Profile,
@@ -52,12 +52,14 @@ export function createUserRepository(): UserRepository {
     },
 
     async getUserCounts(userId: string): Promise<UserCounts> {
-      void userId
+      const [bookmarkedMovies, userReviews] = await Promise.all([
+        getDb().select({ count: count() }).from(movieBookmarks).where(eq(movieBookmarks.userId, userId)),
+        getDb().select({ count: count() }).from(reviews).where(eq(reviews.userId, userId)),
+      ])
 
-      // TODO: movie_bookmarks, reviews 테이블 구현 후 실제 사용자별 count 조회로 교체한다.
       return {
-        bookmarkedMovieCount: 0,
-        reviewCount: 0,
+        bookmarkedMovieCount: bookmarkedMovies[0]?.count ?? 0,
+        reviewCount: userReviews[0]?.count ?? 0,
       }
     },
   }

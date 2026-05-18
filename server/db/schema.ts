@@ -200,3 +200,41 @@ export const profiles = pgTable("profiles", {
 })
 
 export type ProfileRow = typeof profiles.$inferSelect
+
+export const movieBookmarks = pgTable(
+  "movie_bookmarks",
+  {
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => profiles.id, { onDelete: "cascade" }),
+    movieId: bigint("movie_id", { mode: "number" })
+      .notNull()
+      .references(() => movies.id, { onDelete: "cascade" }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    primaryKey({ columns: [table.userId, table.movieId] }),
+    index("movie_bookmarks_movie_id_idx").on(table.movieId),
+  ],
+)
+
+export const reviews = pgTable(
+  "reviews",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => profiles.id, { onDelete: "cascade" }),
+    movieId: bigint("movie_id", { mode: "number" })
+      .notNull()
+      .references(() => movies.id, { onDelete: "cascade" }),
+    rating: numeric("rating", { precision: 2, scale: 1 }).notNull(),
+    content: text("content").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    uniqueIndex("reviews_user_movie_key").on(table.userId, table.movieId),
+    index("reviews_movie_id_created_at_idx").on(table.movieId, table.createdAt.desc()),
+    check("reviews_rating_range_check", sql`${table.rating} >= 0.5 and ${table.rating} <= 5.0`),
+  ],
+)
