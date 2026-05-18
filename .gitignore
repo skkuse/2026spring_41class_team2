@@ -34,6 +34,7 @@ next-env.d.ts
 /data/seeds/movie-catalog/reports/
 /data/seeds/movie-credits/cache/
 /data/seeds/movie-credits/reports/
+/data/seeds/movie-recommendation/reports/
 
 # local Supabase workspace
 /supabase/.temp/

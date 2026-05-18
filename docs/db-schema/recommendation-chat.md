@@ -35,6 +35,7 @@ RLS:
 - 추천 채팅의 tag 기반 후보 조회 인덱스는 `(tag_id, relevance DESC, movie_id)`를 둔다.
 - 영화별 tag 조회 인덱스는 `(movie_id, relevance DESC)`를 둔다.
 - relevance는 MovieLens `genome-scores.csv`의 값을 사용한다.
+- seed는 `relevance >= 0.5` row를 기본 저장하고, 영화별 저장 row가 20개 미만이면 `relevance DESC`, `tag_id ASC` 기준 상위 tag를 추가해 최소 20개를 보장한다.
 
 RLS:
 

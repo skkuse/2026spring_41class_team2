@@ -3,6 +3,7 @@ import { access, mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import path from "node:path";
 import readline from "node:readline";
 import { once } from "node:events";
+import { pathToFileURL } from "node:url";
 
 const ROOT_DIR = process.cwd();
 const MOVIELENS_DIR = path.join(ROOT_DIR, "ml-latest");
@@ -13,6 +14,8 @@ const REPORTS_DIR = path.join(SEED_DIR, "reports");
 const TARGET_MOVIE_COUNT = 3000;
 const MIN_CO_RATING_COUNT = 30;
 const MAX_SIMILAR_MOVIES_PER_SOURCE = 50;
+export const MIN_TAG_RELEVANCE = 0.5;
+export const MIN_TAG_RELEVANCES_PER_MOVIE = 20;
 const SCORE_DECIMAL_PLACES = 6;
 const AVG_RATING_DECIMAL_PLACES = 2;
 const NULL_VALUE = "\\N";
@@ -43,6 +46,13 @@ type SimilarityCandidate = {
   coRatingCount: number;
 };
 
+export type MovieTagRelevanceSeedRow = {
+  movieId: number;
+  tagId: number;
+  relevance: number;
+  relevanceValue: string;
+};
+
 type Report = {
   generatedAt: string;
   parameters: {
@@ -52,6 +62,8 @@ type Report = {
     minSimilarityScore: number;
     maxSimilarMoviesPerSource: number;
     storeBidirectionalCandidates: boolean;
+    minTagRelevance: number;
+    minTagRelevancesPerMovie: number;
   };
   inputRows: {
     movies: number;
@@ -85,6 +97,46 @@ type Report = {
 
 function increment<T extends string | number>(map: Map<T, number>, key: T, amount = 1) {
   map.set(key, (map.get(key) ?? 0) + amount);
+}
+
+export function selectMovieTagRelevanceRows(rows: MovieTagRelevanceSeedRow[]) {
+  const rowsByMovie = new Map<number, MovieTagRelevanceSeedRow[]>();
+
+  for (const row of rows) {
+    const movieRows = rowsByMovie.get(row.movieId);
+
+    if (movieRows === undefined) {
+      rowsByMovie.set(row.movieId, [row]);
+      continue;
+    }
+
+    movieRows.push(row);
+  }
+
+  return [...rowsByMovie.entries()]
+    .sort(([movieIdA], [movieIdB]) => movieIdA - movieIdB)
+    .flatMap(([, movieRows]) => {
+      const topRows = [...movieRows]
+        .sort((a, b) => {
+          if (b.relevance !== a.relevance) {
+            return b.relevance - a.relevance;
+          }
+
+          return a.tagId - b.tagId;
+        })
+        .slice(0, MIN_TAG_RELEVANCES_PER_MOVIE);
+      const topTagIds = new Set(topRows.map((row) => row.tagId));
+
+      return movieRows
+        .filter((row) => row.relevance >= MIN_TAG_RELEVANCE || topTagIds.has(row.tagId))
+        .sort((a, b) => {
+          if (a.movieId !== b.movieId) {
+            return a.movieId - b.movieId;
+          }
+
+          return a.tagId - b.tagId;
+        });
+    });
 }
 
 async function ensureDirectories() {
@@ -641,9 +693,9 @@ async function writeMovieTagRelevancesCsv(
   const scoresPath = path.join(MOVIELENS_DIR, "genome-scores.csv");
   const seen = new Set<string>();
   const moviesWithGenomeScores = new Set<number>();
+  const candidates: MovieTagRelevanceSeedRow[] = [];
 
   return writeCsvAtomic("movie_tag_relevances_seed.csv", async (stream) => {
-    let rows = 0;
     writeLine(stream, stringifyCsvRow(["movie_id", "tag_id", "relevance"]));
     const input = createReadStream(scoresPath, { encoding: "utf8" });
     const reader = readline.createInterface({ input, crlfDelay: Infinity });
@@ -685,13 +737,18 @@ async function writeMovieTagRelevancesCsv(
 
       seen.add(duplicateKey);
       moviesWithGenomeScores.add(movieId);
-      writeLine(stream, stringifyCsvRow([movieId, tagId, relevanceValue]));
-      rows += 1;
+      candidates.push({ movieId, tagId, relevance, relevanceValue });
       report.inputRows.selectedGenomeScores += 1;
     }
 
+    const selectedRows = selectMovieTagRelevanceRows(candidates);
+
+    for (const row of selectedRows) {
+      writeLine(stream, stringifyCsvRow([row.movieId, row.tagId, row.relevanceValue]));
+    }
+
     report.tagGenome.moviesWithGenomeScores = moviesWithGenomeScores.size;
-    return rows;
+    return selectedRows.length;
   });
 }
 
@@ -782,6 +839,8 @@ function createInitialReport(): Report {
       minSimilarityScore: 0,
       maxSimilarMoviesPerSource: MAX_SIMILAR_MOVIES_PER_SOURCE,
       storeBidirectionalCandidates: true,
+      minTagRelevance: MIN_TAG_RELEVANCE,
+      minTagRelevancesPerMovie: MIN_TAG_RELEVANCES_PER_MOVIE,
     },
     inputRows: {
       movies: 0,
@@ -899,7 +958,9 @@ async function main() {
   console.log(`Report written to ${reportPath}`);
 }
 
-main().catch((error: unknown) => {
-  console.error(error instanceof Error ? error.message : error);
-  process.exitCode = 1;
-});
+if (process.argv[1] !== undefined && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
+  main().catch((error: unknown) => {
+    console.error(error instanceof Error ? error.message : error);
+    process.exitCode = 1;
+  });
+}
