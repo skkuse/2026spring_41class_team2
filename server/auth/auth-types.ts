@@ -1,3 +1,4 @@
+// Domain
 export type RequestContext = {
   requestId: string
   user: {

@@ -9,6 +9,7 @@ import { createSupabaseServerClient } from "@/server/auth/supabase-server"
 import { logger } from "@/server/logger"
 import { userService } from "@/server/users"
 import { meResponseSchema } from "@/server/users/user-schema"
+import type { CurrentUserResult, MeResponseDto } from "@/server/users/user-types"
 
 const route = "GET /api/me"
 
@@ -40,7 +41,8 @@ export async function GET() {
     const context = createRequestContextFromAuthUser(user, requestId)
     logger.debug("user.current.start", { requestId, route, userId: context.user?.id })
 
-    const response = await userService.getCurrentUser(context, user ? mapSupabaseUser(user) : null)
+    const result = await userService.getCurrentUser(context, user ? mapSupabaseUser(user) : null)
+    const response = toMeResponseDto(result)
     logger.debug("user.current.result", { requestId, route, authenticated: response.authenticated, userId: response.user?.id, onboardingCompleted: response.user?.onboardingCompleted })
 
     return NextResponse.json(meResponseSchema.parse(response))
@@ -50,6 +52,25 @@ export async function GET() {
       { error: { code: "profile_sync_failed", message: "현재 사용자 정보를 동기화하지 못했습니다." } },
       { status: 500 },
     )
+  }
+}
+
+function toMeResponseDto(result: CurrentUserResult): MeResponseDto {
+  if (!result.authenticated) {
+    return { authenticated: false, user: null }
+  }
+
+  return {
+    authenticated: true,
+    user: {
+      id: result.user.id,
+      name: result.user.name,
+      email: result.user.email,
+      profileImageUrl: result.user.profileImageUrl,
+      onboardingCompleted: result.user.onboardingCompleted,
+      bookmarkedMovieCount: result.user.bookmarkedMovieCount,
+      reviewCount: result.user.reviewCount,
+    },
   }
 }
 

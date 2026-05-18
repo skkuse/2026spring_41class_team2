@@ -1,18 +1,19 @@
 import "server-only"
 
-import { eq, sql } from "drizzle-orm"
+import { eq } from "drizzle-orm"
 import { getDb } from "@/server/db/client"
-import { isUndefinedTableError } from "@/server/db/postgres-errors"
 import { profiles, type ProfileRow } from "@/server/db/schema"
 import type {
+  CreateProfileRepoParams,
   Profile,
-  ProfileUpdateInput,
+  UpdateProfileRepoParams,
+  UserCounts,
   UserRepository,
 } from "./user-types"
 
 export function createUserRepository(): UserRepository {
   return {
-    async findProfileById(userId) {
+    async findProfileById(userId: string): Promise<Profile | null> {
       const [row] = await getDb()
         .select()
         .from(profiles)
@@ -22,7 +23,7 @@ export function createUserRepository(): UserRepository {
       return row ? mapProfile(row) : null
     },
 
-    async createProfile(input) {
+    async createProfile(input: CreateProfileRepoParams): Promise<Profile> {
       const [row] = await getDb()
         .insert(profiles)
         .values({
@@ -37,7 +38,7 @@ export function createUserRepository(): UserRepository {
       return mapProfile(row)
     },
 
-    async updateProfile(userId, input) {
+    async updateProfile(userId: string, input: UpdateProfileRepoParams): Promise<Profile> {
       const [row] = await getDb()
         .update(profiles)
         .set({
@@ -50,15 +51,13 @@ export function createUserRepository(): UserRepository {
       return mapProfile(row)
     },
 
-    async getUserCounts(userId) {
-      const [bookmarkedMovieCount, reviewCount] = await Promise.all([
-        countUserRows("movie_bookmarks", "user_id", userId),
-        countUserRows("reviews", "user_id", userId),
-      ])
+    async getUserCounts(userId: string): Promise<UserCounts> {
+      void userId
 
+      // TODO: movie_bookmarks, reviews 테이블 구현 후 실제 사용자별 count 조회로 교체한다.
       return {
-        bookmarkedMovieCount,
-        reviewCount,
+        bookmarkedMovieCount: 0,
+        reviewCount: 0,
       }
     },
   }
@@ -74,24 +73,9 @@ function mapProfile(row: ProfileRow): Profile {
   }
 }
 
-function toProfileUpdateRow(input: ProfileUpdateInput) {
+function toProfileUpdateRow(input: UpdateProfileRepoParams): Partial<Pick<ProfileRow, "email" | "profileImageUrl">> {
   return {
     ...(input.email !== undefined ? { email: input.email } : {}),
     ...(input.profileImageUrl !== undefined ? { profileImageUrl: input.profileImageUrl } : {}),
-  }
-}
-
-async function countUserRows(tableName: "movie_bookmarks" | "reviews", columnName: "user_id", userId: string) {
-  try {
-    const rows = await getDb().execute<{ count: number }>(
-      sql`select count(*)::int as count from ${sql.raw(`public.${tableName}`)} where ${sql.raw(columnName)} = ${userId}`,
-    )
-
-    return Number(rows[0]?.count ?? 0)
-  } catch (error) {
-    if (isUndefinedTableError(error)) {
-      return 0
-    }
-    throw error
   }
 }

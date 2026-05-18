@@ -54,19 +54,19 @@ export async function GET(request: NextRequest) {
     const context = createRequestContextFromAuthUser(user, requestId)
     logger.debug("profile.sync.start", { requestId, route, userId: context.user?.id })
 
-    const me = await userService.getCurrentUser(context, mapSupabaseUser(user))
+    const currentUser = await userService.getCurrentUser(context, mapSupabaseUser(user))
 
-    if (!me.authenticated) {
+    if (!currentUser.authenticated) {
       logger.warn("profile.sync.unauthenticated", { requestId, route, userId: user.id })
       return redirectToLogin(requestUrl, "session_exchange_failed", requestId)
     }
 
     const redirectPath = resolvePostLoginRedirect({
       returnTo,
-      onboardingCompleted: me.user.onboardingCompleted,
+      onboardingCompleted: currentUser.user.onboardingCompleted,
     })
 
-    logger.info("auth.callback.success", { requestId, route, userId: me.user.id, onboardingCompleted: me.user.onboardingCompleted, redirectPath })
+    logger.info("auth.callback.success", { requestId, route, userId: currentUser.user.id, onboardingCompleted: currentUser.user.onboardingCompleted, redirectPath })
 
     return NextResponse.redirect(new URL(redirectPath, requestUrl.origin))
   } catch (error) {

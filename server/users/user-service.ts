@@ -1,6 +1,6 @@
 import { createAuthService } from "@/server/auth/auth-service"
 import type { AuthUser, RequestContext } from "@/server/auth/auth-types"
-import type { MeResponse, UserRepository } from "./user-types"
+import type { CurrentUserResult, UserRepository } from "./user-types"
 
 export type UserServiceDeps = {
   userRepository: UserRepository
@@ -10,7 +10,7 @@ export function createUserService(deps: UserServiceDeps) {
   const authService = createAuthService({ userRepository: deps.userRepository })
 
   return {
-    async getCurrentUser(context: RequestContext, authUser: AuthUser | null): Promise<MeResponse> {
+    async getCurrentUser(context: RequestContext, authUser: AuthUser | null): Promise<CurrentUserResult> {
       if (!context.user || !authUser) {
         return { authenticated: false, user: null }
       }
@@ -28,4 +28,3 @@ export function createUserService(deps: UserServiceDeps) {
     },
   }
 }
-
