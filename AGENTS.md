@@ -82,6 +82,24 @@
 - schema에서 파생 가능한 input 타입은 `z.infer<typeof schema>`로 정의한다.
 - 인증/세션 등 요청 공통 정보는 `RequestContext` 타입으로 정의하고 service에 명시적으로 전달한다.
 - service는 `Request`, `Response`, cookie, header에 직접 의존하지 않는다.
+- 백엔드 도메인 타입 파일은 기본적으로 `server/<domain>/<domain>-types.ts`에 모으고, 파일 내부 주석으로 계층을 그룹핑한다.
+- 타입 그룹 주석은 필요한 항목만 사용하며, `// HTTP DTO`, `// Service input`, `// Service output`, `// Domain`, `// Repository params`, `// Repository results`, `// Repository port` 순서를 기본으로 한다.
+- HTTP 요청/응답 경계 타입은 `Dto`, repository 메서드 인자 타입은 `RepoParams`, repository 반환 전용 타입은 `RepoResult`, Drizzle row 타입은 `Row` 접미사를 사용한다.
+- service input은 service의 유스케이스 호출 계약이며, HTTP DTO와 모양이 같아도 별도 타입으로 정의한다.
+- service output은 service의 유스케이스 결과 계약이며, HTTP response DTO와 분리한다.
+- route.ts는 외부 입력을 Zod로 검증한 HTTP DTO를 service input으로 변환해 service에 전달한다.
+- route.ts는 service output을 HTTP response DTO로 변환한 뒤 response schema로 검증한다.
+- route.ts는 repository 타입이나 `RepoParams`, `RepoResult`를 직접 만들거나 import하지 않는다.
+- service는 HTTP DTO를 직접 사용하지 않고 service input/output과 domain 타입을 사용한다.
+- service는 service input과 `RequestContext`를 바탕으로 repository `RepoParams`를 생성해 repository에 전달한다.
+- Domain 타입은 여러 유스케이스, rules, repository에서 공유되는 핵심 비즈니스 개념에만 둔다.
+- 특정 유스케이스 전용 projection/result는 억지로 Domain으로 만들지 않고 service output에 둔다.
+- Domain 타입에는 `Dto`, `Input`, `Output`, `RepoParams`, `RepoResult`, `Row` 접미사를 붙이지 않는다.
+- repository는 HTTP DTO와 service input/output을 직접 사용하지 않는다.
+- repository는 domain 모델 또는 repository 전용 `RepoResult`를 반환한다.
+- Drizzle row 타입은 repository 내부에서만 다루고 service로 반환하지 않는다.
+- join/projection처럼 domain 모델 하나로 표현하기 어려운 조회 결과는 `RepoResult` 접미사를 사용한다.
+- repository가 domain 모델을 그대로 반환할 수 있는 경우에는 불필요한 `RepoResult` alias를 만들지 않는다.
 
 # 테스트 용이성 및 DI 규칙
 
