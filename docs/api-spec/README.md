@@ -54,9 +54,9 @@
 
 | Method | Path | 목적 | 인증 | 문서 |
 |---|---|---|---|---|
-| `GET` | `/api/me/movie-bookmarks` | 내 찜 영화 목록 | 필요 | [reviews-bookmarks.md](./reviews-bookmarks.md) |
-| `PUT` | `/api/me/movie-bookmarks/{movieId}` | 영화 찜 추가 | 필요 | [reviews-bookmarks.md](./reviews-bookmarks.md) |
-| `DELETE` | `/api/me/movie-bookmarks/{movieId}` | 영화 찜 삭제 | 필요 | [reviews-bookmarks.md](./reviews-bookmarks.md) |
+| `GET` | `/api/me/bookmarked-movies` | 내 찜 영화 목록 | 필요 | [reviews-bookmarks.md](./reviews-bookmarks.md) |
+| `PUT` | `/api/me/bookmarked-movies/{movieId}` | 영화 찜 추가 | 필요 | [reviews-bookmarks.md](./reviews-bookmarks.md) |
+| `DELETE` | `/api/me/bookmarked-movies/{movieId}` | 영화 찜 삭제 | 필요 | [reviews-bookmarks.md](./reviews-bookmarks.md) |
 | `GET` | `/api/movies/{movieId}/reviews` | 영화 리뷰 목록 | 선택 | [reviews-bookmarks.md](./reviews-bookmarks.md) |
 | `POST` | `/api/movies/{movieId}/reviews` | 리뷰 작성 | 필요 | [reviews-bookmarks.md](./reviews-bookmarks.md) |
 | `GET` | `/api/me/reviews` | 내가 작성한 리뷰 목록 | 필요 | [reviews-bookmarks.md](./reviews-bookmarks.md) |

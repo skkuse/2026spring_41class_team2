@@ -22,14 +22,14 @@
 | 기능/영역 | 사용자 액션 | API | 상세 문서 | 인증 | 비고 |
 |---|---|---|---|---|---|
 | 영화 검색 결과 | 검색어 입력 | `GET /api/movies?q=...&limit=50` | [movies.md](./movies.md) | 선택 | 페이지네이션 없음 |
-| 영화 찜 | 하트 클릭 | `PUT/DELETE /api/me/movie-bookmarks/{movieId}` | [reviews-bookmarks.md](./reviews-bookmarks.md) | 필요 | 현재 `MovieCard` 내부 상태로 처리 |
+| 영화 찜 | 하트 클릭 | `PUT/DELETE /api/me/bookmarked-movies/{movieId}` | [reviews-bookmarks.md](./reviews-bookmarks.md) | 필요 | 낙관적 업데이트 후 실패 시 되돌림 |
 
 ## `/movie/[id]` 영화 상세
 
 | 기능/영역 | 사용자 액션 | API | 상세 문서 | 인증 | 비고 |
 |---|---|---|---|---|---|
 | 영화 상세 정보 | 화면 진입 | `GET /api/movies/{movieId}` | [movies.md](./movies.md) | 선택 | `movieId`는 TMDB movie id |
-| 찜하기 | 찜하기 클릭 | `PUT/DELETE /api/me/movie-bookmarks/{movieId}` | [reviews-bookmarks.md](./reviews-bookmarks.md) | 필요 | 현재 로컬 상태 |
+| 찜하기 | 찜하기 클릭 | `PUT/DELETE /api/me/bookmarked-movies/{movieId}` | [reviews-bookmarks.md](./reviews-bookmarks.md) | 필요 | 낙관적 업데이트 후 실패 시 되돌림 |
 | 사용자 리뷰 목록 | 화면 진입 | `GET /api/movies/{movieId}/reviews` | [reviews-bookmarks.md](./reviews-bookmarks.md) | 선택 | 현재 상세 데이터 안에 포함 |
 | 리뷰 작성 | 리뷰 등록 | `POST /api/movies/{movieId}/reviews` | [reviews-bookmarks.md](./reviews-bookmarks.md) | 필요 | 중복 작성 시 `409 Conflict` |
 | 리뷰 좋아요 | 좋아요 클릭 | `PUT/DELETE /api/reviews/{reviewId}/like` | [reviews-bookmarks.md](./reviews-bookmarks.md) | 필요 | 현재 버튼은 카운트만 표시 |
@@ -49,7 +49,7 @@
 | 기능/영역 | 사용자 액션 | API | 상세 문서 | 인증 | 비고 |
 |---|---|---|---|---|---|
 | 온보딩 영화 기반 추천 섹션 | 화면 진입 | `GET /api/me/recommendations/item-cf` | [item-cf-recommendations.md](./item-cf-recommendations.md) | 필요 | Python 추천 서버 결과를 백엔드가 조립 |
-| 추천 영화 찜 | 하트 클릭 | `PUT/DELETE /api/me/movie-bookmarks/{movieId}` | [reviews-bookmarks.md](./reviews-bookmarks.md) | 필요 | 현재 카드 내부 로컬 상태 |
+| 추천 영화 찜 | 하트 클릭 | `PUT/DELETE /api/me/bookmarked-movies/{movieId}` | [reviews-bookmarks.md](./reviews-bookmarks.md) | 필요 | 낙관적 업데이트 후 실패 시 되돌림 |
 
 ## `/character-chat` 캐릭터 대화
 
@@ -66,7 +66,7 @@
 | 기능/영역 | 사용자 액션 | API | 상세 문서 | 인증 | 비고 |
 |---|---|---|---|---|---|
 | 프로필 헤더 | 화면 진입 | `GET /api/me` | [auth-users.md](./auth-users.md) | 필요 | `user=null`이면 로그인 화면으로 이동 |
-| 찜한 영화 탭 | 탭 진입 | `GET /api/me/movie-bookmarks` | [reviews-bookmarks.md](./reviews-bookmarks.md) | 필요 | 현재 하드코딩 |
+| 찜한 영화 탭 | 탭 진입 | `GET /api/me/bookmarked-movies?page=&size=` | [reviews-bookmarks.md](./reviews-bookmarks.md) | 필요 | 초기 20개 로드 후 스크롤 시 추가 조회 |
 | 내 리뷰 탭 | 탭 진입 | `GET /api/me/reviews` | [reviews-bookmarks.md](./reviews-bookmarks.md) | 필요 | 현재 하드코딩 |
 | 프로필 수정 | 수정 클릭 | `PATCH /api/me` | [auth-users.md](./auth-users.md) | 필요 | 수정 화면 미구현 |
 | 설정 | 설정 클릭 | API 없음 | - | 필요 | 현재 범위 제외 |

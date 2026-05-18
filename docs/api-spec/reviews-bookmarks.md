@@ -2,7 +2,7 @@
 
 관련 DB 문서: [../db-schema/reviews-likes.md](../db-schema/reviews-likes.md)
 
-## `GET /api/me/movie-bookmarks`
+## `GET /api/me/bookmarked-movies`
 
 내가 찜한 영화 목록을 조회한다.
 
@@ -11,9 +11,11 @@
 | 인증 | 필요 |
 | 관련 화면 | `/mypage` |
 | Query | `page`, `size` |
-| Response | `movies: { id, title, year, posterUrl }[]`, `totalCount` |
+| Response | `movies: MovieCard[]`, `totalCount` |
 
-## `PUT /api/me/movie-bookmarks/{movieId}`
+`MovieCard`는 [common.md](./common.md)의 공통 타입을 따른다. 찜 목록에 포함된 영화이므로 각 항목의 `isBookmarked`는 `true`다. 포스터가 없는 영화의 `posterUrl`은 `null`이다.
+
+## `PUT /api/me/bookmarked-movies/{movieId}`
 
 영화를 찜 목록에 추가한다.
 
@@ -24,7 +26,7 @@
 | Path | `movieId` |
 | Response | `movieId`, `isBookmarked` |
 
-## `DELETE /api/me/movie-bookmarks/{movieId}`
+## `DELETE /api/me/bookmarked-movies/{movieId}`
 
 영화를 찜 목록에서 삭제한다.
 
@@ -34,6 +36,8 @@
 | 관련 화면 | `/search`, `/movie/[id]`, `/recommend` |
 | Path | `movieId` |
 | Response | `movieId`, `isBookmarked` |
+
+영화 자체가 존재하지 않는 `movieId`는 `404 Not Found`를 반환한다. 영화는 존재하지만 현재 사용자의 찜 row가 없는 경우에는 멱등 삭제로 보고 `200 OK`와 `isBookmarked=false`를 반환한다.
 
 비로그인 사용자가 찜 버튼을 누르면 API 호출 대신 로그인 유도 UI를 표시한다.
 
