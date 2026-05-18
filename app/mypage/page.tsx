@@ -8,13 +8,19 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent } from "@/components/ui/card"
 import { Star, Heart, Edit, ChevronRight } from "lucide-react"
 import Link from "next/link"
+import { useEffect, useState } from "react"
+import { BookmarkedMoviesList } from "./_components/bookmarked-movies-list"
 
+type MyPageUser = {
+  name: string
+  email: string
+  bookmarkedMovieCount: number
+  reviewCount: number
+}
 
-const likedMovies = [
-  { id: "3", title: "인터스텔라", year: "2014", posterUrl: "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" },
-  { id: "13", title: "쇼생크 탈출", year: "1994", posterUrl: "https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg" },
-  { id: "6", title: "듄", year: "2021", posterUrl: "https://image.tmdb.org/t/p/w500/d5NXSklXo0qyIYkgV94XAgMIckC.jpg" },
-]
+type MeResponse =
+  | { authenticated: false; user: null }
+  | { authenticated: true; user: MyPageUser }
 
 const myReviews = [
   { id: "r1", movieId: "1", movieTitle: "기생충", posterUrl: "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg", rating: 5, content: "봉준호 감독의 천재적인 연출력이 돋보이는 작품. 사회적 메시지와 오락성을 모두 잡은 걸작입니다.", date: "2024-01-15", likes: 45 },
@@ -24,6 +30,34 @@ const myReviews = [
 
 
 export default function MyPage() {
+  const [user, setUser] = useState<MyPageUser | null>(null)
+
+  useEffect(() => {
+    let cancelled = false
+
+    async function loadUser() {
+      const response = await fetch("/api/me", { cache: "no-store" })
+      if (!response.ok) {
+        return
+      }
+
+      const me = (await response.json()) as MeResponse
+      if (!cancelled) {
+        setUser(me.authenticated ? me.user : null)
+      }
+    }
+
+    loadUser().catch(() => {
+      if (!cancelled) {
+        setUser(null)
+      }
+    })
+
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -33,18 +67,18 @@ export default function MyPage() {
         {/* Profile Header */}
         <div className="flex flex-col items-center gap-6 md:flex-row md:items-start">
           <div className="flex h-24 w-24 items-center justify-center rounded-full bg-primary text-3xl font-bold text-primary-foreground">
-            U
+            {(user?.name ?? "사용자").charAt(0).toUpperCase()}
           </div>
           <div className="flex-1 text-center md:text-left">
-            <h1 className="text-2xl font-bold">사용자님</h1>
-            <p className="mt-1 text-muted-foreground">user@example.com</p>
+            <h1 className="text-2xl font-bold">{user?.name ?? "사용자"}님</h1>
+            <p className="mt-1 text-muted-foreground">{user?.email ?? ""}</p>
             <div className="mt-4 flex flex-wrap justify-center gap-4 md:justify-start">
               <div className="text-center">
-                <p className="text-2xl font-bold">{likedMovies.length}</p>
+                <p className="text-2xl font-bold">{user?.bookmarkedMovieCount ?? 0}</p>
                 <p className="text-sm text-muted-foreground">찜한 영화</p>
               </div>
               <div className="text-center">
-                <p className="text-2xl font-bold">{myReviews.length}</p>
+                <p className="text-2xl font-bold">{user?.reviewCount ?? myReviews.length}</p>
                 <p className="text-sm text-muted-foreground">작성한 리뷰</p>
               </div>
             </div>
@@ -71,24 +105,7 @@ export default function MyPage() {
           </TabsList>
 
           <TabsContent value="liked" className="mt-6">
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-              {likedMovies.map((movie) => (
-                <Link key={movie.id} href={`/movie/${movie.id}`} className="group">
-                  <div className="relative overflow-hidden rounded-xl">
-                    <img
-                      src={movie.posterUrl}
-                      alt={movie.title}
-                      className="aspect-[2/3] w-full object-cover transition-transform group-hover:scale-105"
-                    />
-                    <div className="absolute right-2 top-2">
-                      <Heart className="h-5 w-5 fill-red-500 text-red-500" />
-                    </div>
-                  </div>
-                  <h3 className="mt-2 font-medium line-clamp-1">{movie.title}</h3>
-                  <p className="text-sm text-muted-foreground">{movie.year}</p>
-                </Link>
-              ))}
-            </div>
+            <BookmarkedMoviesList />
           </TabsContent>
 
           <TabsContent value="reviews" className="mt-6">

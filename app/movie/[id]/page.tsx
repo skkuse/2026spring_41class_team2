@@ -6,7 +6,9 @@ import { Badge } from "@/components/ui/badge"
 import { Textarea } from "@/components/ui/textarea"
 import { Star, Heart, Clock, Calendar, Globe, Play, MessageCircle, ThumbsUp } from "lucide-react"
 import Link from "next/link"
+import { usePathname, useRouter } from "next/navigation"
 import { useEffect, useState, use } from "react"
+import { BookmarkedMoviesApiError, toggleMovieBookmark } from "@/lib/bookmarks/bookmarked-movies-client"
 
 const movieData: Record<string, {
   title: string
@@ -147,8 +149,11 @@ const similarMovies = [
 
 export default function MovieDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params)
+  const router = useRouter()
+  const pathname = usePathname()
   const [movie, setMovie] = useState(movieData[id] || defaultMovie)
   const [isLiked, setIsLiked] = useState(false)
+  const [bookmarkPending, setBookmarkPending] = useState(false)
   const [userRating, setUserRating] = useState(0)
   const [reviewText, setReviewText] = useState("")
 
@@ -181,6 +186,34 @@ export default function MovieDetailPage({ params }: { params: Promise<{ id: stri
       cancelled = true
     }
   }, [id])
+
+  const handleBookmarkClick = async () => {
+    if (bookmarkPending) {
+      return
+    }
+
+    const movieId = Number(id)
+    if (!Number.isInteger(movieId) || movieId <= 0) {
+      return
+    }
+
+    const previous = isLiked
+    const next = !previous
+    setIsLiked(next)
+    setBookmarkPending(true)
+
+    try {
+      const response = await toggleMovieBookmark(movieId, next)
+      setIsLiked(response.isBookmarked)
+    } catch (error) {
+      setIsLiked(previous)
+      if (error instanceof BookmarkedMoviesApiError && error.isUnauthorized) {
+        router.push(`/login?returnTo=${encodeURIComponent(pathname)}`)
+      }
+    } finally {
+      setBookmarkPending(false)
+    }
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -258,9 +291,15 @@ export default function MovieDetailPage({ params }: { params: Promise<{ id: stri
                     </Button>
                   </a>
                 )}
-                <Button variant="outline" size="lg" onClick={() => setIsLiked(!isLiked)}>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  aria-pressed={isLiked}
+                  disabled={bookmarkPending}
+                  onClick={handleBookmarkClick}
+                >
                   <Heart className={`mr-2 h-5 w-5 ${isLiked ? "fill-red-500 text-red-500" : ""}`} />
-                  찜하기
+                  {isLiked ? "찜 해제" : "찜하기"}
                 </Button>
                 <Link href={`/chat?q=${encodeURIComponent(`${movie.title}과 비슷한 영화 추천해줘`)}`}>
                   <Button variant="secondary" size="lg">

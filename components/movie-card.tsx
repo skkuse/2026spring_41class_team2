@@ -1,9 +1,11 @@
 "use client"
 
 import Link from "next/link"
+import { usePathname, useRouter } from "next/navigation"
 import { Check, Star, Heart } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { useState } from "react"
+import { useEffect, useState, type MouseEvent } from "react"
+import { BookmarkedMoviesApiError, toggleMovieBookmark } from "@/lib/bookmarks/bookmarked-movies-client"
 import { cn } from "@/lib/utils"
 
 interface MovieCardProps {
@@ -21,6 +23,7 @@ interface MovieCardProps {
   showLikeButton?: boolean
   compact?: boolean
   onClick?: () => void
+  onBookmarkChange?: (isBookmarked: boolean) => void
 }
 
 export function MovieCard({
@@ -38,8 +41,48 @@ export function MovieCard({
   showLikeButton = true,
   compact = false,
   onClick,
+  onBookmarkChange,
 }: MovieCardProps) {
+  const router = useRouter()
+  const pathname = usePathname()
   const [isLiked, setIsLiked] = useState(isBookmarked)
+  const [bookmarkPending, setBookmarkPending] = useState(false)
+
+  useEffect(() => {
+    setIsLiked(isBookmarked)
+  }, [isBookmarked])
+
+  const handleBookmarkClick = async (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault()
+    event.stopPropagation()
+
+    if (bookmarkPending) {
+      return
+    }
+
+    const movieId = Number(id)
+    if (!Number.isInteger(movieId) || movieId <= 0) {
+      return
+    }
+
+    const previous = isLiked
+    const next = !previous
+    setIsLiked(next)
+    setBookmarkPending(true)
+
+    try {
+      const result = await toggleMovieBookmark(movieId, next)
+      setIsLiked(result.isBookmarked)
+      onBookmarkChange?.(result.isBookmarked)
+    } catch (error) {
+      setIsLiked(previous)
+      if (error instanceof BookmarkedMoviesApiError && error.isUnauthorized) {
+        router.push(`/login?returnTo=${encodeURIComponent(pathname)}`)
+      }
+    } finally {
+      setBookmarkPending(false)
+    }
+  }
 
   const cardClasses = cn(
     "relative overflow-hidden rounded-xl bg-card transition-all duration-300",
@@ -81,10 +124,10 @@ export function MovieCard({
             variant="ghost"
             size="icon"
             className="absolute right-2 top-2 z-20 h-8 w-8 rounded-full bg-background/80 backdrop-blur-sm"
-            onClick={(e) => {
-              e.preventDefault()
-              setIsLiked(!isLiked)
-            }}
+            aria-label={isLiked ? "찜 해제" : "찜하기"}
+            aria-pressed={isLiked}
+            disabled={bookmarkPending}
+            onClick={handleBookmarkClick}
           >
             <Heart className={cn("h-4 w-4", isLiked ? "fill-red-500 text-red-500" : "")} />
           </Button>
