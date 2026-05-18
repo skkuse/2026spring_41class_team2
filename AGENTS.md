@@ -70,6 +70,11 @@
 - DB schema 변경은 Drizzle schema(`server/db/schema.ts`)와 Supabase migration SQL(`supabase/migrations/*.sql`)에 항상 함께 반영한다.
 - `drizzle-kit generate`는 사용하지 않고, `supabase/migrations/*.sql`은 직접 작성한다.
 - RLS, grant, trigger, `auth.users` FK처럼 Supabase 전용인 항목은 migration SQL에서 관리한다.
+- 클라이언트에서 Supabase table에 직접 접근하지 않고, 데이터 접근은 Next.js API와 서버 repository를 통해 수행한다.
+- 기능 migration에는 anon/authenticated table grant와 RLS policy를 추가하지 않는다.
+- 서버/관리 경로에 필요한 service_role table grant는 기능 migration에 포함한다.
+- 사용자별 권한 검사는 route/service 레이어에서 구현한다.
+- 기능 개발 중 실수로 RLS, policy, anon/authenticated grant를 적용했다면 기존 적용 migration은 수정하지 않고 새 migration으로 되돌린다.
 - ORM Entity/Row는 영속성 모델로 간주하고 비즈니스 로직을 넣지 않는다.
 - ORM model과 별도의 도메인 객체는 처음부터 만들지 않고, 불변식/상태 전이가 복잡해진 도메인에만 도입을 검토한다.
 - service/rules 테스트는 DB나 ORM 없이 실행 가능해야 한다.

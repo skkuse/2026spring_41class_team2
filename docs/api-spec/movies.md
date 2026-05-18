@@ -10,8 +10,8 @@
 |---|---|
 | 인증 | 선택 |
 | 관련 화면 | `/`, `/search`, `/onboarding` |
-| Query | `q?`, `sort?`, `page?`, `size?`, `limit?` |
-| Response | `movies: MovieCard[]`, `totalCount?`, `page?`, `size?` |
+| Query | `q?`, `sort?`, `limit?` |
+| Response | `movies: MovieCard[]` |
 
 주요 사용 예:
 
@@ -19,7 +19,7 @@
 |---|---|---|
 | `/` | `sort=popular`, `limit=6` | 인기 영화 섹션 |
 | `/` | `sort=rating`, `limit=6` | 최고 평점 영화 섹션 |
-| `/search` | `q`, `page`, `size` | 영화 제목 검색 결과 |
+| `/search` | `q`, `limit=50` | 영화 제목 검색 결과. 페이지네이션 없음 |
 | `/onboarding` | `sort=popular`, `limit` | MovieLens 매핑이 있는 인기 영화 후보 |
 
 `MovieCard`는 [common.md](./common.md)의 공통 타입을 따른다. 온보딩 후보는 MovieLens 매핑이 있는 영화로 한정하고 검색은 제공하지 않는다.
@@ -51,27 +51,13 @@
 | `director` | string 또는 null | 감독 표시명 |
 | `cast` | object[] | 주요 출연진 |
 | `synopsis` | string 또는 null | 줄거리 |
-| `posterUrl` | string | 포스터 이미지 URL |
+| `posterUrl` | string 또는 null | 포스터 이미지 URL |
 | `backdropUrl` | string 또는 null | 배경 이미지 URL |
 | `trailerUrl` | string 또는 null | 예고편 URL |
 | `isBookmarked` | boolean | 현재 로그인 사용자의 찜 여부 |
 | `reviewCount` | number | 리뷰 수 |
 
 `movieId`는 TMDB movie id다.
-
-## `GET /api/movies/{movieId}/similar`
-
-유사 영화를 조회한다.
-
-| 항목 | 내용 |
-|---|---|
-| 인증 | 선택 |
-| 관련 화면 | `/movie/[id]` |
-| Path | `movieId` |
-| Query | `limit` |
-| Response | `movies: { id, title, posterUrl }[]` |
-
-현재 영화 상세 화면의 비슷한 영화 영역에서 사용한다.
 
 ## `GET /api/genres`
 

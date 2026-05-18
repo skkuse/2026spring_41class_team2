@@ -50,7 +50,7 @@ TMDB 장르 기준의 장르 표시 필드다.
 | `year` | number | 개봉 연도 |
 | `rating` | number | 평균 평점 |
 | `genres` | `Genre[]` | TMDB 장르 목록 |
-| `posterUrl` | string | 포스터 이미지 URL |
+| `posterUrl` | string 또는 null | 포스터 이미지 URL |
 | `isBookmarked` | boolean | 현재 로그인 사용자의 찜 여부 |
 
 ## UserSummary

@@ -21,7 +21,7 @@
 
 | 기능/영역 | 사용자 액션 | API | 상세 문서 | 인증 | 비고 |
 |---|---|---|---|---|---|
-| 영화 검색 결과 | 검색어 입력 | `GET /api/movies` | [movies.md](./movies.md) | 선택 | 현재는 클라이언트에서 필터링 |
+| 영화 검색 결과 | 검색어 입력 | `GET /api/movies?q=...&limit=50` | [movies.md](./movies.md) | 선택 | 페이지네이션 없음 |
 | 영화 찜 | 하트 클릭 | `PUT/DELETE /api/me/movie-bookmarks/{movieId}` | [reviews-bookmarks.md](./reviews-bookmarks.md) | 필요 | 현재 `MovieCard` 내부 상태로 처리 |
 
 ## `/movie/[id]` 영화 상세
@@ -33,7 +33,7 @@
 | 사용자 리뷰 목록 | 화면 진입 | `GET /api/movies/{movieId}/reviews` | [reviews-bookmarks.md](./reviews-bookmarks.md) | 선택 | 현재 상세 데이터 안에 포함 |
 | 리뷰 작성 | 리뷰 등록 | `POST /api/movies/{movieId}/reviews` | [reviews-bookmarks.md](./reviews-bookmarks.md) | 필요 | 중복 작성 시 `409 Conflict` |
 | 리뷰 좋아요 | 좋아요 클릭 | `PUT/DELETE /api/reviews/{reviewId}/like` | [reviews-bookmarks.md](./reviews-bookmarks.md) | 필요 | 현재 버튼은 카운트만 표시 |
-| 비슷한 영화 | 화면 진입 | `GET /api/movies/{movieId}/similar` | [movies.md](./movies.md) | 선택 | 현재 하드코딩 |
+| 비슷한 영화 | 화면 진입 | API 없음 | - | 불필요 | 현재 하드코딩, 추후 Item-CF API 전환 |
 
 ## `/chat` AI 영화 추천
 
