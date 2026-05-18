@@ -1,25 +1,17 @@
+import { Suspense } from "react"
 import { Header } from "@/components/header"
-import { MovieCard } from "@/components/movie-card"
 import { Input } from "@/components/ui/input"
-import { createOptionalRequestContext } from "@/server/auth/request-context"
-import { movieService } from "@/server/movies"
-import { mapMovieCardToView } from "@/lib/movies/movie-view"
 import { Search } from "lucide-react"
+import { SearchResults } from "./_components/search-results"
+import { SearchResultsSkeleton } from "./_components/search-results-skeleton"
+import { normalizeSearchPageParams, type SearchPageParams } from "./search-params"
 
 type SearchPageProps = {
-  searchParams: Promise<{
-    q?: string
-    sort?: "popular" | "rating"
-  }>
+  searchParams: Promise<SearchPageParams>
 }
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {
-  const params = await searchParams
-  const q = params.q?.trim() ?? ""
-  const sort = params.sort === "rating" ? "rating" : "popular"
-  const context = await createOptionalRequestContext()
-  const { movies } = await movieService.listMovies(context, { q, sort, limit: 50 })
-  const movieViews = movies.map(mapMovieCardToView)
+  const { q, sort } = normalizeSearchPageParams(await searchParams)
 
   return (
     <div className="min-h-screen bg-background">
@@ -38,21 +30,9 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           </div>
         </form>
 
-        <div className="mt-8">
-          <p className="mb-4 text-sm text-muted-foreground">{movieViews.length}개의 영화</p>
-          {movieViews.length > 0 ? (
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-              {movieViews.map((movie) => (
-                <MovieCard key={movie.id} {...movie} />
-              ))}
-            </div>
-          ) : (
-            <div className="rounded-xl bg-card p-12 text-center">
-              <p className="text-lg font-medium">검색 결과가 없습니다</p>
-              <p className="mt-2 text-muted-foreground">다른 검색어를 시도해보세요</p>
-            </div>
-          )}
-        </div>
+        <Suspense key={`${q}:${sort}`} fallback={<SearchResultsSkeleton />}>
+          <SearchResults q={q} sort={sort} />
+        </Suspense>
       </main>
     </div>
   )
