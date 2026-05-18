@@ -35,6 +35,17 @@
 - 로그 호출부는 한 줄로 작성한다.
 - 로그는 일반 기능 테스트의 검증 대상이 아니다.
 
+# API 에러 응답 규칙
+
+- API 에러 응답은 `server/error/**`의 타입, schema, helper를 사용한다.
+- `route.ts`에서 `NextResponse.json({ error: ... })`를 직접 작성하지 않는다.
+- 에러 응답 shape는 `{ error: { code, message, requestId, details? } }`를 따른다.
+- `code`는 `apiErrorCodes`와 `ApiErrorCode`로 관리한다.
+- 반복 에러는 `createInvalidQueryResponse`, `createInvalidMovieIdResponse`, `createUnauthorizedResponse`, `createMovieNotFoundResponse` 같은 named helper를 사용한다.
+- 유스케이스별 500 에러는 `createApiFailureResponse`를 사용한다.
+- 도메인 에러 클래스는 `server/<domain>/<domain>-errors.ts`에 두고, HTTP 응답 생성은 route에서만 처리한다.
+- API 응답에는 stack, raw exception, 민감정보를 포함하지 않는다.
+
 # Next.js 작업 규칙
 
 - App Router 기준으로 구현한다.
@@ -50,12 +61,13 @@
 - `route.ts`는 요청 파싱, 인증/권한 확인, 입력 검증, service 호출, 응답 생성만 담당하는 얇은 adapter로 유지한다.
 - 실제 백엔드 비즈니스 로직은 도메인별 `server/<domain>/**`에 둔다.
 - 서버 전용 공통 코드는 `server/db`, `server/http`, `server/auth`처럼 `server/**` 하위에 둔다.
+- API 에러 응답 공통 코드는 `server/error/**`에 둔다.
 - `lib/**`는 클라이언트와 서버 양쪽에서 안전하게 사용할 수 있는 순수 유틸만 둔다.
 - `components/**`와 Client Component는 `server/**`를 import하지 않는다.
 
 # 서버 도메인 설계 규칙
 
-- 각 도메인은 필요에 따라 `*-service.ts`, `*-repository.ts`, `*-schema.ts`, `*-types.ts`, `*-rules.ts`를 둔다.
+- 각 도메인은 필요에 따라 `*-service.ts`, `*-repository.ts`, `*-schema.ts`, `*-types.ts`, `*-rules.ts`, `*-errors.ts`를 둔다.
 - `service`는 유스케이스 흐름과 비즈니스 규칙 조립을 담당한다.
 - `repository`는 DB 또는 외부 데이터 소스 접근만 담당한다.
 - `schema`는 Zod 기반 요청/응답 검증을 담당한다.
