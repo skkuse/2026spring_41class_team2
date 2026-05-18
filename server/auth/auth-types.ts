@@ -18,4 +18,3 @@ export type AuthUser = {
   email: string | null
   userMetadata?: Record<string, unknown>
 }
-

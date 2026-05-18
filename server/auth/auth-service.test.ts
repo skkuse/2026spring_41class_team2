@@ -50,6 +50,23 @@ describe("authService.ensureProfile", () => {
     )
   })
 
+  it("rejects auth users without an email", async () => {
+    const repository = createRepository({
+      findProfileById: vi.fn().mockResolvedValue(null),
+      createProfile: vi.fn().mockImplementation(async (input) => input),
+    })
+    const service = createAuthService({ userRepository: repository })
+
+    await expect(
+      service.ensureProfile({
+        id: "11111111-1111-4111-8111-111111111111",
+        email: null,
+        userMetadata: { name: "OAuth 사용자" },
+      }),
+    ).rejects.toThrow("Auth user email is required")
+    expect(repository.createProfile).not.toHaveBeenCalled()
+  })
+
   it("updates email and avatar without overwriting an existing name", async () => {
     const repository = createRepository({
       findProfileById: vi.fn().mockResolvedValue({
@@ -82,4 +99,3 @@ describe("authService.ensureProfile", () => {
     expect(profile.name).toBe("직접 수정한 이름")
   })
 })
-

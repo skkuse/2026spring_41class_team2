@@ -60,4 +60,3 @@ function getMetadataString(
 
   return null
 }
-

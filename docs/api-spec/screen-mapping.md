@@ -76,7 +76,6 @@
 | 기능/영역 | 사용자 액션 | API | 상세 문서 | 인증 | 비고 |
 |---|---|---|---|---|---|
 | Google 로그인 | Google로 계속하기 클릭 | API 없음 | - | 불필요 | Supabase `signInWithOAuth` 사용 |
-| Kakao 로그인 | 카카오로 계속하기 클릭 | API 없음 | - | 불필요 | Supabase `signInWithOAuth` 사용 |
 
 ## `/onboarding` 선호 영화 선택
 

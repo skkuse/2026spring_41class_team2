@@ -57,20 +57,7 @@ export function LoginButtons({ returnTo }: LoginButtonsProps) {
         </svg>
         {pendingProvider === "google" ? "Google로 이동 중..." : "Google로 계속하기"}
       </Button>
-      <Button
-        variant="outline"
-        className="w-full justify-center gap-3 border-[#FEE500] bg-[#FEE500] text-[#000000] hover:bg-[#FEE500]/90"
-        size="lg"
-        disabled={pendingProvider !== null}
-        onClick={() => handleLogin("kakao")}
-      >
-        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M12 3C6.477 3 2 6.463 2 10.691c0 2.758 1.86 5.173 4.645 6.51-.147.53-.54 1.927-.618 2.228-.097.372.137.367.287.267.118-.078 1.876-1.27 2.63-1.782.672.096 1.37.146 2.056.146 5.523 0 10-3.463 10-7.369C21 6.463 17.523 3 12 3z" />
-        </svg>
-        {pendingProvider === "kakao" ? "카카오로 이동 중..." : "카카오로 계속하기"}
-      </Button>
       {error ? <p className="text-center text-sm text-destructive">{error}</p> : null}
     </div>
   )
 }
-

@@ -1,7 +1,7 @@
 import { createBrowserClient } from "@supabase/ssr"
 import type { Provider } from "@supabase/supabase-js"
 
-export type OAuthProvider = Extract<Provider, "google" | "kakao">
+export type OAuthProvider = Extract<Provider, "google">
 
 export function createBrowserSupabaseClient() {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -44,4 +44,3 @@ export async function signOut(input: {
   const supabase = input.supabase ?? createBrowserSupabaseClient()
   return supabase.auth.signOut()
 }
-
