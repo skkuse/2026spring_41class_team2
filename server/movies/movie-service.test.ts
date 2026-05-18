@@ -2,7 +2,8 @@ import { describe, expect, it, vi } from "vitest"
 
 vi.mock("server-only", () => ({}))
 
-import { createMovieService, MovieNotFoundError } from "./movie-service"
+import { MovieNotFoundError } from "./movie-errors"
+import { createMovieService } from "./movie-service"
 import type { MovieRepository } from "./movie-types"
 
 const context = {

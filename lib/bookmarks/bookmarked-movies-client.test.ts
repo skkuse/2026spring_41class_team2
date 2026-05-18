@@ -14,13 +14,30 @@ describe("getBookmarkedMovies", () => {
 
   it("throws a typed auth error on 401", async () => {
     const fetchImpl = vi.fn().mockResolvedValue(
-      jsonResponse({ error: { code: "unauthorized", message: "로그인이 필요합니다." } }, { status: 401 }),
+      jsonResponse(
+        { error: { code: "unauthorized", message: "로그인이 필요합니다.", requestId: "request-1" } },
+        { status: 401 },
+      ),
     )
 
     await expect(getBookmarkedMovies({ page: 1, size: 20 }, fetchImpl)).rejects.toMatchObject({
       status: 401,
       code: "unauthorized",
+      requestId: "request-1",
       isUnauthorized: true,
+    } satisfies Partial<BookmarkedMoviesApiError>)
+  })
+
+  it("keeps requestId undefined when the error body does not include a string requestId", async () => {
+    const fetchImpl = vi.fn().mockResolvedValue(
+      jsonResponse({ error: { code: "movie_not_found", message: "영화를 찾을 수 없습니다.", requestId: 123 } }, { status: 404 }),
+    )
+
+    await expect(getBookmarkedMovies({ page: 1, size: 20 }, fetchImpl)).rejects.toMatchObject({
+      status: 404,
+      code: "movie_not_found",
+      message: "영화를 찾을 수 없습니다.",
+      requestId: undefined,
     } satisfies Partial<BookmarkedMoviesApiError>)
   })
 })

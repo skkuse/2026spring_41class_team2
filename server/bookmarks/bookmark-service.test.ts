@@ -2,7 +2,8 @@ import { describe, expect, it, vi } from "vitest"
 
 vi.mock("server-only", () => ({}))
 
-import { BookmarkMovieNotFoundError, UnauthorizedBookmarkError, createBookmarkService } from "./bookmark-service"
+import { BookmarkMovieNotFoundError, UnauthorizedBookmarkError } from "./bookmark-errors"
+import { createBookmarkService } from "./bookmark-service"
 import type { BookmarkRepository } from "./bookmark-types"
 
 const guestContext = { requestId: "request-1", user: null }
