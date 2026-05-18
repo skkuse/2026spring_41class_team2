@@ -4,9 +4,13 @@ import { randomUUID } from "node:crypto"
 import type { User } from "@supabase/supabase-js"
 import type { AuthUser, RequestContext } from "./auth-types"
 
-export function createRequestContextFromAuthUser(user: User | null): RequestContext {
+export function createRequestId() {
+  return randomUUID()
+}
+
+export function createRequestContextFromAuthUser(user: User | null, requestId = createRequestId()): RequestContext {
   return {
-    requestId: randomUUID(),
+    requestId,
     user: user?.email
       ? {
           id: user.id,
