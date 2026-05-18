@@ -49,7 +49,8 @@ export async function GET(request: NextRequest) {
     })
 
     return NextResponse.redirect(new URL(redirectPath, requestUrl.origin))
-  } catch {
+  } catch (error) {
+    logAuthCallbackError("profile_sync", error)
     return redirectToLogin(requestUrl, "profile_sync_failed")
   }
 }

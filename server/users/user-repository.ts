@@ -2,6 +2,7 @@ import "server-only"
 
 import { eq, sql } from "drizzle-orm"
 import { getDb } from "@/server/db/client"
+import { isUndefinedTableError } from "@/server/db/postgres-errors"
 import { profiles, type ProfileRow } from "@/server/db/schema"
 import type {
   Profile,
@@ -93,13 +94,4 @@ async function countUserRows(tableName: "movie_bookmarks" | "reviews", columnNam
     }
     throw error
   }
-}
-
-function isUndefinedTableError(error: unknown) {
-  return (
-    typeof error === "object" &&
-    error !== null &&
-    "code" in error &&
-    (error as { code?: string }).code === "42P01"
-  )
 }

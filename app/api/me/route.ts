@@ -24,10 +24,26 @@ export async function GET() {
     const response = await userService.getCurrentUser(context, user ? mapSupabaseUser(user) : null)
 
     return NextResponse.json(meResponseSchema.parse(response))
-  } catch {
+  } catch (error) {
+    logMeError(error)
     return NextResponse.json(
       { error: { code: "profile_sync_failed", message: "현재 사용자 정보를 동기화하지 못했습니다." } },
       { status: 500 },
     )
   }
+}
+
+function logMeError(error: unknown) {
+  if (error instanceof Error) {
+    const apiError = error as Error & { status?: number; code?: string }
+    console.error("[api/me]", {
+      name: apiError.name,
+      status: apiError.status,
+      code: apiError.code,
+      message: apiError.message,
+    })
+    return
+  }
+
+  console.error("[api/me]", { error })
 }
