@@ -1,6 +1,8 @@
 # Commit 규칙
 
 - 커밋 제목은 한국어로 작성한다.
+- 커밋 제목 앞에는 영어 Conventional Commit prefix를 붙인다.
+- 허용 prefix는 `feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `test:`, `chore:`, `build:`, `ci:`, `perf:`, `revert:`이다.
 - 제목은 50자 안팎으로 요약한다.
 - 본문에는 변경 내용을 bullet로 정리한다.
 - 여러 성격의 변경은 분리 커밋한다.
