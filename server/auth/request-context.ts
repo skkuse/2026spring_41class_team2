@@ -29,11 +29,13 @@ export function isMissingAuthSessionError(error: unknown) {
     return false
   }
 
-  const authError = error as { name?: string; message?: string; status?: number }
+  const authError = error as { code?: string; name?: string; message?: string; status?: number }
   return (
     authError.name === "AuthSessionMissingError" ||
     authError.message?.toLowerCase().includes("session missing") ||
     authError.message?.toLowerCase().includes("auth session missing") ||
+    authError.code === "refresh_token_not_found" ||
+    authError.code === "invalid_refresh_token" ||
     authError.status === 401
   )
 }

@@ -16,8 +16,12 @@ export async function GET() {
       error,
     } = await supabase.auth.getUser()
 
-    if (error && !isMissingAuthSessionError(error)) {
-      throw error
+    if (error) {
+      if (!isMissingAuthSessionError(error)) {
+        throw error
+      }
+
+      await clearStaleAuthSession(supabase)
     }
 
     const context = createRequestContextFromAuthUser(user)
@@ -30,6 +34,13 @@ export async function GET() {
       { error: { code: "profile_sync_failed", message: "현재 사용자 정보를 동기화하지 못했습니다." } },
       { status: 500 },
     )
+  }
+}
+
+async function clearStaleAuthSession(supabase: Awaited<ReturnType<typeof createSupabaseServerClient>>) {
+  const { error } = await supabase.auth.signOut({ scope: "local" })
+  if (error && !isMissingAuthSessionError(error)) {
+    logMeError(error)
   }
 }
 
