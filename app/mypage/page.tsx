@@ -2,11 +2,10 @@
 
 import { Header } from "@/components/header"
 import { ProtectedPage } from "@/components/auth/protected-page"
-import { Button } from "@/components/ui/button"
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent } from "@/components/ui/card"
-import { Star, Heart, Edit, ChevronRight } from "lucide-react"
+import { Star, Heart, ChevronRight } from "lucide-react"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { BookmarkedMoviesList } from "./_components/bookmarked-movies-list"
@@ -82,12 +81,6 @@ export default function MyPage() {
                 <p className="text-sm text-muted-foreground">작성한 리뷰</p>
               </div>
             </div>
-          </div>
-          <div className="flex gap-2">
-            <Button variant="outline" size="sm">
-              <Edit className="mr-1 h-4 w-4" />
-              프로필 수정
-            </Button>
           </div>
         </div>
 
