@@ -3,6 +3,7 @@ import "server-only"
 import { randomUUID } from "node:crypto"
 import type { User } from "@supabase/supabase-js"
 import type { AuthUser, RequestContext } from "./auth-types"
+import { createSupabaseServerClient } from "./supabase-server"
 
 export function createRequestId() {
   return randomUUID()
@@ -18,6 +19,20 @@ export function createRequestContextFromAuthUser(user: User | null, requestId = 
         }
       : null,
   }
+}
+
+export async function createOptionalRequestContext(requestId = createRequestId()) {
+  const supabase = await createSupabaseServerClient()
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser()
+
+  if (error && !isMissingAuthSessionError(error)) {
+    throw error
+  }
+
+  return createRequestContextFromAuthUser(error ? null : user, requestId)
 }
 
 export function mapSupabaseUser(user: User): AuthUser {
