@@ -23,6 +23,7 @@ export class BookmarkedMoviesApiError extends Error {
     message: string,
     public readonly status: number,
     public readonly code?: string,
+    public readonly requestId?: string,
   ) {
     super(message)
     this.name = "BookmarkedMoviesApiError"
@@ -62,6 +63,7 @@ async function parseJsonResponse<T>(response: Response): Promise<T> {
       typeof error?.message === "string" ? error.message : "요청을 처리하지 못했습니다.",
       response.status,
       typeof error?.code === "string" ? error.code : undefined,
+      typeof error?.requestId === "string" ? error.requestId : undefined,
     )
   }
 

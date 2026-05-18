@@ -4,6 +4,13 @@ import { createOptionalRequestContext, createRequestId } from "@/server/auth/req
 import { BookmarkMovieNotFoundError, UnauthorizedBookmarkError, bookmarkService } from "@/server/bookmarks"
 import { bookmarkMovieParamsSchema, bookmarkMutationResponseSchema } from "@/server/bookmarks/bookmark-schema"
 import type { BookmarkMutationResponseDto } from "@/server/bookmarks/bookmark-types"
+import {
+  apiErrorCodes,
+  createApiFailureResponse,
+  createInvalidMovieIdResponse,
+  createMovieNotFoundResponse,
+  createUnauthorizedResponse,
+} from "@/server/error"
 import { logger } from "@/server/logger"
 
 const route = "/api/me/bookmarked-movies/{movieId}"
@@ -33,7 +40,7 @@ async function handleBookmarkMutation(
     const parseResult = bookmarkMovieParamsSchema.safeParse(rawParams)
     if (!parseResult.success) {
       logger.warn("request.validation_failed", { requestId, route: routeWithMethod, error: parseResult.error.flatten() })
-      return NextResponse.json({ error: { code: "invalid_movie_id", message: "영화 ID가 올바르지 않습니다." } }, { status: 400 })
+      return createInvalidMovieIdResponse({ requestId })
     }
 
     const context = await createOptionalRequestContext(requestId)
@@ -50,18 +57,19 @@ async function handleBookmarkMutation(
   } catch (error) {
     if (error instanceof UnauthorizedBookmarkError) {
       logger.warn("bookmarks.mutation.unauthorized", { requestId, route: routeWithMethod, error })
-      return NextResponse.json({ error: { code: "unauthorized", message: "로그인이 필요합니다." } }, { status: 401 })
+      return createUnauthorizedResponse({ requestId })
     }
 
     if (error instanceof BookmarkMovieNotFoundError) {
       logger.warn("bookmarks.mutation.not_found", { requestId, route: routeWithMethod, error })
-      return NextResponse.json({ error: { code: "movie_not_found", message: "영화를 찾을 수 없습니다." } }, { status: 404 })
+      return createMovieNotFoundResponse({ requestId })
     }
 
     logger.error("api.bookmarks.mutation.failed", { requestId, route: routeWithMethod, error })
-    return NextResponse.json(
-      { error: { code: "bookmark_mutation_failed", message: "찜 상태를 변경하지 못했습니다." } },
-      { status: 500 },
-    )
+    return createApiFailureResponse({
+      requestId,
+      code: apiErrorCodes.bookmarkMutationFailed,
+      message: "찜 상태를 변경하지 못했습니다.",
+    })
   }
 }

@@ -8,15 +8,9 @@ import {
   normalizeCountries,
   normalizeMovieListInput,
 } from "./movie-rules"
+import { MovieNotFoundError } from "./movie-errors"
 import { createMovieRepository } from "./movie-repository"
 import type { ListMoviesInput, MovieDetailDto, MovieRepository, MovieService } from "./movie-types"
-
-export class MovieNotFoundError extends Error {
-  constructor(movieId: number) {
-    super(`Movie not found: ${movieId}`)
-    this.name = "MovieNotFoundError"
-  }
-}
 
 export type MovieServiceDeps = {
   repository: MovieRepository

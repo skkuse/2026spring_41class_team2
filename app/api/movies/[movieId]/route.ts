@@ -1,6 +1,12 @@
 import { NextResponse } from "next/server"
 import { createOptionalRequestContext } from "@/server/auth/request-context"
 import { createRequestId } from "@/server/auth/request-context"
+import {
+  apiErrorCodes,
+  createApiFailureResponse,
+  createInvalidMovieIdResponse,
+  createMovieNotFoundResponse,
+} from "@/server/error"
 import { logger } from "@/server/logger"
 import { MovieNotFoundError, movieService } from "@/server/movies"
 import { movieDetailResponseSchema, movieIdParamsSchema } from "@/server/movies/movie-schema"
@@ -16,7 +22,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ mov
     const parseResult = movieIdParamsSchema.safeParse(rawParams)
     if (!parseResult.success) {
       logger.warn("request.validation_failed", { requestId, route, error: parseResult.error.flatten() })
-      return NextResponse.json({ error: { code: "invalid_movie_id", message: "영화 ID가 올바르지 않습니다." } }, { status: 400 })
+      return createInvalidMovieIdResponse({ requestId })
     }
 
     const context = await createOptionalRequestContext(requestId)
@@ -27,13 +33,14 @@ export async function GET(_request: Request, { params }: { params: Promise<{ mov
   } catch (error) {
     if (error instanceof MovieNotFoundError) {
       logger.warn("movies.detail.not_found", { requestId, route, error })
-      return NextResponse.json({ error: { code: "movie_not_found", message: "영화를 찾을 수 없습니다." } }, { status: 404 })
+      return createMovieNotFoundResponse({ requestId })
     }
 
     logger.error("api.movies.detail.failed", { requestId, route, error })
-    return NextResponse.json(
-      { error: { code: "movie_detail_failed", message: "영화 상세 정보를 조회하지 못했습니다." } },
-      { status: 500 },
-    )
+    return createApiFailureResponse({
+      requestId,
+      code: apiErrorCodes.movieDetailFailed,
+      message: "영화 상세 정보를 조회하지 못했습니다.",
+    })
   }
 }

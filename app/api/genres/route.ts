@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
 import { createRequestId } from "@/server/auth/request-context"
+import { apiErrorCodes, createApiFailureResponse } from "@/server/error"
 import { logger } from "@/server/logger"
 import { movieService } from "@/server/movies"
 import { genreListResponseSchema } from "@/server/movies/movie-schema"
@@ -17,9 +18,10 @@ export async function GET() {
     return NextResponse.json(genreListResponseSchema.parse(response))
   } catch (error) {
     logger.error("api.genres.list.failed", { requestId, route, error })
-    return NextResponse.json(
-      { error: { code: "genre_list_failed", message: "장르 목록을 조회하지 못했습니다." } },
-      { status: 500 },
-    )
+    return createApiFailureResponse({
+      requestId,
+      code: apiErrorCodes.genreListFailed,
+      message: "장르 목록을 조회하지 못했습니다.",
+    })
   }
 }

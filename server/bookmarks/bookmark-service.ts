@@ -2,6 +2,7 @@ import "server-only"
 
 import type { RequestContext } from "@/server/auth/auth-types"
 import { buildTmdbImageUrl, calculateMovieRating } from "@/server/movies/movie-rules"
+import { BookmarkMovieNotFoundError, UnauthorizedBookmarkError } from "./bookmark-errors"
 import { createBookmarkRepository } from "./bookmark-repository"
 import { normalizeBookmarkPagination } from "./bookmark-rules"
 import type {
@@ -12,20 +13,6 @@ import type {
   BookmarkMutationResponseDto,
   GetBookmarkedMoviesInput,
 } from "./bookmark-types"
-
-export class UnauthorizedBookmarkError extends Error {
-  constructor() {
-    super("Authentication is required for movie bookmarks")
-    this.name = "UnauthorizedBookmarkError"
-  }
-}
-
-export class BookmarkMovieNotFoundError extends Error {
-  constructor(movieId: number) {
-    super(`Movie not found: ${movieId}`)
-    this.name = "BookmarkMovieNotFoundError"
-  }
-}
 
 export type BookmarkServiceDeps = {
   repository: BookmarkRepository

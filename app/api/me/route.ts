@@ -6,6 +6,7 @@ import {
   mapSupabaseUser,
 } from "@/server/auth/request-context"
 import { createSupabaseServerClient } from "@/server/auth/supabase-server"
+import { apiErrorCodes, createApiFailureResponse } from "@/server/error"
 import { logger } from "@/server/logger"
 import { userService } from "@/server/users"
 import { meResponseSchema } from "@/server/users/user-schema"
@@ -48,10 +49,11 @@ export async function GET() {
     return NextResponse.json(meResponseSchema.parse(response))
   } catch (error) {
     logger.error("api.me.failed", { requestId, route, error })
-    return NextResponse.json(
-      { error: { code: "profile_sync_failed", message: "현재 사용자 정보를 동기화하지 못했습니다." } },
-      { status: 500 },
-    )
+    return createApiFailureResponse({
+      requestId,
+      code: apiErrorCodes.profileSyncFailed,
+      message: "현재 사용자 정보를 동기화하지 못했습니다.",
+    })
   }
 }
 

@@ -2,6 +2,13 @@ import { NextResponse } from "next/server"
 import { createOptionalRequestContext, createRequestId } from "@/server/auth/request-context"
 import { BookmarkMovieNotFoundError, UnauthorizedBookmarkError, bookmarkService } from "@/server/bookmarks"
 import { bookmarkedMoviesQuerySchema, bookmarkedMoviesResponseSchema } from "@/server/bookmarks/bookmark-schema"
+import {
+  apiErrorCodes,
+  createApiFailureResponse,
+  createInvalidQueryResponse,
+  createMovieNotFoundResponse,
+  createUnauthorizedResponse,
+} from "@/server/error"
 import { logger } from "@/server/logger"
 
 const route = "GET /api/me/bookmarked-movies"
@@ -16,7 +23,7 @@ export async function GET(request: Request) {
     const parseResult = bookmarkedMoviesQuerySchema.safeParse(query)
     if (!parseResult.success) {
       logger.warn("request.validation_failed", { requestId, route, error: parseResult.error.flatten() })
-      return NextResponse.json({ error: { code: "invalid_query", message: "요청 query가 올바르지 않습니다." } }, { status: 400 })
+      return createInvalidQueryResponse({ requestId })
     }
 
     const context = await createOptionalRequestContext(requestId)
@@ -27,18 +34,19 @@ export async function GET(request: Request) {
   } catch (error) {
     if (error instanceof UnauthorizedBookmarkError) {
       logger.warn("bookmarks.list.unauthorized", { requestId, route, error })
-      return NextResponse.json({ error: { code: "unauthorized", message: "로그인이 필요합니다." } }, { status: 401 })
+      return createUnauthorizedResponse({ requestId })
     }
 
     if (error instanceof BookmarkMovieNotFoundError) {
       logger.warn("bookmarks.list.not_found", { requestId, route, error })
-      return NextResponse.json({ error: { code: "movie_not_found", message: "영화를 찾을 수 없습니다." } }, { status: 404 })
+      return createMovieNotFoundResponse({ requestId })
     }
 
     logger.error("api.bookmarks.list.failed", { requestId, route, error })
-    return NextResponse.json(
-      { error: { code: "bookmarked_movies_failed", message: "찜한 영화 목록을 조회하지 못했습니다." } },
-      { status: 500 },
-    )
+    return createApiFailureResponse({
+      requestId,
+      code: apiErrorCodes.bookmarkedMoviesFailed,
+      message: "찜한 영화 목록을 조회하지 못했습니다.",
+    })
   }
 }

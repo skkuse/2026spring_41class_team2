@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { createOptionalRequestContext } from "@/server/auth/request-context"
 import { createRequestId } from "@/server/auth/request-context"
+import { apiErrorCodes, createApiFailureResponse, createInvalidQueryResponse } from "@/server/error"
 import { logger } from "@/server/logger"
 import { movieListQuerySchema, movieListResponseSchema } from "@/server/movies/movie-schema"
 import { movieService } from "@/server/movies"
@@ -15,7 +16,7 @@ export async function GET(request: Request) {
     const parseResult = movieListQuerySchema.safeParse(Object.fromEntries(new URL(request.url).searchParams))
     if (!parseResult.success) {
       logger.warn("request.validation_failed", { requestId, route, error: parseResult.error.flatten() })
-      return NextResponse.json({ error: { code: "invalid_query", message: "요청 query가 올바르지 않습니다." } }, { status: 400 })
+      return createInvalidQueryResponse({ requestId })
     }
 
     const context = await createOptionalRequestContext(requestId)
@@ -25,9 +26,10 @@ export async function GET(request: Request) {
     return NextResponse.json(movieListResponseSchema.parse(response))
   } catch (error) {
     logger.error("api.movies.list.failed", { requestId, route, error })
-    return NextResponse.json(
-      { error: { code: "movie_list_failed", message: "영화 목록을 조회하지 못했습니다." } },
-      { status: 500 },
-    )
+    return createApiFailureResponse({
+      requestId,
+      code: apiErrorCodes.movieListFailed,
+      message: "영화 목록을 조회하지 못했습니다.",
+    })
   }
 }

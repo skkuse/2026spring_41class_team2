@@ -1,1 +1,2 @@
-export { bookmarkService, BookmarkMovieNotFoundError, UnauthorizedBookmarkError } from "./bookmark-service"
+export { BookmarkMovieNotFoundError, UnauthorizedBookmarkError } from "./bookmark-errors"
+export { bookmarkService } from "./bookmark-service"
