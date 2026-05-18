@@ -10,7 +10,16 @@ import { Sparkles, CheckCircle2 } from "lucide-react"
 const SELECTED_MOVIES_KEY = "cinemate:selectedMovieIds"
 const REQUIRED_SELECTION_COUNT = 5
 
-const popularMovies = [
+type OnboardingMovie = {
+  id: string
+  title: string
+  year: string
+  rating: number
+  genre: string
+  posterUrl: string | null
+}
+
+const fallbackPopularMovies: OnboardingMovie[] = [
   { id: "1", title: "기생충", year: "2019", rating: 4.8, genre: "드라마", posterUrl: "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg" },
   { id: "2", title: "올드보이", year: "2003", rating: 4.7, genre: "스릴러", posterUrl: "https://image.tmdb.org/t/p/w500/pWDtjs568ZfOTMbURQBYuT4Qxka.jpg" },
   { id: "3", title: "인터스텔라", year: "2014", rating: 4.9, genre: "SF", posterUrl: "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" },
@@ -28,6 +37,7 @@ const popularMovies = [
 export default function OnboardingPage() {
   const router = useRouter()
   const [selectedMovieIds, setSelectedMovieIds] = useState<string[]>([])
+  const [popularMovies, setPopularMovies] = useState<OnboardingMovie[]>(fallbackPopularMovies)
   const [allowed, setAllowed] = useState(false)
 
   useEffect(() => {
@@ -53,6 +63,14 @@ export default function OnboardingPage() {
         }
 
         setAllowed(true)
+
+        const moviesResponse = await fetch("/api/movies?sort=popular&limit=12", { cache: "no-store" })
+        if (moviesResponse.ok) {
+          const data = await moviesResponse.json()
+          if (!cancelled && Array.isArray(data.movies)) {
+            setPopularMovies(data.movies.map(mapMovieCardResponse))
+          }
+        }
       } catch {
         if (!cancelled) {
           router.replace("/login?returnTo=%2Fonboarding")
@@ -236,4 +254,24 @@ export default function OnboardingPage() {
       </div>
     </div>
   )
+}
+
+type MovieCardApi = {
+  id: number
+  title: string
+  year: number | null
+  rating: number
+  genres: { name: string }[]
+  posterUrl: string | null
+}
+
+function mapMovieCardResponse(movie: MovieCardApi) {
+  return {
+    id: String(movie.id),
+    title: movie.title,
+    year: movie.year?.toString() ?? "연도 미상",
+    rating: movie.rating,
+    genre: movie.genres.map((genre) => genre.name).join(", ") || "장르 미상",
+    posterUrl: movie.posterUrl,
+  }
 }

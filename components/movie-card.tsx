@@ -12,7 +12,8 @@ interface MovieCardProps {
   year: string
   rating: number
   genre: string
-  posterUrl?: string
+  posterUrl?: string | null
+  isBookmarked?: boolean
   reason?: string
   selectable?: boolean
   selected?: boolean
@@ -29,6 +30,7 @@ export function MovieCard({
   rating,
   genre,
   posterUrl,
+  isBookmarked = false,
   reason,
   selectable = false,
   selected = false,
@@ -37,7 +39,7 @@ export function MovieCard({
   compact = false,
   onClick,
 }: MovieCardProps) {
-  const [isLiked, setIsLiked] = useState(false)
+  const [isLiked, setIsLiked] = useState(isBookmarked)
 
   const cardClasses = cn(
     "relative overflow-hidden rounded-xl bg-card transition-all duration-300",

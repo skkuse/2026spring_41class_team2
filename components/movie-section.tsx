@@ -10,7 +10,8 @@ interface Movie {
   year: string
   rating: number
   genre: string
-  posterUrl?: string
+  posterUrl?: string | null
+  isBookmarked?: boolean
 }
 
 interface MovieSectionProps {

@@ -4,26 +4,17 @@ import { ChatPreview } from "@/components/chat-preview"
 import { Button } from "@/components/ui/button"
 import { Search, TrendingUp, Star, Clock } from "lucide-react"
 import Link from "next/link"
+import { createOptionalRequestContext } from "@/server/auth/request-context"
+import { movieService } from "@/server/movies"
+import { mapMovieCardToView } from "@/lib/movies/movie-view"
 
-const popularMovies = [
-  { id: "1", title: "기생충", year: "2019", rating: 4.8, genre: "드라마", posterUrl: "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg" },
-  { id: "2", title: "올드보이", year: "2003", rating: 4.7, genre: "스릴러", posterUrl: "https://image.tmdb.org/t/p/w500/pWDtjs568ZfOTMbURQBYuT4Qxka.jpg" },
-  { id: "3", title: "인터스텔라", year: "2014", rating: 4.9, genre: "SF", posterUrl: "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" },
-  { id: "4", title: "어벤져스: 엔드게임", year: "2019", rating: 4.6, genre: "액션", posterUrl: "https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg" },
-  { id: "5", title: "라라랜드", year: "2016", rating: 4.5, genre: "로맨스", posterUrl: "https://image.tmdb.org/t/p/w500/uDO8zWDhfWwoFdKS4fzkUJt0Rf0.jpg" },
-  { id: "6", title: "듄", year: "2021", rating: 4.4, genre: "SF", posterUrl: "https://image.tmdb.org/t/p/w500/d5NXSklXo0qyIYkgV94XAgMIckC.jpg" },
-]
+export default async function HomePage() {
+  const context = await createOptionalRequestContext()
+  const [popularMovies, topRatedMovies] = await Promise.all([
+    movieService.listMovies(context, { sort: "popular", limit: 6 }),
+    movieService.listMovies(context, { sort: "rating", limit: 6 }),
+  ])
 
-const topRatedMovies = [
-  { id: "13", title: "쇼생크 탈출", year: "1994", rating: 4.9, genre: "드라마", posterUrl: "https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg" },
-  { id: "14", title: "대부", year: "1972", rating: 4.9, genre: "범죄", posterUrl: "https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg" },
-  { id: "15", title: "다크 나이트", year: "2008", rating: 4.8, genre: "액션", posterUrl: "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg" },
-  { id: "16", title: "반지의 제왕: 왕의 귀환", year: "2003", rating: 4.8, genre: "판타지", posterUrl: "https://image.tmdb.org/t/p/w500/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg" },
-  { id: "17", title: "펄프 픽션", year: "1994", rating: 4.7, genre: "범죄", posterUrl: "https://image.tmdb.org/t/p/w500/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg" },
-  { id: "18", title: "포레스트 검프", year: "1994", rating: 4.7, genre: "드라마", posterUrl: "https://image.tmdb.org/t/p/w500/arw2vcBveWOVZr6pxd9XTd1TdQa.jpg" },
-]
-
-export default function HomePage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -105,7 +96,7 @@ export default function HomePage() {
         <MovieSection
           title="인기 영화"
           description="지금 가장 많이 찾는 영화들"
-          movies={popularMovies}
+          movies={popularMovies.movies.map(mapMovieCardToView)}
           href="/search?sort=popular"
         />
 
@@ -114,7 +105,7 @@ export default function HomePage() {
         <MovieSection
           title="최고 평점"
           description="역대 최고의 평가를 받은 명작들"
-          movies={topRatedMovies}
+          movies={topRatedMovies.movies.map(mapMovieCardToView)}
           href="/search?sort=rating"
         />
       </main>
