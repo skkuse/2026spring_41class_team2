@@ -44,6 +44,16 @@ export function createInvalidMovieIdResponse(input: CreatePresetApiErrorResponse
   })
 }
 
+export function createInvalidReviewIdResponse(input: CreatePresetApiErrorResponseInput) {
+  return createApiErrorResponse({
+    status: 400,
+    code: apiErrorCodes.invalidReviewId,
+    message: "리뷰 ID가 올바르지 않습니다.",
+    requestId: input.requestId,
+    details: input.details,
+  })
+}
+
 export function createUnauthorizedResponse(input: CreatePresetApiErrorResponseInput) {
   return createApiErrorResponse({
     status: 401,
@@ -59,6 +69,26 @@ export function createMovieNotFoundResponse(input: CreatePresetApiErrorResponseI
     status: 404,
     code: apiErrorCodes.movieNotFound,
     message: "영화를 찾을 수 없습니다.",
+    requestId: input.requestId,
+    details: input.details,
+  })
+}
+
+export function createReviewNotFoundResponse(input: CreatePresetApiErrorResponseInput) {
+  return createApiErrorResponse({
+    status: 404,
+    code: apiErrorCodes.reviewNotFound,
+    message: "리뷰를 찾을 수 없습니다.",
+    requestId: input.requestId,
+    details: input.details,
+  })
+}
+
+export function createDuplicateReviewResponse(input: CreatePresetApiErrorResponseInput) {
+  return createApiErrorResponse({
+    status: 409,
+    code: apiErrorCodes.duplicateReview,
+    message: "이미 이 영화에 리뷰를 작성했습니다.",
     requestId: input.requestId,
     details: input.details,
   })

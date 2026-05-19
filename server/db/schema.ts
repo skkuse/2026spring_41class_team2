@@ -238,3 +238,20 @@ export const reviews = pgTable(
     check("reviews_rating_range_check", sql`${table.rating} >= 0.5 and ${table.rating} <= 5.0`),
   ],
 )
+
+export const reviewLikes = pgTable(
+  "review_likes",
+  {
+    reviewId: uuid("review_id")
+      .notNull()
+      .references(() => reviews.id, { onDelete: "cascade" }),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => profiles.id, { onDelete: "cascade" }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    primaryKey({ columns: [table.reviewId, table.userId] }),
+    index("review_likes_user_id_idx").on(table.userId),
+  ],
+)

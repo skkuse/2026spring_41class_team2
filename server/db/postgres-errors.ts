@@ -15,3 +15,7 @@ export function isPostgresErrorCode(error: unknown, code: string): boolean {
 export function isUndefinedTableError(error: unknown) {
   return isPostgresErrorCode(error, "42P01")
 }
+
+export function isUniqueViolationError(error: unknown) {
+  return isPostgresErrorCode(error, "23505")
+}
