@@ -36,11 +36,11 @@ describe("GET /api/movies", () => {
     vi.clearAllMocks()
     mocks.createRequestId.mockReturnValue("request-1")
     mocks.createOptionalRequestContext.mockResolvedValue({ requestId: "request-1", user: null })
-    mocks.movieService.listMovies.mockResolvedValue({ movies: [] })
+    mocks.movieService.listMovies.mockResolvedValue({ movies: [], page: 1, size: 20, totalCount: 0 })
   })
 
   it("returns 400 when query is invalid", async () => {
-    const response = await GET(new Request("http://localhost/api/movies?limit=0"))
+    const response = await GET(new Request("http://localhost/api/movies?page=0"))
 
     await expect(readResponse(response)).resolves.toEqual({
       status: 400,
@@ -54,6 +54,19 @@ describe("GET /api/movies", () => {
     })
     expect(mocks.createOptionalRequestContext).not.toHaveBeenCalled()
     expect(mocks.movieService.listMovies).not.toHaveBeenCalled()
+  })
+
+  it("passes pagination query to movieService", async () => {
+    const response = await GET(new Request("http://localhost/api/movies?q=matrix&sort=rating&page=2&size=30"))
+
+    await expect(readResponse(response)).resolves.toEqual({
+      status: 200,
+      body: { movies: [], page: 1, size: 20, totalCount: 0 },
+    })
+    expect(mocks.movieService.listMovies).toHaveBeenCalledWith(
+      { requestId: "request-1", user: null },
+      { q: "matrix", sort: "rating", page: 2, size: 30 },
+    )
   })
 
   it("returns 500 when listMovies fails", async () => {

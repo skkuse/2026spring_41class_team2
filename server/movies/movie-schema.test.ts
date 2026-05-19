@@ -2,18 +2,20 @@ import { describe, expect, it } from "vitest"
 import { movieIdParamsSchema, movieListQuerySchema } from "./movie-schema"
 
 describe("movieListQuerySchema", () => {
-  it("defaults sort and limit without pagination fields", () => {
+  it("defaults sort and pagination fields", () => {
     expect(movieListQuerySchema.parse({})).toEqual({
       sort: "popular",
-      limit: 50,
+      page: 1,
+      size: 20,
     })
   })
 
-  it("trims q and caps limit at 50", () => {
-    expect(movieListQuerySchema.parse({ q: "  기생충  ", limit: "99" })).toEqual({
+  it("trims q and parses page size", () => {
+    expect(movieListQuerySchema.parse({ q: "  기생충  ", page: "2", size: "60" })).toEqual({
       q: "기생충",
       sort: "popular",
-      limit: 50,
+      page: 2,
+      size: 60,
     })
   })
 
@@ -21,8 +23,17 @@ describe("movieListQuerySchema", () => {
     expect(() => movieListQuerySchema.parse({ sort: "latest" })).toThrow()
   })
 
-  it("rejects non-positive limits", () => {
-    expect(() => movieListQuerySchema.parse({ limit: "0" })).toThrow()
+  it("rejects non-positive pagination fields", () => {
+    expect(() => movieListQuerySchema.parse({ page: "0" })).toThrow()
+    expect(() => movieListQuerySchema.parse({ size: "0" })).toThrow()
+  })
+
+  it("rejects sizes above the maximum", () => {
+    expect(() => movieListQuerySchema.parse({ size: "61" })).toThrow()
+  })
+
+  it("rejects legacy limit query", () => {
+    expect(() => movieListQuerySchema.parse({ limit: "50" })).toThrow()
   })
 })
 

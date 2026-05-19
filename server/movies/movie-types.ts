@@ -18,6 +18,9 @@ export type MovieCardDto = {
 
 export type MovieListResponseDto = {
   movies: MovieCardDto[]
+  page: number
+  size: number
+  totalCount: number
 }
 
 export type MovieCastMemberDto = {
@@ -61,7 +64,8 @@ export type MovieSort = "popular" | "rating"
 export type ListMoviesInput = {
   q?: string
   sort?: MovieSort
-  limit?: number
+  page?: number
+  size?: number
 }
 
 // Repository params
@@ -69,7 +73,13 @@ export type ListMoviesRepoParams = {
   q?: string
   sort: MovieSort
   limit: number
+  offset: number
   minMovielensRatingCount?: number
+}
+
+export type MovieListRepoResult = {
+  movies: MovieListItemRepoResult[]
+  totalCount: number
 }
 
 export type FindBookmarkedMovieIdsRepoParams = {
@@ -125,7 +135,7 @@ export type MovieCastMemberRepoResult = {
 
 // Repository port
 export type MovieRepository = {
-  listMovies(params: ListMoviesRepoParams): Promise<MovieListItemRepoResult[]>
+  listMovies(params: ListMoviesRepoParams): Promise<MovieListRepoResult>
   getMovieDetail(movieId: number): Promise<MovieDetailRepoResult | null>
   listGenres(): Promise<GenreDto[]>
   findBookmarkedMovieIds(params: FindBookmarkedMovieIdsRepoParams): Promise<Set<number>>

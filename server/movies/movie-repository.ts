@@ -17,13 +17,15 @@ import type {
   GenreDto,
   ListMoviesRepoParams,
   MovieDetailRepoResult,
-  MovieListItemRepoResult,
   MovieRepository,
 } from "./movie-types"
 
 export function createMovieRepository(): MovieRepository {
   return {
-    async listMovies(params: ListMoviesRepoParams): Promise<MovieListItemRepoResult[]> {
+    async listMovies(params: ListMoviesRepoParams) {
+      const where = buildListWhere(params)
+      const [totalRow] = await getDb().select({ count: count() }).from(movies).innerJoin(movieStats, eq(movieStats.movieId, movies.id)).where(where)
+
       const rows = await getDb()
         .select({
           id: movies.id,
@@ -37,20 +39,24 @@ export function createMovieRepository(): MovieRepository {
         })
         .from(movies)
         .innerJoin(movieStats, eq(movieStats.movieId, movies.id))
-        .where(buildListWhere(params))
+        .where(where)
         .orderBy(...buildListOrderBy(params))
         .limit(params.limit)
+        .offset(params.offset)
 
       if (rows.length === 0) {
-        return []
+        return { movies: [], totalCount: totalRow?.count ?? 0 }
       }
 
       const genresByMovieId = await findGenresByMovieIds(rows.map((row) => row.id))
 
-      return rows.map((row) => ({
-        ...row,
-        genres: genresByMovieId.get(row.id) ?? [],
-      }))
+      return {
+        movies: rows.map((row) => ({
+          ...row,
+          genres: genresByMovieId.get(row.id) ?? [],
+        })),
+        totalCount: totalRow?.count ?? 0,
+      }
     },
 
     async getMovieDetail(movieId: number): Promise<MovieDetailRepoResult | null> {

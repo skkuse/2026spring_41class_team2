@@ -11,8 +11,8 @@ import { mapMovieCardToView } from "@/lib/movies/movie-view"
 export default async function HomePage() {
   const context = await createOptionalRequestContext()
   const [popularMovies, topRatedMovies] = await Promise.all([
-    movieService.listMovies(context, { sort: "popular", limit: 6 }),
-    movieService.listMovies(context, { sort: "rating", limit: 6 }),
+    movieService.listMovies(context, { sort: "popular", page: 1, size: 6 }),
+    movieService.listMovies(context, { sort: "rating", page: 1, size: 6 }),
   ])
 
   return (

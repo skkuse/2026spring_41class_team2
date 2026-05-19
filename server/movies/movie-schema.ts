@@ -1,4 +1,5 @@
 import { z } from "zod"
+import { DEFAULT_MOVIE_PAGE, DEFAULT_MOVIE_PAGE_SIZE, MAX_MOVIE_PAGE_SIZE } from "./movie-rules"
 
 export const genreSchema = z.object({
   id: z.number().int().positive(),
@@ -14,18 +15,21 @@ export const movieListQuerySchema = z
       .optional()
       .transform((value) => (value ? value : undefined)),
     sort: z.enum(["popular", "rating"]).default("popular"),
-    limit: z.coerce
+    page: z.coerce.number().int().positive().optional().default(DEFAULT_MOVIE_PAGE),
+    size: z.coerce
       .number()
       .int()
       .positive()
+      .max(MAX_MOVIE_PAGE_SIZE)
       .optional()
-      .default(50)
-      .transform((value) => Math.min(value, 50)),
+      .default(DEFAULT_MOVIE_PAGE_SIZE),
   })
+  .strict()
   .transform((value) => ({
     ...(value.q ? { q: value.q } : {}),
     sort: value.sort,
-    limit: value.limit,
+    page: value.page,
+    size: value.size,
   }))
 
 export const movieIdParamsSchema = z.object({
@@ -47,6 +51,9 @@ export const movieCardSchema = z.object({
 
 export const movieListResponseSchema = z.object({
   movies: z.array(movieCardSchema),
+  page: z.number().int().positive(),
+  size: z.number().int().positive(),
+  totalCount: z.number().int().nonnegative(),
 })
 
 export const movieCastMemberSchema = z.object({

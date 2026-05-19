@@ -1,7 +1,9 @@
 import type { ListMoviesInput, MovieSort, RatingStatsRepoResult } from "./movie-types"
 
 export const DEFAULT_MOVIE_LIST_LIMIT = 50
-export const MAX_MOVIE_LIST_LIMIT = 50
+export const DEFAULT_MOVIE_PAGE = 1
+export const DEFAULT_MOVIE_PAGE_SIZE = 20
+export const MAX_MOVIE_PAGE_SIZE = 60
 export const MIN_RATING_SORT_MOVIELENS_COUNT = 10000
 export const TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p"
 
@@ -30,12 +32,15 @@ export function buildTmdbImageUrl(path: string | null, size: TmdbImageSize) {
 export function normalizeMovieListInput(input: ListMoviesInput) {
   const q = input.q?.trim()
   const sort: MovieSort = input.sort ?? "popular"
-  const limit = Math.min(Math.max(input.limit ?? DEFAULT_MOVIE_LIST_LIMIT, 1), MAX_MOVIE_LIST_LIMIT)
+  const page = input.page ?? DEFAULT_MOVIE_PAGE
+  const size = Math.min(input.size ?? DEFAULT_MOVIE_PAGE_SIZE, MAX_MOVIE_PAGE_SIZE)
 
   return {
     ...(q ? { q } : {}),
     sort,
-    limit,
+    page,
+    size,
+    offset: (page - 1) * size,
   }
 }
 

@@ -11,7 +11,7 @@ type SearchResultsProps = {
 
 export async function SearchResults({ q, sort }: SearchResultsProps) {
   const context = await createOptionalRequestContext()
-  const { movies } = await movieService.listMovies(context, { q, sort, limit: 50 })
+  const { movies } = await movieService.listMovies(context, { q, sort, page: 1, size: 50 })
   const movieViews = movies.map(mapMovieCardToView)
 
   return (

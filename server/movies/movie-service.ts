@@ -20,18 +20,21 @@ export function createMovieService(deps: MovieServiceDeps): MovieService {
   return {
     async listMovies(context: RequestContext, input: ListMoviesInput) {
       const normalized = normalizeMovieListInput(input)
-      const rows = await deps.repository.listMovies({
-        ...normalized,
+      const result = await deps.repository.listMovies({
+        ...(normalized.q ? { q: normalized.q } : {}),
+        sort: normalized.sort,
+        limit: normalized.size,
+        offset: normalized.offset,
         ...(normalized.sort === "rating" ? { minMovielensRatingCount: MIN_RATING_SORT_MOVIELENS_COUNT } : {}),
       })
-      const movieIds = rows.map((row) => row.id)
+      const movieIds = result.movies.map((row) => row.id)
       const bookmarkedMovieIds =
         context.user && movieIds.length > 0
           ? await deps.repository.findBookmarkedMovieIds({ userId: context.user.id, movieIds })
           : new Set<number>()
 
       return {
-        movies: rows.map((row) => ({
+        movies: result.movies.map((row) => ({
           id: row.id,
           title: row.title,
           year: row.releaseYear,
@@ -40,6 +43,9 @@ export function createMovieService(deps: MovieServiceDeps): MovieService {
           posterUrl: buildTmdbImageUrl(row.posterPath, "w500"),
           isBookmarked: bookmarkedMovieIds.has(row.id),
         })),
+        page: normalized.page,
+        size: normalized.size,
+        totalCount: result.totalCount,
       }
     },
 

@@ -14,23 +14,26 @@ const context = {
 describe("movieService.listMovies", () => {
   it("maps list rows to MovieCard DTOs and marks guests as not bookmarked", async () => {
     const repository = createRepository({
-      listMovies: vi.fn().mockResolvedValue([
-        {
-          id: 550,
-          title: "Fight Club",
-          releaseYear: 1999,
-          posterPath: "/poster.jpg",
-          movielensAvgRating: "4.20",
-          movielensRatingCount: 10000,
-          cinemateRatingSum: "5.00",
-          cinemateReviewCount: 1,
-          genres: [{ id: 18, name: "Drama" }],
-        },
-      ]),
+      listMovies: vi.fn().mockResolvedValue({
+        movies: [
+          {
+            id: 550,
+            title: "Fight Club",
+            releaseYear: 1999,
+            posterPath: "/poster.jpg",
+            movielensAvgRating: "4.20",
+            movielensRatingCount: 10000,
+            cinemateRatingSum: "5.00",
+            cinemateReviewCount: 1,
+            genres: [{ id: 18, name: "Drama" }],
+          },
+        ],
+        totalCount: 12,
+      }),
     })
     const service = createMovieService({ repository })
 
-    await expect(service.listMovies(context, { sort: "popular", limit: 6 })).resolves.toEqual({
+    await expect(service.listMovies(context, { sort: "popular", page: 2, size: 6 })).resolves.toEqual({
       movies: [
         {
           id: 550,
@@ -42,16 +45,20 @@ describe("movieService.listMovies", () => {
           isBookmarked: false,
         },
       ],
+      page: 2,
+      size: 6,
+      totalCount: 12,
     })
+    expect(repository.listMovies).toHaveBeenCalledWith({ sort: "popular", limit: 6, offset: 6 })
     expect(repository.findBookmarkedMovieIds).not.toHaveBeenCalled()
   })
 
   it("merges bookmark state for authenticated users", async () => {
     const repository = createRepository({
-      listMovies: vi.fn().mockResolvedValue([
-        createListRow({ id: 1 }),
-        createListRow({ id: 2 }),
-      ]),
+      listMovies: vi.fn().mockResolvedValue({
+        movies: [createListRow({ id: 1 }), createListRow({ id: 2 })],
+        totalCount: 2,
+      }),
       findBookmarkedMovieIds: vi.fn().mockResolvedValue(new Set([2])),
     })
     const service = createMovieService({ repository })
@@ -125,7 +132,7 @@ function createListRow(input: { id: number }) {
 
 function createRepository(overrides: Partial<MovieRepository>): MovieRepository {
   return {
-    listMovies: vi.fn().mockResolvedValue([]),
+    listMovies: vi.fn().mockResolvedValue({ movies: [], totalCount: 0 }),
     getMovieDetail: vi.fn().mockResolvedValue(null),
     listGenres: vi.fn().mockResolvedValue([]),
     findBookmarkedMovieIds: vi.fn().mockResolvedValue(new Set<number>()),

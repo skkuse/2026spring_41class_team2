@@ -36,18 +36,22 @@ describe("buildTmdbImageUrl", () => {
 })
 
 describe("normalizeMovieListInput", () => {
-  it("trims blank search terms and clamps limit", () => {
-    expect(normalizeMovieListInput({ q: "   ", sort: "popular", limit: 200 })).toEqual({
+  it("trims blank search terms and clamps size", () => {
+    expect(normalizeMovieListInput({ q: "   ", sort: "popular", page: 2, size: 200 })).toEqual({
       sort: "popular",
-      limit: 50,
+      page: 2,
+      size: 60,
+      offset: 60,
     })
   })
 
-  it("keeps a non-empty query and default limit", () => {
+  it("keeps a non-empty query and default pagination", () => {
     expect(normalizeMovieListInput({ q: " matrix ", sort: "rating" })).toEqual({
       q: "matrix",
       sort: "rating",
-      limit: 50,
+      page: 1,
+      size: 20,
+      offset: 0,
     })
   })
 })
