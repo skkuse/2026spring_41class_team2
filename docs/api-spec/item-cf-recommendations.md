@@ -17,6 +17,15 @@
 
 `limitPerSeed`는 각 seed 영화 섹션마다 추천 영화를 몇 개 반환할지 의미한다. 기본값은 10이다.
 
+허용 범위:
+
+| Query | 기본값 | 허용 범위 |
+|---|---:|---:|
+| `seedLimit` | 3 | 1~5 |
+| `limitPerSeed` | 10 | 1~20 |
+
+온보딩을 완료하지 않은 사용자는 `409 Conflict`와 `onboarding_required` 에러를 반환한다.
+
 ## 응답 타입
 
 `RecommendedMovie` 필드:
@@ -28,7 +37,7 @@
 | `year` | number | 개봉 연도 |
 | `rating` | number | 평균 평점 |
 | `genres` | `Genre[]` | TMDB 장르 목록 |
-| `posterUrl` | string | 포스터 이미지 URL |
+| `posterUrl` | string 또는 null | 포스터 이미지 URL |
 | `reason` | string | 추천 이유 |
 | `source` | `'item_cf' \| 'fallback'` | 추천 출처. Item CF 결과인지 fallback 보충 추천인지 구분 |
 | `score` | number \| null | Item CF 유사도 점수. `source`가 `fallback`이면 null |
@@ -50,7 +59,7 @@
 | `id` | number | TMDB movie id |
 | `title` | string | 영화 제목 |
 | `year` | number | 개봉 연도 |
-| `posterUrl` | string | 포스터 이미지 URL |
+| `posterUrl` | string 또는 null | 포스터 이미지 URL |
 
 ## 추천 조회 로직
 

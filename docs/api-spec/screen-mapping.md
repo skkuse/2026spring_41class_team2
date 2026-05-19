@@ -48,7 +48,7 @@
 
 | 기능/영역 | 사용자 액션 | API | 상세 문서 | 인증 | 비고 |
 |---|---|---|---|---|---|
-| 온보딩 영화 기반 추천 섹션 | 화면 진입 | `GET /api/me/recommendations/item-cf` | [item-cf-recommendations.md](./item-cf-recommendations.md) | 필요 | Python 추천 서버 결과를 백엔드가 조립 |
+| 온보딩 영화 기반 추천 섹션 | 화면 진입 | `GET /api/me/recommendations/item-cf` | [item-cf-recommendations.md](./item-cf-recommendations.md) | 필요 | DB에 seed된 Item CF 결과를 백엔드가 조립 |
 | 추천 영화 찜 | 하트 클릭 | `PUT/DELETE /api/me/bookmarked-movies/{movieId}` | [reviews-bookmarks.md](./reviews-bookmarks.md) | 필요 | 낙관적 업데이트 후 실패 시 되돌림 |
 
 ## `/character-chat` 캐릭터 대화
