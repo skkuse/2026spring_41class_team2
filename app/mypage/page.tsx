@@ -4,11 +4,10 @@ import { Header } from "@/components/header"
 import { ProtectedPage } from "@/components/auth/protected-page"
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Card, CardContent } from "@/components/ui/card"
-import { Star, Heart, ChevronRight } from "lucide-react"
-import Link from "next/link"
+import { Star, Heart } from "lucide-react"
 import { useEffect, useState } from "react"
 import { BookmarkedMoviesList } from "./_components/bookmarked-movies-list"
+import { MyReviewsList } from "./_components/my-reviews-list"
 
 type MyPageUser = {
   name: string
@@ -20,13 +19,6 @@ type MyPageUser = {
 type MeResponse =
   | { authenticated: false; user: null }
   | { authenticated: true; user: MyPageUser }
-
-const myReviews = [
-  { id: "r1", movieId: "1", movieTitle: "기생충", posterUrl: "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg", rating: 5, content: "봉준호 감독의 천재적인 연출력이 돋보이는 작품. 사회적 메시지와 오락성을 모두 잡은 걸작입니다.", date: "2024-01-15", likes: 45 },
-  { id: "r2", movieId: "3", movieTitle: "인터스텔라", posterUrl: "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg", rating: 5, content: "우주와 시간, 그리고 사랑에 대한 깊은 이야기. 한스 짐머의 음악이 영화를 더욱 빛나게 합니다.", date: "2024-01-10", likes: 32 },
-  { id: "r3", movieId: "15", movieTitle: "다크 나이트", posterUrl: "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg", rating: 4, content: "히스 레저의 조커 연기가 압도적. 슈퍼히어로 영화의 새로운 기준을 제시했습니다.", date: "2024-01-05", likes: 28 },
-]
-
 
 export default function MyPage() {
   const [user, setUser] = useState<MyPageUser | null>(null)
@@ -77,7 +69,7 @@ export default function MyPage() {
                 <p className="text-sm text-muted-foreground">찜한 영화</p>
               </div>
               <div className="text-center">
-                <p className="text-2xl font-bold">{user?.reviewCount ?? myReviews.length}</p>
+                <p className="text-2xl font-bold">{user?.reviewCount ?? 0}</p>
                 <p className="text-sm text-muted-foreground">작성한 리뷰</p>
               </div>
             </div>
@@ -102,48 +94,7 @@ export default function MyPage() {
           </TabsContent>
 
           <TabsContent value="reviews" className="mt-6">
-            <div className="space-y-4">
-              {myReviews.map((review) => (
-                <Link key={review.id} href={`/movie/${review.movieId}`}>
-                  <Card className="transition-colors hover:bg-secondary/30">
-                    <CardContent className="p-4">
-                      <div className="flex gap-4">
-                        {/* Poster */}
-                        <div className="flex-shrink-0">
-                          <img
-                            src={review.posterUrl}
-                            alt={review.movieTitle}
-                            className="h-24 w-16 rounded-lg object-cover"
-                          />
-                        </div>
-                        {/* Review Content */}
-                        <div className="flex-1">
-                          <div className="flex items-start justify-between">
-                            <div>
-                              <h3 className="font-semibold">{review.movieTitle}</h3>
-                              <div className="mt-1 flex items-center gap-1">
-                                {[...Array(5)].map((_, i) => (
-                                  <Star
-                                    key={i}
-                                    className={`h-4 w-4 ${i < review.rating ? "fill-primary text-primary" : "text-muted-foreground"}`}
-                                  />
-                                ))}
-                              </div>
-                            </div>
-                            <ChevronRight className="h-5 w-5 text-muted-foreground" />
-                          </div>
-                          <p className="mt-2 text-sm text-muted-foreground line-clamp-2">{review.content}</p>
-                          <div className="mt-2 flex items-center gap-4 text-sm text-muted-foreground">
-                            <span>{review.date}</span>
-                            <span>좋아요 {review.likes}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Link>
-              ))}
-            </div>
+            <MyReviewsList />
           </TabsContent>
         </Tabs>
       </main>

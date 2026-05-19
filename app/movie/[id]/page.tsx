@@ -7,8 +7,15 @@ import { Textarea } from "@/components/ui/textarea"
 import { Star, Heart, Clock, Calendar, Globe, Play, MessageCircle, ThumbsUp } from "lucide-react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import { useEffect, useState, use } from "react"
+import { useCallback, useEffect, useState, use } from "react"
 import { BookmarkedMoviesApiError, toggleMovieBookmark } from "@/lib/bookmarks/bookmarked-movies-client"
+import {
+  ReviewsApiError,
+  createMovieReview,
+  getMovieReviews,
+  toggleReviewLike,
+  type MovieReview,
+} from "@/lib/reviews/reviews-client"
 
 const movieData: Record<string, {
   title: string
@@ -26,7 +33,7 @@ const movieData: Record<string, {
   trailerUrl?: string | null
   reviewCount: number
   isBookmarked?: boolean
-  reviews: { id: string; user: string; rating: number; content: string; date: string; likes: number }[]
+  reviews: DisplayReview[]
 }> = {
   "1": {
     title: "기생충",
@@ -42,9 +49,9 @@ const movieData: Record<string, {
     posterUrl: "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
     reviewCount: 3,
     reviews: [
-      { id: "r1", user: "영화광", rating: 5, content: "봉준호 감독의 역작. 계층간의 갈등을 유머와 스릴러로 풀어낸 걸작입니다.", date: "2024-01-15", likes: 234 },
-      { id: "r2", user: "시네필", rating: 4.5, content: "사회적 메시지와 오락성을 모두 잡은 완벽한 영화. 칸 황금종려상이 아깝지 않습니다.", date: "2024-01-10", likes: 156 },
-      { id: "r3", user: "무비러버", rating: 5, content: "몇 번을 봐도 새로운 디테일을 발견하게 되는 영화. 연기, 연출, 음악 모두 완벽합니다.", date: "2024-01-05", likes: 89 },
+      { id: "r1", user: "영화광", rating: 5, content: "봉준호 감독의 역작. 계층간의 갈등을 유머와 스릴러로 풀어낸 걸작입니다.", date: "2024-01-15", likes: 234, isLiked: false },
+      { id: "r2", user: "시네필", rating: 4.5, content: "사회적 메시지와 오락성을 모두 잡은 완벽한 영화. 칸 황금종려상이 아깝지 않습니다.", date: "2024-01-10", likes: 156, isLiked: false },
+      { id: "r3", user: "무비러버", rating: 5, content: "몇 번을 봐도 새로운 디테일을 발견하게 되는 영화. 연기, 연출, 음악 모두 완벽합니다.", date: "2024-01-05", likes: 89, isLiked: false },
     ]
   },
   "2": {
@@ -61,8 +68,8 @@ const movieData: Record<string, {
     posterUrl: "https://image.tmdb.org/t/p/w500/uDO8zWDhfWwoFdKS4fzkUJt0Rf0.jpg",
     reviewCount: 2,
     reviews: [
-      { id: "r6", user: "뮤지컬팬", rating: 5, content: "음악과 영상미가 완벽한 현대판 뮤지컬 걸작. 엠마 스톤의 연기가 압도적입니다.", date: "2024-03-01", likes: 198 },
-      { id: "r7", user: "로맨스러버", rating: 4.5, content: "꿈과 사랑 사이의 갈등을 아름답게 그려낸 영화. 결말이 너무 인상적이에요.", date: "2024-02-15", likes: 143 },
+      { id: "r6", user: "뮤지컬팬", rating: 5, content: "음악과 영상미가 완벽한 현대판 뮤지컬 걸작. 엠마 스톤의 연기가 압도적입니다.", date: "2024-03-01", likes: 198, isLiked: false },
+      { id: "r7", user: "로맨스러버", rating: 4.5, content: "꿈과 사랑 사이의 갈등을 아름답게 그려낸 영화. 결말이 너무 인상적이에요.", date: "2024-02-15", likes: 143, isLiked: false },
     ]
   },
   "3": {
@@ -79,8 +86,8 @@ const movieData: Record<string, {
     posterUrl: "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
     reviewCount: 2,
     reviews: [
-      { id: "r4", user: "SF팬", rating: 5, content: "과학적 고증과 감동적인 스토리의 완벽한 조합. 한스 짐머의 음악이 영화를 더욱 빛나게 합니다.", date: "2024-02-01", likes: 312 },
-      { id: "r5", user: "놀란빠", rating: 5, content: "놀란 감독 최고의 작품. 우주의 광활함과 인간의 사랑을 동시에 담아낸 걸작.", date: "2024-01-28", likes: 278 },
+      { id: "r4", user: "SF팬", rating: 5, content: "과학적 고증과 감동적인 스토리의 완벽한 조합. 한스 짐머의 음악이 영화를 더욱 빛나게 합니다.", date: "2024-02-01", likes: 312, isLiked: false },
+      { id: "r5", user: "놀란빠", rating: 5, content: "놀란 감독 최고의 작품. 우주의 광활함과 인간의 사랑을 동시에 담아낸 걸작.", date: "2024-01-28", likes: 278, isLiked: false },
     ]
   },
   "4": {
@@ -97,8 +104,8 @@ const movieData: Record<string, {
     posterUrl: "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
     reviewCount: 2,
     reviews: [
-      { id: "r8", user: "DC팬", rating: 5, content: "히스 레저의 조커는 영화사에 길이 남을 연기. 슈퍼히어로 영화의 새로운 지평을 열었습니다.", date: "2024-03-10", likes: 421 },
-      { id: "r9", user: "놀란마니아", rating: 5, content: "선과 악, 혼돈과 질서에 대한 철학적 질문을 던지는 완벽한 영화.", date: "2024-03-05", likes: 287 },
+      { id: "r8", user: "DC팬", rating: 5, content: "히스 레저의 조커는 영화사에 길이 남을 연기. 슈퍼히어로 영화의 새로운 지평을 열었습니다.", date: "2024-03-10", likes: 421, isLiked: false },
+      { id: "r9", user: "놀란마니아", rating: 5, content: "선과 악, 혼돈과 질서에 대한 철학적 질문을 던지는 완벽한 영화.", date: "2024-03-05", likes: 287, isLiked: false },
     ]
   },
   "5": {
@@ -115,8 +122,8 @@ const movieData: Record<string, {
     posterUrl: "https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg",
     reviewCount: 2,
     reviews: [
-      { id: "r10", user: "영화마니아", rating: 5, content: "희망과 자유에 대한 가장 아름다운 이야기. 모건 프리먼의 내레이션이 영화를 완성시킵니다.", date: "2024-04-01", likes: 534 },
-      { id: "r11", user: "클래식무비", rating: 5, content: "시대를 초월하는 명작. 볼 때마다 새로운 감동을 줍니다.", date: "2024-03-20", likes: 312 },
+      { id: "r10", user: "영화마니아", rating: 5, content: "희망과 자유에 대한 가장 아름다운 이야기. 모건 프리먼의 내레이션이 영화를 완성시킵니다.", date: "2024-04-01", likes: 534, isLiked: false },
+      { id: "r11", user: "클래식무비", rating: 5, content: "시대를 초월하는 명작. 볼 때마다 새로운 감동을 줍니다.", date: "2024-03-20", likes: 312, isLiked: false },
     ]
   }
 }
@@ -156,43 +163,78 @@ export default function MovieDetailPage({ params }: { params: Promise<{ id: stri
   const [bookmarkPending, setBookmarkPending] = useState(false)
   const [userRating, setUserRating] = useState(0)
   const [reviewText, setReviewText] = useState("")
+  const [reviewsLoading, setReviewsLoading] = useState(true)
+  const [reviewSubmitting, setReviewSubmitting] = useState(false)
+  const [reviewFormError, setReviewFormError] = useState<string | null>(null)
+  const [reviewListError, setReviewListError] = useState<string | null>(null)
+  const [likePendingReviewId, setLikePendingReviewId] = useState<string | null>(null)
+
+  const movieId = Number(id)
+
+  const loadMovie = useCallback(async (cancelled?: () => boolean) => {
+    try {
+      const response = await fetch(`/api/movies/${id}`, { cache: "no-store" })
+      if (!response.ok) {
+        return
+      }
+
+      const data = await response.json()
+      if (cancelled?.()) {
+        return
+      }
+
+      const nextMovie = mapMovieDetailResponse(data.movie)
+      setMovie((current) => ({ ...nextMovie, reviews: current.reviews }))
+      setIsLiked(nextMovie.isBookmarked ?? false)
+    } catch {
+      // Keep the local fallback while the movie detail API is unavailable.
+    }
+  }, [id])
+
+  const loadReviews = useCallback(async (cancelled?: () => boolean) => {
+    if (!Number.isInteger(movieId) || movieId <= 0) {
+      setReviewsLoading(false)
+      return
+    }
+
+    setReviewsLoading(true)
+    setReviewListError(null)
+
+    try {
+      const response = await getMovieReviews({ movieId, page: 1, size: 20, sort: "latest" })
+      if (!cancelled?.()) {
+        setMovie((current) => ({
+          ...current,
+          reviews: response.reviews.map(mapReview),
+          reviewCount: response.totalCount,
+        }))
+      }
+    } catch {
+      if (!cancelled?.()) {
+        setReviewListError("리뷰 목록을 불러오지 못했습니다.")
+      }
+    } finally {
+      if (!cancelled?.()) {
+        setReviewsLoading(false)
+      }
+    }
+  }, [movieId])
 
   useEffect(() => {
     let cancelled = false
-
-    async function loadMovie() {
-      try {
-        const response = await fetch(`/api/movies/${id}`, { cache: "no-store" })
-        if (!response.ok) {
-          return
-        }
-
-        const data = await response.json()
-        if (cancelled) {
-          return
-        }
-
-        const nextMovie = mapMovieDetailResponse(data.movie)
-        setMovie(nextMovie)
-        setIsLiked(nextMovie.isBookmarked ?? false)
-      } catch {
-        // Keep the local fallback while the movie detail API is unavailable.
-      }
-    }
-
-    loadMovie()
+    void loadMovie(() => cancelled)
+    void loadReviews(() => cancelled)
 
     return () => {
       cancelled = true
     }
-  }, [id])
+  }, [loadMovie, loadReviews])
 
   const handleBookmarkClick = async () => {
     if (bookmarkPending) {
       return
     }
 
-    const movieId = Number(id)
     if (!Number.isInteger(movieId) || movieId <= 0) {
       return
     }
@@ -212,6 +254,68 @@ export default function MovieDetailPage({ params }: { params: Promise<{ id: stri
       }
     } finally {
       setBookmarkPending(false)
+    }
+  }
+
+  const handleReviewSubmit = async () => {
+    if (reviewSubmitting || !Number.isInteger(movieId) || movieId <= 0) {
+      return
+    }
+
+    setReviewFormError(null)
+    setReviewSubmitting(true)
+
+    try {
+      await createMovieReview(movieId, { rating: userRating, content: reviewText })
+      setUserRating(0)
+      setReviewText("")
+      await Promise.all([loadMovie(), loadReviews()])
+    } catch (error) {
+      if (error instanceof ReviewsApiError && error.isUnauthorized) {
+        router.push(`/login?returnTo=${encodeURIComponent(pathname)}`)
+        return
+      }
+      setReviewFormError(error instanceof ReviewsApiError ? error.message : "리뷰를 등록하지 못했습니다.")
+    } finally {
+      setReviewSubmitting(false)
+    }
+  }
+
+  const handleReviewLikeClick = async (review: DisplayReview) => {
+    if (likePendingReviewId) {
+      return
+    }
+
+    const previous = review
+    const nextLiked = !review.isLiked
+    setLikePendingReviewId(review.id)
+    setMovie((current) => ({
+      ...current,
+      reviews: current.reviews.map((item) =>
+        item.id === review.id
+          ? { ...item, isLiked: nextLiked, likes: Math.max(0, item.likes + (nextLiked ? 1 : -1)) }
+          : item,
+      ),
+    }))
+
+    try {
+      const response = await toggleReviewLike(review.id, nextLiked)
+      setMovie((current) => ({
+        ...current,
+        reviews: current.reviews.map((item) =>
+          item.id === review.id ? { ...item, isLiked: response.isLiked, likes: response.likes } : item,
+        ),
+      }))
+    } catch (error) {
+      setMovie((current) => ({
+        ...current,
+        reviews: current.reviews.map((item) => (item.id === review.id ? previous : item)),
+      }))
+      if (error instanceof ReviewsApiError && error.isUnauthorized) {
+        router.push(`/login?returnTo=${encodeURIComponent(pathname)}`)
+      }
+    } finally {
+      setLikePendingReviewId(null)
     }
   }
 
@@ -361,7 +465,10 @@ export default function MovieDetailPage({ params }: { params: Promise<{ id: stri
               onChange={(e) => setReviewText(e.target.value)}
               className="min-h-32"
             />
-            <Button className="mt-4">리뷰 등록</Button>
+            {reviewFormError && <p className="mt-3 text-sm text-destructive">{reviewFormError}</p>}
+            <Button className="mt-4" disabled={reviewSubmitting || userRating <= 0 || reviewText.trim().length === 0} onClick={handleReviewSubmit}>
+              {reviewSubmitting ? "등록 중" : "리뷰 등록"}
+            </Button>
           </div>
         </div>
       </section>
@@ -371,7 +478,11 @@ export default function MovieDetailPage({ params }: { params: Promise<{ id: stri
         <div className="container mx-auto px-4">
           <h2 className="text-xl font-semibold">사용자 리뷰</h2>
           <div className="mt-6 space-y-4">
-            {movie.reviews.length > 0 ? (
+            {reviewsLoading ? (
+              <div className="rounded-xl bg-card p-8 text-center">
+                <p className="text-muted-foreground">리뷰를 불러오는 중입니다.</p>
+              </div>
+            ) : movie.reviews.length > 0 ? (
               movie.reviews.map((review) => (
                 <div key={review.id} className="rounded-xl bg-card p-6">
                   <div className="flex items-center justify-between">
@@ -381,7 +492,7 @@ export default function MovieDetailPage({ params }: { params: Promise<{ id: stri
                       </div>
                       <div>
                         <p className="font-medium">{review.user}</p>
-                        <p className="text-sm text-muted-foreground">{review.date}</p>
+                        <p className="text-sm text-muted-foreground">{formatDate(review.date)}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-1">
@@ -391,13 +502,26 @@ export default function MovieDetailPage({ params }: { params: Promise<{ id: stri
                   </div>
                   <p className="mt-4 text-muted-foreground">{review.content}</p>
                   <div className="mt-4 flex items-center gap-2">
-                    <Button variant="ghost" size="sm">
-                      <ThumbsUp className="mr-1 h-4 w-4" />
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      aria-pressed={review.isLiked}
+                      disabled={likePendingReviewId === review.id}
+                      onClick={() => void handleReviewLikeClick(review)}
+                    >
+                      <ThumbsUp className={`mr-1 h-4 w-4 ${review.isLiked ? "fill-primary text-primary" : ""}`} />
                       {review.likes}
                     </Button>
                   </div>
                 </div>
               ))
+            ) : reviewListError ? (
+              <div className="rounded-xl bg-card p-8 text-center">
+                <p className="text-muted-foreground">{reviewListError}</p>
+                <Button variant="outline" size="sm" className="mt-4" onClick={() => void loadReviews()}>
+                  다시 시도
+                </Button>
+              </div>
             ) : (
               <div className="rounded-xl bg-card p-8 text-center">
                 <p className="text-muted-foreground">아직 리뷰가 없습니다. 첫 번째 리뷰를 작성해보세요!</p>
@@ -450,6 +574,16 @@ type MovieDetailApi = {
   reviewCount: number
 }
 
+type DisplayReview = {
+  id: string
+  user: string
+  rating: number
+  content: string
+  date: string
+  likes: number
+  isLiked: boolean
+}
+
 function mapMovieDetailResponse(movie: MovieDetailApi) {
   return {
     title: movie.title,
@@ -469,4 +603,20 @@ function mapMovieDetailResponse(movie: MovieDetailApi) {
     isBookmarked: movie.isBookmarked,
     reviews: [],
   }
+}
+
+function mapReview(review: MovieReview): DisplayReview {
+  return {
+    id: review.id,
+    user: review.user.name,
+    rating: review.rating,
+    content: review.content,
+    date: review.date,
+    likes: review.likes,
+    isLiked: review.isLiked,
+  }
+}
+
+function formatDate(value: string) {
+  return new Intl.DateTimeFormat("ko-KR", { dateStyle: "medium" }).format(new Date(value))
 }
