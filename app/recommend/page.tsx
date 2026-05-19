@@ -1,12 +1,20 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { usePathname, useRouter } from "next/navigation"
 import { Header } from "@/components/header"
 import { ProtectedPage } from "@/components/auth/protected-page"
 import { MovieCard } from "@/components/movie-card"
 import { Badge } from "@/components/ui/badge"
 import { Skeleton } from "@/components/ui/skeleton"
+import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Sparkles } from "lucide-react"
+import {
+  getItemCfRecommendations,
+  ItemCfRecommendationsApiError,
+  type ItemCfRecommendationSection,
+  type ItemCfRecommendedMovie,
+} from "@/lib/recommendations/item-cf-client"
 
 interface RecommendationMovie {
   id: string
@@ -14,8 +22,8 @@ interface RecommendationMovie {
   year: string
   rating: number
   genre: string
-  posterUrl: string
-  reason: string
+  posterUrl: string | null
+  isBookmarked: boolean
 }
 
 interface RecommendationSection {
@@ -23,135 +31,6 @@ interface RecommendationSection {
   seedTitle: string
   movies: RecommendationMovie[]
 }
-
-const recommendationSections: RecommendationSection[] = [
-  {
-    seedTitle: "매트릭스",
-    title: "매트릭스를 좋아한 사람들이 함께 좋아한 영화",
-    movies: [
-      {
-        id: "3",
-        title: "인터스텔라",
-        year: "2014",
-        rating: 4.9,
-        genre: "SF",
-        posterUrl: "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
-        reason: "매트릭스를 좋아한 사람들이 함께 높게 평가했어요.",
-      },
-      {
-        id: "15",
-        title: "다크 나이트",
-        year: "2008",
-        rating: 4.8,
-        genre: "액션",
-        posterUrl: "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
-        reason: "매트릭스를 좋아한 사람들이 함께 높게 평가했어요.",
-      },
-      {
-        id: "16",
-        title: "반지의 제왕: 왕의 귀환",
-        year: "2003",
-        rating: 4.8,
-        genre: "판타지",
-        posterUrl: "https://image.tmdb.org/t/p/w500/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg",
-        reason: "매트릭스를 좋아한 사람들이 함께 높게 평가했어요.",
-      },
-      {
-        id: "9",
-        title: "탑건: 매버릭",
-        year: "2022",
-        rating: 4.6,
-        genre: "액션",
-        posterUrl: "https://image.tmdb.org/t/p/w500/62HCnUTziyWcpDaBO2i1DX17ljH.jpg",
-        reason: "매트릭스를 좋아한 사람들이 함께 높게 평가했어요.",
-      },
-    ],
-  },
-  {
-    seedTitle: "기생충",
-    title: "기생충을 좋아한 사람들이 함께 좋아한 영화",
-    movies: [
-      {
-        id: "13",
-        title: "쇼생크 탈출",
-        year: "1994",
-        rating: 4.9,
-        genre: "드라마",
-        posterUrl: "https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg",
-        reason: "기생충을 좋아한 사람들이 함께 높게 평가했어요.",
-      },
-      {
-        id: "14",
-        title: "대부",
-        year: "1972",
-        rating: 4.9,
-        genre: "범죄",
-        posterUrl: "https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg",
-        reason: "기생충을 좋아한 사람들이 함께 높게 평가했어요.",
-      },
-      {
-        id: "17",
-        title: "펄프 픽션",
-        year: "1994",
-        rating: 4.7,
-        genre: "범죄",
-        posterUrl: "https://image.tmdb.org/t/p/w500/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg",
-        reason: "기생충을 좋아한 사람들이 함께 높게 평가했어요.",
-      },
-      {
-        id: "18",
-        title: "포레스트 검프",
-        year: "1994",
-        rating: 4.7,
-        genre: "드라마",
-        posterUrl: "https://image.tmdb.org/t/p/w500/arw2vcBveWOVZr6pxd9XTd1TdQa.jpg",
-        reason: "기생충을 좋아한 사람들이 함께 높게 평가했어요.",
-      },
-    ],
-  },
-  {
-    seedTitle: "인터스텔라",
-    title: "인터스텔라를 좋아한 사람들이 함께 좋아한 영화",
-    movies: [
-      {
-        id: "1",
-        title: "기생충",
-        year: "2019",
-        rating: 4.8,
-        genre: "드라마",
-        posterUrl: "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
-        reason: "인터스텔라를 좋아한 사람들이 함께 높게 평가했어요.",
-      },
-      {
-        id: "4",
-        title: "어벤져스: 엔드게임",
-        year: "2019",
-        rating: 4.6,
-        genre: "액션",
-        posterUrl: "https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
-        reason: "인터스텔라를 좋아한 사람들이 함께 높게 평가했어요.",
-      },
-      {
-        id: "5",
-        title: "라라랜드",
-        year: "2016",
-        rating: 4.5,
-        genre: "로맨스",
-        posterUrl: "https://image.tmdb.org/t/p/w500/uDO8zWDhfWwoFdKS4fzkUJt0Rf0.jpg",
-        reason: "인터스텔라를 좋아한 사람들이 함께 높게 평가했어요.",
-      },
-      {
-        id: "6",
-        title: "듄",
-        year: "2021",
-        rating: 4.4,
-        genre: "SF",
-        posterUrl: "https://image.tmdb.org/t/p/w500/d5NXSklXo0qyIYkgV94XAgMIckC.jpg",
-        reason: "인터스텔라를 좋아한 사람들이 함께 높게 평가했어요.",
-      },
-    ],
-  },
-]
 
 function RecommendationCardSkeleton() {
   return (
@@ -168,15 +47,53 @@ function RecommendationCardSkeleton() {
 }
 
 export default function RecommendPage() {
+  const router = useRouter()
+  const pathname = usePathname()
   const [loading, setLoading] = useState(true)
+  const [sections, setSections] = useState<RecommendationSection[]>([])
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   useEffect(() => {
-    const timer = window.setTimeout(() => {
-      setLoading(false)
-    }, 650)
+    let cancelled = false
 
-    return () => window.clearTimeout(timer)
-  }, [])
+    async function loadRecommendations() {
+      try {
+        setErrorMessage(null)
+        const response = await getItemCfRecommendations()
+        if (!cancelled) {
+          setSections(response.sections.map(mapRecommendationSection))
+        }
+      } catch (error) {
+        if (cancelled) {
+          return
+        }
+
+        if (error instanceof ItemCfRecommendationsApiError) {
+          if (error.isUnauthorized) {
+            router.replace(`/login?returnTo=${encodeURIComponent(pathname)}`)
+            return
+          }
+
+          if (error.isOnboardingRequired) {
+            router.replace("/onboarding")
+            return
+          }
+        }
+
+        setErrorMessage("추천 영화를 불러오지 못했습니다.")
+      } finally {
+        if (!cancelled) {
+          setLoading(false)
+        }
+      }
+    }
+
+    loadRecommendations()
+
+    return () => {
+      cancelled = true
+    }
+  }, [pathname, router])
 
   return (
     <div className="min-h-screen bg-background">
@@ -195,8 +112,32 @@ export default function RecommendPage() {
           </p>
         </div>
 
+        {errorMessage && (
+          <Alert variant="destructive" className="mb-8">
+            <AlertDescription>{errorMessage}</AlertDescription>
+          </Alert>
+        )}
+
         <div className="grid gap-12">
-          {recommendationSections.map((section, sectionIndex) => (
+          {loading ? (
+            Array.from({ length: 3 }).map((_, sectionIndex) => (
+              <section key={sectionIndex}>
+                <div className="mb-6 flex items-start justify-between gap-4">
+                  <div className="w-full max-w-xl space-y-2">
+                    <Skeleton className="h-7 w-3/4" />
+                    <Skeleton className="h-4 w-32" />
+                  </div>
+                  <Skeleton className="h-7 w-16 rounded-full" />
+                </div>
+                <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-2">
+                  {Array.from({ length: 4 }).map((__, index) => (
+                    <RecommendationCardSkeleton key={index} />
+                  ))}
+                </div>
+              </section>
+            ))
+          ) : sections.length > 0 ? (
+            sections.map((section, sectionIndex) => (
             <section key={section.title}>
               <div className="mb-6 flex items-start justify-between gap-4">
                 <div>
@@ -210,19 +151,13 @@ export default function RecommendPage() {
                 </Badge>
               </div>
 
-              {loading ? (
-                <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-2">
-                  {Array.from({ length: 4 }).map((_, index) => (
-                    <RecommendationCardSkeleton key={index} />
-                  ))}
-                </div>
-              ) : section.movies.length > 0 ? (
+              {section.movies.length > 0 ? (
                 <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-2">
                   {section.movies.map((movie) => (
                     <MovieCard
                       key={movie.id}
                       {...movie}
-                      reason={movie.reason}
+                      isBookmarked={movie.isBookmarked}
                       compact
                     />
                   ))}
@@ -236,10 +171,38 @@ export default function RecommendPage() {
                 </div>
               )}
             </section>
-          ))}
+            ))
+          ) : (
+            <div className="rounded-2xl border border-dashed border-border bg-card p-10 text-center">
+              <p className="text-base font-medium">추천 결과가 없어요.</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                선호 영화 데이터를 바탕으로 추천을 준비하고 있어요.
+              </p>
+            </div>
+          )}
         </div>
       </main>
       </ProtectedPage>
     </div>
   )
+}
+
+function mapRecommendationSection(section: ItemCfRecommendationSection): RecommendationSection {
+  return {
+    title: section.title,
+    seedTitle: section.seedMovie.title,
+    movies: section.movies.map(mapRecommendationMovie),
+  }
+}
+
+function mapRecommendationMovie(movie: ItemCfRecommendedMovie): RecommendationMovie {
+  return {
+    id: String(movie.id),
+    title: movie.title,
+    year: movie.year?.toString() ?? "연도 미상",
+    rating: movie.rating,
+    genre: movie.genres.map((genre) => genre.name).join(", ") || "장르 미상",
+    posterUrl: movie.posterUrl,
+    isBookmarked: movie.isBookmarked,
+  }
 }

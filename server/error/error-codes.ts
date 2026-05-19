@@ -20,6 +20,8 @@ export const apiErrorCodes = {
   myReviewsFailed: "my_reviews_failed",
   profileSyncFailed: "profile_sync_failed",
   onboardingPreferencesFailed: "onboarding_preferences_failed",
+  onboardingRequired: "onboarding_required",
+  itemCfRecommendationsFailed: "item_cf_recommendations_failed",
 } as const
 
 export type ApiErrorCode = typeof apiErrorCodes[keyof typeof apiErrorCodes]

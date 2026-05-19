@@ -74,6 +74,16 @@ export function createUnauthorizedResponse(input: CreatePresetApiErrorResponseIn
   })
 }
 
+export function createOnboardingRequiredResponse(input: CreatePresetApiErrorResponseInput) {
+  return createApiErrorResponse({
+    status: 409,
+    code: apiErrorCodes.onboardingRequired,
+    message: "온보딩 완료가 필요합니다.",
+    requestId: input.requestId,
+    details: input.details,
+  })
+}
+
 export function createMovieNotFoundResponse(input: CreatePresetApiErrorResponseInput) {
   return createApiErrorResponse({
     status: 404,

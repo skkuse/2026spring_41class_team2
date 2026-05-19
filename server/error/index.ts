@@ -9,6 +9,7 @@ export {
   createInvalidQueryResponse,
   createInvalidReviewIdResponse,
   createMovieNotFoundResponse,
+  createOnboardingRequiredResponse,
   createReviewNotFoundResponse,
   createUnauthorizedResponse,
 } from "./error-response"

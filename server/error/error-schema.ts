@@ -26,6 +26,8 @@ export const apiErrorResponseSchema = z.object({
       apiErrorCodes.myReviewsFailed,
       apiErrorCodes.profileSyncFailed,
       apiErrorCodes.onboardingPreferencesFailed,
+      apiErrorCodes.onboardingRequired,
+      apiErrorCodes.itemCfRecommendationsFailed,
     ]),
     message: z.string(),
     requestId: z.string(),
