@@ -20,9 +20,11 @@
 - 온보딩은 로그인 사용자만 가능하다.
 - 온보딩 완료 후에는 온보딩 화면으로 다시 이동하지 않는다.
 
-RLS:
+권한:
 
-- 사용자는 본인 프로필만 조회/수정 가능하다.
+- 클라이언트에서 직접 접근하지 않고 서버 API를 통해서만 조회/수정한다.
+- 본인 프로필 여부는 route/service 레이어에서 검사한다.
+- 서버 접근에 필요한 `service_role` 권한을 사용한다.
 
 ## user_onboarding_movies
 
@@ -45,6 +47,9 @@ RLS:
 - `position`은 1~5 범위로 제한한다.
 - `/recommend`는 `position ASC` 기준 상위 3개를 기본 seed로 사용한다.
 
-RLS:
+권한:
 
-- 사용자는 본인 온보딩 선호 영화만 조회/수정 가능하다.
+- 클라이언트에서 직접 접근하지 않고 서버 API를 통해서만 조회/수정한다.
+- 본인 온보딩 선호 영화 여부는 route/service 레이어에서 검사한다.
+- 기능 migration에는 anon/authenticated grant와 RLS policy를 추가하지 않는다.
+- 서버 접근에 필요한 `service_role` 권한을 사용한다.

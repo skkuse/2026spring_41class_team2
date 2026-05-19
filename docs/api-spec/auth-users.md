@@ -53,4 +53,4 @@
 | Request body | `movieIds: number[]` |
 | Response | `movieIds`, `onboardingCompleted` |
 
-정확히 5개를 선택해야 저장할 수 있다. 저장 후 `profiles.onboarding_completed = true`로 갱신한다.
+정확히 5개를 선택해야 저장할 수 있다. 이 API는 전체 교체 방식으로 동작하므로 다시 호출하면 기존 선호 영화 row를 모두 삭제한 뒤 요청 배열 순서대로 다시 저장한다. 같은 요청을 반복하면 최종 상태는 동일하며, 같은 영화라도 순서가 다르면 새 순서가 `position`에 반영된다. 저장 후 `profiles.onboarding_completed = true`로 갱신한다.

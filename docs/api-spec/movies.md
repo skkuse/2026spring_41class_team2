@@ -10,19 +10,19 @@
 |---|---|
 | 인증 | 선택 |
 | 관련 화면 | `/`, `/search`, `/onboarding` |
-| Query | `q?`, `sort?`, `limit?` |
-| Response | `movies: MovieCard[]` |
+| Query | `q?`, `sort?`, `page?`, `size?` |
+| Response | `movies: MovieCard[]`, `page`, `size`, `totalCount` |
 
 주요 사용 예:
 
 | 화면 | Query | 비고 |
 |---|---|---|
-| `/` | `sort=popular`, `limit=6` | 인기 영화 섹션 |
-| `/` | `sort=rating`, `limit=6` | 최고 평점 영화 섹션 |
-| `/search` | `q`, `limit=50` | 영화 제목 검색 결과. 페이지네이션 없음 |
-| `/onboarding` | `sort=popular`, `limit` | MovieLens 매핑이 있는 인기 영화 후보 |
+| `/` | `sort=popular&page=1&size=6` | 인기 영화 섹션 |
+| `/` | `sort=rating&page=1&size=6` | 최고 평점 영화 섹션 |
+| `/search` | `q&page=1&size=50` | 영화 제목 검색 결과 |
+| `/onboarding` | `sort=popular&page=&size=` | 인기 영화 후보. 무한 스크롤 |
 
-`MovieCard`는 [common.md](./common.md)의 공통 타입을 따른다. 온보딩 후보는 MovieLens 매핑이 있는 영화로 한정하고 검색은 제공하지 않는다.
+`MovieCard`는 [common.md](./common.md)의 공통 타입을 따른다. 현재 `movies.movielens_id`는 `not null`이므로 온보딩 후보용 별도 MovieLens 필터는 두지 않는다. 온보딩 화면에서는 검색을 제공하지 않는다.
 
 ## `GET /api/movies/{movieId}`
 

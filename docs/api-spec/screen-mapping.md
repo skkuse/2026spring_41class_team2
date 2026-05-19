@@ -13,15 +13,15 @@
 
 | 기능/영역 | 사용자 액션 | API | 상세 문서 | 인증 | 비고 |
 |---|---|---|---|---|---|
-| 인기 영화 섹션 | 화면 진입 | `GET /api/movies?sort=popular&limit=6` | [movies.md](./movies.md) | 선택 | 현재 `popularMovies` 하드코딩 |
-| 최고 평점 섹션 | 화면 진입 | `GET /api/movies?sort=rating&limit=6` | [movies.md](./movies.md) | 선택 | 현재 `topRatedMovies` 하드코딩 |
+| 인기 영화 섹션 | 화면 진입 | `GET /api/movies?sort=popular&page=1&size=6` | [movies.md](./movies.md) | 선택 | 공개 영화 목록 |
+| 최고 평점 섹션 | 화면 진입 | `GET /api/movies?sort=rating&page=1&size=6` | [movies.md](./movies.md) | 선택 | 공개 영화 목록 |
 | 자주 묻는 AI 질문 | 질문 클릭 | API 없음 | - | 불필요 | `/chat?q=...`로 이동 |
 
 ## `/search` 영화 탐색
 
 | 기능/영역 | 사용자 액션 | API | 상세 문서 | 인증 | 비고 |
 |---|---|---|---|---|---|
-| 영화 검색 결과 | 검색어 입력 | `GET /api/movies?q=...&limit=50` | [movies.md](./movies.md) | 선택 | 페이지네이션 없음 |
+| 영화 검색 결과 | 검색어 입력 | `GET /api/movies?q=...&page=1&size=50` | [movies.md](./movies.md) | 선택 | 공개 영화 목록 |
 | 영화 찜 | 하트 클릭 | `PUT/DELETE /api/me/bookmarked-movies/{movieId}` | [reviews-bookmarks.md](./reviews-bookmarks.md) | 필요 | 낙관적 업데이트 후 실패 시 되돌림 |
 
 ## `/movie/[id]` 영화 상세
@@ -81,5 +81,5 @@
 
 | 기능/영역 | 사용자 액션 | API | 상세 문서 | 인증 | 비고 |
 |---|---|---|---|---|---|
-| 인기 영화 선택지 | 화면 진입 | `GET /api/movies?sort=popular&limit=...` | [movies.md](./movies.md) | 필요 | MovieLens 매핑 영화로 한정 |
+| 인기 영화 선택지 | 화면 진입/스크롤 | `GET /api/movies?sort=popular&page=&size=` | [movies.md](./movies.md) | 선택 | 화면 접근은 로그인 필요, API는 공개 |
 | 선호 영화 저장 | 5개 선택 후 시작하기 클릭 | `PUT /api/me/preferences/movies` | [auth-users.md](./auth-users.md) | 필요 | 정확히 5개 저장 |

@@ -2,8 +2,8 @@
 
 | 테이블 | 읽기 | 쓰기 |
 |---|---|---|
-| `profiles` | 본인 | 본인 |
-| `user_onboarding_movies` | 본인 | 본인 |
+| `profiles` | 서버 API에서 본인만 허용 | 서버 API에서 본인만 허용 |
+| `user_onboarding_movies` | 서버 API에서 본인만 허용 | 서버 API에서 본인만 허용 |
 | `movies` | 전체 공개 | 일반 사용자 불가 |
 | `genres` | 전체 공개 | 일반 사용자 불가 |
 | `movie_genres` | 전체 공개 | 일반 사용자 불가 |
