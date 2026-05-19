@@ -8,6 +8,7 @@ export const apiErrorResponseSchema = z.object({
   error: z.object({
     code: z.enum([
       apiErrorCodes.invalidQuery,
+      apiErrorCodes.invalidBody,
       apiErrorCodes.invalidMovieId,
       apiErrorCodes.invalidReviewId,
       apiErrorCodes.unauthorized,
@@ -24,6 +25,7 @@ export const apiErrorResponseSchema = z.object({
       apiErrorCodes.reviewLikeFailed,
       apiErrorCodes.myReviewsFailed,
       apiErrorCodes.profileSyncFailed,
+      apiErrorCodes.onboardingPreferencesFailed,
     ]),
     message: z.string(),
     requestId: z.string(),

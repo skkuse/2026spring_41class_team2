@@ -34,6 +34,16 @@ export function createInvalidQueryResponse(input: CreatePresetApiErrorResponseIn
   })
 }
 
+export function createInvalidBodyResponse(input: CreatePresetApiErrorResponseInput) {
+  return createApiErrorResponse({
+    status: 400,
+    code: apiErrorCodes.invalidBody,
+    message: "요청 body가 올바르지 않습니다.",
+    requestId: input.requestId,
+    details: input.details,
+  })
+}
+
 export function createInvalidMovieIdResponse(input: CreatePresetApiErrorResponseInput) {
   return createApiErrorResponse({
     status: 400,

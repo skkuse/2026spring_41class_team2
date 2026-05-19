@@ -218,6 +218,26 @@ export const movieBookmarks = pgTable(
   ],
 )
 
+export const userOnboardingMovies = pgTable(
+  "user_onboarding_movies",
+  {
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => profiles.id, { onDelete: "cascade" }),
+    movieId: bigint("movie_id", { mode: "number" })
+      .notNull()
+      .references(() => movies.id, { onDelete: "cascade" }),
+    position: integer("position").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    primaryKey({ columns: [table.userId, table.movieId] }),
+    uniqueIndex("user_onboarding_movies_user_position_key").on(table.userId, table.position),
+    index("user_onboarding_movies_movie_id_idx").on(table.movieId),
+    check("user_onboarding_movies_position_range_check", sql`${table.position} >= 1 and ${table.position} <= 5`),
+  ],
+)
+
 export const reviews = pgTable(
   "reviews",
   {
