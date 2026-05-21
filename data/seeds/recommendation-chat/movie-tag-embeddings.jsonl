@@ -1,0 +1,1128 @@
+{"tagId":1,"tag":"007","labelKo":"007","embeddingInput":"007 제임스 본드 스파이 첩보 액션 비밀요원 영국 요원 미션 악당 추격"}
+{"tagId":2,"tag":"007 (series)","labelKo":"007 시리즈","embeddingInput":"007 (series) 007 시리즈 제임스 본드 스파이 첩보 액션 비밀요원 프랜차이즈 영국 요원 임무"}
+{"tagId":3,"tag":"18th century","labelKo":"18세기","embeddingInput":"18th century 18세기 시대극 궁정 귀족 계몽시대 역사 배경 왕실 음모 고전 의상"}
+{"tagId":4,"tag":"1920s","labelKo":"1920년대","embeddingInput":"1920s 1920년대 재즈 시대 금주법 갱스터 플래퍼 대공황 전야 빈티지 도시 범죄"}
+{"tagId":5,"tag":"1930s","labelKo":"1930년대","embeddingInput":"1930s 1930년대 대공황 시대 갱스터 고전 시대 빈티지 사회 불안 전간기 역사 배경"}
+{"tagId":6,"tag":"1950s","labelKo":"1950년대","embeddingInput":"1950s 1950년대 냉전 시대 레트로 미국 교외 전후 사회 클래식 분위기 보수적 시대"}
+{"tagId":7,"tag":"1960s","labelKo":"1960년대","embeddingInput":"1960s 1960년대 반문화 냉전 시대 우주 경쟁 사회 변화 레트로 혁명적 분위기 시대극"}
+{"tagId":8,"tag":"1970s","labelKo":"1970년대","embeddingInput":"1970s 1970년대 뉴할리우드 디스코 시대 도시 범죄 정치 불신 거친 분위기 복고 감성"}
+{"tagId":9,"tag":"1980s","labelKo":"1980년대","embeddingInput":"1980s 1980년대 네온 감성 팝 문화 냉전 액션 블록버스터 레트로 청춘 모험 신스 사운드"}
+{"tagId":10,"tag":"19th century","labelKo":"19세기","embeddingInput":"19th century 19세기 빅토리아 시대 산업혁명 고전 소설 시대극 귀족 계급 사회 역사 배경"}
+{"tagId":11,"tag":"3d","labelKo":"3D","embeddingInput":"3d 3D 입체 영상 입체감 시각 효과 몰입형 화면 극장 체험 깊이감 디지털 상영"}
+{"tagId":12,"tag":"70mm","labelKo":"70mm","embeddingInput":"70mm 대형 필름 와이드 화면 고해상도 촬영 웅장한 화면 필름 상영 시네마스코프 장대한 영상"}
+{"tagId":13,"tag":"80s","labelKo":"80년대","embeddingInput":"80s 80년대 레트로 네온 팝 음악 청춘 모험 신스웨이브 비디오 감성 복고 분위기"}
+{"tagId":14,"tag":"9/11","labelKo":"9/11","embeddingInput":"9/11 9·11 테러 사건 뉴욕 트라우마 국가 비극 현대사 테러 이후 상실감 사회 충격"}
+{"tagId":15,"tag":"aardman","labelKo":"아드먼","embeddingInput":"aardman 아드먼 클레이 애니메이션 스톱모션 영국 유머 점토 캐릭터 가족 코미디 수공예 감성"}
+{"tagId":16,"tag":"aardman studios","labelKo":"아드먼 스튜디오","embeddingInput":"aardman studios 아드먼 스튜디오 클레이 애니메이션 스톱모션 영국 애니메이션 점토 캐릭터 유쾌한 유머 가족 코미디"}
+{"tagId":17,"tag":"abortion","labelKo":"낙태","embeddingInput":"abortion 낙태 임신 선택 여성 현실 윤리 갈등 사회 문제 개인 결정 의료 논쟁"}
+{"tagId":18,"tag":"absurd","labelKo":"부조리한","embeddingInput":"absurd 부조리한 기괴한 상황 황당한 전개 비논리적 유머 초현실 분위기 블랙 코미디 이상한 세계"}
+{"tagId":19,"tag":"action","labelKo":"액션","embeddingInput":"action 액션 격투 추격 폭발 총격 전투 긴박한 전개 스턴트 모험 박진감"}
+{"tagId":20,"tag":"action packed","labelKo":"액션 가득한","embeddingInput":"action packed 액션 가득한 쉴새없는 전개 격투 추격 폭발 총격 빠른 템포 박진감 전투 장면"}
+{"tagId":21,"tag":"adaptation","labelKo":"각색","embeddingInput":"adaptation 각색 원작 기반 재해석 서사 변주 문학 원작 만화 원작 실화 기반 매체 변환"}
+{"tagId":22,"tag":"adapted from:book","labelKo":"책 원작","embeddingInput":"adapted from:book 책 원작 소설 원작 문학 각색 원작 기반 서사 중심 베스트셀러 원작 독서 감성"}
+{"tagId":23,"tag":"adapted from:comic","labelKo":"만화 원작","embeddingInput":"adapted from:comic 만화 원작 코믹스 기반 그래픽노블 원작 히어로 서사 원작 각색 패널 감성 시각적 연출"}
+{"tagId":24,"tag":"adapted from:game","labelKo":"게임 원작","embeddingInput":"adapted from:game 게임 원작 비디오게임 기반 플레이어 세계관 게임 캐릭터 액션 모험 원작 각색"}
+{"tagId":25,"tag":"addiction","labelKo":"중독","embeddingInput":"addiction 중독 의존 파멸 자기파괴 약물 문제 강박 갈망 회복 과정 어두운 현실"}
+{"tagId":26,"tag":"adolescence","labelKo":"청소년기","embeddingInput":"adolescence 청소년기 성장기 사춘기 정체성 혼란 학교 생활 첫사랑 반항 성장 서사"}
+{"tagId":27,"tag":"adoption","labelKo":"입양","embeddingInput":"adoption 입양 가족 관계 친부모 양부모 정체성 찾기 새로운 가족 혈연 갈등 상처 치유"}
+{"tagId":28,"tag":"adultery","labelKo":"불륜","embeddingInput":"adultery 불륜 외도 금지된 사랑 결혼 갈등 배신 욕망 비밀 관계 삼각관계 도덕적 갈등"}
+{"tagId":29,"tag":"adventure","labelKo":"모험","embeddingInput":"adventure 모험 여정 탐험 위험한 길 미지의 세계 동료 여행 보물 찾기 액션 판타지"}
+{"tagId":30,"tag":"affectionate","labelKo":"다정한","embeddingInput":"affectionate 다정한 따뜻한 애정 어린 부드러운 관계 훈훈함 친밀감 온기 사랑스러운 감성"}
+{"tagId":31,"tag":"afi 100","labelKo":"AFI 100","embeddingInput":"afi 100 AFI 100 미국 고전 명작 목록 클래식 할리우드 역사적 평가 대표작 문화적 영향"}
+{"tagId":32,"tag":"afi 100 (laughs)","labelKo":"AFI 100 코미디","embeddingInput":"afi 100 (laughs) AFI 100 코미디 미국 코미디 명작 웃음 유머 클래식 희극 풍자 대표 코미디"}
+{"tagId":33,"tag":"afi 100 (movie quotes)","labelKo":"AFI 100 명대사","embeddingInput":"afi 100 (movie quotes) AFI 100 명대사 유명 대사 인용구 클래식 대사 상징적 문장 미국 고전 기억나는 말"}
+{"tagId":34,"tag":"africa","labelKo":"아프리카","embeddingInput":"africa 아프리카 대륙 배경 사막 초원 식민 역사 부족 문화 자연 풍경 사회 갈등"}
+{"tagId":35,"tag":"afterlife","labelKo":"사후세계","embeddingInput":"afterlife 사후세계 죽음 이후 영혼 천국 지옥 환생 초월적 세계 죽음 성찰 영적 분위기"}
+{"tagId":36,"tag":"aging","labelKo":"노화","embeddingInput":"aging 노화 나이듦 세월 인생 회고 쇠약 노년 삶의 변화 가족 관계 시간 흐름"}
+{"tagId":37,"tag":"aids","labelKo":"에이즈","embeddingInput":"aids 에이즈 질병 차별 1980년대 위기 사회 낙인 성소수자 의료 현실 상실 투병"}
+{"tagId":38,"tag":"airplane","labelKo":"비행기","embeddingInput":"airplane 비행기 항공기 기내 상황 공중 위기 조종사 승객 비행 사고 하늘 이동"}
+{"tagId":39,"tag":"airport","labelKo":"공항","embeddingInput":"airport 공항 터미널 여행자 출입국 대기 환승 만남 이별 항공 교통 공간"}
+{"tagId":40,"tag":"alaska","labelKo":"알래스카","embeddingInput":"alaska 알래스카 설원 오지 혹한 자연 생존 북부 황야 고립된 마을 눈보라"}
+{"tagId":41,"tag":"alcatraz","labelKo":"알카트라즈","embeddingInput":"alcatraz 알카트라즈 감옥 섬 탈옥 죄수 교도소 샌프란시스코 수감 해상 요새 범죄"}
+{"tagId":42,"tag":"alcoholism","labelKo":"알코올중독","embeddingInput":"alcoholism 알코올중독 음주 의존 파멸 가족 갈등 자기파괴 회복 과정 술 문제 현실 드라마"}
+{"tagId":43,"tag":"alien","labelKo":"외계인","embeddingInput":"alien 외계인 미지 생명체 우주 생명체 조우 SF 공포 침입자 낯선 존재 우주 비밀"}
+{"tagId":44,"tag":"alien invasion","labelKo":"외계 침공","embeddingInput":"alien invasion 외계 침공 지구 침략 우주 전쟁 외계 함대 인류 위기 대규모 파괴 생존 전투"}
+{"tagId":45,"tag":"aliens","labelKo":"외계 생명체","embeddingInput":"aliens 외계 생명체 외계인 무리 우주 존재 SF 조우 침입 생존 공포 미지 생물"}
+{"tagId":46,"tag":"allegory","labelKo":"알레고리","embeddingInput":"allegory 알레고리 우화적 표현 상징 서사 은유 사회 풍자 숨은 의미 정치 비유 해석적 구조"}
+{"tagId":47,"tag":"almodovar","labelKo":"알모도바르","embeddingInput":"almodovar 알모도바르 스페인 감독 멜로드라마 강렬한 색채 여성 서사 욕망 가족 비밀 감정 과잉"}
+{"tagId":48,"tag":"alone in the world","labelKo":"세상에 홀로","embeddingInput":"alone in the world 세상에 홀로 고립 외로움 생존 상실감 버려짐 고독한 인물 낯선 세계 절망"}
+{"tagId":49,"tag":"alter ego","labelKo":"또 다른 자아","embeddingInput":"alter ego 또 다른 자아 이중 정체성 숨은 인격 내면 분열 분신 자아 갈등 정체성 혼란"}
+{"tagId":50,"tag":"alternate endings","labelKo":"대체 결말","embeddingInput":"alternate endings 대체 결말 다른 결말 확장판 선택형 결말 여러 버전 결말 변주 열린 가능성 서사 분기"}
+{"tagId":51,"tag":"alternate history","labelKo":"대체 역사","embeddingInput":"alternate history 대체 역사 가상 역사 역사 변주 만약의 세계 다른 과거 정치 상상력 역사 재구성"}
+{"tagId":52,"tag":"alternate reality","labelKo":"대체 현실","embeddingInput":"alternate reality 대체 현실 다른 현실 평행 현실 현실 왜곡 차원 이동 SF 세계관 인식 혼란"}
+{"tagId":53,"tag":"alternate universe","labelKo":"대체 우주","embeddingInput":"alternate universe 대체 우주 평행 우주 멀티버스 다른 세계 차원 세계관 SF 현실 분기"}
+{"tagId":54,"tag":"amazing cinematography","labelKo":"뛰어난 촬영","embeddingInput":"amazing cinematography 뛰어난 촬영 아름다운 화면 영상미 카메라워크 구도 빛 연출 시각적 완성도 인상적 장면"}
+{"tagId":55,"tag":"amazing photography","labelKo":"뛰어난 화면미","embeddingInput":"amazing photography 뛰어난 화면미 아름다운 촬영 영상미 사진 같은 장면 구도 색감 빛 표현 시각미"}
+{"tagId":56,"tag":"american civil war","labelKo":"미국 남북전쟁","embeddingInput":"american civil war 미국 남북전쟁 내전 노예제 역사 전쟁 북군 남군 시대극 미국 역사 전장"}
+{"tagId":57,"tag":"amnesia","labelKo":"기억상실","embeddingInput":"amnesia 기억상실 잃어버린 기억 정체성 추적 과거 미스터리 기억 회복 혼란 단서 찾기 심리 스릴러"}
+{"tagId":58,"tag":"amy smart","labelKo":"에이미 스마트","embeddingInput":"amy smart 에이미 스마트 배우 출연 로맨틱 코미디 스릴러 미국 배우 캐릭터 중심 할리우드 연기"}
+{"tagId":59,"tag":"android(s)/cyborg(s)","labelKo":"안드로이드와 사이보그","embeddingInput":"android(s)/cyborg(s) 안드로이드와 사이보그 인조인간 기계 인간 로봇 신체 SF 정체성 기술 미래 인간성"}
+{"tagId":60,"tag":"androids","labelKo":"안드로이드","embeddingInput":"androids 안드로이드 인조인간 로봇 인간형 기계 SF 인공지능 정체성 인간성 미래 기술"}
+{"tagId":61,"tag":"animal movie","labelKo":"동물 이야기","embeddingInput":"animal movie 동물 이야기 동물 주인공 반려동물 야생동물 가족 모험 자연 우정 귀여운 동물"}
+{"tagId":62,"tag":"animals","labelKo":"동물들","embeddingInput":"animals 동물들 동물 캐릭터 야생동물 반려동물 자연 생명체 동물 행동 가족 모험 우정"}
+{"tagId":63,"tag":"animated","labelKo":"애니메이션화된","embeddingInput":"animated 애니메이션화된 움직이는 그림 그림체 캐릭터 표현 2D 3D 스톱모션 가족 대상 상상력"}
+{"tagId":64,"tag":"animation","labelKo":"애니메이션","embeddingInput":"animation 애니메이션 그림체 캐릭터 움직임 2D 3D 스톱모션 상상력 가족 판타지 시각 표현"}
+{"tagId":65,"tag":"anime","labelKo":"애니메","embeddingInput":"anime 애니메 일본 애니메이션 만화풍 작화 캐릭터 서사 판타지 SF 감성 연출 청춘"}
+{"tagId":66,"tag":"antarctica","labelKo":"남극","embeddingInput":"antarctica 남극 얼음 대륙 혹한 탐험 고립 기지 설원 생존 자연 극지 환경"}
+{"tagId":67,"tag":"anti-hero","labelKo":"안티히어로","embeddingInput":"anti-hero 안티히어로 결함 있는 주인공 도덕적 회색 반영웅 거친 성격 복수 어두운 매력 복잡한 인물"}
+{"tagId":68,"tag":"anti-semitism","labelKo":"반유대주의","embeddingInput":"anti-semitism 반유대주의 유대인 차별 혐오 역사 박해 홀로코스트 사회 편견 정치 갈등 인권 문제"}
+{"tagId":69,"tag":"anti-war","labelKo":"반전","embeddingInput":"anti-war 반전 전쟁 비판 평화주의 전쟁 참상 군국주의 비판 희생 트라우마 인간성 파괴"}
+{"tagId":70,"tag":"apocalypse","labelKo":"종말","embeddingInput":"apocalypse 종말 세계 멸망 문명 붕괴 생존 재난 포스트 아포칼립스 인류 위기 파괴된 세계"}
+{"tagId":71,"tag":"archaeology","labelKo":"고고학","embeddingInput":"archaeology 고고학 유적 발굴 고대 문명 유물 탐험 역사 미스터리 모험 고대 비밀"}
+{"tagId":72,"tag":"argentina","labelKo":"아르헨티나","embeddingInput":"argentina 아르헨티나 남미 배경 부에노스아이레스 정치 역사 탱고 문화 사회 현실 가족 드라마"}
+{"tagId":73,"tag":"arms dealer","labelKo":"무기상","embeddingInput":"arms dealer 무기상 무기 거래 전쟁 산업 불법 거래 밀매 국제 범죄 전쟁 수익 도덕 갈등"}
+{"tagId":74,"tag":"arnold","labelKo":"아놀드","embeddingInput":"arnold 아놀드 슈워제네거 액션 스타 근육질 영웅 터프한 캐릭터 80년대 액션 블록버스터"}
+{"tagId":75,"tag":"art","labelKo":"예술","embeddingInput":"art 예술 창작 회화 조각 미학 예술가 표현 감각 갤러리 창조성 아름다움"}
+{"tagId":76,"tag":"art house","labelKo":"아트하우스","embeddingInput":"art house 아트하우스 예술성 독립 감성 실험적 연출 느린 호흡 작가주의 난해함 미학 중심"}
+{"tagId":77,"tag":"artificial intelligence","labelKo":"인공지능","embeddingInput":"artificial intelligence 인공지능 AI 기계 지능 미래 기술 자의식 알고리즘 인간성 로봇 윤리"}
+{"tagId":78,"tag":"artist","labelKo":"예술가","embeddingInput":"artist 예술가 창작자 화가 음악가 작가 창작 과정 예술혼 고뇌 재능 표현 욕망"}
+{"tagId":79,"tag":"artistic","labelKo":"예술적인","embeddingInput":"artistic 예술적인 미학적 감각적 실험적 표현주의적 아름다운 구성 창작성 시각미 작가주의"}
+{"tagId":80,"tag":"artsy","labelKo":"예술풍","embeddingInput":"artsy 예술풍 감각적 스타일 실험적 분위기 독립 감성 미학 중심 난해한 연출 작가주의"}
+{"tagId":81,"tag":"assassin","labelKo":"암살자","embeddingInput":"assassin 암살자 킬러 청부살인 비밀 임무 표적 제거 냉혹한 인물 액션 스릴러 잠입"}
+{"tagId":82,"tag":"assassination","labelKo":"암살","embeddingInput":"assassination 암살 정치 살해 표적 제거 음모 저격 권력 갈등 비밀 작전 역사 사건"}
+{"tagId":83,"tag":"assassins","labelKo":"암살자들","embeddingInput":"assassins 암살자들 킬러 조직 청부살인 표적 제거 비밀 임무 액션 스릴러 잠입 냉혹한 세계"}
+{"tagId":84,"tag":"astronauts","labelKo":"우주비행사","embeddingInput":"astronauts 우주비행사 우주 임무 우주선 탐사 NASA 무중력 생존 고립 과학 모험"}
+{"tagId":85,"tag":"atheism","labelKo":"무신론","embeddingInput":"atheism 무신론 신앙 부정 종교 논쟁 철학적 질문 믿음 회의주의 세계관 도덕 성찰"}
+{"tagId":86,"tag":"atmospheric","labelKo":"분위기 있는","embeddingInput":"atmospheric 분위기 있는 몰입감 짙은 정서 감각적 톤 여운 공간감 음산함 서정적 무드"}
+{"tagId":87,"tag":"australia","labelKo":"호주","embeddingInput":"australia 호주 오스트레일리아 배경 아웃백 자연 황야 도시 문화 원주민 역사 남반구 풍경"}
+{"tagId":88,"tag":"australian","labelKo":"호주식","embeddingInput":"australian 호주식 호주 배경 오스트레일리아 억양 아웃백 문화 현지 정서 남반구 사회 풍경"}
+{"tagId":89,"tag":"author:alan moore","labelKo":"앨런 무어 원작","embeddingInput":"author:alan moore 앨런 무어 원작 그래픽노블 작가 어두운 히어로 정치 풍자 디스토피아 복잡한 서사 코믹스"}
+{"tagId":90,"tag":"author:neil gaiman","labelKo":"닐 게이먼 원작","embeddingInput":"author:neil gaiman 닐 게이먼 원작 판타지 작가 신화적 세계 동화적 어둠 마법 기묘한 상상력 문학 각색"}
+{"tagId":91,"tag":"autism","labelKo":"자폐","embeddingInput":"autism 자폐 자폐 스펙트럼 신경다양성 소통 차이 감각 민감성 가족 관계 사회 적응 개인 성장"}
+{"tagId":92,"tag":"aviation","labelKo":"항공","embeddingInput":"aviation 항공 비행 조종사 항공기 공중 임무 비행 역사 공항 하늘 기술 항공 사고"}
+{"tagId":93,"tag":"awesome","labelKo":"굉장한","embeddingInput":"awesome 굉장한 압도적 재미 강렬한 인상 짜릿함 완성도 높은 멋진 장면 몰입감 큰 만족감"}
+{"tagId":94,"tag":"awesome soundtrack","labelKo":"훌륭한 사운드트랙","embeddingInput":"awesome soundtrack 훌륭한 사운드트랙 음악 좋은 명곡 OST 인상적 음악 장면 몰입 사운드 감성 리듬감"}
+{"tagId":95,"tag":"awful","labelKo":"끔찍한 완성도","embeddingInput":"awful 끔찍한 완성도 조악한 구성 형편없는 연출 불쾌한 경험 엉성함 낮은 완성도 실망스러운 결과"}
+{"tagId":96,"tag":"bad","labelKo":"별로인","embeddingInput":"bad 별로인 낮은 완성도 허술한 연출 엉성한 구성 실망스러운 전개 부족한 매력 아쉬운 결과"}
+{"tagId":97,"tag":"bad acting","labelKo":"어색한 연기","embeddingInput":"bad acting 어색한 연기 과장된 연기 감정 전달 부족 몰입 방해 부자연스러운 대사 표정 어색 연기력 부족"}
+{"tagId":98,"tag":"bad cgi","labelKo":"조악한 CGI","embeddingInput":"bad cgi 조악한 CGI 어색한 시각효과 티 나는 그래픽 낮은 완성도 합성 티남 부자연스러운 화면 몰입 저하"}
+{"tagId":99,"tag":"bad ending","labelKo":"아쉬운 결말","embeddingInput":"bad ending 아쉬운 결말 허무한 마무리 설득력 부족 급한 마무리 결말 실망 복선 회수 부족 찝찝한 마무리"}
+{"tagId":100,"tag":"bad plot","labelKo":"허술한 줄거리","embeddingInput":"bad plot 허술한 줄거리 개연성 부족 빈약한 서사 억지 전개 설득력 낮음 동기 부족 결말 허술"}
+{"tagId":101,"tag":"bad science","labelKo":"엉터리 과학","embeddingInput":"bad science 엉터리 과학 과학 오류 비현실적 이론 고증 부족 억지 설정 가짜 실험 황당한 기술 오류 많은 SF"}
+{"tagId":102,"tag":"bad script","labelKo":"허술한 각본","embeddingInput":"bad script 허술한 각본 대사 어색 빈약한 구성 개연성 부족 억지 전개 산만한 서사 설득력 낮음"}
+{"tagId":103,"tag":"bad sequel","labelKo":"실망스러운 속편","embeddingInput":"bad sequel 실망스러운 속편 후속편 실패 전편보다 약함 반복 전개 매력 감소 무리한 확장 기대 이하"}
+{"tagId":104,"tag":"ballet","labelKo":"발레","embeddingInput":"ballet 발레 무용 발레리나 무대 공연 클래식 음악 예술 무대 춤 훈련 우아한 동작"}
+{"tagId":105,"tag":"bank robbery","labelKo":"은행 강도","embeddingInput":"bank robbery 은행 강도 강도 계획 금고 털이 인질극 범죄 작전 경찰 대치 도주 긴장감"}
+{"tagId":106,"tag":"baseball","labelKo":"야구","embeddingInput":"baseball 야구 야구장 투수 타자 팀 스포츠 경기 시즌 우승 훈련 스포츠 드라마"}
+{"tagId":107,"tag":"based on a book","labelKo":"책 원작","embeddingInput":"based on a book 책 원작 소설 원작 문학 각색 원작 서사 원작 캐릭터 베스트셀러 각색 판타지 원작"}
+{"tagId":108,"tag":"based on a comic","labelKo":"코믹스 원작","embeddingInput":"based on a comic 코믹스 원작 만화 각색 그래픽 노블 히어로 원작 패널 감성 시각적 연출 팬덤"}
+{"tagId":109,"tag":"based on a play","labelKo":"연극 원작","embeddingInput":"based on a play 연극 원작 희곡 각색 무대 원작 대사 중심 실내극 배우 중심 극적 갈등"}
+{"tagId":110,"tag":"based on a true story","labelKo":"실화 바탕","embeddingInput":"based on a true story 실화 바탕 실제 사건 실존 인물 현실 기반 역사 사건 재현 드라마 감동 서사"}
+{"tagId":111,"tag":"based on a tv show","labelKo":"TV 시리즈 원작","embeddingInput":"based on a tv show TV 시리즈 원작 드라마 원작 방송 원작 캐릭터 확장 팬덤 스핀오프 시리즈 각색"}
+{"tagId":112,"tag":"based on a video game","labelKo":"비디오게임 원작","embeddingInput":"based on a video game 비디오게임 원작 게임 각색 액션 어드벤처 플레이 감성 캐릭터 전투 세계관"}
+{"tagId":113,"tag":"based on book","labelKo":"책 기반","embeddingInput":"based on book 책 기반 소설 각색 문학 원작 원작 줄거리 서사 중심 작가 원작 독서 감성"}
+{"tagId":114,"tag":"based on comic","labelKo":"만화 기반","embeddingInput":"based on comic 만화 기반 코믹스 각색 그래픽 노블 히어로 서사 원작 캐릭터 비주얼 액션"}
+{"tagId":115,"tag":"based on true story","labelKo":"실화 기반","embeddingInput":"based on true story 실화 기반 실제 사건 현실 재현 실존 인물 역사 드라마 사건 중심 감동 실화"}
+{"tagId":116,"tag":"basketball","labelKo":"농구","embeddingInput":"basketball 농구 코트 경기 선수 팀워크 스포츠 드라마 우승 경쟁 훈련 리그 덩크"}
+{"tagId":117,"tag":"batman","labelKo":"배트맨","embeddingInput":"batman 배트맨 고담 다크 히어로 슈퍼히어로 자경단 범죄와의 싸움 빌런 DC 망토"}
+{"tagId":118,"tag":"bdsm","labelKo":"BDSM","embeddingInput":"bdsm BDSM 지배와 복종 성적 권력 긴장감 금기 관계 어두운 욕망 성인 소재 심리 게임"}
+{"tagId":119,"tag":"beatles","labelKo":"비틀즈","embeddingInput":"beatles 비틀즈 밴드 음악 영국 록 팝 음악 전설 60년대 팝문화 뮤지션 팬덤"}
+{"tagId":120,"tag":"beautiful","labelKo":"아름다운","embeddingInput":"beautiful 아름다운 미적 감각 우아한 장면 감성적 화면 매혹적 분위기 섬세한 연출 시각적 아름다움 여운"}
+{"tagId":121,"tag":"beautiful scenery","labelKo":"아름다운 풍경","embeddingInput":"beautiful scenery 아름다운 풍경 자연 경관 웅장한 풍광 여행 감성 산과 바다 그림 같은 배경 시각미"}
+{"tagId":122,"tag":"beautifully filmed","labelKo":"아름다운 촬영","embeddingInput":"beautifully filmed 아름다운 촬영 영상미 뛰어남 섬세한 카메라 유려한 화면 빛의 연출 미장센 감각적 구도"}
+{"tagId":123,"tag":"beauty pageant","labelKo":"미인 대회","embeddingInput":"beauty pageant 미인 대회 무대 경쟁 참가자 왕관 심사 쇼비즈 외모 경쟁 풍자 화려한 의상"}
+{"tagId":124,"tag":"beer","labelKo":"맥주","embeddingInput":"beer 맥주 술집 펍 음주 파티 분위기 친구 모임 노동자 정서 코미디 일상"}
+{"tagId":125,"tag":"berlin","labelKo":"베를린","embeddingInput":"berlin 베를린 독일 도시 냉전 장벽 유럽 배경 역사 스릴러 도시 분위기 분단"}
+{"tagId":126,"tag":"best of 2005","labelKo":"2005년 베스트","embeddingInput":"best of 2005 2005년 베스트 2005 명작 그해 화제작 평단 호평 대중 인기 수작 연말 목록"}
+{"tagId":127,"tag":"best war films","labelKo":"최고 전쟁물","embeddingInput":"best war films 최고 전쟁물 전쟁 명작 전장 드라마 군인 서사 역사 전쟁 전투 장면 반전 메시지"}
+{"tagId":128,"tag":"betrayal","labelKo":"배신","embeddingInput":"betrayal 배신 신뢰 붕괴 음모 배반 관계 파탄 반전 충격 복수 감정 갈등"}
+{"tagId":129,"tag":"better than expected","labelKo":"기대 이상","embeddingInput":"better than expected 기대 이상 의외의 완성도 예상 밖 재미 숨은 수작 반전 매력 만족감 놀라운 전개"}
+{"tagId":130,"tag":"better than the american version","labelKo":"미국판보다 나음","embeddingInput":"better than the american version 미국판보다 나음 원판 우위 리메이크 비교 더 탄탄함 현지판 우수 각색 차이 완성도 높음"}
+{"tagId":131,"tag":"biblical","labelKo":"성서적","embeddingInput":"biblical 성서적 성경 소재 종교 서사 예언 구원 죄와 심판 신화적 규모 고대 배경"}
+{"tagId":132,"tag":"big budget","labelKo":"대규모 제작비","embeddingInput":"big budget 대규모 제작비 블록버스터 대형 세트 화려한 효과 스타 캐스팅 스케일 큰 액션 대작"}
+{"tagId":133,"tag":"biographical","labelKo":"전기적","embeddingInput":"biographical 전기적 실존 인물 삶의 기록 생애 서사 역사 인물 성장과 업적 개인사 드라마"}
+{"tagId":134,"tag":"biography","labelKo":"전기","embeddingInput":"biography 전기 인물 일대기 실존 인물 생애 기록 업적과 갈등 역사적 삶 개인사"}
+{"tagId":135,"tag":"biopic","labelKo":"전기 드라마","embeddingInput":"biopic 전기 드라마 실존 인물 일대기 삶의 전환점 역사 인물 예술가 생애 유명인 서사"}
+{"tagId":136,"tag":"birds","labelKo":"새","embeddingInput":"birds 새 조류 떼 새 공포 자연 위협 동물 소재 하늘 장면 불길한 징조 생태"}
+{"tagId":137,"tag":"biting","labelKo":"신랄한","embeddingInput":"biting 신랄한 날카로운 풍자 독한 유머 비판적 시선 냉소 사회 풍자 쓴웃음 공격적 대사"}
+{"tagId":138,"tag":"bittersweet","labelKo":"씁쓸달콤한","embeddingInput":"bittersweet 씁쓸달콤한 아련한 감정 기쁨과 슬픔 여운 있는 이별 따뜻한 상실 성숙한 감성 애잔함"}
+{"tagId":139,"tag":"bizarre","labelKo":"기괴한","embeddingInput":"bizarre 기괴한 이상한 분위기 초현실 괴상한 전개 낯선 감각 엉뚱함 불안한 상상력 컬트"}
+{"tagId":140,"tag":"black and white","labelKo":"흑백","embeddingInput":"black and white 흑백 모노크롬 고전미 명암 대비 빈티지 화면 예술적 촬영 필름 감성 시대극"}
+{"tagId":141,"tag":"black comedy","labelKo":"블랙 코미디","embeddingInput":"black comedy 블랙 코미디 어두운 유머 풍자 죽음 농담 냉소적 웃음 사회 비판 잔혹한 웃음 아이러니"}
+{"tagId":142,"tag":"blaxploitation","labelKo":"블랙스플로이테이션","embeddingInput":"blaxploitation 블랙스플로이테이션 흑인 문화 70년대 액션 범죄 펑크 음악 거리 감성 저항 정서 컬트"}
+{"tagId":143,"tag":"bleak","labelKo":"암울한","embeddingInput":"bleak 암울한 절망적 분위기 황량한 정서 희망 없음 차가운 현실 비극적 결말 우울한 톤"}
+{"tagId":144,"tag":"blindness","labelKo":"실명","embeddingInput":"blindness 실명 시각 상실 보이지 않음 감각 의존 장애 경험 어둠 속 삶 심리적 고립 생존"}
+{"tagId":145,"tag":"blood","labelKo":"피","embeddingInput":"blood 피 유혈 상처 폭력 살육 공포 고어 붉은 흔적 잔혹 장면 신체 훼손"}
+{"tagId":146,"tag":"bloody","labelKo":"피투성이","embeddingInput":"bloody 피투성이 유혈 낭자 잔혹 폭력 고어 살상 장면 상처 난무 피의 충돌 과격한 액션"}
+{"tagId":147,"tag":"boarding school","labelKo":"기숙학교","embeddingInput":"boarding school 기숙학교 학생 생활 폐쇄적 공간 학교 규율 청소년 갈등 우정 비밀 성장 서사"}
+{"tagId":148,"tag":"boat","labelKo":"배","embeddingInput":"boat 배 선박 바다 항해 해상 모험 표류 선원 물 위의 긴장 탈출 생존"}
+{"tagId":149,"tag":"bollywood","labelKo":"볼리우드","embeddingInput":"bollywood 볼리우드 인도 뮤지컬 춤과 노래 화려한 색감 로맨스 가족 드라마 대중 오락"}
+{"tagId":150,"tag":"bombs","labelKo":"폭탄","embeddingInput":"bombs 폭탄 폭발 테러 시한장치 해체 작전 긴박한 카운트다운 대규모 위협 액션 스릴러"}
+{"tagId":151,"tag":"bond","labelKo":"제임스 본드","embeddingInput":"bond 제임스 본드 007 스파이 첩보 액션 비밀요원 슈트와 총격 카지노 추격 악당 음모"}
+{"tagId":152,"tag":"book","labelKo":"책","embeddingInput":"book 책 독서 소설 문학 작가 서점 원고 지식 기록 원작 소재 서사 중심"}
+{"tagId":153,"tag":"book was better","labelKo":"원작이 더 나음","embeddingInput":"book was better 원작이 더 나음 책이 우위 각색 아쉬움 소설 감성 부족 생략 많음 원작 팬 반응"}
+{"tagId":154,"tag":"books","labelKo":"책들","embeddingInput":"books 책들 독서 문학 서재 작가 원고 도서관 지식 소설 소재 서점 이야기"}
+{"tagId":155,"tag":"boring","labelKo":"지루한","embeddingInput":"boring 지루한 느린 전개 긴장감 부족 밋밋한 구성 반복 장면 몰입 낮음 늘어지는 호흡 단조로움"}
+{"tagId":156,"tag":"boring!","labelKo":"너무 지루한","embeddingInput":"boring! 너무 지루한 극도로 느림 흥미 부족 답답한 전개 단조로운 장면 몰입 실패 긴장감 없음 지루함"}
+{"tagId":157,"tag":"boston","labelKo":"보스턴","embeddingInput":"boston 보스턴 미국 동부 도시 범죄 드라마 노동자 계층 아일랜드계 분위기 항구 도시 지역색"}
+{"tagId":158,"tag":"bowling","labelKo":"볼링","embeddingInput":"bowling 볼링 볼링장 핀 스트라이크 레인 스포츠 코미디 동호회 경기 친구 모임 캐주얼 경쟁"}
+{"tagId":159,"tag":"boxing","labelKo":"복싱","embeddingInput":"boxing 복싱 권투 링 경기 선수 훈련 투지 언더독 스포츠 드라마 챔피언 도전"}
+{"tagId":160,"tag":"brainwashing","labelKo":"세뇌","embeddingInput":"brainwashing 세뇌 정신 조작 통제된 사고 심리 조작 컬트 집단 권력 통제 기억 왜곡 음모"}
+{"tagId":161,"tag":"brazil","labelKo":"브라질","embeddingInput":"brazil 브라질 남미 리우 빈민가 축제 문화 정치 혼란 열대 도시 사회 현실"}
+{"tagId":162,"tag":"breathtaking","labelKo":"숨막히게 멋진","embeddingInput":"breathtaking 숨막히게 멋진 압도적 장면 장엄한 스케일 놀라운 영상미 강렬한 순간 감탄 유발 긴장감 최고조"}
+{"tagId":163,"tag":"brilliant","labelKo":"탁월한","embeddingInput":"brilliant 탁월한 뛰어난 완성도 영리한 구성 빛나는 연출 강한 인상 명석한 대사 훌륭한 서사"}
+{"tagId":164,"tag":"british","labelKo":"영국식","embeddingInput":"british 영국식 영국 배경 영국 억양 계급 사회 건조한 유머 런던 분위기 시대극 감성"}
+{"tagId":165,"tag":"british comedy","labelKo":"영국 코미디","embeddingInput":"british comedy 영국 코미디 건조한 유머 블랙 유머 풍자적 대사 어색한 상황 위트 영국식 웃음 사회 풍자"}
+{"tagId":166,"tag":"broadway","labelKo":"브로드웨이","embeddingInput":"broadway 브로드웨이 뮤지컬 무대 뉴욕 공연 극장 노래와 춤 쇼비즈 배우 꿈 화려한 조명"}
+{"tagId":167,"tag":"brothers","labelKo":"형제","embeddingInput":"brothers 형제 가족 관계 형제 갈등 우애 경쟁 혈연 드라마 성장 상처와 화해 가족사"}
+{"tagId":168,"tag":"brutal","labelKo":"잔혹한","embeddingInput":"brutal 잔혹한 거친 폭력 냉혹한 현실 강도 높은 액션 무자비함 고통스러운 장면 폭력적 분위기"}
+{"tagId":169,"tag":"brutality","labelKo":"잔혹성","embeddingInput":"brutality 잔혹성 폭력의 강도 무자비한 행위 냉혹한 세계 고문 학대 피비린내 억압과 폭력 충격"}
+{"tagId":170,"tag":"buddy movie","labelKo":"버디 무비","embeddingInput":"buddy movie 버디 무비 콤비 주인공 파트너 관계 남자 우정 티격태격 케미 로드 무비 협력 액션"}
+{"tagId":171,"tag":"bullshit history","labelKo":"엉터리 역사","embeddingInput":"bullshit history 엉터리 역사 역사 왜곡 고증 엉망 사실 오류 과장된 사건 가짜 역사 황당한 해석 시대착오"}
+{"tagId":172,"tag":"bullying","labelKo":"괴롭힘","embeddingInput":"bullying 괴롭힘 따돌림 학교 폭력 권력 관계 피해자 가해자 청소년 갈등 심리 상처 복수"}
+{"tagId":173,"tag":"business","labelKo":"비즈니스","embeddingInput":"business 비즈니스 기업 경영 거래 협상 돈과 권력 직장 세계 창업 경쟁 자본 시장"}
+{"tagId":174,"tag":"c.s. lewis","labelKo":"C.S. 루이스","embeddingInput":"c.s. lewis C.S. 루이스 나니아 작가 판타지 문학 기독교 상징 영국 작가 원작 세계관"}
+{"tagId":175,"tag":"california","labelKo":"캘리포니아","embeddingInput":"california 캘리포니아 서부 해안 로스앤젤레스 햇살 할리우드 해변 도시 청춘 자유 분위기"}
+{"tagId":176,"tag":"camp","labelKo":"캠프 감성","embeddingInput":"camp 캠프 감성 과장된 연기 의도적 촌스러움 컬트 유머 화려한 과장 키치 스타일 장난스러운 톤"}
+{"tagId":177,"tag":"campy","labelKo":"캠피한","embeddingInput":"campy 캠피한 과장된 재미 키치한 연출 촌스러운 매력 컬트 감성 유치한 멋 장난기 B급 감성"}
+{"tagId":178,"tag":"canada","labelKo":"캐나다","embeddingInput":"canada 캐나다 북미 배경 눈 덮인 풍경 국경 지역 토론토 퀘벡 자연 풍광 이민 사회"}
+{"tagId":179,"tag":"cancer","labelKo":"암","embeddingInput":"cancer 암 질병 투병 병원 가족 슬픔 생명과 죽음 환자 돌봄 감정 드라마 이별"}
+{"tagId":180,"tag":"cannibalism","labelKo":"식인","embeddingInput":"cannibalism 식인 인육 금기 공포 생존 극한 상황 잔혹한 본능 고어 야만성 충격 소재"}
+{"tagId":181,"tag":"caper","labelKo":"범죄 작전극","embeddingInput":"caper 범죄 작전극 절도 계획 팀플레이 유쾌한 범죄 사기 작전 허술한 변수 도둑 코미디"}
+{"tagId":182,"tag":"capitalism","labelKo":"자본주의","embeddingInput":"capitalism 자본주의 돈과 권력 계급 격차 기업 탐욕 시장 논리 사회 비판 부의 불평등 노동"}
+{"tagId":183,"tag":"car chase","labelKo":"자동차 추격","embeddingInput":"car chase 자동차 추격 차량 액션 고속 질주 도로 추격 충돌 장면 경찰 추격 스턴트 긴박함"}
+{"tagId":184,"tag":"carrie-anne moss","labelKo":"캐리앤 모스","embeddingInput":"carrie-anne moss 캐리앤 모스 배우 캐스팅 강한 여성 캐릭터 SF 액션 미스터리 냉정한 분위기"}
+{"tagId":185,"tag":"cars","labelKo":"자동차","embeddingInput":"cars 자동차 차량 레이싱 도로 질주 정비 차고 속도감 운전 문화 추격 액션"}
+{"tagId":186,"tag":"cartoon","labelKo":"카툰","embeddingInput":"cartoon 카툰 애니메이션 만화풍 과장된 표현 가족 오락 캐릭터 중심 유쾌한 톤 그림체"}
+{"tagId":187,"tag":"casino","labelKo":"카지노","embeddingInput":"casino 카지노 도박 테이블 게임 카드 칩 라스베이거스 사기 작전 돈의 유혹 화려한 밤"}
+{"tagId":188,"tag":"catastrophe","labelKo":"대재앙","embeddingInput":"catastrophe 대재앙 재난 붕괴 대규모 피해 생존 위기 혼란 파괴 장면 절망적 상황 구조"}
+{"tagId":189,"tag":"cathartic","labelKo":"카타르시스","embeddingInput":"cathartic 카타르시스 감정 해소 통쾌함 억눌린 분노 폭발 눈물과 해방 강렬한 결말 정서적 정화"}
+{"tagId":190,"tag":"catholicism","labelKo":"가톨릭","embeddingInput":"catholicism 가톨릭 성당 신부 신앙 고해성사 죄와 구원 교회 권위 종교 갈등 의식"}
+{"tagId":191,"tag":"censorship","labelKo":"검열","embeddingInput":"censorship 검열 표현 통제 금지된 말 권력 탄압 언론 억압 금서 정치적 압박 자유 제한"}
+{"tagId":192,"tag":"cerebral","labelKo":"지적인","embeddingInput":"cerebral 지적인 사유 중심 철학적 주제 복잡한 구조 두뇌 자극 심리적 해석 관념적 전개 난해함"}
+{"tagId":193,"tag":"cgi","labelKo":"CGI","embeddingInput":"cgi CGI 컴퓨터 그래픽 시각효과 디지털 크리처 가상 배경 특수효과 액션 장면 판타지 구현"}
+{"tagId":194,"tag":"character study","labelKo":"인물 탐구","embeddingInput":"character study 인물 탐구 심리 묘사 내면 변화 성격 분석 관계 중심 개인의 균열 섬세한 연기 느린 관찰"}
+{"tagId":195,"tag":"chase","labelKo":"추격","embeddingInput":"chase 추격 도망 추적 긴박한 질주 액션 스릴러 경찰과 범인 숨막힌 속도 골목 추격 탈출"}
+{"tagId":196,"tag":"cheating","labelKo":"불륜과 속임수","embeddingInput":"cheating 불륜과 속임수 바람 배신 거짓말 관계 균열 시험 부정행위 신뢰 붕괴 로맨스 갈등"}
+{"tagId":197,"tag":"cheerleading","labelKo":"치어리딩","embeddingInput":"cheerleading 치어리딩 응원단 학교 스포츠 댄스 팀워크 경쟁 청춘 에너지 대회 퍼포먼스"}
+{"tagId":198,"tag":"cheesy","labelKo":"오글거리는","embeddingInput":"cheesy 오글거리는 유치한 대사 촌스러운 감성 과한 감동 뻔한 전개 멜로 과잉 B급 매력"}
+{"tagId":199,"tag":"chess","labelKo":"체스","embeddingInput":"chess 체스 두뇌 싸움 전략 심리전 천재 플레이어 경기 보드 게임 집중 승부 계산"}
+{"tagId":200,"tag":"chicago","labelKo":"시카고","embeddingInput":"chicago 시카고 미국 도시 갱스터 범죄 재즈 분위기 금주법 시대 도심 배경 정치 부패"}
+{"tagId":201,"tag":"chick flick","labelKo":"여성향 로맨틱 코미디","embeddingInput":"chick flick 여성향 로맨틱 코미디 로맨스 우정 가벼운 웃음 데이트 감성 관계 중심 발랄한 분위기"}
+{"tagId":202,"tag":"child abuse","labelKo":"아동 학대","embeddingInput":"child abuse 아동 학대 가정 폭력 트라우마 피해 아동 어두운 과거 보호받지 못함 심리 상처"}
+{"tagId":203,"tag":"childhood","labelKo":"어린 시절","embeddingInput":"childhood 어린 시절 유년기 성장 추억 가족 기억 순수함 과거 회상 아이 시절"}
+{"tagId":204,"tag":"children","labelKo":"아이들","embeddingInput":"children 아이들 어린이 가족 순수함 성장 놀이 모험 동심 어린 주인공 형제자매"}
+{"tagId":205,"tag":"china","labelKo":"중국","embeddingInput":"china 중국 중국 배경 중국 문화 중국 역사 중화권 베이징 상하이 동아시아 중국 사회"}
+{"tagId":206,"tag":"chocolate","labelKo":"초콜릿","embeddingInput":"chocolate 초콜릿 달콤함 제과 디저트 카카오 가게 선물 로맨틱 감성 판타지적 분위기"}
+{"tagId":207,"tag":"chris tucker","labelKo":"Chris Tucker","embeddingInput":"chris tucker Chris Tucker 코미디 배우 빠른 말투 버디 액션 유쾌한 캐릭터 에너지 넘침 코믹 연기"}
+{"tagId":208,"tag":"christian","labelKo":"기독교적","embeddingInput":"christian 기독교적 신앙 믿음 교회 성경 종교적 가치 구원 죄와 용서 영적 갈등"}
+{"tagId":209,"tag":"christianity","labelKo":"기독교","embeddingInput":"christianity 기독교 신앙 교회 성경 예수 종교 역사 믿음 구원 선교 영적 주제"}
+{"tagId":210,"tag":"christmas","labelKo":"크리스마스","embeddingInput":"christmas 크리스마스 성탄절 겨울 가족 선물 축제 따뜻한 분위기 눈 명절 기적"}
+{"tagId":211,"tag":"cia","labelKo":"CIA","embeddingInput":"cia CIA 정보기관 첩보 작전 스파이 비밀 임무 미국 정보국 감시 암살 음모"}
+{"tagId":212,"tag":"cinematography","labelKo":"촬영미","embeddingInput":"cinematography 촬영미 영상미 카메라워크 구도 조명 색감 롱테이크 화면 구성 미장센 시각미"}
+{"tagId":213,"tag":"circus","labelKo":"서커스","embeddingInput":"circus 서커스 곡예 광대 천막 공연단 유랑단 묘기 환상적 분위기 무대 동물 쇼"}
+{"tagId":214,"tag":"civil war","labelKo":"내전","embeddingInput":"civil war 내전 분열 전쟁 형제 대립 정치 갈등 군사 충돌 역사 비극 반군"}
+{"tagId":215,"tag":"classic","labelKo":"고전 명작","embeddingInput":"classic 고전 명작 시대를 넘은 품격 오래된 명성 정통 서사 대표 서사 역사적 가치"}
+{"tagId":216,"tag":"classic car","labelKo":"클래식 자동차","embeddingInput":"classic car 클래식 자동차 빈티지 차량 올드카 복고 감성 도로 추격 운전 미국식 낭만"}
+{"tagId":217,"tag":"classical music","labelKo":"클래식 음악","embeddingInput":"classical music 클래식 음악 오케스트라 피아노 바이올린 교향곡 작곡가 연주회 우아한 분위기 예술성"}
+{"tagId":218,"tag":"claustrophobic","labelKo":"폐쇄공포적","embeddingInput":"claustrophobic 폐쇄공포적 좁은 공간 밀실 압박감 답답함 갇힘 긴장감 불안 고립 탈출 압박"}
+{"tagId":219,"tag":"claymation","labelKo":"클레이 애니메이션","embeddingInput":"claymation 클레이 애니메이션 스톱모션 점토 인형 수작업 질감 미니어처 움직임 독특한 비주얼"}
+{"tagId":220,"tag":"clever","labelKo":"영리한","embeddingInput":"clever 영리한 재치 있는 기발한 구성 두뇌 싸움 반전 아이디어 지적인 유머 치밀함"}
+{"tagId":221,"tag":"clones","labelKo":"복제 인간들","embeddingInput":"clones 복제 인간들 복제체 동일한 존재 정체성 혼란 실험 생명공학 SF 윤리 갈등"}
+{"tagId":222,"tag":"cloning","labelKo":"복제 기술","embeddingInput":"cloning 복제 기술 생명공학 유전자 실험 복제 인간 윤리 문제 정체성 SF 과학 통제"}
+{"tagId":223,"tag":"clowns","labelKo":"광대들","embeddingInput":"clowns 광대들 서커스 분장 기괴함 웃음과 공포 삐에로 공연 불안한 분위기 익살 괴상함"}
+{"tagId":224,"tag":"coen bros","labelKo":"코엔 형제","embeddingInput":"coen bros 코엔 형제 블랙 코미디 기묘한 범죄 부조리한 상황 건조한 유머 엉뚱한 인물 냉소적 톤"}
+{"tagId":225,"tag":"coen brothers","labelKo":"코엔 형제","embeddingInput":"coen brothers 코엔 형제 블랙 코미디 범죄 소동 부조리 건조한 유머 기묘한 캐릭터 냉소적 시선"}
+{"tagId":226,"tag":"cold war","labelKo":"냉전","embeddingInput":"cold war 냉전 이념 대립 스파이 핵 위기 미국 소련 첩보 긴장 국제 정치 비밀 작전"}
+{"tagId":227,"tag":"college","labelKo":"대학","embeddingInput":"college 대학 캠퍼스 청춘 기숙사 강의실 동아리 연애 우정 파티 성장 학생 생활"}
+{"tagId":228,"tag":"colonialism","labelKo":"식민주의","embeddingInput":"colonialism 식민주의 제국주의 지배 착취 저항 원주민 역사 폭력 문화 충돌 권력 불균형"}
+{"tagId":229,"tag":"colourful","labelKo":"다채로운 색감","embeddingInput":"colourful 다채로운 색감 화려한 화면 선명한 색채 생동감 밝은 톤 시각적 즐거움 팝한 분위기"}
+{"tagId":230,"tag":"comedy","labelKo":"코미디","embeddingInput":"comedy 코미디 웃음 유머 익살 소동 가벼운 분위기 재치 해프닝 풍자 코믹 상황"}
+{"tagId":231,"tag":"comic","labelKo":"만화적","embeddingInput":"comic 만화적 코믹한 과장된 표현 익살 유머 시각 개그 만화 감성 가벼운 톤 재치"}
+{"tagId":232,"tag":"comic book","labelKo":"코믹북","embeddingInput":"comic book 코믹북 만화 원작 슈퍼히어로 그래픽 서사 패널 감성 히어로 빌런 액션"}
+{"tagId":233,"tag":"comic book adaption","labelKo":"코믹북 각색","embeddingInput":"comic book adaption 코믹북 각색 만화 원작 히어로 서사 그래픽 감성 슈퍼히어로 빌런 액션 세계관"}
+{"tagId":234,"tag":"comics","labelKo":"만화","embeddingInput":"comics 만화 그래픽 서사 코믹북 히어로 캐릭터 패널 감성 과장된 표현 액션 판타지"}
+{"tagId":235,"tag":"coming of age","labelKo":"성장 서사","embeddingInput":"coming of age 성장 서사 청춘 자아 발견 첫사랑 가족 갈등 어른 되기 우정 방황 성숙"}
+{"tagId":236,"tag":"coming-of-age","labelKo":"성장 서사","embeddingInput":"coming-of-age 성장 서사 청춘 자아 발견 방황 첫사랑 우정 가족 갈등 성숙 어른 되기"}
+{"tagId":237,"tag":"communism","labelKo":"공산주의","embeddingInput":"communism 공산주의 이념 혁명 계급 투쟁 국가 통제 사회주의 정치 선전 냉전 집단주의"}
+{"tagId":238,"tag":"compassionate","labelKo":"연민 어린","embeddingInput":"compassionate 연민 어린 따뜻한 시선 공감 배려 인간애 용서 치유 다정함 약자 보호"}
+{"tagId":239,"tag":"competition","labelKo":"경쟁","embeddingInput":"competition 경쟁 대결 승부 라이벌 우승 도전 토너먼트 긴장감 목표 압박 실력 겨루기"}
+{"tagId":240,"tag":"complex","labelKo":"복합적인","embeddingInput":"complex 복합적인 다층적 구조 얽힌 관계 난해한 구성 깊은 의미 복잡한 감정 해석 여지"}
+{"tagId":241,"tag":"complex characters","labelKo":"복잡한 인물들","embeddingInput":"complex characters 복잡한 인물들 다면적 성격 내적 갈등 모순된 동기 심리 깊이 입체적 캐릭터 도덕적 회색"}
+{"tagId":242,"tag":"complicated","labelKo":"복잡한","embeddingInput":"complicated 복잡한 얽힌 관계 난해한 전개 이해 어려움 다중 갈등 꼬인 사건 복합 구조 혼란스러움"}
+{"tagId":243,"tag":"complicated plot","labelKo":"복잡한 줄거리","embeddingInput":"complicated plot 복잡한 줄거리 얽힌 전개 다중 사건 난해한 구조 반전 복선 시간 교차 이해 어려움"}
+{"tagId":244,"tag":"computer animation","labelKo":"컴퓨터 애니메이션","embeddingInput":"computer animation 컴퓨터 애니메이션 CGI 3D 애니메이션 디지털 그래픽 가상 캐릭터 렌더링 시각 효과 가족 모험"}
+{"tagId":245,"tag":"computer game","labelKo":"컴퓨터 게임","embeddingInput":"computer game 컴퓨터 게임 비디오게임 가상 세계 플레이어 레벨 퀘스트 아케이드 디지털 모험 게임 문화"}
+{"tagId":246,"tag":"computers","labelKo":"컴퓨터","embeddingInput":"computers 컴퓨터 해킹 프로그래밍 디지털 기술 네트워크 데이터 사이버 공간 인공지능 화면 장치"}
+{"tagId":247,"tag":"con artists","labelKo":"사기꾼들","embeddingInput":"con artists 사기꾼들 속임수 사기 계획 위장 범죄 기만 반전 두뇌 싸움 허슬러"}
+{"tagId":248,"tag":"con men","labelKo":"사기꾼들","embeddingInput":"con men 사기꾼들 속임수 기만 사기극 위장 범죄 계획 반전 말재주 허슬"}
+{"tagId":249,"tag":"confrontational","labelKo":"대립적인","embeddingInput":"confrontational 대립적인 충돌 갈등 직면 날 선 대화 공격적 태도 긴장 관계 논쟁 압박"}
+{"tagId":250,"tag":"confusing","labelKo":"혼란스러운","embeddingInput":"confusing 혼란스러운 난해한 전개 이해 어려움 모호한 구성 복잡한 사건 불분명한 동기 어지러운 흐름"}
+{"tagId":251,"tag":"conspiracy","labelKo":"음모","embeddingInput":"conspiracy 음모 비밀 조직 은폐 조작 권력 암투 진실 추적 배후 세력 편집증적 긴장"}
+{"tagId":252,"tag":"conspiracy theory","labelKo":"음모론","embeddingInput":"conspiracy theory 음모론 은폐된 진실 비밀 세력 조작 의심 편집증 추적 권력 배후 불신"}
+{"tagId":253,"tag":"controversial","labelKo":"논쟁적인","embeddingInput":"controversial 논쟁적인 도발적 주제 사회적 논란 불편한 소재 찬반 갈등 금기 파격 문제적 시선"}
+{"tagId":254,"tag":"cooking","labelKo":"요리","embeddingInput":"cooking 요리 주방 셰프 음식 레시피 식당 미식 조리 가족 식탁 맛의 감각"}
+{"tagId":255,"tag":"cool","labelKo":"멋진","embeddingInput":"cool 멋진 스타일리시 세련된 분위기 카리스마 감각적 연출 힙한 느낌 여유 액션 폼나는"}
+{"tagId":256,"tag":"corny","labelKo":"유치한","embeddingInput":"corny 유치한 진부한 감상적 과장된 대사 촌스러운 감성 뻔한 전개 낯간지러움 신파"}
+{"tagId":257,"tag":"corporate america","labelKo":"미국 기업 사회","embeddingInput":"corporate america 미국 기업 사회 대기업 사무실 자본주의 직장 문화 권력 구조 탐욕 비즈니스 풍자"}
+{"tagId":258,"tag":"corruption","labelKo":"부패","embeddingInput":"corruption 부패 뇌물 권력 남용 비리 은폐 정치 범죄 탐욕 내부 고발 도덕 붕괴"}
+{"tagId":259,"tag":"costume drama","labelKo":"시대극","embeddingInput":"costume drama 시대극 의상극 역사 배경 궁정 귀족 고전 의상 시대 분위기 로맨스 사회 관습"}
+{"tagId":260,"tag":"courage","labelKo":"용기","embeddingInput":"courage 용기 두려움 극복 희생 결단 영웅적 행동 신념 위험 맞섬 의지 담대함"}
+{"tagId":261,"tag":"court","labelKo":"법정","embeddingInput":"court 법정 재판 판사 변호사 증언 배심원 판결 법률 공방 정의 법적 갈등"}
+{"tagId":262,"tag":"courtroom","labelKo":"법정극","embeddingInput":"courtroom 법정극 재판 변호사 검사 증언 배심원 판결 법률 공방 진실 규명"}
+{"tagId":263,"tag":"courtroom drama","labelKo":"법정 드라마","embeddingInput":"courtroom drama 법정 드라마 재판 공방 변호사 검사 증언 배심원 진실 추적 판결 도덕 갈등"}
+{"tagId":264,"tag":"crappy sequel","labelKo":"형편없는 속편","embeddingInput":"crappy sequel 형편없는 속편 실망스러운 후속편 약한 줄거리 반복된 설정 완성도 부족 무리한 확장 진부함"}
+{"tagId":265,"tag":"crazy","labelKo":"광기 어린","embeddingInput":"crazy 광기 어린 미친 전개 혼란스러운 에너지 과격한 행동 예측 불가 기괴함 폭주 엉뚱함"}
+{"tagId":266,"tag":"creativity","labelKo":"창의성","embeddingInput":"creativity 창의성 독창성 상상력 기발한 아이디어 예술적 발상 새로운 형식 실험적 감각 표현력"}
+{"tagId":267,"tag":"creepy","labelKo":"섬뜩한","embeddingInput":"creepy 섬뜩한 오싹함 불길한 분위기 기괴함 으스스함 심리 공포 불안 음산한 느낌"}
+{"tagId":268,"tag":"crime","labelKo":"범죄","embeddingInput":"crime 범죄 수사 갱스터 살인 절도 경찰 범죄자 추적 어두운 도시 불법 거래"}
+{"tagId":269,"tag":"crime gone awry","labelKo":"틀어진 범죄 계획","embeddingInput":"crime gone awry 틀어진 범죄 계획 실패한 범죄 꼬인 작전 예상 밖 변수 배신 추격 위기 소동"}
+{"tagId":270,"tag":"criterion","labelKo":"Criterion","embeddingInput":"criterion Criterion 예술성 고전 명성 엄선된 컬렉션 감독 중심 복원판 시네필 감성 비평적 가치"}
+{"tagId":271,"tag":"cross dressing","labelKo":"여장남장","embeddingInput":"cross dressing 여장남장 변장 성별 위장 정체성 혼동 코미디 상황 사회 역할 비밀 생활"}
+{"tagId":272,"tag":"crude humor","labelKo":"거친 유머","embeddingInput":"crude humor 거친 유머 저속한 농담 성인 농담 몸개그 불경한 웃음 노골적 표현 막장 개그"}
+{"tagId":273,"tag":"cuba","labelKo":"쿠바","embeddingInput":"cuba 쿠바 카리브해 하바나 혁명 라틴 문화 음악 열대 배경 정치 역사 이국적 분위기"}
+{"tagId":274,"tag":"cult","labelKo":"컬트","embeddingInput":"cult 컬트 기이한 매력 독특한 팬덤 비주류 감성 괴상한 설정 파격적 분위기 마니아층"}
+{"tagId":275,"tag":"cult classic","labelKo":"컬트 고전","embeddingInput":"cult classic 컬트 고전 비주류 명성 마니아층 독특한 매력 시대를 넘은 기괴함 재발견 파격성"}
+{"tagId":276,"tag":"cult film","labelKo":"컬트 필름","embeddingInput":"cult film 컬트 필름 비주류 감성 마니아층 기괴한 매력 파격적 설정 독특한 분위기 재평가"}
+{"tagId":277,"tag":"culture clash","labelKo":"문화 충돌","embeddingInput":"culture clash 문화 충돌 가치관 차이 이방인 갈등 세대 차이 관습 대립 오해 정체성 혼란 사회 풍자"}
+{"tagId":278,"tag":"cute","labelKo":"귀여운","embeddingInput":"cute 귀여운 사랑스러운 아기자기한 따뜻한 분위기 순수함 발랄함 매력적인 캐릭터 미소 유발"}
+{"tagId":279,"tag":"cute!","labelKo":"귀여움","embeddingInput":"cute! 귀여움 사랑스러움 아기자기함 발랄한 매력 순수한 분위기 따뜻함 미소 유발 깜찍함"}
+{"tagId":280,"tag":"cyberpunk","labelKo":"사이버펑크","embeddingInput":"cyberpunk 사이버펑크 디스토피아 네온 도시 해킹 인공 신체 기업 지배 가상 현실 미래 범죄"}
+{"tagId":281,"tag":"cyborgs","labelKo":"사이보그","embeddingInput":"cyborgs 사이보그 기계 인간 인공 신체 로봇 기술 SF 정체성 전투 강화 인간성 갈등"}
+{"tagId":282,"tag":"cynical","labelKo":"냉소적인","embeddingInput":"cynical 냉소적인 비관적 시선 차가운 유머 불신 사회 풍자 씁쓸함 허무주의 날카로운 태도"}
+{"tagId":283,"tag":"dance","labelKo":"춤","embeddingInput":"dance 춤 댄스 무대 리듬 안무 공연 열정 음악 신체 표현 경연 로맨스"}
+{"tagId":284,"tag":"dancing","labelKo":"춤추기","embeddingInput":"dancing 춤추기 댄스 안무 리듬 무대 공연 열정 음악 신체 표현 경연 파티"}
+{"tagId":285,"tag":"dark","labelKo":"어두운 분위기","embeddingInput":"dark 어두운 분위기 암울한 톤 음산함 비극적 정서 불길함 무거운 분위기 냉혹함 그림자"}
+{"tagId":286,"tag":"dark comedy","labelKo":"블랙 코미디","embeddingInput":"dark comedy 블랙 코미디 어두운 유머 냉소적 웃음 죽음 풍자 부조리 잔혹한 농담 씁쓸한 분위기"}
+{"tagId":287,"tag":"dark fantasy","labelKo":"다크 판타지","embeddingInput":"dark fantasy 다크 판타지 어두운 마법 괴물 저주 음산한 세계 잔혹한 동화 악몽 신화적 공포"}
+{"tagId":288,"tag":"dark hero","labelKo":"어두운 영웅","embeddingInput":"dark hero 어두운 영웅 안티히어로 복수 고독한 구원자 도덕적 회색 폭력적 정의 내면의 상처"}
+{"tagId":289,"tag":"dark humor","labelKo":"어두운 유머","embeddingInput":"dark humor 어두운 유머 냉소적 농담 죽음 풍자 잔혹한 웃음 불편한 코미디 부조리 씁쓸함"}
+{"tagId":290,"tag":"dc comics","labelKo":"DC 코믹스","embeddingInput":"dc comics DC 코믹스 슈퍼히어로 히어로 빌런 만화 원작 어두운 세계관 도시 액션 가면"}
+{"tagId":291,"tag":"deadpan","labelKo":"무표정 유머","embeddingInput":"deadpan 무표정 유머 건조한 말투 시큰둥한 반응 냉정한 코미디 담담한 표정 절제된 웃음"}
+{"tagId":292,"tag":"death","labelKo":"죽음","embeddingInput":"death 죽음 상실 애도 비극 사망 운명 삶과 죽음 장례 슬픔 존재의 끝"}
+{"tagId":293,"tag":"death penalty","labelKo":"사형제","embeddingInput":"death penalty 사형제 사형 집행 법정 윤리 논쟁 죄와 벌 국가 권력 사형수 정의 갈등"}
+{"tagId":294,"tag":"demons","labelKo":"악마들","embeddingInput":"demons 악마들 악령 지옥 초자연 공포 퇴마 저주 유혹 어둠 괴물 영적 전쟁"}
+{"tagId":295,"tag":"depp & burton","labelKo":"Depp & Burton","embeddingInput":"depp & burton Depp & Burton 고딕 판타지 기괴한 비주얼 팀 버튼 조니 뎁 동화적 어둠 괴짜 캐릭터"}
+{"tagId":296,"tag":"depressing","labelKo":"우울한","embeddingInput":"depressing 우울한 암울한 정서 절망 슬픔 무기력 비극적 분위기 무거운 톤 상실감 고독"}
+{"tagId":297,"tag":"depression","labelKo":"우울증","embeddingInput":"depression 우울증 정신적 고통 무기력 고립 슬픔 내면의 어둠 치유 상실 불안 심리 드라마"}
+{"tagId":298,"tag":"desert","labelKo":"사막","embeddingInput":"desert 사막 황야 고립 뜨거운 태양 모래 광활한 풍경 생존 여정 건조한 배경 오아시스"}
+{"tagId":299,"tag":"destiny","labelKo":"운명","embeddingInput":"destiny 운명 숙명 예언 필연 선택과 결과 인연 정해진 길 비극적 만남 거대한 흐름"}
+{"tagId":300,"tag":"detective","labelKo":"탐정","embeddingInput":"detective 탐정 수사 추리 단서 사건 해결 미스터리 관찰력 범인 추적 하드보일드 조사"}
+{"tagId":301,"tag":"devil","labelKo":"악마","embeddingInput":"devil 악마 사탄 악령 지옥 유혹 저주 오컬트 초자연 공포 악의 존재"}
+{"tagId":302,"tag":"dialogue","labelKo":"대화","embeddingInput":"dialogue 대화 말맛 대사 중심 언어 유머 논쟁 설전 인물 관계 감정 교환"}
+{"tagId":303,"tag":"dialogue driven","labelKo":"대화 중심","embeddingInput":"dialogue driven 대화 중심 대사 중심 말맛 긴 대화 토론 설전 언어극 인물 심리 관계 변화"}
+{"tagId":304,"tag":"dinosaurs","labelKo":"공룡","embeddingInput":"dinosaurs 공룡 선사시대 거대 생물 쥐라기 포식자 생존 모험 괴수 자연 위협"}
+{"tagId":305,"tag":"directorial debut","labelKo":"감독 데뷔","embeddingInput":"directorial debut 감독 데뷔 첫 연출 신인 감독 데뷔작 초기 연출 첫 장편 새로운 시선"}
+{"tagId":306,"tag":"disability","labelKo":"장애","embeddingInput":"disability 장애 신체 제약 사회 장벽 차별 극복 돌봄 자립 편견 접근성 인간 존엄"}
+{"tagId":307,"tag":"disappointing","labelKo":"실망스러운","embeddingInput":"disappointing 실망스러운 기대 이하 아쉬운 완성도 맥빠진 전개 허술한 결말 밋밋함 부족한 재미"}
+{"tagId":308,"tag":"disaster","labelKo":"재난","embeddingInput":"disaster 재난 대형 참사 생존 위기 붕괴 구조 혼란 자연 재해 긴박한 탈출"}
+{"tagId":309,"tag":"disney","labelKo":"디즈니","embeddingInput":"disney 디즈니 가족 모험 뮤지컬 동화 감성 애니메이션 마법 캐릭터 클래식 환상"}
+{"tagId":310,"tag":"disney animated feature","labelKo":"디즈니 장편 애니메이션","embeddingInput":"disney animated feature 디즈니 장편 애니메이션 뮤지컬 동화 가족 모험 마법 캐릭터 감성 클래식"}
+{"tagId":311,"tag":"distopia","labelKo":"디스토피아","embeddingInput":"distopia 디스토피아 억압 사회 통제 체제 암울한 미래 감시 저항 붕괴된 질서 전체주의 생존"}
+{"tagId":312,"tag":"disturbing","labelKo":"불편한 충격","embeddingInput":"disturbing 불편한 충격 섬뜩함 심리 압박 잔혹함 불안 기괴한 분위기 도덕적 혼란 찝찝한 여운"}
+{"tagId":313,"tag":"divorce","labelKo":"이혼","embeddingInput":"divorce 이혼 부부 갈등 가족 해체 양육권 별거 상처 관계 파탄 법정 다툼 감정 소모"}
+{"tagId":314,"tag":"doctors","labelKo":"의사들","embeddingInput":"doctors 의사들 의료 병원 수술 진단 생명 윤리 환자 치료 응급 상황 전문직"}
+{"tagId":315,"tag":"documentary","labelKo":"다큐멘터리","embeddingInput":"documentary 다큐멘터리 실제 기록 인터뷰 관찰 현실 자료 증언 사회 이슈 사실 기반"}
+{"tagId":316,"tag":"dog","labelKo":"개","embeddingInput":"dog 개 반려견 충성 우정 동물 동반자 구조 가족 교감 모험 따뜻함"}
+{"tagId":317,"tag":"dogs","labelKo":"개들","embeddingInput":"dogs 개들 반려견 무리 충성 우정 동물 동반자 구조 가족 교감 모험"}
+{"tagId":318,"tag":"dolphins","labelKo":"돌고래","embeddingInput":"dolphins 돌고래 해양 생물 지능 교감 바다 자연 보호 수중 모험 동물 관계"}
+{"tagId":319,"tag":"downbeat","labelKo":"침울한","embeddingInput":"downbeat 침울한 우울한 분위기 비관적 정서 낮은 톤 쓸쓸함 무거운 여운 희망 부족 씁쓸함"}
+{"tagId":320,"tag":"dr. seuss","labelKo":"Dr. Seuss","embeddingInput":"dr. seuss Dr. Seuss 동화 원작 운율 상상력 기발한 세계 아동 판타지 독특한 캐릭터"}
+{"tagId":321,"tag":"dragon","labelKo":"용","embeddingInput":"dragon 용 거대 생물 불길 신화 판타지 괴수 비행 마법 전설 모험"}
+{"tagId":322,"tag":"dragons","labelKo":"용들","embeddingInput":"dragons 용들 거대 생물 불길 신화 판타지 괴수 비행 마법 전설 모험"}
+{"tagId":323,"tag":"drama","labelKo":"드라마","embeddingInput":"drama 드라마 인간관계 감정 갈등 현실적 서사 인물 성장 가족 사회 내면 변화"}
+{"tagId":324,"tag":"dramatic","labelKo":"극적인","embeddingInput":"dramatic 극적인 감정 고조 강한 갈등 긴장 전환 격정적 순간 비극적 울림 인물 대립"}
+{"tagId":325,"tag":"dreamlike","labelKo":"몽환적인","embeddingInput":"dreamlike 몽환적인 꿈결 같은 초현실 환상적 이미지 흐릿한 경계 신비로운 분위기 비현실 감각"}
+{"tagId":326,"tag":"dreams","labelKo":"꿈","embeddingInput":"dreams 꿈 무의식 환상 악몽 희망 기억 초현실 심리 욕망 예지 상상"}
+{"tagId":327,"tag":"dreamworks","labelKo":"드림웍스","embeddingInput":"dreamworks 드림웍스 애니메이션 가족 모험 코미디 캐릭터 유머 판타지 동물 활극"}
+{"tagId":328,"tag":"drinking","labelKo":"음주","embeddingInput":"drinking 음주 술 술자리 취기 알코올 중독 파티 방황 일탈 관계 갈등"}
+{"tagId":329,"tag":"drug abuse","labelKo":"약물 남용","embeddingInput":"drug abuse 약물 남용 중독 파괴 자기 파멸 범죄 방황 금단 현실 도피 어두운 삶"}
+{"tagId":330,"tag":"drug addiction","labelKo":"약물 중독","embeddingInput":"drug addiction 약물 중독 금단 의존 자기 파괴 회복 시도 방황 범죄 가족 갈등 어두운 현실"}
+{"tagId":331,"tag":"drugs","labelKo":"마약","embeddingInput":"drugs 마약 약물 범죄 중독 거래 카르텔 환각 타락 위험한 선택 어두운 거리"}
+{"tagId":332,"tag":"dumb","labelKo":"멍청한","embeddingInput":"dumb 멍청한 허술한 전개 바보 같은 유치한 판단 단순한 웃음 엉뚱함 저급한 개그"}
+{"tagId":333,"tag":"dumb but funny","labelKo":"멍청하지만 웃긴","embeddingInput":"dumb but funny 멍청하지만 웃긴 바보 개그 유치한 웃음 황당함 엉뚱함 가벼운 코미디 어이없는 상황"}
+{"tagId":334,"tag":"dynamic cgi action","labelKo":"역동적 CGI 액션","embeddingInput":"dynamic cgi action 역동적 CGI 액션 컴퓨터 그래픽 속도감 시각 효과 전투 추격 스펙터클 디지털 활극"}
+{"tagId":335,"tag":"dysfunctional family","labelKo":"문제 많은 가족","embeddingInput":"dysfunctional family 문제 많은 가족 가족 갈등 상처 불화 소통 부재 비밀 붕괴된 관계 세대 갈등"}
+{"tagId":336,"tag":"dystopia","labelKo":"디스토피아","embeddingInput":"dystopia 디스토피아 억압 사회 통제 체제 암울한 미래 감시 저항 전체주의 생존 붕괴"}
+{"tagId":337,"tag":"dystopic future","labelKo":"디스토피아 미래","embeddingInput":"dystopic future 디스토피아 미래 암울한 미래 통제 사회 감시 체제 억압 저항 기술 지배 생존"}
+{"tagId":338,"tag":"earnest","labelKo":"진지한","embeddingInput":"earnest 진지한 성실한 태도 순수한 감정 진심 어린 도덕적 이상 정직한 정서 담백함"}
+{"tagId":339,"tag":"easily confused with other movie(s) (title)","labelKo":"헷갈리는 제목","embeddingInput":"easily confused with other movie(s) (title) 헷갈리는 제목 유사 제목 비슷한 이름 혼동 쉬움 제목 중복 기억 오류 구분 어려움"}
+{"tagId":340,"tag":"east germany","labelKo":"동독","embeddingInput":"east germany 동독 냉전 베를린 장벽 감시 체제 분단 사회 비밀경찰 사회주의 탈출 정치 억압"}
+{"tagId":341,"tag":"eccentricity","labelKo":"기이한 개성","embeddingInput":"eccentricity 기이한 개성 괴짜 독특함 별난 행동 엉뚱함 비주류 감각 이상한 매력 파격"}
+{"tagId":342,"tag":"ecology","labelKo":"생태","embeddingInput":"ecology 생태 자연 균형 환경 파괴 생명 순환 보존 인간과 자연 생태계 위기"}
+{"tagId":343,"tag":"educational","labelKo":"교육적인","embeddingInput":"educational 교육적인 학습 지식 전달 역사 과학 정보 교훈 이해 돕는 설명 사실 기반"}
+{"tagId":344,"tag":"eerie","labelKo":"으스스한","embeddingInput":"eerie 으스스한 섬뜩함 불길한 분위기 기묘한 정적 소름 불안 신비 공포 전조"}
+{"tagId":345,"tag":"effects","labelKo":"효과","embeddingInput":"effects 효과 시각 효과 특수 효과 분장 음향 효과 장면 구현 기술적 완성도 스펙터클 화면 연출"}
+{"tagId":346,"tag":"egypt","labelKo":"이집트","embeddingInput":"egypt 이집트 고대 문명 피라미드 파라오 사막 유적 미라 신화 고고학 나일강"}
+{"tagId":347,"tag":"emma watson","labelKo":"Emma Watson","embeddingInput":"emma watson Emma Watson 배우 영국 배우 여성 주연 헤르미온느 스타 연기 청춘 캐릭터"}
+{"tagId":348,"tag":"emotional","labelKo":"감정적인","embeddingInput":"emotional 감정적인 눈물 감동 슬픔 애틋함 마음 울림 인간관계 정서적 여운 따뜻함"}
+{"tagId":349,"tag":"end of the world","labelKo":"세계의 종말","embeddingInput":"end of the world 세계의 종말 멸망 아포칼립스 인류 위기 재앙 생존 최후 붕괴 절망 대재난"}
+{"tagId":350,"tag":"england","labelKo":"잉글랜드","embeddingInput":"england 잉글랜드 영국 런던 왕실 계급 사회 시골 풍경 역사 시대극 영국 문화"}
+{"tagId":351,"tag":"enigmatic","labelKo":"수수께끼 같은","embeddingInput":"enigmatic 수수께끼 같은 미스터리 모호함 비밀 난해한 분위기 해석 여지 불가사의 의미 숨김 신비"}
+{"tagId":352,"tag":"ennio morricone","labelKo":"Ennio Morricone","embeddingInput":"ennio morricone Ennio Morricone 작곡가 음악 서부극 스코어 오케스트라 선율 명장 사운드트랙 감성"}
+{"tagId":353,"tag":"enormously long battle scene","labelKo":"매우 긴 전투 장면","embeddingInput":"enormously long battle scene 매우 긴 전투 장면 대규모 전투 장시간 액션 전쟁 시퀀스 군중 충돌 스펙터클 격전"}
+{"tagId":354,"tag":"ensemble cast","labelKo":"앙상블 캐스트","embeddingInput":"ensemble cast 앙상블 캐스트 다중 주인공 군상극 스타 배우 여러 인물 관계망 집단 서사 균형 연기"}
+{"tagId":355,"tag":"entertaining","labelKo":"재미있는","embeddingInput":"entertaining 재미있는 흥미로운 즐거움 몰입감 유쾌한 전개 빠른 리듬 볼거리 대중적 재미"}
+{"tagId":356,"tag":"entirely dialogue","labelKo":"전부 대화","embeddingInput":"entirely dialogue 전부 대화 대사만 구성 말 중심 제한된 공간 토론 설전 언어극 인물 심리"}
+{"tagId":357,"tag":"environment","labelKo":"환경","embeddingInput":"environment 환경 자연 생태 오염 기후 위기 보존 인간과 자연 지속 가능성 환경 파괴"}
+{"tagId":358,"tag":"environmental","labelKo":"환경적인","embeddingInput":"environmental 환경적인 생태 자연 보호 오염 기후 변화 환경 위기 지속 가능성 보존 메시지"}
+{"tagId":359,"tag":"epic","labelKo":"서사적인 대작","embeddingInput":"epic 서사적인 대작 장대한 규모 영웅 여정 역사 전쟁 스펙터클 운명 긴 여정 웅장함"}
+{"tagId":360,"tag":"erotic","labelKo":"에로틱한","embeddingInput":"erotic 에로틱한 관능적 욕망 섹슈얼 긴장 육체적 매혹 성적 분위기 유혹 성인 정서"}
+{"tagId":361,"tag":"espionage","labelKo":"첩보","embeddingInput":"espionage 첩보 스파이 정보전 비밀 작전 잠입 배신 감시 냉전 음모 이중생활"}
+{"tagId":362,"tag":"ethnic conflict","labelKo":"민족 갈등","embeddingInput":"ethnic conflict 민족 갈등 종족 대립 차별 분쟁 역사 상처 증오 폭력 공동체 붕괴 화해"}
+{"tagId":363,"tag":"evolution","labelKo":"진화","embeddingInput":"evolution 진화 생명 변화 적응 과학 변이 생물학 인류 기원 자연 선택 발전"}
+{"tagId":364,"tag":"excellent","labelKo":"훌륭한","embeddingInput":"excellent 훌륭한 뛰어난 완성도 명작급 인상적 강한 몰입 높은 품질 탁월함 잘 만든"}
+{"tagId":365,"tag":"excellent script","labelKo":"뛰어난 각본","embeddingInput":"excellent script 뛰어난 각본 탄탄한 대본 정교한 구조 좋은 대사 설득력 있는 전개 완성도 높은 서사"}
+{"tagId":366,"tag":"exceptional acting","labelKo":"탁월한 연기","embeddingInput":"exceptional acting 탁월한 연기 명연기 배우 역량 감정 표현 몰입 연기력 섬세한 표현 강한 존재감"}
+{"tagId":367,"tag":"exciting","labelKo":"신나는","embeddingInput":"exciting 신나는 짜릿함 긴장감 속도감 활력 넘침 박진감 흥분 액션 몰입 쾌감"}
+{"tagId":368,"tag":"existentialism","labelKo":"실존주의","embeddingInput":"existentialism 실존주의 존재 의미 삶의 공허 자유 선택 고독 부조리 자아 탐구 철학적 사유"}
+{"tagId":369,"tag":"explosions","labelKo":"폭발","embeddingInput":"explosions 폭발 화염 파괴 액션 대형 사고 전투 충격파 추격 스펙터클 위험 긴박함"}
+{"tagId":370,"tag":"factual","labelKo":"사실적인","embeddingInput":"factual 사실적인 실제 기반 기록적 정확성 정보 중심 현실 자료 역사적 사실 검증된 내용 객관성"}
+{"tagId":371,"tag":"fairy tale","labelKo":"동화","embeddingInput":"fairy tale 동화 마법 공주 왕자 교훈 환상 숲 저주 해피엔딩 고전 이야기"}
+{"tagId":372,"tag":"fairy tales","labelKo":"동화들","embeddingInput":"fairy tales 동화들 마법 이야기 고전 설화 공주 왕자 저주 환상 교훈 해피엔딩"}
+{"tagId":373,"tag":"fake documentary","labelKo":"가짜 다큐멘터리","embeddingInput":"fake documentary 가짜 다큐멘터리 모큐멘터리 페이크 기록 인터뷰 형식 현실감 풍자 거짓 증언 촬영감"}
+{"tagId":374,"tag":"family","labelKo":"가족","embeddingInput":"family 가족 부모 자녀 형제 관계 사랑 갈등 돌봄 세대 화해 일상"}
+{"tagId":375,"tag":"family bonds","labelKo":"가족 유대","embeddingInput":"family bonds 가족 유대 사랑 신뢰 부모 자녀 형제 관계 화해 희생 돌봄 따뜻함"}
+{"tagId":376,"tag":"family drama","labelKo":"가족 드라마","embeddingInput":"family drama 가족 드라마 가족 갈등 부모 자녀 상처 화해 비밀 세대 갈등 관계 회복"}
+{"tagId":377,"tag":"fantasy","labelKo":"판타지","embeddingInput":"fantasy 판타지 마법 모험 신화 초현실 상상 세계 괴물 영웅 주문 환상"}
+{"tagId":378,"tag":"fantasy world","labelKo":"판타지 세계","embeddingInput":"fantasy world 판타지 세계 마법 왕국 이세계 신화 생물 모험 전설 주문 영웅 여정"}
+{"tagId":379,"tag":"farce","labelKo":"소극","embeddingInput":"farce 소극 과장된 코미디 오해 소동 황당한 상황 빠른 전개 문전박대 우스꽝스러움 풍자"}
+{"tagId":380,"tag":"fascism","labelKo":"파시즘","embeddingInput":"fascism 파시즘 독재 전체주의 억압 권위주의 선전 폭력 군국주의 정치 통제 저항"}
+{"tagId":381,"tag":"fashion","labelKo":"패션","embeddingInput":"fashion 패션 의상 스타일 런웨이 디자이너 모델 화려함 트렌드 옷차림 업계 미학"}
+{"tagId":382,"tag":"fast paced","labelKo":"빠른 전개","embeddingInput":"fast paced 빠른 전개 속도감 긴박함 쉴 틈 없음 빠른 리듬 몰아치는 사건 역동적 구성"}
+{"tagId":383,"tag":"father daughter relationship","labelKo":"부녀 관계","embeddingInput":"father daughter relationship 부녀 관계 아버지 딸 가족 유대 보호 갈등 화해 성장 애정 세대 차이"}
+{"tagId":384,"tag":"father son relationship","labelKo":"부자 관계","embeddingInput":"father son relationship 부자 관계 아버지 아들 가족 갈등 기대 화해 세대 차이 인정 성장"}
+{"tagId":385,"tag":"father-son relationship","labelKo":"부자 관계","embeddingInput":"father-son relationship 부자 관계 아버지 아들 가족 갈등 기대 화해 세대 차이 인정 성장"}
+{"tagId":386,"tag":"fbi","labelKo":"FBI","embeddingInput":"fbi FBI 연방수사국 수사 요원 범죄 추적 잠입 프로파일링 사건 해결 법 집행"}
+{"tagId":387,"tag":"feel good movie","labelKo":"기분 좋아지는","embeddingInput":"feel good movie 기분 좋아지는 따뜻함 유쾌함 긍정적 분위기 희망 밝은 결말 마음 편한 웃음 위로"}
+{"tagId":388,"tag":"feel-good","labelKo":"기분 좋은","embeddingInput":"feel-good 기분 좋은 따뜻한 분위기 유쾌함 긍정적 정서 희망 밝은 결말 편안함 웃음 위로"}
+{"tagId":389,"tag":"fight scenes","labelKo":"격투 장면","embeddingInput":"fight scenes 격투 장면 액션 대결 주먹 싸움 무술 전투 몸싸움 타격감 박진감 긴장"}
+{"tagId":390,"tag":"fighting","labelKo":"싸움","embeddingInput":"fighting 싸움 격투 전투 대결 몸싸움 무술 충돌 타격 액션 긴장 분노"}
+{"tagId":391,"tag":"fighting the system","labelKo":"체제와 맞서는","embeddingInput":"fighting the system 체제와 맞서는 저항 권력 대립 부조리 고발 억압 반항 사회 운동 개인 대 체제"}
+{"tagId":392,"tag":"figure skating","labelKo":"피겨 스케이팅","embeddingInput":"figure skating 피겨 스케이팅 빙상 스포츠 점프 연기 경쟁 선수 훈련 우아함 경기장"}
+{"tagId":393,"tag":"film noir","labelKo":"필름 누아르","embeddingInput":"film noir 필름 누아르 어두운 범죄 냉소적 탐정 팜파탈 그림자 도덕적 모호함 도시 밤"}
+{"tagId":394,"tag":"finnish","labelKo":"핀란드식","embeddingInput":"finnish 핀란드식 핀란드 북유럽 언어 문화 차가운 정서 건조한 유머 겨울 풍경 로컬 감성"}
+{"tagId":395,"tag":"firefly","labelKo":"Firefly","embeddingInput":"firefly Firefly 우주 서부극 SF 모험 선원 반란 변방 행성 컬트 드라마"}
+{"tagId":396,"tag":"first contact","labelKo":"첫 접촉","embeddingInput":"first contact 첫 접촉 외계 생명 조우 소통 언어 교신 SF 미지의 존재 인류 반응"}
+{"tagId":397,"tag":"fish","labelKo":"물고기","embeddingInput":"fish 물고기 바다 수중 생물 해양 모험 어항 낚시 생태 동물 교감"}
+{"tagId":398,"tag":"flashbacks","labelKo":"플래시백","embeddingInput":"flashbacks 플래시백 과거 회상 기억 조각 비선형 서사 트라우마 숨겨진 진실 시간 전환"}
+{"tagId":399,"tag":"food","labelKo":"음식","embeddingInput":"food 음식 요리 식사 식문화 주방 셰프 맛 가족 식탁 레스토랑 감각"}
+{"tagId":400,"tag":"football","labelKo":"풋볼","embeddingInput":"football 풋볼 스포츠 경기 팀워크 선수 훈련 승부 경기장 코치 경쟁 열정"}
+{"tagId":401,"tag":"forceful","labelKo":"강렬한","embeddingInput":"forceful 강렬한 힘있는 연출 압도적 에너지 강한 긴장감 박력 있음 격렬한 전개 묵직한 톤"}
+{"tagId":402,"tag":"foreign","labelKo":"외국어권","embeddingInput":"foreign 외국어권 해외 제작 비영어권 국제 감성 낯선 문화 자막 감상 세계 각국"}
+{"tagId":403,"tag":"foul language","labelKo":"거친 욕설","embeddingInput":"foul language 거친 욕설 비속어 많음 험한 말투 노골적 대사 성인 대화 거친 표현"}
+{"tagId":404,"tag":"fountain of youth","labelKo":"젊음의 샘","embeddingInput":"fountain of youth 젊음의 샘 불로장생 영원한 젊음 전설의 샘 모험 판타지 신비한 힘"}
+{"tagId":405,"tag":"france","labelKo":"프랑스","embeddingInput":"france 프랑스 프랑스 배경 프랑스 문화 파리 유럽 감성 프랑스어 분위기 프렌치 정서"}
+{"tagId":406,"tag":"franchise","labelKo":"프랜차이즈","embeddingInput":"franchise 프랜차이즈 시리즈 세계관 속편 연속 서사 인기 IP 반복 캐릭터 확장 세계"}
+{"tagId":407,"tag":"francis ford copolla","labelKo":"프랜시스 포드 코폴라","embeddingInput":"francis ford copolla 프랜시스 포드 코폴라 거장 감독 미국 뉴시네마 대부 연출 가족 서사 범죄 서사 고전 명작"}
+{"tagId":408,"tag":"free speech","labelKo":"표현의 자유","embeddingInput":"free speech 표현의 자유 검열 저항 언론 자유 사상 탄압 발언권 정치적 논쟁 사회 비판"}
+{"tagId":409,"tag":"free to download","labelKo":"무료 다운로드","embeddingInput":"free to download 무료 다운로드 공개 배포 온라인 공개 자유 배포 무료 공개 다운로드 가능 공용 접근"}
+{"tagId":410,"tag":"freedom","labelKo":"자유","embeddingInput":"freedom 자유 해방 억압 탈출 독립 의지 선택권 저항 정신 속박 거부"}
+{"tagId":411,"tag":"french","labelKo":"프랑스어","embeddingInput":"french 프랑스어 프렌치 감성 프랑스 문화 유럽 분위기 파리 배경 세련된 대화 예술 정서"}
+{"tagId":412,"tag":"friendship","labelKo":"우정","embeddingInput":"friendship 우정 친구 관계 동료애 유대감 함께 성장 의리 신뢰 관계 따뜻한 교감"}
+{"tagId":413,"tag":"frightening","labelKo":"무서운","embeddingInput":"frightening 무서운 공포감 섬뜩함 긴장감 소름 돋는 위협적 분위기 불안한 톤"}
+{"tagId":414,"tag":"fun","labelKo":"재미있는","embeddingInput":"fun 재미있는 유쾌한 즐거운 가벼운 웃음 활기찬 분위기 흥겨운 전개 기분 좋음"}
+{"tagId":415,"tag":"fun movie","labelKo":"재미있는 장르물","embeddingInput":"fun movie 재미있는 장르물 유쾌한 전개 부담 없는 웃음 경쾌한 분위기 오락성 강함 즐거운 감상"}
+{"tagId":416,"tag":"funniest movies","labelKo":"가장 웃긴 코미디","embeddingInput":"funniest movies 가장 웃긴 코미디 폭소 유발 유머 가득 코믹 상황 웃긴 장면 재치 있는 대사"}
+{"tagId":417,"tag":"funny","labelKo":"웃긴","embeddingInput":"funny 웃긴 코믹한 유머러스한 폭소 상황 재치 있는 대사 익살스러운 캐릭터 가벼운 웃음"}
+{"tagId":418,"tag":"funny as hell","labelKo":"엄청 웃긴","embeddingInput":"funny as hell 엄청 웃긴 폭소 터짐 배꼽 잡는 코미디 강한 유머 황당한 상황 웃음 폭발"}
+{"tagId":419,"tag":"future","labelKo":"미래","embeddingInput":"future 미래 미래 사회 첨단 기술 디스토피아 시간 이후 문명 변화 과학 상상 앞으로의 세계"}
+{"tagId":420,"tag":"futuristic","labelKo":"미래적인","embeddingInput":"futuristic 미래적인 첨단 도시 미래 기술 SF 분위기 세련된 비전 사이버 감성 미래 디자인"}
+{"tagId":421,"tag":"gambling","labelKo":"도박","embeddingInput":"gambling 도박 카지노 판돈 베팅 승부 심리전 빚 위험 한탕 도박 중독"}
+{"tagId":422,"tag":"gangs","labelKo":"갱단","embeddingInput":"gangs 갱단 조직 범죄 거리 폭력 세력 다툼 범죄 조직 영역 싸움 어두운 뒷골목"}
+{"tagId":423,"tag":"gangster","labelKo":"갱스터","embeddingInput":"gangster 갱스터 조직폭력 범죄 보스 마피아 언더월드 배신 권력 다툼 하드보일드"}
+{"tagId":424,"tag":"gangsters","labelKo":"갱스터들","embeddingInput":"gangsters 갱스터들 조직 범죄 마피아 집단 범죄자들 세력 전쟁 배신 암흑가 총격전"}
+{"tagId":425,"tag":"gay","labelKo":"게이","embeddingInput":"gay 게이 퀴어 정체성 동성애 남성 사랑 성소수자 관계 자기 발견 사회적 시선"}
+{"tagId":426,"tag":"gay character","labelKo":"게이 캐릭터","embeddingInput":"gay character 게이 캐릭터 퀴어 인물 동성애자 인물 성소수자 서사 정체성 갈등 관계 중심"}
+{"tagId":427,"tag":"geek","labelKo":"긱","embeddingInput":"geek 긱 덕후 지식형 캐릭터 기술 애호가 너드 감성 몰입형 취미 비주류 매력"}
+{"tagId":428,"tag":"geeks","labelKo":"긱들","embeddingInput":"geeks 긱들 덕후들 너드 집단 기술광들 지식형 인물 비주류 캐릭터 취미 몰입"}
+{"tagId":429,"tag":"genetics","labelKo":"유전학","embeddingInput":"genetics 유전학 DNA 유전자 생명공학 실험 돌연변이 유전 질환 과학 윤리 인간 개조"}
+{"tagId":430,"tag":"genius","labelKo":"천재","embeddingInput":"genius 천재 비범한 두뇌 뛰어난 재능 지적 능력 창의성 수학적 사고 고독한 재능"}
+{"tagId":431,"tag":"genocide","labelKo":"집단학살","embeddingInput":"genocide 집단학살 학살 참극 인종 청소 전쟁 범죄 역사적 비극 잔혹한 폭력 생존자 상처"}
+{"tagId":432,"tag":"george orwell","labelKo":"조지 오웰","embeddingInput":"george orwell 조지 오웰 전체주의 감시 사회 디스토피아 정치 풍자 권력 비판 사상 통제 빅브라더"}
+{"tagId":433,"tag":"german","labelKo":"독일어","embeddingInput":"german 독일어 독일 문화 유럽 배경 독일 감성 역사적 정서 베를린 분위기 진중한 톤"}
+{"tagId":434,"tag":"germany","labelKo":"독일","embeddingInput":"germany 독일 독일 배경 독일 역사 유럽 사회 베를린 전후 정서 독일 문화 냉전 분위기"}
+{"tagId":435,"tag":"ghosts","labelKo":"유령","embeddingInput":"ghosts 유령 귀신 영혼 초자연 현상 원혼 출몰 공포 분위기 사후 존재 섬뜩함"}
+{"tagId":436,"tag":"ghosts/afterlife","labelKo":"유령과 사후세계","embeddingInput":"ghosts/afterlife 유령과 사후세계 영혼 저승 사후 존재 귀신 죽음 이후 초자연 교감 미스터리"}
+{"tagId":437,"tag":"giant robots","labelKo":"거대 로봇","embeddingInput":"giant robots 거대 로봇 메카 전투 초대형 병기 로봇 액션 SF 스케일 파일럿 조종 기계 전쟁"}
+{"tagId":438,"tag":"gilliam","labelKo":"길리엄","embeddingInput":"gilliam 길리엄 테리 길리엄 기괴한 상상력 풍자 판타지 초현실 유머 비주얼 독창성"}
+{"tagId":439,"tag":"girlie movie","labelKo":"여성향 로맨스","embeddingInput":"girlie movie 여성향 로맨스 감성 로맨스 우정 사랑 관계 패션 감각 가벼운 드라마 달콤한 분위기"}
+{"tagId":440,"tag":"glbt","labelKo":"성소수자","embeddingInput":"glbt 성소수자 퀴어 LGBTQ 정체성 다양성 사랑 관계 사회적 시선 커밍아웃 공동체"}
+{"tagId":441,"tag":"global warming","labelKo":"지구 온난화","embeddingInput":"global warming 지구 온난화 기후 위기 환경 재난 빙하 해수면 상승 생태 붕괴 미래 경고"}
+{"tagId":442,"tag":"god","labelKo":"신","embeddingInput":"god 신 종교 믿음 신성함 절대자 구원 신앙 영적 갈등 초월적 존재"}
+{"tagId":443,"tag":"golden palm","labelKo":"황금종려상","embeddingInput":"golden palm 황금종려상 칸 수상 예술성 국제 페스티벌 비평가 호평 auteur 감성 권위 있는 수상"}
+{"tagId":444,"tag":"golf","labelKo":"골프","embeddingInput":"golf 골프 스포츠 경기 코스 클럽 스윙 경쟁 집중력 프로 선수 승부"}
+{"tagId":445,"tag":"good","labelKo":"좋은","embeddingInput":"good 좋은 완성도 높음 만족감 안정적 재미 탄탄한 구성 호감 가는 잘 만든 무난히 좋음"}
+{"tagId":446,"tag":"good acting","labelKo":"좋은 연기","embeddingInput":"good acting 좋은 연기 자연스러운 연기 몰입감 배우 호연 감정 표현 캐릭터 소화 설득력 있는 연기"}
+{"tagId":447,"tag":"good action","labelKo":"좋은 액션","embeddingInput":"good action 좋은 액션 박진감 전투 장면 추격전 타격감 스턴트 긴장감 액션 연출"}
+{"tagId":448,"tag":"good dialogue","labelKo":"좋은 대사","embeddingInput":"good dialogue 좋은 대사 재치 있는 대화 날카로운 문장 인물 간 말맛 기억나는 대사 자연스러운 대화"}
+{"tagId":449,"tag":"good music","labelKo":"좋은 음악","embeddingInput":"good music 좋은 음악 인상적 선율 분위기 조성 감정 강화 배경음악 장면 몰입 음악성"}
+{"tagId":450,"tag":"good romantic comedies","labelKo":"좋은 로맨틱 코미디","embeddingInput":"good romantic comedies 좋은 로맨틱 코미디 달콤한 웃음 사랑 이야기 커플 케미 경쾌한 로맨스 유쾌한 연애"}
+{"tagId":451,"tag":"good sequel","labelKo":"좋은 속편","embeddingInput":"good sequel 좋은 속편 시리즈 확장 전편 계승 발전된 서사 익숙한 캐릭터 후속 이야기 만족스러운 후속"}
+{"tagId":452,"tag":"good soundtrack","labelKo":"좋은 사운드트랙","embeddingInput":"good soundtrack 좋은 사운드트랙 OST 선곡 좋음 음악 분위기 장면과 어울림 기억나는 곡 감정선 강화"}
+{"tagId":453,"tag":"good story","labelKo":"좋은 이야기","embeddingInput":"good story 좋은 이야기 탄탄한 서사 몰입 전개 설득력 있는 구성 감정선 좋음 흥미로운 줄거리 완성도"}
+{"tagId":454,"tag":"good versus evil","labelKo":"선과 악의 대결","embeddingInput":"good versus evil 선과 악의 대결 정의와 악 영웅 대 악당 도덕 갈등 빛과 어둠 최종 결전"}
+{"tagId":455,"tag":"goofy","labelKo":"엉뚱한","embeddingInput":"goofy 엉뚱한 바보 같은 익살 황당한 웃음 우스꽝스러운 캐릭터 어설픈 행동 코믹 분위기"}
+{"tagId":456,"tag":"gore","labelKo":"고어","embeddingInput":"gore 고어 잔혹한 신체 훼손 피투성이 폭력 수위 높은 유혈 장면 충격적 공포"}
+{"tagId":457,"tag":"goretastic","labelKo":"고어 폭발","embeddingInput":"goretastic 고어 폭발 과장된 유혈 잔혹 쾌감 피투성이 장면 신체 훼손 극단적 폭력 슬래셔 감성"}
+{"tagId":458,"tag":"gory","labelKo":"잔혹한 유혈","embeddingInput":"gory 잔혹한 유혈 피가 많은 신체 훼손 잔인한 장면 고어 수위 폭력적 공포 충격적 묘사"}
+{"tagId":459,"tag":"goth","labelKo":"고스 감성","embeddingInput":"goth 고스 감성 어두운 미학 검은 의상 음울한 분위기 반항적 정서 고딕풍 우울한 청춘"}
+{"tagId":460,"tag":"gothic","labelKo":"고딕","embeddingInput":"gothic 고딕 음산한 성 어두운 낭만 고딕 호러 고풍스러운 공포 그림자 분위기 비극적 아름다움"}
+{"tagId":461,"tag":"graphic design","labelKo":"그래픽 디자인","embeddingInput":"graphic design 그래픽 디자인 시각 디자인 타이포그래피 포스터 감각 색면 구성 세련된 화면 디자인 중심"}
+{"tagId":462,"tag":"graphic novel","labelKo":"그래픽 노블","embeddingInput":"graphic novel 그래픽 노블 만화 원작 성인 만화 시각적 서사 패널 감성 다크 히어로 스타일화"}
+{"tagId":463,"tag":"gratuitous violence","labelKo":"과도한 폭력","embeddingInput":"gratuitous violence 과도한 폭력 불필요한 잔혹함 노골적 폭력 유혈 장면 충격 연출 폭력 수위 자극적 장면"}
+{"tagId":464,"tag":"great","labelKo":"훌륭한","embeddingInput":"great 훌륭한 뛰어난 완성도 강한 인상 명작급 높은 만족감 탁월한 구성 오래 남는 감동"}
+{"tagId":465,"tag":"great acting","labelKo":"뛰어난 연기","embeddingInput":"great acting 뛰어난 연기 압도적 연기 배우 열연 감정 몰입 섬세한 표현 캐릭터 완성 명연기"}
+{"tagId":466,"tag":"great cinematography","labelKo":"뛰어난 촬영","embeddingInput":"great cinematography 뛰어난 촬영 아름다운 화면 영상미 카메라 워크 구도 색감 빛의 활용 시각적 완성도"}
+{"tagId":467,"tag":"great dialogue","labelKo":"뛰어난 대사","embeddingInput":"great dialogue 뛰어난 대사 명대사 말맛 강한 대화 날카로운 문장 재치와 깊이 기억나는 대화"}
+{"tagId":468,"tag":"great ending","labelKo":"뛰어난 결말","embeddingInput":"great ending 뛰어난 결말 여운 강한 마무리 반전 결말 감동적 끝맺음 완성도 높은 결말 오래 남는 엔딩"}
+{"tagId":469,"tag":"great movie","labelKo":"훌륭한 장편","embeddingInput":"great movie 훌륭한 장편 완성도 높음 명작 감성 강한 여운 뛰어난 구성 몰입감 높은 만족감"}
+{"tagId":470,"tag":"great music","labelKo":"뛰어난 음악","embeddingInput":"great music 뛰어난 음악 강렬한 선율 음악성 높음 감정 증폭 인상적 테마 사운드 연출 귀에 남는 곡"}
+{"tagId":471,"tag":"great soundtrack","labelKo":"뛰어난 사운드트랙","embeddingInput":"great soundtrack 뛰어난 사운드트랙 명OST 완벽한 선곡 장면과 조화 기억나는 음악 감정선 강화 음악 큐"}
+{"tagId":472,"tag":"greed","labelKo":"탐욕","embeddingInput":"greed 탐욕 욕망 돈 권력 집착 부패 끝없는 야망 도덕 붕괴 이기심"}
+{"tagId":473,"tag":"grim","labelKo":"암울한","embeddingInput":"grim 암울한 비관적 어두운 현실 냉혹한 분위기 절망감 무거운 톤 가혹한 전개 bleak"}
+{"tagId":474,"tag":"grindhouse","labelKo":"그라인드하우스","embeddingInput":"grindhouse 그라인드하우스 저예산 착취물 거친 질감 B급 감성 폭력적 오락 복고풍 필름 질감"}
+{"tagId":475,"tag":"gritty","labelKo":"거칠고 현실적인","embeddingInput":"gritty 거칠고 현실적인 날것의 질감 냉혹한 현실 투박한 화면 범죄 거리 어두운 톤 생생한 폭력"}
+{"tagId":476,"tag":"gross-out","labelKo":"역겨운 유머","embeddingInput":"gross-out 역겨운 유머 지저분한 개그 불쾌한 웃음 신체 코미디 민망한 장면 저속한 농담 충격 코미디"}
+{"tagId":477,"tag":"gruesome","labelKo":"참혹한","embeddingInput":"gruesome 참혹한 잔인한 묘사 끔찍한 장면 유혈 공포 신체 훼손 비위 상함 충격적 폭력"}
+{"tagId":478,"tag":"guilt","labelKo":"죄책감","embeddingInput":"guilt 죄책감 후회 양심의 가책 과거의 잘못 속죄 심리적 부담 도덕 갈등 내면 고통"}
+{"tagId":479,"tag":"guilty pleasure","labelKo":"길티 플레저","embeddingInput":"guilty pleasure 길티 플레저 유치하지만 재미 쾌감 있는 B급 매력 부담 없는 오락 뻔한 즐거움 은근한 중독성"}
+{"tagId":480,"tag":"gulf war","labelKo":"걸프전","embeddingInput":"gulf war 걸프전 중동 전쟁 군사 작전 사막 전투 현대전 병사 경험 전쟁 후유증"}
+{"tagId":481,"tag":"gunfight","labelKo":"총격전","embeddingInput":"gunfight 총격전 총싸움 교전 액션 장면 서부 결투 범죄 액션 탄환 난무 긴박한 대치"}
+{"tagId":482,"tag":"guns","labelKo":"총기","embeddingInput":"guns 총기 총 액션 무기 사격 범죄 현장 총격 폭력 대치 화력 중심"}
+{"tagId":483,"tag":"gypsy accent","labelKo":"집시 억양","embeddingInput":"gypsy accent 집시 억양 독특한 말투 로마니 문화 강한 억양 캐릭터 말투 지역 색채 이국적 발음"}
+{"tagId":484,"tag":"hackers","labelKo":"해커들","embeddingInput":"hackers 해커들 사이버 범죄 컴퓨터 침투 네트워크 보안 코딩 디지털 추적 정보 탈취"}
+{"tagId":485,"tag":"hacking","labelKo":"해킹","embeddingInput":"hacking 해킹 사이버 침투 컴퓨터 보안 네트워크 공격 코드 조작 데이터 탈취 디지털 스릴러"}
+{"tagId":486,"tag":"halloween","labelKo":"할로윈","embeddingInput":"halloween 할로윈 가면 밤 공포 축제 호박 장식 슬래셔 분위기 의상 파티 으스스함"}
+{"tagId":487,"tag":"hallucinatory","labelKo":"환각적인","embeddingInput":"hallucinatory 환각적인 몽환적 왜곡된 현실 초현실 시각 환영 정신 혼란 기묘한 이미지 불안한 감각"}
+{"tagId":488,"tag":"handycam","labelKo":"핸디캠","embeddingInput":"handycam 핸디캠 흔들리는 화면 파운드 푸티지 현장감 1인칭 촬영 거친 카메라 다큐 감각"}
+{"tagId":489,"tag":"hannibal lecter","labelKo":"한니발 렉터","embeddingInput":"hannibal lecter 한니발 렉터 연쇄살인범 식인 심리전 지적 악역 범죄 스릴러 섬뜩한 카리스마"}
+{"tagId":490,"tag":"happy ending","labelKo":"해피엔딩","embeddingInput":"happy ending 해피엔딩 행복한 결말 따뜻한 마무리 갈등 해결 긍정적 여운 사랑 성취 안도감"}
+{"tagId":491,"tag":"hard to watch","labelKo":"보기 힘든","embeddingInput":"hard to watch 보기 힘든 고통스러운 장면 불편한 현실 심리적 압박 잔혹한 내용 무거운 감정 감당 어려움"}
+{"tagId":492,"tag":"harry potter","labelKo":"해리 포터","embeddingInput":"harry potter 해리 포터 마법 학교 호그와트 판타지 마법사 성장 모험 우정 어둠의 마법"}
+{"tagId":493,"tag":"harsh","labelKo":"가혹한","embeddingInput":"harsh 가혹한 냉혹한 현실 거친 상황 잔인한 선택 무정한 분위기 고통스러운 전개 혹독함"}
+{"tagId":494,"tag":"haunted house","labelKo":"유령의 집","embeddingInput":"haunted house 유령의 집 귀신 들린 집 초자연 공포 저택 원혼 출몰 으스스한 공간 심령 현상"}
+{"tagId":495,"tag":"hawaii","labelKo":"하와이","embeddingInput":"hawaii 하와이 섬 배경 열대 풍경 휴양지 태평양 문화 해변 분위기 이국적 정서"}
+{"tagId":496,"tag":"heartbreaking","labelKo":"가슴 아픈","embeddingInput":"heartbreaking 가슴 아픈 슬픈 이별 상실 비극적 감정 눈물 나는 애절한 서사 깊은 상처"}
+{"tagId":497,"tag":"heartwarming","labelKo":"마음 따뜻한","embeddingInput":"heartwarming 마음 따뜻한 훈훈한 감동 가족애 선한 정서 따스한 관계 치유 다정한 분위기"}
+{"tagId":498,"tag":"heist","labelKo":"강도 작전","embeddingInput":"heist 강도 작전 절도 계획 팀 범죄 금고 털이 치밀한 작전 배신 도주 긴장감"}
+{"tagId":499,"tag":"heroin","labelKo":"헤로인","embeddingInput":"heroin 헤로인 마약 중독 약물 의존 파멸 범죄 어두운 현실 금단 증상 자기 파괴"}
+{"tagId":500,"tag":"heroine","labelKo":"여주인공","embeddingInput":"heroine 여주인공 여성 주역 중심 인물 용감한 여성 주체적 캐릭터 성장 서사 활약하는 주인공"}
+{"tagId":501,"tag":"heroine in tight suit","labelKo":"타이트 슈트 여주인공","embeddingInput":"heroine in tight suit 타이트 슈트 여주인공 여성 액션 히로인 전투복 강한 여성 몸에 붙는 의상 활약 중심"}
+{"tagId":502,"tag":"high fantasy","labelKo":"하이 판타지","embeddingInput":"high fantasy 하이 판타지 장대한 세계관 마법 왕국 신화적 모험 운명 서사 영웅 여정 검과 마법"}
+{"tagId":503,"tag":"high school","labelKo":"고등학교","embeddingInput":"high school 고등학교 십대 생활 교실 캠퍼스 성장물 학생 관계 청춘 드라마 학교 배경"}
+{"tagId":504,"tag":"highly quotable","labelKo":"명대사 많은","embeddingInput":"highly quotable 명대사 많은 기억나는 대사 인용구 대사 중심 재치 있는 말맛 강한 대사 유명한 문구"}
+{"tagId":505,"tag":"hilarious","labelKo":"폭소 유발","embeddingInput":"hilarious 폭소 유발 웃긴 코미디 유쾌한 소동 재치 만점 배꼽 잡는 익살스러운 가벼운 웃음"}
+{"tagId":506,"tag":"hillarious","labelKo":"폭소 유발","embeddingInput":"hillarious 폭소 유발 웃긴 코미디 유쾌한 소동 재치 만점 배꼽 잡는 익살스러운 가벼운 웃음"}
+{"tagId":507,"tag":"hip hop","labelKo":"힙합","embeddingInput":"hip hop 힙합 랩 음악 거리 문화 비트 리듬 음악가 성장 무대 공연 도시 감성"}
+{"tagId":508,"tag":"historical","labelKo":"역사적","embeddingInput":"historical 역사적 시대극 과거 배경 실화 기반 역사 사건 궁정 전쟁 시대 재현 사회 변화"}
+{"tagId":509,"tag":"history","labelKo":"역사","embeddingInput":"history 역사 시대 배경 역사 사건 실제 사건 과거 사회 전쟁 정치 권력 변화 시대극"}
+{"tagId":510,"tag":"hit men","labelKo":"청부살인자들","embeddingInput":"hit men 청부살인자들 암살 의뢰 범죄 조직 냉혹한 킬러 표적 추적 폭력 느와르 위험한 거래"}
+{"tagId":511,"tag":"hitchcock","labelKo":"히치콕","embeddingInput":"hitchcock 히치콕 서스펜스 심리 스릴러 긴장감 미스터리 범죄 누명 관음증 반전 클래식 연출"}
+{"tagId":512,"tag":"hitman","labelKo":"청부살인자","embeddingInput":"hitman 청부살인자 암살자 킬러 의뢰 살인 표적 제거 범죄 세계 냉혹한 주인공 추격전"}
+{"tagId":513,"tag":"holiday","labelKo":"휴일","embeddingInput":"holiday 휴일 명절 시즌 축제 휴가 가족 모임 따뜻한 분위기 연말 분위기 기념일"}
+{"tagId":514,"tag":"hollywood","labelKo":"할리우드","embeddingInput":"hollywood 할리우드 미국 제작 스타 시스템 대형 제작 엔터테인먼트 산업 배우 명성 쇼비즈 로스앤젤레스"}
+{"tagId":515,"tag":"holocaust","labelKo":"홀로코스트","embeddingInput":"holocaust 홀로코스트 나치 박해 유대인 학살 전쟁 비극 생존 증언 수용소 역사적 참상 인권"}
+{"tagId":516,"tag":"homeless","labelKo":"노숙","embeddingInput":"homeless 노숙 거리 생활 빈곤 생존 사회 소외 주거 불안 도시 하층민 외로운 삶 절박함"}
+{"tagId":517,"tag":"homophobia","labelKo":"동성애 혐오","embeddingInput":"homophobia 동성애 혐오 차별 편견 사회 억압 혐오 폭력 성소수자 갈등 배척 부당함"}
+{"tagId":518,"tag":"homosexuality","labelKo":"동성애","embeddingInput":"homosexuality 동성애 성소수자 사랑 정체성 커밍아웃 관계 갈등 사회 시선 퀴어 로맨스"}
+{"tagId":519,"tag":"honest","labelKo":"솔직한","embeddingInput":"honest 솔직한 진솔한 감정 꾸밈없는 태도 현실적인 대화 인간적인 고백 담백한 진정성"}
+{"tagId":520,"tag":"hong kong","labelKo":"홍콩","embeddingInput":"hong kong 홍콩 도시 액션 범죄 느와르 고층 빌딩 경찰 삼합회 총격전 동아시아 분위기"}
+{"tagId":521,"tag":"horrible","labelKo":"끔찍한","embeddingInput":"horrible 끔찍한 형편없는 불쾌한 조악한 완성도 낮음 거친 연출 실망스러운 엉성한 난감한"}
+{"tagId":522,"tag":"horror","labelKo":"공포","embeddingInput":"horror 공포 오싹한 분위기 괴물 귀신 살인마 초자연 현상 긴장감 피비린내 점프 스케어 악몽"}
+{"tagId":523,"tag":"horses","labelKo":"말","embeddingInput":"horses 말 승마 목장 경주마 서부극 기마 액션 교감 동물 동반자 초원 질주"}
+{"tagId":524,"tag":"hospital","labelKo":"병원","embeddingInput":"hospital 병원 의사 간호사 응급실 수술 환자 의료 드라마 생명 위기 병동 치료"}
+{"tagId":525,"tag":"hostage","labelKo":"인질","embeddingInput":"hostage 인질 납치 협상 감금 위기 구출 작전 범죄 긴박한 상황 생명 위협 대치"}
+{"tagId":526,"tag":"hotel","labelKo":"호텔","embeddingInput":"hotel 호텔 숙박 로비 객실 비밀 만남 낯선 손님 고립된 공간 사건 발생 여행지"}
+{"tagId":527,"tag":"humanity","labelKo":"인간애","embeddingInput":"humanity 인간애 연민 도덕성 공동체 선의 존엄 희생 공감 사람다움 따뜻한 관계 양심"}
+{"tagId":528,"tag":"humor","labelKo":"유머","embeddingInput":"humor 유머 웃음 재치 농담 코미디 익살 풍자 말장난 유쾌함 가벼운 분위기"}
+{"tagId":529,"tag":"humorous","labelKo":"유머러스한","embeddingInput":"humorous 유머러스한 재치 있는 웃긴 익살스러운 코믹한 밝은 분위기 말맛 장난기 풍자적 웃음"}
+{"tagId":530,"tag":"hunting","labelKo":"사냥","embeddingInput":"hunting 사냥 추적 숲 야생 생존 총기 사냥꾼 먹잇감 포획 긴장감 자연 속"}
+{"tagId":531,"tag":"idealism","labelKo":"이상주의","embeddingInput":"idealism 이상주의 신념 원칙 도덕적 목표 순수한 믿음 사회 변화 정의 추구 현실 갈등 꿈"}
+{"tagId":532,"tag":"identity","labelKo":"정체성","embeddingInput":"identity 정체성 자아 탐색 기억 혼란 이중생활 숨겨진 과거 자기 발견 존재 의문 내면 갈등"}
+{"tagId":533,"tag":"idiotic","labelKo":"바보 같은","embeddingInput":"idiotic 바보 같은 어리석은 황당한 멍청한 행동 우스꽝스러운 판단력 부족 엉뚱한 소동 유치한"}
+{"tagId":534,"tag":"imaginary friend","labelKo":"상상 속 친구","embeddingInput":"imaginary friend 상상 속 친구 환상 동반자 외로움 어린 시절 심리적 위안 보이지 않는 존재 내면 대화"}
+{"tagId":535,"tag":"imagination","labelKo":"상상력","embeddingInput":"imagination 상상력 환상 창의성 꿈속 세계 기발한 발상 현실 도피 동화적 분위기 시각적 상상"}
+{"tagId":536,"tag":"imdb top 250","labelKo":"IMDb Top 250","embeddingInput":"imdb top 250 IMDb Top 250 높은 평가 명작 목록 대중적 인정 평점 상위 유명한 고전 비평 호평"}
+{"tagId":537,"tag":"immigrants","labelKo":"이민자","embeddingInput":"immigrants 이민자 이주 삶 낯선 땅 문화 충돌 정착 가족 생계 차별 세대 갈등 디아스포라"}
+{"tagId":538,"tag":"immortality","labelKo":"불멸","embeddingInput":"immortality 불멸 영생 죽지 않음 시간 초월 저주 영원한 삶 고독 초자연 존재 생명 집착"}
+{"tagId":539,"tag":"incest","labelKo":"근친상간","embeddingInput":"incest 근친상간 금기 관계 가족 비밀 도덕적 충격 파괴적 욕망 심리 갈등 비극적 관계 어두운 소재"}
+{"tagId":540,"tag":"independent film","labelKo":"독립 제작","embeddingInput":"independent film 독립 제작 저예산 작가주의 실험적 연출 개인적 시선 비주류 감성 현실적 이야기 작은 규모"}
+{"tagId":541,"tag":"india","labelKo":"인도","embeddingInput":"india 인도 남아시아 문화 볼리우드 가족 드라마 계급 사회 전통 음악 춤 도시와 농촌"}
+{"tagId":542,"tag":"indiana jones","labelKo":"인디아나 존스","embeddingInput":"indiana jones 인디아나 존스 고고학 모험 보물 탐험 유적 추격 액션 채찍 고대 비밀"}
+{"tagId":543,"tag":"indians","labelKo":"인디언","embeddingInput":"indians 인디언 아메리카 원주민 부족 문화 서부 개척 식민 충돌 전통 공동체 역사적 갈등"}
+{"tagId":544,"tag":"indie","labelKo":"인디","embeddingInput":"indie 인디 독립 제작 저예산 감성 비주류 작가주의 소규모 이야기 담백한 연출 개성 강한"}
+{"tagId":545,"tag":"infidelity","labelKo":"불륜","embeddingInput":"infidelity 불륜 외도 배신 결혼 위기 비밀 연애 삼각관계 죄책감 관계 파탄 욕망 갈등"}
+{"tagId":546,"tag":"innocence lost","labelKo":"순수의 상실","embeddingInput":"innocence lost 순수의 상실 성장의 상처 충격적 경험 세상 인식 어린 시절 끝 트라우마 성숙 비극"}
+{"tagId":547,"tag":"insanity","labelKo":"광기","embeddingInput":"insanity 광기 정신 붕괴 망상 집착 불안 심리 혼란 폭주 현실 왜곡 극단적 행동"}
+{"tagId":548,"tag":"inspirational","labelKo":"감동적인 영감","embeddingInput":"inspirational 감동적인 영감 희망 도전 극복 용기 성장 긍정적 메시지 삶의 변화 마음 울림"}
+{"tagId":549,"tag":"inspiring","labelKo":"영감을 주는","embeddingInput":"inspiring 영감을 주는 희망찬 도전 정신 극복 성장 용기 긍정 에너지 감동 실화 기반"}
+{"tagId":550,"tag":"intellectual","labelKo":"지적인","embeddingInput":"intellectual 지적인 사색 철학 대화 관념 논쟁 학문적 분위기 복잡한 주제 이성적 사고 깊은 해석"}
+{"tagId":551,"tag":"intelligent","labelKo":"영리한","embeddingInput":"intelligent 영리한 똑똑한 구성 치밀한 전개 두뇌 싸움 논리적 서사 세련된 반전 지적 재미"}
+{"tagId":552,"tag":"intelligent sci-fi","labelKo":"지적인 SF","embeddingInput":"intelligent sci-fi 지적인 SF 과학적 상상 철학적 질문 미래 사회 두뇌형 전개 개념 중심 기술 윤리 복잡한 설정"}
+{"tagId":553,"tag":"intense","labelKo":"강렬한","embeddingInput":"intense 강렬한 긴장감 압박감 몰입감 격렬한 감정 숨막히는 전개 충돌 위기 폭발적 분위기"}
+{"tagId":554,"tag":"interesting","labelKo":"흥미로운","embeddingInput":"interesting 흥미로운 호기심 자극 독특한 설정 예상 밖 전개 매력적인 소재 눈길 가는 이야기 신선함"}
+{"tagId":555,"tag":"internet","labelKo":"인터넷","embeddingInput":"internet 인터넷 온라인 문화 웹 커뮤니티 디지털 시대 해킹 소셜 미디어 가상 관계 정보 네트워크"}
+{"tagId":556,"tag":"interracial romance","labelKo":"인종 간 로맨스","embeddingInput":"interracial romance 인종 간 로맨스 문화 차이 사랑 사회 편견 가족 갈등 금기 관계 차별 장벽"}
+{"tagId":557,"tag":"intimate","labelKo":"친밀한","embeddingInput":"intimate 친밀한 가까운 관계 사적인 대화 섬세한 감정 밀도 높은 조용한 분위기 내면 중심 관계 드라마"}
+{"tagId":558,"tag":"investigation","labelKo":"수사","embeddingInput":"investigation 수사 조사 단서 추적 미스터리 형사 탐문 범죄 해결 진실 규명 증거 분석"}
+{"tagId":559,"tag":"iran","labelKo":"이란","embeddingInput":"iran 이란 페르시아 문화 중동 사회 가족 갈등 정치 현실 종교 전통 일상 드라마"}
+{"tagId":560,"tag":"iraq","labelKo":"이라크","embeddingInput":"iraq 이라크 중동 전쟁 지역 정치 혼란 군사 점령 민간인 고통 사막 도시 분쟁"}
+{"tagId":561,"tag":"iraq war","labelKo":"이라크 전쟁","embeddingInput":"iraq war 이라크 전쟁 군사 작전 파병 점령 전장 외상 정치 갈등 현대전 병사 경험 민간 피해"}
+{"tagId":562,"tag":"ireland","labelKo":"아일랜드","embeddingInput":"ireland 아일랜드 켈트 문화 시골 풍경 가족 공동체 독립 역사 녹색 들판 민속 음악 이주"}
+{"tagId":563,"tag":"irish","labelKo":"아일랜드식","embeddingInput":"irish 아일랜드식 아일랜드인 켈트 정서 지역 문화 술집 음악 가족 공동체 이민 역사 거친 유머"}
+{"tagId":564,"tag":"irish accent","labelKo":"아일랜드 억양","embeddingInput":"irish accent 아일랜드 억양 말투 지역색 켈트 느낌 영어 발음 현지 분위기 아일랜드 인물 대사 개성"}
+{"tagId":565,"tag":"ironic","labelKo":"아이러니한","embeddingInput":"ironic 아이러니한 반어적 상황 역전 씁쓸한 유머 모순 예상 밖 결과 풍자 운명의 장난 냉소"}
+{"tagId":566,"tag":"irreverent","labelKo":"불경한 유머","embeddingInput":"irreverent 불경한 유머 권위 조롱 무례한 농담 풍자 도발적 태도 금기 비틀기 냉소적 말투 반항적"}
+{"tagId":567,"tag":"islam","labelKo":"이슬람","embeddingInput":"islam 이슬람 무슬림 신앙 종교 문화 중동 사회 전통 공동체 갈등 영적 주제"}
+{"tagId":568,"tag":"island","labelKo":"섬","embeddingInput":"island 섬 고립된 장소 바다 외딴 공간 생존 휴양지 비밀 공동체 탈출 자연 환경"}
+{"tagId":569,"tag":"isolation","labelKo":"고립","embeddingInput":"isolation 고립 단절 외로움 폐쇄 공간 홀로 남음 심리 압박 소외 생존 불안 고독"}
+{"tagId":570,"tag":"israel","labelKo":"이스라엘","embeddingInput":"israel 이스라엘 중동 유대 문화 정치 갈등 종교 역사 분쟁 가족 사회 현실"}
+{"tagId":571,"tag":"italian","labelKo":"이탈리아식","embeddingInput":"italian 이탈리아식 이탈리아인 가족 문화 마피아 오페라 음식 로맨스 지중해 정서 도시 풍경"}
+{"tagId":572,"tag":"italy","labelKo":"이탈리아","embeddingInput":"italy 이탈리아 로마 베네치아 지중해 풍경 예술 문화 가족 로맨스 마피아 역사 도시"}
+{"tagId":573,"tag":"james bond","labelKo":"제임스 본드","embeddingInput":"james bond 제임스 본드 스파이 첩보 액션 비밀 요원 고급 슈트 악당 추적 국제 음모"}
+{"tagId":574,"tag":"jane austen","labelKo":"제인 오스틴","embeddingInput":"jane austen 제인 오스틴 영국 고전 로맨스 계급 사회 결혼 풍자 시대극 예절 문학 원작"}
+{"tagId":575,"tag":"japan","labelKo":"일본","embeddingInput":"japan 일본 일본 문화 도쿄 사무라이 현대 사회 애니메이션 전통 가족 드라마 동아시아"}
+{"tagId":576,"tag":"japanese","labelKo":"일본식","embeddingInput":"japanese 일본식 일본인 일본어 문화 사무라이 야쿠자 가족 전통 현대 도시 절제된 정서"}
+{"tagId":577,"tag":"jay and silent bob","labelKo":"제이와 사일런트 밥","embeddingInput":"jay and silent bob 제이와 사일런트 밥 버디 코미디 말장난 괴짜 친구 대중문화 농담 케빈 스미스 엉뚱한 소동"}
+{"tagId":578,"tag":"jazz","labelKo":"재즈","embeddingInput":"jazz 재즈 즉흥 연주 색소폰 클럽 음악가 스윙 블루스 리듬 도시 밤 음악 드라마"}
+{"tagId":579,"tag":"jesus","labelKo":"예수","embeddingInput":"jesus 예수 기독교 성경 메시아 신앙 종교적 희생 구원 십자가 복음 영적 갈등"}
+{"tagId":580,"tag":"jewish","labelKo":"유대인","embeddingInput":"jewish 유대인 유대 문화 가족 전통 신앙 디아스포라 역사 박해 정체성 공동체"}
+{"tagId":581,"tag":"jews","labelKo":"유대인들","embeddingInput":"jews 유대인들 유대 공동체 역사 박해 가족 전통 신앙 디아스포라 정체성 문화 갈등"}
+{"tagId":582,"tag":"journalism","labelKo":"저널리즘","embeddingInput":"journalism 저널리즘 기자 취재 보도 언론 탐사 진실 폭로 편집국 권력 감시 기사 작성"}
+{"tagId":583,"tag":"judaism","labelKo":"유대교","embeddingInput":"judaism 유대교 유대 신앙 종교 전통 율법 회당 공동체 가족 의식 정체성 역사"}
+{"tagId":584,"tag":"jungle","labelKo":"정글","embeddingInput":"jungle 정글 밀림 열대 우림 생존 탐험 야생 자연 위험 고립 습한 환경 모험"}
+{"tagId":585,"tag":"justice","labelKo":"정의","embeddingInput":"justice 정의 공정함 법 심판 복수 도덕적 선택 권선징악 부패 응징 진실"}
+{"tagId":586,"tag":"kick-butt women","labelKo":"강한 여성 액션","embeddingInput":"kick-butt women 강한 여성 액션 여성 전사 격투 활약 당찬 주인공 전투 능력 카리스마 독립적 인물"}
+{"tagId":587,"tag":"kidnapping","labelKo":"납치","embeddingInput":"kidnapping 납치 유괴 감금 인질 범죄 추적 구출 협박 실종 긴박한 상황 가족 위기"}
+{"tagId":588,"tag":"kids","labelKo":"아이들","embeddingInput":"kids 아이들 어린이 가족 성장 순수함 놀이 우정 모험 학교 생활 동심 보호자 관계"}
+{"tagId":589,"tag":"kids and family","labelKo":"아이와 가족","embeddingInput":"kids and family 아이와 가족 어린이 가족 관계 따뜻한 이야기 세대 공감 동심 모험 부모 자녀 밝은 분위기"}
+{"tagId":590,"tag":"king arthur","labelKo":"아서 왕","embeddingInput":"king arthur 아서 왕 원탁 기사 엑스칼리버 중세 전설 왕국 기사도 마법 멀린 영웅 서사"}
+{"tagId":591,"tag":"kubrick","labelKo":"큐브릭","embeddingInput":"kubrick 큐브릭 스탠리 큐브릭 완벽주의 연출 시각적 구성 냉정한 톤 심리 불안 철학적 주제 클래식"}
+{"tagId":592,"tag":"kung fu","labelKo":"쿵푸","embeddingInput":"kung fu 쿵푸 무술 격투 수련 중국 액션 도장 고수 복수 권법 결투"}
+{"tagId":593,"tag":"kurosawa","labelKo":"구로사와","embeddingInput":"kurosawa 구로사와 아키라 사무라이 일본 고전 인간 군상 명예 전쟁 시대극 강렬한 연출"}
+{"tagId":594,"tag":"lame","labelKo":"시시한","embeddingInput":"lame 시시한 맥빠진 허술한 재미 부족 어설픈 전개 밋밋한 연출 유치한 설정 실망스러운"}
+{"tagId":595,"tag":"las vegas","labelKo":"라스베이거스","embeddingInput":"las vegas 라스베이거스 카지노 도박 네온 거리 사막 도시 범죄 쇼 화려한 밤 일확천금"}
+{"tagId":596,"tag":"latin america","labelKo":"라틴아메리카","embeddingInput":"latin america 라틴아메리카 남미 문화 스페인어 사회 현실 혁명 가족 정치 열정적 분위기 지역색"}
+{"tagId":597,"tag":"lawyer","labelKo":"변호사","embeddingInput":"lawyer 변호사 법정 변론 재판 의뢰인 법률 싸움 증거 논리 정의 법조인"}
+{"tagId":598,"tag":"lawyers","labelKo":"변호사들","embeddingInput":"lawyers 변호사들 법정 드라마 법률가 재판 변론 로펌 의뢰인 증거 싸움 윤리 갈등"}
+{"tagId":599,"tag":"lesbian","labelKo":"레즈비언","embeddingInput":"lesbian 레즈비언 여성 간 사랑 퀴어 로맨스 성소수자 정체성 커밍아웃 관계 갈등 사회 시선"}
+{"tagId":600,"tag":"life","labelKo":"삶","embeddingInput":"life 삶 인생 여정 일상 성장 관계 사랑 상실 가족 시간의 흐름 인간 경험"}
+{"tagId":601,"tag":"life & death","labelKo":"삶과 죽음","embeddingInput":"life & death 삶과 죽음 생사 경계 죽음 성찰 인생 의미 유한함 상실 존재론 비극적 정서 운명"}
+{"tagId":602,"tag":"life philosophy","labelKo":"인생 철학","embeddingInput":"life philosophy 인생 철학 삶의 의미 가치관 성찰 사색적 대사 존재 고민 깨달음 인간 조건"}
+{"tagId":603,"tag":"light","labelKo":"가벼운 분위기","embeddingInput":"light 가벼운 분위기 밝은 톤 부담 없는 경쾌함 산뜻함 유쾌한 전개 편안함 온화함"}
+{"tagId":604,"tag":"lions","labelKo":"사자","embeddingInput":"lions 사자 야생동물 맹수 초원 왕국 동물 모험 자연 생태 포식자 가족 서사"}
+{"tagId":605,"tag":"literary adaptation","labelKo":"문학 원작","embeddingInput":"literary adaptation 문학 원작 소설 기반 희곡 기반 고전 각색 원작 재해석 서사 중심 책 원작 문예적 분위기"}
+{"tagId":606,"tag":"literature","labelKo":"문학","embeddingInput":"literature 문학 작가 서점 책 원고 시 소설 문예 감성 지적 분위기 글쓰기 독서"}
+{"tagId":607,"tag":"liv tyler","labelKo":"Liv Tyler","embeddingInput":"liv tyler Liv Tyler 리브 타일러 배우 출연 우아한 분위기 로맨스 판타지 드라마 감성 연기"}
+{"tagId":608,"tag":"london","labelKo":"런던","embeddingInput":"london 런던 영국 도시 템스 강 빅벤 안개 낀 거리 도시 드라마 영국 배경 범죄 스릴러"}
+{"tagId":609,"tag":"lone hero","labelKo":"고독한 영웅","embeddingInput":"lone hero 고독한 영웅 단독 활약 외로운 주인공 개인 임무 정의감 액션 복수 생존 결단"}
+{"tagId":610,"tag":"loneliness","labelKo":"외로움","embeddingInput":"loneliness 외로움 고독 소외감 단절 혼자 남음 쓸쓸함 내면 공허 도시 고독 인간관계 결핍"}
+{"tagId":611,"tag":"long","labelKo":"긴 러닝타임","embeddingInput":"long 긴 러닝타임 장편 긴 호흡 서사 확장 느린 전개 대하 서사 긴 여정 긴 이야기"}
+{"tagId":612,"tag":"los angeles","labelKo":"로스앤젤레스","embeddingInput":"los angeles 로스앤젤레스 LA 할리우드 캘리포니아 도시 범죄 햇빛 거리 연예 산업 서부 도시"}
+{"tagId":613,"tag":"love","labelKo":"사랑","embeddingInput":"love 사랑 연애 감정 애정 설렘 이별 그리움 관계 로맨스 헌신 마음 고백"}
+{"tagId":614,"tag":"love story","labelKo":"사랑 이야기","embeddingInput":"love story 사랑 이야기 로맨스 연애 서사 만남 이별 재회 감정선 설렘 애틋함 관계 변화"}
+{"tagId":615,"tag":"love triangles","labelKo":"삼각관계","embeddingInput":"love triangles 삼각관계 연애 갈등 질투 선택 흔들리는 마음 두 사람 사이 감정 충돌 로맨스 긴장"}
+{"tagId":616,"tag":"low budget","labelKo":"저예산","embeddingInput":"low budget 저예산 독립 제작 작은 규모 제한된 자원 거친 질감 실험적 연출 소규모 제작 창의적 방식"}
+{"tagId":617,"tag":"lynch","labelKo":"린치 스타일","embeddingInput":"lynch 린치 스타일 데이비드 린치 초현실 불안한 분위기 기괴함 꿈같은 전개 미스터리 심리 혼란"}
+{"tagId":618,"tag":"lyrical","labelKo":"서정적","embeddingInput":"lyrical 서정적 시적인 감성 잔잔한 정서 아름다운 이미지 감각적 연출 운율 느린 호흡 몽환적"}
+{"tagId":619,"tag":"macabre","labelKo":"섬뜩한 죽음미","embeddingInput":"macabre 섬뜩한 죽음미 기괴한 죽음 음산함 괴담적 분위기 검은 유머 병적인 매혹 고딕 공포"}
+{"tagId":620,"tag":"mad scientist","labelKo":"미친 과학자","embeddingInput":"mad scientist 미친 과학자 위험한 실험 금단의 연구 광기 발명 괴물 창조 과학 윤리 실험실"}
+{"tagId":621,"tag":"made for tv","labelKo":"TV용 제작","embeddingInput":"made for tv TV용 제작 방송용 제작 텔레비전 드라마 소규모 연출 홈 시청 형식 케이블 방영"}
+{"tagId":622,"tag":"mafia","labelKo":"마피아","embeddingInput":"mafia 마피아 조직범죄 패밀리 보스 배신 권력 암흑가 범죄 느와르 이탈리아계 갱스터"}
+{"tagId":623,"tag":"magic","labelKo":"마법","embeddingInput":"magic 마법 주문 마법사 초자연 판타지 신비한 힘 저주 마법 세계 기적 변신"}
+{"tagId":624,"tag":"magic realism","labelKo":"마술적 리얼리즘","embeddingInput":"magic realism 마술적 리얼리즘 현실과 환상 일상 속 기적 초현실 감각 신비로운 현실 상징적 서사 몽환"}
+{"tagId":625,"tag":"male nudity","labelKo":"남성 노출","embeddingInput":"male nudity 남성 노출 신체 노출 성인 장면 노출 연출 친밀한 장면 에로틱 분위기 신체 표현"}
+{"tagId":626,"tag":"man versus machine","labelKo":"인간 대 기계","embeddingInput":"man versus machine 인간 대 기계 AI 대립 로봇 위협 기술 통제 기계 반란 생존 전쟁 사이버 갈등"}
+{"tagId":627,"tag":"manipulation","labelKo":"조종과 기만","embeddingInput":"manipulation 조종과 기만 심리 조작 속임수 통제 가스라이팅 권력 게임 배후 조종 음모 관계 지배"}
+{"tagId":628,"tag":"marijuana","labelKo":"마리화나","embeddingInput":"marijuana 마리화나 대마초 약물 문화 흡연 장면 환각 느슨한 분위기 불법 거래 청춘 일탈"}
+{"tagId":629,"tag":"marriage","labelKo":"결혼","embeddingInput":"marriage 결혼 부부 관계 결혼 생활 배우자 갈등 가정 약속 이혼 위기 신혼 가족"}
+{"tagId":630,"tag":"mars","labelKo":"화성","embeddingInput":"mars 화성 붉은 행성 우주 탐사 외계 환경 식민지 생존 SF 행성 기지 우주 임무"}
+{"tagId":631,"tag":"martial arts","labelKo":"무술","embeddingInput":"martial arts 무술 격투 쿵푸 가라테 수련 액션 결투 도장 몸싸움 동양 액션 전투 기술"}
+{"tagId":632,"tag":"marvel","labelKo":"Marvel","embeddingInput":"marvel Marvel 마블 슈퍼히어로 코믹스 세계관 초능력 팀업 액션 블록버스터 히어로 전투"}
+{"tagId":633,"tag":"marx brothers","labelKo":"Marx Brothers","embeddingInput":"marx brothers Marx Brothers 마르크스 형제 고전 코미디 슬랩스틱 말장난 풍자 익살 혼란극 무성 시대 감성"}
+{"tagId":634,"tag":"masterpiece","labelKo":"걸작","embeddingInput":"masterpiece 걸작 완성도 높음 명작급 뛰어난 연출 강한 인상 예술성 높은 평가 깊은 여운 대표작"}
+{"tagId":635,"tag":"math","labelKo":"수학","embeddingInput":"math 수학 숫자 공식 계산 천재 문제 풀이 논리 증명 확률 암호 지적 긴장"}
+{"tagId":636,"tag":"mathematics","labelKo":"수학 이론","embeddingInput":"mathematics 수학 이론 공식 증명 추상 사고 논리 퍼즐 천재 수학자 계산 패턴 학문적 분위기"}
+{"tagId":637,"tag":"maze","labelKo":"미로","embeddingInput":"maze 미로 탈출 복잡한 구조 길 찾기 갇힘 혼란 공간 퍼즐 추적 함정"}
+{"tagId":638,"tag":"medieval","labelKo":"중세","embeddingInput":"medieval 중세 기사 성 왕국 검투 전쟁 봉건 시대 갑옷 종교 권력 역사 판타지"}
+{"tagId":639,"tag":"meditative","labelKo":"명상적","embeddingInput":"meditative 명상적 고요한 흐름 사색적 느린 호흡 내면 응시 침묵 여백 평온 성찰"}
+{"tagId":640,"tag":"melancholic","labelKo":"우울한 정서","embeddingInput":"melancholic 우울한 정서 쓸쓸함 잔잔한 슬픔 내면 공허 회한 차분한 톤 상실감 비애"}
+{"tagId":641,"tag":"melancholy","labelKo":"멜랑콜리","embeddingInput":"melancholy 멜랑콜리 슬픈 분위기 쓸쓸한 감성 그리움 우수 상실 여운 차분함 고독한 정서"}
+{"tagId":642,"tag":"memory","labelKo":"기억","embeddingInput":"memory 기억 회상 과거 추억 망각 트라우마 조각난 기억 내면 시간 정체성"}
+{"tagId":643,"tag":"memory loss","labelKo":"기억 상실","embeddingInput":"memory loss 기억 상실 기억 상실증 잃어버린 과거 정체성 혼란 단서 추적 심리 미스터리 회복"}
+{"tagId":644,"tag":"mental hospital","labelKo":"정신병원","embeddingInput":"mental hospital 정신병원 폐쇄 병동 치료 시설 환자 의사 불안 감금 심리 스릴러 제도 권력"}
+{"tagId":645,"tag":"mental illness","labelKo":"정신 질환","embeddingInput":"mental illness 정신 질환 심리 불안 망상 우울 트라우마 내면 붕괴 치료 낙인 현실 혼동"}
+{"tagId":646,"tag":"mentor","labelKo":"멘토","embeddingInput":"mentor 멘토 스승 조언자 성장 지도 훈련 가르침 제자 관계 인생 교훈 조력자"}
+{"tagId":647,"tag":"metaphysics","labelKo":"형이상학","embeddingInput":"metaphysics 형이상학 존재론 현실 의문 시간 의식 영혼 차원 철학적 질문 추상 개념"}
+{"tagId":648,"tag":"mexico","labelKo":"멕시코","embeddingInput":"mexico 멕시코 국경 라틴 문화 사막 마을 범죄 가족 전통 축제 남부 배경"}
+{"tagId":649,"tag":"middle east","labelKo":"중동","embeddingInput":"middle east 중동 사막 분쟁 종교 석유 왕국 전쟁 정치 긴장 이슬람 문화 지역 갈등"}
+{"tagId":650,"tag":"midlife crisis","labelKo":"중년의 위기","embeddingInput":"midlife crisis 중년의 위기 삶의 공허 결혼 위기 직업 회의 나이 듦 자아 찾기 일탈 권태"}
+{"tagId":651,"tag":"military","labelKo":"군대","embeddingInput":"military 군대 군인 전쟁 작전 명령 계급 훈련 전투 부대 군사 조직 임무"}
+{"tagId":652,"tag":"mindfuck","labelKo":"정신 혼란","embeddingInput":"mindfuck 정신 혼란 뒤틀린 전개 현실 붕괴 반전 심리 미로 충격적 결말 불확실한 진실 혼란스러움"}
+{"tagId":653,"tag":"mining","labelKo":"광산 채굴","embeddingInput":"mining 광산 채굴 탄광 노동 지하 작업 금광 위험한 작업 산업 현장 노동자 매몰 자원 개발"}
+{"tagId":654,"tag":"minnesota","labelKo":"미네소타","embeddingInput":"minnesota 미네소타 북부 미국 눈 내린 마을 중서부 차가운 분위기 작은 도시 지역 배경 사투리"}
+{"tagId":655,"tag":"mission from god","labelKo":"신의 사명","embeddingInput":"mission from god 신의 사명 신탁 종교적 임무 운명적 과업 구원 신앙 코미디 순례 계시"}
+{"tagId":656,"tag":"mistaken identity","labelKo":"신원 착각","embeddingInput":"mistaken identity 신원 착각 오인 정체성 혼동 엉뚱한 누명 바뀐 사람 추격 코미디 스릴러 오해"}
+{"tagId":657,"tag":"miyazaki","labelKo":"미야자키","embeddingInput":"miyazaki 미야자키 미야자키 하야오 지브리 애니메이션 자연 판타지 비행 소녀 주인공 생태 감성"}
+{"tagId":658,"tag":"mob","labelKo":"범죄 조직","embeddingInput":"mob 범죄 조직 갱단 마피아 폭력 조직 암흑가 보스 협박 배신 조직범죄 거리 범죄"}
+{"tagId":659,"tag":"mockumentary","labelKo":"모큐멘터리","embeddingInput":"mockumentary 모큐멘터리 가짜 다큐 인터뷰 형식 풍자 즉흥 코미디 핸드헬드 현실감 페이크 기록"}
+{"tagId":660,"tag":"modern fantasy","labelKo":"현대 판타지","embeddingInput":"modern fantasy 현대 판타지 현실 속 마법 도시 판타지 초자연 존재 숨겨진 세계 신화 재해석 일상 판타지"}
+{"tagId":661,"tag":"money","labelKo":"돈","embeddingInput":"money 돈 재산 탐욕 거래 빚 부자 가난 도박 범죄 경제 욕망 현금"}
+{"tagId":662,"tag":"monkey","labelKo":"원숭이","embeddingInput":"monkey 원숭이 동물 장난기 실험 동물 정글 영장류 코미디 야생 모험 인간 닮음"}
+{"tagId":663,"tag":"monster","labelKo":"괴물","embeddingInput":"monster 괴물 크리처 공포 습격 변이 생명체 위협 추격 어둠 속 존재 생존"}
+{"tagId":664,"tag":"monsters","labelKo":"괴물들","embeddingInput":"monsters 괴물들 크리처 무리 괴수 습격 공포 생존 변이 존재 거대한 위협 판타지 생명체"}
+{"tagId":665,"tag":"monty python","labelKo":"Monty Python","embeddingInput":"monty python Monty Python 몬티 파이튼 영국 코미디 부조리 풍자 스케치 코미디 말장난 황당함 컬트 유머"}
+{"tagId":666,"tag":"moody","labelKo":"분위기 있는","embeddingInput":"moody 분위기 있는 감정적 톤 어두운 정조 변덕스러운 감성 침잠한 분위기 스타일리시 영상미 내면 중심"}
+{"tagId":667,"tag":"moon","labelKo":"달","embeddingInput":"moon 달 우주 달 탐사 달기지 고립 밤하늘 위성 SF 외로움 저중력"}
+{"tagId":668,"tag":"moral ambiguity","labelKo":"도덕적 모호함","embeddingInput":"moral ambiguity 도덕적 모호함 선악 경계 회색지대 윤리 갈등 복잡한 선택 반영웅 죄책감 정당화"}
+{"tagId":669,"tag":"morality","labelKo":"도덕성","embeddingInput":"morality 도덕성 윤리 양심 선악 판단 죄와 벌 책임 선택 신념 인간성 가치 충돌"}
+{"tagId":670,"tag":"mother daughter relationship","labelKo":"모녀 관계","embeddingInput":"mother daughter relationship 모녀 관계 엄마와 딸 가족 갈등 세대 차이 애증 화해 돌봄 독립 성장"}
+{"tagId":671,"tag":"mother-son relationship","labelKo":"모자 관계","embeddingInput":"mother-son relationship 모자 관계 엄마와 아들 가족 유대 보호 애착 갈등 의존 성장 이별"}
+{"tagId":672,"tag":"motorcycle","labelKo":"오토바이","embeddingInput":"motorcycle 오토바이 바이크 질주 도로 라이더 추격 자유 속도 반항 로드 액션"}
+{"tagId":673,"tag":"mountain climbing","labelKo":"등산 등반","embeddingInput":"mountain climbing 등산 등반 산악 원정 고산 생존 정상 도전 추락 위험 극한 환경 팀워크"}
+{"tagId":674,"tag":"movie business","labelKo":"영상 산업","embeddingInput":"movie business 영상 산업 제작 현장 스튜디오 흥행 계약 캐스팅 감독 배우 프로듀서 할리우드 업계 풍자"}
+{"tagId":675,"tag":"movielens top pick","labelKo":"MovieLens 최고 선정","embeddingInput":"movielens top pick MovieLens 최고 선정 높은 평가 인기 선정 호평 대표 선택 명성 강한 만족도 상위권"}
+{"tagId":676,"tag":"moving","labelKo":"감동적인","embeddingInput":"moving 감동적인 뭉클함 눈물 여운 따뜻한 정서 진심 가족 사랑 희생 치유 마음 울림"}
+{"tagId":677,"tag":"mozart","labelKo":"Mozart","embeddingInput":"mozart Mozart 모차르트 클래식 음악 작곡가 천재 음악가 궁정 예술 전기 오페라 피아노"}
+{"tagId":678,"tag":"mtv","labelKo":"MTV","embeddingInput":"mtv MTV 뮤직비디오 팝 문화 젊은 감각 빠른 편집 음악 채널 90년대 감성 스타일리시 영상"}
+{"tagId":679,"tag":"multiple storylines","labelKo":"다중 서사","embeddingInput":"multiple storylines 다중 서사 여러 이야기 교차 편집 앙상블 구조 병렬 전개 연결된 인물 복합 플롯"}
+{"tagId":680,"tag":"mummy","labelKo":"미라","embeddingInput":"mummy 미라 고대 저주 이집트 무덤 부활 고고학 사막 모험 괴물 공포"}
+{"tagId":681,"tag":"muppets","labelKo":"Muppets","embeddingInput":"muppets Muppets 머펫 인형 캐릭터 가족 코미디 음악 쇼 익살 따뜻함 어린이 감성"}
+{"tagId":682,"tag":"murder","labelKo":"살인","embeddingInput":"murder 살인 범죄 죽음 용의자 수사 살인자 피해자 동기 은폐 스릴러 피의 사건"}
+{"tagId":683,"tag":"murder mystery","labelKo":"살인 미스터리","embeddingInput":"murder mystery 살인 미스터리 범인 찾기 추리 수사 용의자 단서 알리바이 반전 폐쇄 공간"}
+{"tagId":684,"tag":"music","labelKo":"음악","embeddingInput":"music 음악 노래 공연 밴드 악기 무대 리듬 감성 사운드 콘서트 음악가"}
+{"tagId":685,"tag":"music business","labelKo":"음악 산업","embeddingInput":"music business 음악 산업 음반사 매니저 계약 스타덤 투어 프로듀서 흥행 팝 시장 아티스트 착취"}
+{"tagId":686,"tag":"musical","labelKo":"뮤지컬","embeddingInput":"musical 뮤지컬 노래와 춤 무대 공연 넘버 안무 합창 화려함 음악극 로맨스 쇼"}
+{"tagId":687,"tag":"musicians","labelKo":"음악가들","embeddingInput":"musicians 음악가들 밴드 가수 연주자 작곡가 공연 투어 음악 인생 창작 갈등 무대"}
+{"tagId":688,"tag":"mutants","labelKo":"돌연변이","embeddingInput":"mutants 돌연변이 초능력 유전자 변이 차별 히어로 괴물화 진화 실험 소외 집단"}
+{"tagId":689,"tag":"mystery","labelKo":"미스터리","embeddingInput":"mystery 미스터리 수수께끼 비밀 단서 추리 의문 긴장 반전 진실 추적 불가사의"}
+{"tagId":690,"tag":"mythology","labelKo":"신화","embeddingInput":"mythology 신화 신들 전설 영웅 괴물 고대 이야기 운명 초월적 존재 신성한 서사"}
+{"tagId":691,"tag":"narrated","labelKo":"내레이션","embeddingInput":"narrated 내레이션 목소리 해설 1인칭 서술 회상 독백 이야기꾼 관찰자 시점 서술자"}
+{"tagId":692,"tag":"nasa","labelKo":"NASA","embeddingInput":"nasa NASA 나사 우주 탐사 우주비행사 미션 로켓 관제센터 과학 기술 달 탐사"}
+{"tagId":693,"tag":"native americans","labelKo":"아메리카 원주민","embeddingInput":"native americans 아메리카 원주민 부족 문화 서부 역사 정체성 땅 갈등 전통 식민주의 공동체"}
+{"tagId":694,"tag":"natural disaster","labelKo":"자연재해","embeddingInput":"natural disaster 자연재해 지진 홍수 화산 폭풍 재난 생존 붕괴 대피 가족 구조"}
+{"tagId":695,"tag":"nature","labelKo":"자연","embeddingInput":"nature 자연 숲 산 바다 야생 생태 풍경 환경 동물 계절 인간과 자연"}
+{"tagId":696,"tag":"nazi","labelKo":"나치","embeddingInput":"nazi 나치 독일군 제2차 세계대전 파시즘 전범 홀로코스트 점령 저항군 군복 전쟁 범죄"}
+{"tagId":697,"tag":"nazis","labelKo":"나치들","embeddingInput":"nazis 나치들 독일군 제2차 세계대전 파시스트 세력 전범 점령군 홀로코스트 저항 전쟁 악역"}
+{"tagId":698,"tag":"neil gaiman","labelKo":"Neil Gaiman","embeddingInput":"neil gaiman Neil Gaiman 닐 게이먼 판타지 작가 신화적 상상력 어두운 동화 현대 판타지 기묘함 원작"}
+{"tagId":699,"tag":"neo-nazis","labelKo":"네오나치","embeddingInput":"neo-nazis 네오나치 극우 폭력 인종주의 혐오 집단 증오 범죄 스킨헤드 사회 갈등 급진주의"}
+{"tagId":700,"tag":"neo-noir","labelKo":"네오누아르","embeddingInput":"neo-noir 네오누아르 현대 느와르 범죄 어둠 도덕적 모호함 도시 밤 반영웅 냉소 미스터리 스타일"}
+{"tagId":701,"tag":"nerds","labelKo":"너드들","embeddingInput":"nerds 너드들 괴짜 지식인 공부벌레 사회성 서툰 인물 geek dork 기술 집착 학교 분위기"}
+{"tagId":702,"tag":"new jersey","labelKo":"뉴저지","embeddingInput":"new jersey 뉴저지 미국 동부 교외 도시 노동계층 지역색 주거지 현실 드라마"}
+{"tagId":703,"tag":"new orleans","labelKo":"뉴올리언스","embeddingInput":"new orleans 뉴올리언스 루이지애나 재즈 남부 분위기 늪지대 프렌치쿼터 축제 도시"}
+{"tagId":704,"tag":"new york","labelKo":"뉴욕","embeddingInput":"new york 뉴욕 대도시 맨해튼 도시 생활 미국 동부 거리 풍경 이민자 삶"}
+{"tagId":705,"tag":"new york city","labelKo":"뉴욕시","embeddingInput":"new york city 뉴욕시 맨해튼 브루클린 대도시 거리 도시 군상 스카이라인 지하철"}
+{"tagId":706,"tag":"new zealand","labelKo":"뉴질랜드","embeddingInput":"new zealand 뉴질랜드 남태평양 자연 풍경 섬나라 마오리 문화 산악 지형 모험 배경"}
+{"tagId":707,"tag":"ninja","labelKo":"닌자","embeddingInput":"ninja 닌자 잠입 암살 무술 검술 은신 일본 액션 복면 전사"}
+{"tagId":708,"tag":"no dialogue","labelKo":"대사 없음","embeddingInput":"no dialogue 대사 없음 무성 연출 침묵 시각 서사 몸짓 표현 말없는 진행 사운드 중심"}
+{"tagId":709,"tag":"no plot","labelKo":"줄거리 없음","embeddingInput":"no plot 줄거리 없음 서사 부재 느슨한 구성 사건 부족 실험적 전개 단편적 장면"}
+{"tagId":710,"tag":"nocturnal","labelKo":"야행성 분위기","embeddingInput":"nocturnal 야행성 분위기 밤 시간 어둠 심야 도시 밤거리 은밀함 불면 몽환적"}
+{"tagId":711,"tag":"noir","labelKo":"느와르","embeddingInput":"noir 느와르 어두운 범죄 냉소적 분위기 그림자 팜파탈 도덕적 모호함 하드보일드"}
+{"tagId":712,"tag":"noir thriller","labelKo":"느와르 스릴러","embeddingInput":"noir thriller 느와르 스릴러 범죄 긴장감 음모 추적 어두운 톤 배신 하드보일드 서스펜스"}
+{"tagId":713,"tag":"non-hollywood ending","labelKo":"비할리우드식 결말","embeddingInput":"non-hollywood ending 비할리우드식 결말 씁쓸한 마무리 열린 결말 관습 탈피 현실적 결말 여운 비극성"}
+{"tagId":714,"tag":"non-linear","labelKo":"비선형 구성","embeddingInput":"non-linear 비선형 구성 시간 뒤섞임 플래시백 파편적 서사 교차 편집 복잡한 구조 순서 재배열"}
+{"tagId":715,"tag":"nonlinear","labelKo":"비선형 전개","embeddingInput":"nonlinear 비선형 전개 시간 순서 파괴 플래시백 교차 서사 퍼즐 구조 파편적 구성"}
+{"tagId":716,"tag":"nostalgia","labelKo":"향수","embeddingInput":"nostalgia 향수 과거 회상 추억 어린 시절 그리움 복고 감성 애틋함 옛날 분위기"}
+{"tagId":717,"tag":"nostalgic","labelKo":"향수 어린","embeddingInput":"nostalgic 향수 어린 추억 감성 복고 분위기 과거 회상 그리움 따뜻한 정서 아련함"}
+{"tagId":718,"tag":"not as good as the first","labelKo":"전편보다 아쉬운","embeddingInput":"not as good as the first 전편보다 아쉬운 속편 한계 기대 이하 완성도 하락 반복 전개 약한 후속편"}
+{"tagId":719,"tag":"not funny","labelKo":"웃기지 않은","embeddingInput":"not funny 웃기지 않은 코미디 실패 유머 부족 어색한 농담 웃음 적음 밋밋한 개그"}
+{"tagId":720,"tag":"notable nudity","labelKo":"두드러진 노출","embeddingInput":"notable nudity 두드러진 노출 성인 장면 신체 노출 강한 수위 관능적 장면 과감한 표현"}
+{"tagId":721,"tag":"notable soundtrack","labelKo":"인상적인 사운드트랙","embeddingInput":"notable soundtrack 인상적인 사운드트랙 음악 강한 선곡 명곡 삽입곡 분위기 음악 중심 기억 남는 음악"}
+{"tagId":722,"tag":"nuclear","labelKo":"핵 소재","embeddingInput":"nuclear 핵 소재 방사능 원자력 핵위협 냉전 공포 재난 과학 기술 파괴력"}
+{"tagId":723,"tag":"nuclear bomb","labelKo":"핵폭탄","embeddingInput":"nuclear bomb 핵폭탄 원자폭탄 대량 파괴 핵위기 폭발 방사능 전쟁 위협 냉전 긴장"}
+{"tagId":724,"tag":"nuclear war","labelKo":"핵전쟁","embeddingInput":"nuclear war 핵전쟁 세계 종말 냉전 위기 방사능 폐허 대량 파괴 생존 공포"}
+{"tagId":725,"tag":"nudity","labelKo":"노출","embeddingInput":"nudity 노출 성인 장면 신체 노출 관능 수위 높은 장면 에로틱 표현 과감한 장면"}
+{"tagId":726,"tag":"nudity (full frontal - brief)","labelKo":"짧은 전면 노출","embeddingInput":"nudity (full frontal - brief) 짧은 전면 노출 잠깐 등장 성인 장면 신체 노출 높은 수위"}
+{"tagId":727,"tag":"nudity (full frontal - notable)","labelKo":"두드러진 전면 노출","embeddingInput":"nudity (full frontal - notable) 두드러진 전면 노출 긴 노출 성인 장면 높은 수위 과감한 표현"}
+{"tagId":728,"tag":"nudity (full frontal)","labelKo":"전면 노출","embeddingInput":"nudity (full frontal) 전면 노출 신체 노출 성인 장면 높은 수위 관능적 장면 과감한 표현"}
+{"tagId":729,"tag":"nudity (rear)","labelKo":"후면 노출","embeddingInput":"nudity (rear) 후면 노출 신체 노출 성인 장면 노출 장면 관능적 표현 수위 요소"}
+{"tagId":730,"tag":"nudity (topless - brief)","labelKo":"짧은 상반신 노출","embeddingInput":"nudity (topless - brief) 짧은 상반신 노출 잠깐 등장 성인 장면 신체 노출 수위 요소"}
+{"tagId":731,"tag":"nudity (topless - notable)","labelKo":"두드러진 상반신 노출","embeddingInput":"nudity (topless - notable) 두드러진 상반신 노출 성인 장면 긴 노출 높은 수위 관능적 표현"}
+{"tagId":732,"tag":"nudity (topless)","labelKo":"상반신 노출","embeddingInput":"nudity (topless) 상반신 노출 신체 노출 성인 장면 관능적 장면 수위 요소 과감한 표현"}
+{"tagId":733,"tag":"obsession","labelKo":"집착","embeddingInput":"obsession 집착 강박 몰두 광기 소유욕 일방적 욕망 통제 욕구 심리 불안"}
+{"tagId":734,"tag":"ocean","labelKo":"바다","embeddingInput":"ocean 바다 대양 해상 항해 파도 섬 해변 고립 모험 자연 풍경"}
+{"tagId":735,"tag":"off-beat comedy","labelKo":"엉뚱한 코미디","embeddingInput":"off-beat comedy 엉뚱한 코미디 기묘한 유머 독특한 웃음 괴짜 감성 비주류 코미디 이상한 상황"}
+{"tagId":736,"tag":"office","labelKo":"사무실","embeddingInput":"office 사무실 직장 회사 업무 조직 상사 동료 회의실 직장 생활 사내 갈등"}
+{"tagId":737,"tag":"oil","labelKo":"석유","embeddingInput":"oil 석유 유전 산업 자원 탐욕 기업 개발 에너지 부패 환경 갈등"}
+{"tagId":738,"tag":"olympics","labelKo":"올림픽","embeddingInput":"olympics 올림픽 국제 대회 스포츠 선수 경쟁 금메달 국가대표 훈련 승부"}
+{"tagId":739,"tag":"ominous","labelKo":"불길한","embeddingInput":"ominous 불길한 ominous 위협적 예감 음산한 분위기 긴장감 불안 징조 암울한 기운"}
+{"tagId":740,"tag":"opera","labelKo":"오페라","embeddingInput":"opera 오페라 성악 무대 공연 클래식 음악 극장 비극적 감정 웅장한 음악"}
+{"tagId":741,"tag":"organized crime","labelKo":"조직범죄","embeddingInput":"organized crime 조직범죄 마피아 갱단 범죄 조직 암흑가 권력 다툼 밀거래 폭력"}
+{"tagId":742,"tag":"original","labelKo":"독창적인","embeddingInput":"original 독창적인 참신함 개성 강한 신선한 발상 고유한 스타일 창의적 구성 색다른 접근"}
+{"tagId":743,"tag":"original plot","labelKo":"독창적 줄거리","embeddingInput":"original plot 독창적 줄거리 참신한 서사 예측 어려움 신선한 발상 개성 있는 전개 색다른 이야기"}
+{"tagId":744,"tag":"orphans","labelKo":"고아들","embeddingInput":"orphans 고아들 부모 부재 보호시설 외로운 아이 가족 상실 성장 상처 생존"}
+{"tagId":745,"tag":"oscar","labelKo":"오스카","embeddingInput":"oscar 오스카 아카데미 시상식 수상 후보 명예 권위 있는 상 할리우드 성취"}
+{"tagId":746,"tag":"oscar (best actor)","labelKo":"오스카 남우주연상","embeddingInput":"oscar (best actor) 오스카 남우주연상 아카데미 연기상 주연 배우 남성 연기 수상 명연기"}
+{"tagId":747,"tag":"oscar (best actress)","labelKo":"오스카 여우주연상","embeddingInput":"oscar (best actress) 오스카 여우주연상 아카데미 연기상 주연 배우 여성 연기 수상 명연기"}
+{"tagId":748,"tag":"oscar (best animated feature)","labelKo":"오스카 장편 애니메이션상","embeddingInput":"oscar (best animated feature) 오스카 장편 애니메이션상 아카데미 애니 수상 장편 애니메이션 창작 성취"}
+{"tagId":749,"tag":"oscar (best cinematography)","labelKo":"오스카 촬영상","embeddingInput":"oscar (best cinematography) 오스카 촬영상 아카데미 영상미 카메라 조명 구도 시각미 촬영 성취"}
+{"tagId":750,"tag":"oscar (best directing)","labelKo":"오스카 감독상","embeddingInput":"oscar (best directing) 오스카 감독상 아카데미 연출상 감독 연출력 수상 연출 성취"}
+{"tagId":751,"tag":"oscar (best editing)","labelKo":"오스카 편집상","embeddingInput":"oscar (best editing) 오스카 편집상 아카데미 편집 리듬 장면 구성 컷 연결 편집 성취"}
+{"tagId":752,"tag":"oscar (best effects - visual effects)","labelKo":"오스카 시각효과상","embeddingInput":"oscar (best effects - visual effects) 오스카 시각효과상 아카데미 VFX 특수효과 시각 기술 화면 구현"}
+{"tagId":753,"tag":"oscar (best foreign language film)","labelKo":"오스카 외국어상","embeddingInput":"oscar (best foreign language film) 오스카 외국어상 아카데미 국제 부문 비영어권 수상 해외 제작"}
+{"tagId":754,"tag":"oscar (best music - original score)","labelKo":"오스카 음악상","embeddingInput":"oscar (best music - original score) 오스카 음악상 아카데미 오리지널 스코어 배경음악 작곡 수상 음악 성취"}
+{"tagId":755,"tag":"oscar (best music - original song)","labelKo":"오스카 주제가상","embeddingInput":"oscar (best music - original song) 오스카 주제가상 아카데미 오리지널 송 삽입곡 노래 수상 음악 성취"}
+{"tagId":756,"tag":"oscar (best picture)","labelKo":"오스카 최우수상","embeddingInput":"oscar (best picture) 오스카 최우수상 아카데미 최고상 주요 수상 권위 대표 수상작"}
+{"tagId":757,"tag":"oscar (best sound)","labelKo":"오스카 음향상","embeddingInput":"oscar (best sound) 오스카 음향상 아카데미 사운드 믹싱 음향 설계 소리 구현 기술 성취"}
+{"tagId":758,"tag":"oscar (best supporting actor)","labelKo":"오스카 남우조연상","embeddingInput":"oscar (best supporting actor) 오스카 남우조연상 아카데미 조연 배우 남성 연기 수상 명연기"}
+{"tagId":759,"tag":"oscar (best supporting actress)","labelKo":"오스카 여우조연상","embeddingInput":"oscar (best supporting actress) 오스카 여우조연상 아카데미 조연 배우 여성 연기 수상 명연기"}
+{"tagId":760,"tag":"oscar (best writing - screenplay written directly for the screen)","labelKo":"오스카 각본상","embeddingInput":"oscar (best writing - screenplay written directly for the screen) 오스카 각본상 아카데미 오리지널 각본 시나리오 집필 수상 서사 성취"}
+{"tagId":761,"tag":"oscar winner","labelKo":"오스카 수상","embeddingInput":"oscar winner 오스카 수상 아카데미 수상작 수상 경력 권위 있는 상 시상식 영예"}
+{"tagId":762,"tag":"over the top","labelKo":"과장된","embeddingInput":"over the top 과장된 과도한 연출 과격한 표현 극단적 장면 요란한 스타일 과잉 감정"}
+{"tagId":763,"tag":"overrated","labelKo":"과대평가된","embeddingInput":"overrated 과대평가된 기대 대비 실망 명성 과장 평가 과열 완성도 논란 평판 과잉"}
+{"tagId":764,"tag":"palestine","labelKo":"팔레스타인","embeddingInput":"palestine 팔레스타인 중동 분쟁 점령 저항 난민 정치 갈등 지역 현실"}
+{"tagId":765,"tag":"parallel universe","labelKo":"평행우주","embeddingInput":"parallel universe 평행우주 대체 현실 다중세계 다른 차원 시간 분기 SF 설정 현실 교차"}
+{"tagId":766,"tag":"paranoia","labelKo":"편집증","embeddingInput":"paranoia 편집증 의심 불안 감시 공포 음모 망상 심리 압박 현실 불신"}
+{"tagId":767,"tag":"paranoid","labelKo":"편집증적인","embeddingInput":"paranoid 편집증적인 의심 많은 불안한 감시당함 망상 음모 불신 심리 긴장"}
+{"tagId":768,"tag":"parenthood","labelKo":"부모됨","embeddingInput":"parenthood 부모됨 육아 가족 책임 양육 자녀 관계 부모 역할 성장 갈등"}
+{"tagId":769,"tag":"paris","labelKo":"파리","embeddingInput":"paris 파리 프랑스 도시 유럽 배경 예술 낭만 거리 풍경 센강"}
+{"tagId":770,"tag":"parody","labelKo":"패러디","embeddingInput":"parody 패러디 풍자 모방 장르 비틀기 코믹 재해석 익살스러운 인용"}
+{"tagId":771,"tag":"passionate","labelKo":"열정적인","embeddingInput":"passionate 열정적인 강렬한 감정 뜨거운 사랑 몰입 격정적 에너지 욕망 진심"}
+{"tagId":772,"tag":"penguins","labelKo":"펭귄","embeddingInput":"penguins 펭귄 남극 동물 무리 빙하 자연 다큐 애니메이션 귀여운 캐릭터"}
+{"tagId":773,"tag":"perfect","labelKo":"완벽한","embeddingInput":"perfect 완벽한 완성도 높은 흠잡기 어려움 균형 잡힌 뛰어난 만듦새 만족감 높은 완결성"}
+{"tagId":774,"tag":"period piece","labelKo":"시대극","embeddingInput":"period piece 시대극 역사 배경 과거 시대 의상 고증 궁정 사회상 시대 분위기"}
+{"tagId":775,"tag":"peter pan","labelKo":"피터팬","embeddingInput":"peter pan 피터팬 네버랜드 영원한 소년 동화 판타지 후크 선장 웬디 성장 거부"}
+{"tagId":776,"tag":"pg","labelKo":"PG 등급","embeddingInput":"pg PG 등급 보호자 지도 가족 관람 낮은 수위 어린이 가능 온건한 표현"}
+{"tagId":777,"tag":"pg-13","labelKo":"PG-13 등급","embeddingInput":"pg-13 PG-13 등급 13세 이상 보호자 주의 중간 수위 청소년 관람 액션 폭력"}
+{"tagId":778,"tag":"philip k. dick","labelKo":"필립 K. 딕","embeddingInput":"philip k. dick 필립 K. 딕 SF 원작 현실 의심 기억 조작 정체성 사이버펑크 미래사회"}
+{"tagId":779,"tag":"philosophical","labelKo":"철학적인","embeddingInput":"philosophical 철학적인 사유 존재 의미 윤리 질문 인간 본성 관념적 대화 성찰"}
+{"tagId":780,"tag":"philosophy","labelKo":"철학","embeddingInput":"philosophy 철학 존재론 윤리 사상 질문 인간 본질 의미 탐구 관념적 주제"}
+{"tagId":781,"tag":"photographer","labelKo":"사진가","embeddingInput":"photographer 사진가 카메라 촬영 예술가 관찰자 이미지 기록 현장 취재 시선"}
+{"tagId":782,"tag":"photography","labelKo":"사진","embeddingInput":"photography 사진 촬영 카메라 이미지 구도 빛과 그림자 기록 시각 예술 프레임"}
+{"tagId":783,"tag":"pigs","labelKo":"돼지","embeddingInput":"pigs 돼지 동물 농장 가축 우화 풍자 탐욕 상징 기괴한 분위기"}
+{"tagId":784,"tag":"pirates","labelKo":"해적","embeddingInput":"pirates 해적 바다 모험 보물선 약탈 항해 검투 선장 선원"}
+{"tagId":785,"tag":"pixar","labelKo":"픽사","embeddingInput":"pixar 픽사 애니메이션 가족 감성 캐릭터 성장 유머 상상력 CG 애니"}
+{"tagId":786,"tag":"pixar animation","labelKo":"픽사 애니메이션","embeddingInput":"pixar animation 픽사 애니메이션 CG 애니 가족 감성 유머 성장 캐릭터 상상력 따뜻함"}
+{"tagId":787,"tag":"plot","labelKo":"줄거리","embeddingInput":"plot 줄거리 서사 구조 이야기 전개 사건 구성 인과관계 갈등 결말"}
+{"tagId":788,"tag":"plot holes","labelKo":"줄거리 허점","embeddingInput":"plot holes 줄거리 허점 개연성 부족 논리 오류 설명 부족 설정 충돌 억지 전개 빈틈"}
+{"tagId":789,"tag":"plot twist","labelKo":"반전","embeddingInput":"plot twist 반전 예상 밖 전개 충격적 진실 숨겨진 사실 결말 뒤집기 서사 전환"}
+{"tagId":790,"tag":"poetry","labelKo":"시적 감성","embeddingInput":"poetry 시적 감성 서정적 언어 은유 아름다운 문장 감각적 이미지 잔잔한 정서"}
+{"tagId":791,"tag":"poignant","labelKo":"가슴 저린","embeddingInput":"poignant 가슴 저린 애틋한 감정 먹먹함 슬픔과 따뜻함 깊은 여운 감동적 정서"}
+{"tagId":792,"tag":"pointless","labelKo":"무의미한","embeddingInput":"pointless 무의미한 목적 없음 공허한 전개 허무함 산만한 구성 결말 허탈 의미 부족"}
+{"tagId":793,"tag":"poker","labelKo":"포커","embeddingInput":"poker 포커 카드게임 도박 블러핑 심리전 판돈 승부 카지노 긴장감"}
+{"tagId":794,"tag":"poland","labelKo":"폴란드","embeddingInput":"poland 폴란드 동유럽 역사 배경 바르샤바 전쟁 기억 사회주의 시대 지역색"}
+{"tagId":795,"tag":"police","labelKo":"경찰","embeddingInput":"police 경찰 수사 형사 범죄 추적 법집행 체포 순찰 공권력"}
+{"tagId":796,"tag":"police corruption","labelKo":"경찰 부패","embeddingInput":"police corruption 경찰 부패 비리 권력 남용 뇌물 은폐 내부 고발 범죄 연루"}
+{"tagId":797,"tag":"police investigation","labelKo":"경찰 수사","embeddingInput":"police investigation 경찰 수사 형사 사건 추적 증거 탐문 범인 검거 절차 범죄 해결"}
+{"tagId":798,"tag":"political","labelKo":"정치적인","embeddingInput":"political 정치적인 권력 이념 선거 정부 사회 갈등 제도 비판 정치 드라마"}
+{"tagId":799,"tag":"political corruption","labelKo":"정치 부패","embeddingInput":"political corruption 정치 부패 권력 비리 뇌물 스캔들 음모 은폐 제도 타락"}
+{"tagId":800,"tag":"politics","labelKo":"정치","embeddingInput":"politics 정치 권력 정부 선거 이념 외교 정책 사회 갈등 정치인"}
+{"tagId":801,"tag":"pornography","labelKo":"포르노그래피","embeddingInput":"pornography 포르노그래피 성인물 노골적 성표현 에로틱 수위 높은 노출 성적 소재 외설적 자극적 영상"}
+{"tagId":802,"tag":"post apocalyptic","labelKo":"포스트 아포칼립스","embeddingInput":"post apocalyptic 포스트 아포칼립스 문명 붕괴 종말 이후 폐허 생존 황폐한 세계 디스토피아 생존자 무리 재난 이후"}
+{"tagId":803,"tag":"post-apocalyptic","labelKo":"포스트 아포칼립스","embeddingInput":"post-apocalyptic 포스트 아포칼립스 문명 붕괴 종말 이후 폐허 생존 황폐한 세계 디스토피아 생존자 무리 재난 이후"}
+{"tagId":804,"tag":"potential oscar nom","labelKo":"오스카 후보 가능성","embeddingInput":"potential oscar nom 오스카 후보 가능성 시상식 유력 연기력 중심 완성도 높은 수상 기대 비평가 호평 아카데미 감성 명망 있는 드라마"}
+{"tagId":805,"tag":"poverty","labelKo":"가난","embeddingInput":"poverty 가난 빈곤 생활고 경제적 궁핍 하층민 생계난 사회적 불평등 고단한 현실 궁핍한 삶"}
+{"tagId":806,"tag":"powerful ending","labelKo":"강렬한 결말","embeddingInput":"powerful ending 강렬한 결말 여운 큰 마무리 충격적 마지막 감정 폭발 깊은 여운 인상적 엔딩 묵직한 마무리"}
+{"tagId":807,"tag":"predictable","labelKo":"예측 가능한","embeddingInput":"predictable 예측 가능한 뻔한 전개 익숙한 결말 공식적 서사 반전 부족 예상되는 흐름 클리셰 많은 단순한 구성"}
+{"tagId":808,"tag":"pregnancy","labelKo":"임신","embeddingInput":"pregnancy 임신 출산 준비 태아 가족 변화 모성 갈등 예비 부모 임산부 삶의 전환 출산 불안"}
+{"tagId":809,"tag":"prejudice","labelKo":"편견","embeddingInput":"prejudice 편견 선입견 차별적 시선 고정관념 사회적 낙인 오해와 갈등 배제 편파적 판단"}
+{"tagId":810,"tag":"prequel","labelKo":"프리퀄","embeddingInput":"prequel 프리퀄 이전 이야기 기원 서사 과거 배경 전사 속편 이전 세계관 확장 탄생 배경 앞선 시간대"}
+{"tagId":811,"tag":"president","labelKo":"대통령","embeddingInput":"president 대통령 국가 지도자 백악관 권력 정치 리더십 선거 행정부 국가 위기 정치 드라마"}
+{"tagId":812,"tag":"pretentious","labelKo":"허세 있는","embeddingInput":"pretentious 허세 있는 과장된 예술성 난해한 척 현학적 분위기 자의식 강한 무게 잡는 공허한 상징 과시적 연출"}
+{"tagId":813,"tag":"prison","labelKo":"감옥","embeddingInput":"prison 감옥 교도소 수감 생활 죄수 간수 폐쇄 공간 형벌 탈출 욕망 감방 생존"}
+{"tagId":814,"tag":"prison escape","labelKo":"감옥 탈출","embeddingInput":"prison escape 감옥 탈출 탈옥 교도소 탈출 치밀한 계획 감방 탈출 추격전 수감자 자유 탈출 작전 긴장감"}
+{"tagId":815,"tag":"private detective","labelKo":"사립 탐정","embeddingInput":"private detective 사립 탐정 탐정 수사 미스터리 의뢰 사건 추적 하드보일드 단서 조사 범죄 추리"}
+{"tagId":816,"tag":"product placement","labelKo":"간접 광고","embeddingInput":"product placement 간접 광고 브랜드 노출 상품 노출 협찬 장면 상업적 배치 광고성 연출 로고 노출 마케팅 요소"}
+{"tagId":817,"tag":"prohibition","labelKo":"금주법","embeddingInput":"prohibition 금주법 밀주 조직 범죄 암시장 1920년대 미국 갱스터 술 단속 불법 주류 시대극"}
+{"tagId":818,"tag":"propaganda","labelKo":"선전","embeddingInput":"propaganda 선전 정치 선동 이념 주입 체제 홍보 국가주의 여론 조작 메시지 중심 대중 동원"}
+{"tagId":819,"tag":"prostitution","labelKo":"성매매","embeddingInput":"prostitution 성매매 매춘 유흥가 착취 생계형 범죄 어두운 현실 거리 생활 사회적 낙인 취약한 인물"}
+{"tagId":820,"tag":"psychedelic","labelKo":"사이키델릭","embeddingInput":"psychedelic 사이키델릭 환각적 몽환적 영상 강렬한 색채 비현실 감각 의식 변화 초현실 분위기 실험적 연출 몽롱함"}
+{"tagId":821,"tag":"psychiatrist","labelKo":"정신과 의사","embeddingInput":"psychiatrist 정신과 의사 상담 치료 정신 분석 환자 면담 트라우마 진단 치료자 심리 갈등 병원 장면"}
+{"tagId":822,"tag":"psychiatry","labelKo":"정신의학","embeddingInput":"psychiatry 정신의학 정신 치료 진단 상담 심리 분석 병원 치료 임상 장면 정신 질환 의료 윤리"}
+{"tagId":823,"tag":"psychological","labelKo":"심리적인","embeddingInput":"psychological 심리적인 내면 갈등 불안 긴장 정신적 압박 심리 스릴러 불안정한 인물 의심 망상 감정 대립"}
+{"tagId":824,"tag":"psychology","labelKo":"심리학","embeddingInput":"psychology 심리학 인간 심리 행동 분석 무의식 감정 변화 정신 분석 동기 탐구 내면 해석 심리 실험"}
+{"tagId":825,"tag":"pulp","labelKo":"펄프 스타일","embeddingInput":"pulp 펄프 스타일 저속한 매력 범죄 활극 과장된 폭력 자극적 서사 싸구려 감성 장르 혼합 거친 대사"}
+{"tagId":826,"tag":"punk","labelKo":"펑크","embeddingInput":"punk 펑크 반항 문화 거친 음악 젊은 저항 거리 감성 DIY 정신 아웃사이더 체제 반발 과격한 스타일"}
+{"tagId":827,"tag":"puppets","labelKo":"인형극","embeddingInput":"puppets 인형극 꼭두각시 인형 캐릭터 조종 인형 스톱모션 손인형 풍자적 연출 기묘한 감성 수공예 느낌"}
+{"tagId":828,"tag":"queer","labelKo":"퀴어","embeddingInput":"queer 퀴어 성소수자 정체성 젠더 다양성 LGBTQ 사랑과 차별 커밍아웃 사회적 시선 자기 수용 관계 갈등"}
+{"tagId":829,"tag":"quirky","labelKo":"기발한","embeddingInput":"quirky 기발한 독특한 개성 엉뚱한 유머 이상한 매력 별난 인물 색다른 톤 비주류 감성 묘한 분위기"}
+{"tagId":830,"tag":"quotable","labelKo":"인용하기 좋은","embeddingInput":"quotable 인용하기 좋은 명대사 기억나는 대사 재치 있는 말 강렬한 문장 따라 하기 좋은 대사 중심 말맛 있는"}
+{"tagId":831,"tag":"rabbits","labelKo":"토끼","embeddingInput":"rabbits 토끼 동물 캐릭터 흰 토끼 우화적 소재 기묘한 상징 애니멀 요소 동화적 분위기 작은 생명 마스코트"}
+{"tagId":832,"tag":"race","labelKo":"인종","embeddingInput":"race 인종 정체성 인종 갈등 사회적 차이 차별 문제 문화적 배경 권력 관계 공동체 갈등 역사적 맥락"}
+{"tagId":833,"tag":"race issues","labelKo":"인종 문제","embeddingInput":"race issues 인종 문제 차별 갈등 사회적 불평등 편견 제도적 차별 민권 갈등 정체성 충돌 역사적 상처"}
+{"tagId":834,"tag":"racing","labelKo":"레이싱","embeddingInput":"racing 레이싱 자동차 경주 속도감 질주 트랙 경쟁 드라이버 승부 엔진 소리 추월 장면 아드레날린"}
+{"tagId":835,"tag":"racism","labelKo":"인종차별","embeddingInput":"racism 인종차별 혐오 편견 백인 우월주의 제도적 차별 차별 폭력 민권 운동 불평등 억압 사회 고발"}
+{"tagId":836,"tag":"radio","labelKo":"라디오","embeddingInput":"radio 라디오 방송국 DJ 진행자 전파 방송 음성 매체 청취자 사연 생방송 스튜디오"}
+{"tagId":837,"tag":"rags to riches","labelKo":"가난에서 성공","embeddingInput":"rags to riches 가난에서 성공 신분 상승 성공담 역경 극복 부와 명예 밑바닥 출발 인생 역전 야망 계층 이동"}
+{"tagId":838,"tag":"rape","labelKo":"성폭행","embeddingInput":"rape 성폭행 성범죄 피해자 트라우마 폭력 가해자 처벌 고통스러운 기억 복수 서사 법정 갈등 어두운 소재"}
+{"tagId":839,"tag":"rats","labelKo":"쥐","embeddingInput":"rats 쥐 도시 하수도 떼 지은 동물 불결한 환경 공포 요소 전염병 이미지 실험실 동물 생존 본능"}
+{"tagId":840,"tag":"realistic","labelKo":"현실적인","embeddingInput":"realistic 현실적인 사실적 묘사 현실감 자연스러운 연기 생활 밀착 담백한 연출 실제 같은 사회 현실 진정성"}
+{"tagId":841,"tag":"realistic action","labelKo":"현실적인 액션","embeddingInput":"realistic action 현실적인 액션 육탄전 실제감 있는 전투 과장 적은 추격 실전 격투 현실감 총격 거친 움직임 긴박한 충돌"}
+{"tagId":842,"tag":"reality tv","labelKo":"리얼리티 TV","embeddingInput":"reality tv 리얼리티 TV 관찰 예능 실제 인물 서바이벌 방송 카메라 감시 경쟁 포맷 일상 노출 출연자 갈등"}
+{"tagId":843,"tag":"rebellion","labelKo":"반란","embeddingInput":"rebellion 반란 저항 봉기 권력 투쟁 체제 반발 민중 항거 무장 투쟁 혁명 전야 억압 반대"}
+{"tagId":844,"tag":"redemption","labelKo":"구원","embeddingInput":"redemption 구원 속죄 회복 죄책감 참회 변화 용서 과거 청산 도덕적 선택 다시 시작 희생"}
+{"tagId":845,"tag":"reflective","labelKo":"성찰적인","embeddingInput":"reflective 성찰적인 사색적 내면 독백 회고 삶의 의미 조용한 분위기 자기 반성 철학적 정서 여운 있는"}
+{"tagId":846,"tag":"relationships","labelKo":"관계","embeddingInput":"relationships 관계 인간관계 연애 가족 우정 갈등 화해 감정 교류 친밀감 이별과 만남 관계 변화"}
+{"tagId":847,"tag":"religion","labelKo":"종교","embeddingInput":"religion 종교 신앙 교회 믿음 의식 죄와 구원 성직자 영적 갈등 교리 신념 종교 공동체"}
+{"tagId":848,"tag":"remade","labelKo":"리메이크된","embeddingInput":"remade 리메이크된 다시 만든 재해석 원작 기반 새 버전 각색 현대적 변주 기존 이야기 다른 연출 재제작"}
+{"tagId":849,"tag":"remake","labelKo":"리메이크","embeddingInput":"remake 리메이크 다시 만든 버전 원작 재해석 새 각색 현대화 재제작 같은 이야기 다른 시대 새로운 연출"}
+{"tagId":850,"tag":"revenge","labelKo":"복수","embeddingInput":"revenge 복수 보복 원한 응징 피의 대가 복수극 분노 추적 가해자 처단 정의와 폭력"}
+{"tagId":851,"tag":"revolution","labelKo":"혁명","embeddingInput":"revolution 혁명 체제 전복 민중 봉기 정치 격변 저항 운동 사회 변화 권력 교체 급진 변화 혁명가"}
+{"tagId":852,"tag":"ridiculous","labelKo":"터무니없는","embeddingInput":"ridiculous 터무니없는 황당한 설정 말도 안 되는 과장된 상황 우스꽝스러운 전개 비현실적 행동 엉뚱한 장면 어이없는 유머"}
+{"tagId":853,"tag":"rio de janeiro","labelKo":"리우데자네이루","embeddingInput":"rio de janeiro 리우데자네이루 브라질 도시 해변 빈민가 삼바 카니발 남미 배경 열대 분위기 도시 풍경"}
+{"tagId":854,"tag":"road movie","labelKo":"로드 무비","embeddingInput":"road movie 로드 무비 길 위의 여정 여행 동행 이동 서사 낯선 만남 도로 풍경 성장 여정 자유로운 분위기"}
+{"tagId":855,"tag":"road trip","labelKo":"로드 트립","embeddingInput":"road trip 로드 트립 자동차 여행 장거리 이동 동행 여행 길 위의 사건 우정 갈등 낯선 장소 여정 중심"}
+{"tagId":856,"tag":"roald dahl","labelKo":"Roald Dahl","embeddingInput":"roald dahl Roald Dahl 동화 원작 기발한 상상력 블랙 유머 어린이 시선 판타지 요소 풍자적 이야기 별난 캐릭터 원작 작가"}
+{"tagId":857,"tag":"robbery","labelKo":"강도","embeddingInput":"robbery 강도 범죄 절도 은행 털이 침입 총기 위협 계획 범죄 도주 추격 훔치기"}
+{"tagId":858,"tag":"robert downey jr","labelKo":"Robert Downey Jr","embeddingInput":"robert downey jr Robert Downey Jr 배우 스타 매력 재치 있는 연기 카리스마 아이러니한 유머 히어로 이미지 개성 강한 캐릭터"}
+{"tagId":859,"tag":"robert ludlum","labelKo":"Robert Ludlum","embeddingInput":"robert ludlum Robert Ludlum 첩보 원작 스파이 스릴러 음모 추적 기억 상실 국제 작전 액션 서스펜스 원작 작가"}
+{"tagId":860,"tag":"robot","labelKo":"로봇","embeddingInput":"robot 로봇 인공지능 기계 인간형 안드로이드 자동화 미래 기술 인간과 기계 감정 있는 기계 과학기술"}
+{"tagId":861,"tag":"robots","labelKo":"로봇들","embeddingInput":"robots 로봇들 기계 군단 안드로이드 인공지능 미래 사회 자동화 전쟁 인간형 기계 로봇 사회 기술 문명"}
+{"tagId":862,"tag":"rock and roll","labelKo":"로큰롤","embeddingInput":"rock and roll 로큰롤 밴드 음악 반항적 리듬 무대 공연 기타 사운드 청춘 문화 음악 열정 라이브 에너지"}
+{"tagId":863,"tag":"romance","labelKo":"로맨스","embeddingInput":"romance 로맨스 사랑 연애 감정 설렘 이별 만남 애정 관계 운명적 사랑 멜로 분위기"}
+{"tagId":864,"tag":"romantic","labelKo":"로맨틱한","embeddingInput":"romantic 로맨틱한 사랑스러운 설렘 감성적 연애 달콤한 분위기 고백 장면 데이트 감정 교류 따뜻한 애정"}
+{"tagId":865,"tag":"romantic comedy","labelKo":"로맨틱 코미디","embeddingInput":"romantic comedy 로맨틱 코미디 사랑과 웃음 연애 소동 가벼운 유머 티격태격 커플 설렘 유쾌한 만남 해피엔딩"}
+{"tagId":866,"tag":"rome","labelKo":"로마","embeddingInput":"rome 로마 이탈리아 도시 고대 유적 유럽 배경 역사 도시 로마 거리 제국 이미지 관광지 풍경 낭만적 배경"}
+{"tagId":867,"tag":"runaway","labelKo":"도망자","embeddingInput":"runaway 도망자 가출 탈주 추격 도피 생활 쫓기는 인물 자유 갈망 위험한 여정 숨은 신분 탈출"}
+{"tagId":868,"tag":"russia","labelKo":"러시아","embeddingInput":"russia 러시아 동유럽 배경 냉전 분위기 모스크바 눈 덮인 풍경 정치 긴장 스파이 역사 격변 러시아 문화"}
+{"tagId":869,"tag":"russian","labelKo":"러시아적인","embeddingInput":"russian 러시아적인 러시아 배경 러시아 인물 냉전 스파이 동유럽 정서 러시아어 문화 역사적 분위기 권력 갈등"}
+{"tagId":870,"tag":"sacrifice","labelKo":"희생","embeddingInput":"sacrifice 희생 자기희생 헌신 목숨 건 선택 대의를 위한 죽음 가족을 위한 선택 숭고한 결단 비극적 선택 구원 서사"}
+{"tagId":871,"tag":"sad","labelKo":"슬픈","embeddingInput":"sad 슬픈 우울한 비극적 눈물 나는 상실감 애잔한 정서 가슴 아픈 이별 고통 쓸쓸함"}
+{"tagId":872,"tag":"sad but good","labelKo":"슬프지만 좋은","embeddingInput":"sad but good 슬프지만 좋은 눈물 나는 감동 애잔한 여운 비극적 아름다움 먹먹한 감정 가슴 아픈 명작 깊은 감동 씁쓸한 여운"}
+{"tagId":873,"tag":"samurai","labelKo":"사무라이","embeddingInput":"samurai 사무라이 검객 무사 일본 시대극 검술 명예 주군 충성 결투 무사도 고전 액션"}
+{"tagId":874,"tag":"san francisco","labelKo":"샌프란시스코","embeddingInput":"san francisco 샌프란시스코 미국 서부 도시 금문교 언덕길 베이 에어리어 도시 배경 항구 도시 안개 낀 거리"}
+{"tagId":875,"tag":"sappy","labelKo":"감상적인","embeddingInput":"sappy 감상적인 눈물 짜는 과한 감정 신파적 달콤씁쓸한 정서 감정 과잉 뻔한 감동 멜로드라마 느낌 sentimental tone"}
+{"tagId":876,"tag":"sarcasm","labelKo":"빈정거림","embeddingInput":"sarcasm 빈정거림 냉소적 농담 비꼬는 말 날카로운 유머 아이러니 말투 풍자적 대사 독설 재치 씁쓸한 웃음"}
+{"tagId":877,"tag":"satire","labelKo":"풍자","embeddingInput":"satire 풍자 사회 비판 권력 조롱 블랙 유머 아이러니 과장된 현실 정치 풍자 냉소적 시선 비판적 웃음"}
+{"tagId":878,"tag":"satirical","labelKo":"풍자적인","embeddingInput":"satirical 풍자적인 비판적 유머 사회 조롱 정치 풍자 아이러니 냉소적 톤 과장된 현실 권력 비판 씁쓸한 웃음"}
+{"tagId":879,"tag":"saturday night live","labelKo":"Saturday Night Live","embeddingInput":"saturday night live Saturday Night Live 스케치 코미디 풍자 쇼 미국 코미디 라이브 방송 패러디 유머 정치 풍자 코미디 출신"}
+{"tagId":880,"tag":"saturn award (best science fiction film)","labelKo":"새턴상 최우수 SF","embeddingInput":"saturn award (best science fiction film) 새턴상 최우수 SF SF 수상작 장르 시상식 과학상상력 우주 미래 기술 판타지 장르 명예 새턴 어워드"}
+{"tagId":881,"tag":"saturn award (best special effects)","labelKo":"새턴상 최우수 특수효과","embeddingInput":"saturn award (best special effects) 새턴상 최우수 특수효과 특수효과 수상 시각효과 장르 시상식 VFX 기술적 완성도 시각적 볼거리 새턴 어워드"}
+{"tagId":882,"tag":"scary","labelKo":"무서운","embeddingInput":"scary 무서운 공포 긴장 섬뜩한 분위기 소름 돋는 불안감 위협적인 장면 깜짝 놀람 어두운 긴장감"}
+{"tagId":883,"tag":"scenic","labelKo":"풍경이 아름다운","embeddingInput":"scenic 풍경이 아름다운 경치 좋은 자연 풍광 아름다운 배경 장대한 풍경 여행 감성 시각적 아름다움 넓은 풍경 그림 같은 장면"}
+{"tagId":884,"tag":"schizophrenia","labelKo":"조현병","embeddingInput":"schizophrenia 조현병 망상 환청 정신 질환 현실 혼란 불안정한 인식 심리적 붕괴 치료 갈등 왜곡된 시점"}
+{"tagId":885,"tag":"school","labelKo":"학교","embeddingInput":"school 학교 학생 교실 선생님 학창 시절 캠퍼스 성장 우정 청소년 생활 수업 장면"}
+{"tagId":886,"tag":"sci fi","labelKo":"SF","embeddingInput":"sci fi SF 과학상상력 미래 기술 우주 인공지능 외계 생명 시간 여행 디스토피아 첨단 문명"}
+{"tagId":887,"tag":"sci-fi","labelKo":"SF","embeddingInput":"sci-fi SF 과학상상력 미래 기술 우주 인공지능 외계 생명 시간 여행 디스토피아 첨단 문명"}
+{"tagId":888,"tag":"science","labelKo":"과학","embeddingInput":"science 과학 연구 실험 과학자 이론 발견 실험실 기술 탐구 지식 추구 자연 법칙"}
+{"tagId":889,"tag":"science fiction","labelKo":"SF","embeddingInput":"science fiction SF 과학상상력 미래 기술 우주 탐사 인공지능 외계 문명 시간 여행 과학적 상상 디스토피아"}
+{"tagId":890,"tag":"scifi","labelKo":"SF","embeddingInput":"scifi SF 과학상상력 미래 기술 우주 인공지능 외계 생명 시간 여행 디스토피아 첨단 문명"}
+{"tagId":891,"tag":"scifi cult","labelKo":"SF 컬트","embeddingInput":"scifi cult SF 컬트 독특한 SF 매니아층 기이한 설정 미래 기술 우주 상상력 컬트 감성 실험적 장르 비주류 매력"}
+{"tagId":892,"tag":"scotland","labelKo":"스코틀랜드","embeddingInput":"scotland 스코틀랜드 고원 풍경 영국 북부 켈트 문화 역사 배경 성곽 풍경 독립 정서 거친 자연 지역 색채"}
+{"tagId":893,"tag":"screwball","labelKo":"스크루볼","embeddingInput":"screwball 스크루볼 빠른 대사 소동 코미디 엉뚱한 상황 남녀 티격태격 고전 유머 말장난 혼란스러운 사건 유쾌한 리듬"}
+{"tagId":894,"tag":"screwball comedy","labelKo":"스크루볼 코미디","embeddingInput":"screwball comedy 스크루볼 코미디 빠른 대사 소동극 엉뚱한 커플 고전 코미디 말싸움 유머 오해와 혼란 유쾌한 로맨스 재치 있는 대사"}
+{"tagId":895,"tag":"script","labelKo":"각본","embeddingInput":"script 각본 대본 구조 대사 서사 구성 장면 전개 치밀한 이야기 플롯 설계 말맛 이야기 완성도"}
+{"tagId":896,"tag":"secret service","labelKo":"비밀경호국","embeddingInput":"secret service 비밀경호국 경호 요원 대통령 보호 첩보 보안 작전 암살 위협 정부 기관 국가 안보 긴급 대응"}
+{"tagId":897,"tag":"secrets","labelKo":"비밀","embeddingInput":"secrets 비밀 숨겨진 진실 은폐 폭로 미스터리 과거 사건 거짓말 가족 비밀 음모 반전"}
+{"tagId":898,"tag":"segregation","labelKo":"분리 정책","embeddingInput":"segregation 분리 정책 인종 분리 차별 제도 격리 불평등 민권 시대 사회 장벽 흑백 갈등 역사적 차별"}
+{"tagId":899,"tag":"self discovery","labelKo":"자아 발견","embeddingInput":"self discovery 자아 발견 자기 탐색 성장 내면 여정 정체성 찾기 삶의 전환 성찰 변화 개인적 깨달음 새로운 시작"}
+{"tagId":900,"tag":"sentimental","labelKo":"감성적인","embeddingInput":"sentimental 감성적인 애틋한 정서 눈물 나는 추억 회상 따뜻한 감정 감정적 여운 신파적 분위기 마음을 울림"}
+{"tagId":901,"tag":"sequel","labelKo":"속편","embeddingInput":"sequel 속편 후속편 이어지는 이야기 전작 이후 계속되는 서사 프랜차이즈 연장 두번째 이야기 sequel 감성"}
+{"tagId":902,"tag":"sequels","labelKo":"속편들","embeddingInput":"sequels 속편들 연속 후속편 시리즈 후속작 여러 편 이어지는 이야기 프랜차이즈 확장 계속되는 서사 후속 이야기"}
+{"tagId":903,"tag":"serial killer","labelKo":"연쇄살인범","embeddingInput":"serial killer 연쇄살인범 연쇄 살인 범죄 스릴러 살인마 추적 사이코패스 살인 사건 공포 긴장감 수사물"}
+{"tagId":904,"tag":"series","labelKo":"시리즈","embeddingInput":"series 시리즈 연작 이어지는 서사 프랜차이즈 여러 편 세계관 연속 이야기 같은 캐릭터 장기 서사 후속 구성"}
+{"tagId":905,"tag":"sex","labelKo":"성적 소재","embeddingInput":"sex 성적 소재 성관계 에로틱 장면 성인 분위기 육체 관계 욕망 관능적 노골적 로맨스 성적 긴장"}
+{"tagId":906,"tag":"sex comedy","labelKo":"섹스 코미디","embeddingInput":"sex comedy 섹스 코미디 성적 농담 야한 유머 성인 코미디 민망한 상황 연애 소동 노골적 웃음 가벼운 야함"}
+{"tagId":907,"tag":"sexual","labelKo":"성적인","embeddingInput":"sexual 성적인 성적 긴장 관능적 분위기 욕망 노출 성인 소재 에로틱 관계 유혹 육체성 도발적 장면"}
+{"tagId":908,"tag":"sexual abuse","labelKo":"성적 학대","embeddingInput":"sexual abuse 성적 학대 성폭력 피해 착취 트라우마 권력 남용 폭력적 관계 어두운 서사 피해자 중심 심각한 소재"}
+{"tagId":909,"tag":"sexuality","labelKo":"섹슈얼리티","embeddingInput":"sexuality 섹슈얼리티 성 정체성 성적 욕망 관계 탐구 젠더 욕망 자아 발견 성적 긴장 친밀감 성인 주제"}
+{"tagId":910,"tag":"sexualized violence","labelKo":"성적 폭력","embeddingInput":"sexualized violence 성적 폭력 성폭력 착취 폭력적 욕망 가해 피해 트라우마 강압적 관계 잔혹한 장면 불편한 소재 어두운 톤"}
+{"tagId":911,"tag":"sexy","labelKo":"섹시한","embeddingInput":"sexy 섹시한 관능적 매혹적 유혹적인 성적 매력 도발적 분위기 에로틱 스타일 매력적인 인물 성인 감성"}
+{"tagId":912,"tag":"shakespeare","labelKo":"셰익스피어","embeddingInput":"shakespeare 셰익스피어 고전 희곡 비극 희극 왕실 음모 운명적 사랑 문학 각색 연극적 대사 고전 서사"}
+{"tagId":913,"tag":"shallow","labelKo":"얕은 내용","embeddingInput":"shallow 얕은 내용 피상적 전개 깊이 부족 가벼운 서사 단순한 인물 빈약한 주제 얄팍함 표면적 갈등"}
+{"tagId":914,"tag":"shark","labelKo":"상어","embeddingInput":"shark 상어 바다 공포 해양 생존 포식자 습격 물속 긴장 괴수 스릴러 피서지 위험 해상 위기"}
+{"tagId":915,"tag":"shopping","labelKo":"쇼핑","embeddingInput":"shopping 쇼핑 소비 문화 쇼핑몰 백화점 구매 욕망 도시 생활 패션 매장 일상 코미디 물건 사기"}
+{"tagId":916,"tag":"short","labelKo":"짧은 분량","embeddingInput":"short 짧은 분량 단편 짧은 러닝타임 간결한 구성 압축 서사 짧고 굵은 빠른 전개 소품 형식"}
+{"tagId":917,"tag":"short-term memory loss","labelKo":"단기 기억상실","embeddingInput":"short-term memory loss 단기 기억상실 기억 상실 반복 단서 혼란 정체성 추적 미스터리 퍼즐 서사 잃어버린 기억"}
+{"tagId":918,"tag":"silent","labelKo":"무성","embeddingInput":"silent 무성 대사 없음 무성 시대 표정 연기 몸짓 중심 시각 서사 흑백 고전 침묵 연출 무음 분위기"}
+{"tagId":919,"tag":"silly","labelKo":"엉뚱한","embeddingInput":"silly 엉뚱한 바보 같은 가벼운 웃음 황당한 상황 우스꽝스러운 장난기 코믹한 분위기 어이없는 전개"}
+{"tagId":920,"tag":"silly fun","labelKo":"엉뚱한 재미","embeddingInput":"silly fun 엉뚱한 재미 가벼운 웃음 바보 같은 유쾌함 황당 코미디 장난스러운 톤 부담 없는 웃김 코믹 소동"}
+{"tagId":921,"tag":"simple","labelKo":"단순한","embeddingInput":"simple 단순한 간결한 구조 쉬운 전개 명확한 갈등 복잡하지 않음 직선적 서사 담백한 구성 이해 쉬움"}
+{"tagId":922,"tag":"single father","labelKo":"싱글 대디","embeddingInput":"single father 싱글 대디 홀아버지 부성애 자녀 양육 가족 드라마 혼자 키우기 부모 자식 생활고 가족 책임"}
+{"tagId":923,"tag":"sisters","labelKo":"자매","embeddingInput":"sisters 자매 сест매 관계 가족 유대 갈등 화해 여성 관계 형제자매 성장 드라마 질투와 애정 가족사"}
+{"tagId":924,"tag":"skinhead","labelKo":"스킨헤드","embeddingInput":"skinhead 스킨헤드 극우 폭력 하위문화 인종주의 거리 집단 청년 분노 사회 갈등 과격한 사상 범죄 드라마"}
+{"tagId":925,"tag":"slackers","labelKo":"게으른 청춘","embeddingInput":"slackers 게으른 청춘 무기력한 젊음 백수 생활 빈둥거림 느슨한 일상 방황 코미디 책임 회피 청춘 소동"}
+{"tagId":926,"tag":"slapstick","labelKo":"슬랩스틱","embeddingInput":"slapstick 슬랩스틱 몸개그 넘어짐 과장된 동작 물리 코미디 소동 익살 우스꽝스러운 충돌 시각 유머"}
+{"tagId":927,"tag":"slasher","labelKo":"슬래셔","embeddingInput":"slasher 슬래셔 살인마 공포 추격 칼부림 생존자 희생자 연쇄 살인 긴장감 피투성이 도망 호러"}
+{"tagId":928,"tag":"slavery","labelKo":"노예제","embeddingInput":"slavery 노예제 노예 역사 억압 착취 인권 탄압 해방 투쟁 인종 차별 고통 시대극 사회 비극"}
+{"tagId":929,"tag":"slow","labelKo":"느린 전개","embeddingInput":"slow 느린 전개 느린 호흡 정적인 분위기 느긋한 템포 서서히 진행 사색적 톤 잔잔함 인내심 필요한"}
+{"tagId":930,"tag":"slow paced","labelKo":"느린 템포","embeddingInput":"slow paced 느린 템포 느린 전개 여유로운 호흡 정적 분위기 차분한 흐름 서서히 쌓임 사색적 리듬 잔잔한 진행"}
+{"tagId":931,"tag":"small town","labelKo":"작은 마을","embeddingInput":"small town 작은 마을 시골 마을 폐쇄적 공동체 지역 사회 소문 이웃 관계 한적한 배경 지방 생활 작은 공동체"}
+{"tagId":932,"tag":"snakes","labelKo":"뱀","embeddingInput":"snakes 뱀 독사 파충류 공포 습격 독 위험 정글 위기 괴물 동물 위협 생존 긴장"}
+{"tagId":933,"tag":"so bad it's funny","labelKo":"못 만들어서 웃긴","embeddingInput":"so bad it's funny 못 만들어서 웃긴 허술한 완성도 우스운 실패 엉성한 연출 황당한 장면 어색한 대사 웃긴 망작"}
+{"tagId":934,"tag":"so bad it's good","labelKo":"망작의 매력","embeddingInput":"so bad it's good 망작의 매력 엉성한 재미 허술한 연출 컬트 감성 황당한 완성도 웃긴 실패 괴상한 매력 B급 재미"}
+{"tagId":935,"tag":"soccer","labelKo":"축구","embeddingInput":"soccer 축구 경기장 선수 팀워크 승부 스포츠 드라마 골 경기 열정 훈련 라이벌 월드컵 분위기"}
+{"tagId":936,"tag":"social commentary","labelKo":"사회 비판","embeddingInput":"social commentary 사회 비판 사회 풍자 계급 문제 정치적 메시지 현실 비판 제도 비판 불평등 고발 시대상 풍자적 시선"}
+{"tagId":937,"tag":"solitude","labelKo":"고독","embeddingInput":"solitude 고독 외로움 고립 혼자 있음 내면 성찰 쓸쓸한 분위기 적막감 사색적 정서 인간 소외"}
+{"tagId":938,"tag":"sophia coppola","labelKo":"소피아 코폴라","embeddingInput":"sophia coppola 소피아 코폴라 섬세한 감성 고독한 여성 몽환적 분위기 절제된 연출 세련된 영상 감정의 거리 청춘 공허함"}
+{"tagId":939,"tag":"south africa","labelKo":"남아프리카","embeddingInput":"south africa 남아프리카 남아공 인종 갈등 아파르트헤이트 사회 변화 역사 드라마 요하네스버그 케이프타운 정치 현실"}
+{"tagId":940,"tag":"south america","labelKo":"남아메리카","embeddingInput":"south america 남아메리카 라틴아메리카 대륙 배경 정치 혼란 열대 풍경 사회 현실 여행 혁명 문화 충돌"}
+{"tagId":941,"tag":"southern theme","labelKo":"미국 남부 정서","embeddingInput":"southern theme 미국 남부 정서 남부 배경 가족사 보수적 공동체 지역 갈등 컨트리 분위기 습한 풍경 전통 문화"}
+{"tagId":942,"tag":"space","labelKo":"우주","embeddingInput":"space 우주 우주선 행성 별 은하 무중력 SF 탐사 외계 생명 고립감 우주 공간 미래 과학"}
+{"tagId":943,"tag":"space opera","labelKo":"스페이스 오페라","embeddingInput":"space opera 스페이스 오페라 우주 모험 은하 전쟁 외계 문명 영웅 서사 대규모 전투 제국 반란 SF 판타지"}
+{"tagId":944,"tag":"space program","labelKo":"우주 계획","embeddingInput":"space program 우주 계획 우주 개발 NASA 로켓 발사 우주비행사 과학 경쟁 탐사 임무 기술 도전 역사 드라마"}
+{"tagId":945,"tag":"space travel","labelKo":"우주 여행","embeddingInput":"space travel 우주 여행 우주선 항해 행성 탐사 성간 이동 무중력 장거리 임무 SF 모험 우주 고립"}
+{"tagId":946,"tag":"spaghetti western","labelKo":"스파게티 웨스턴","embeddingInput":"spaghetti western 스파게티 웨스턴 마카로니 웨스턴 총잡이 황야 결투 복수 무법자 거친 서부 이탈리아 서부극"}
+{"tagId":947,"tag":"spain","labelKo":"스페인","embeddingInput":"spain 스페인 스페인 배경 이베리아 문화 마드리드 바르셀로나 내전 역사 라틴 정서 유럽 배경 가족 드라마"}
+{"tagId":948,"tag":"spanish","labelKo":"스페인어권","embeddingInput":"spanish 스페인어권 스페인어 라틴 문화 히스패닉 정서 스페인 배경 라틴아메리카 대사 문화권 가족 드라마 사회 현실"}
+{"tagId":949,"tag":"spanish civil war","labelKo":"스페인 내전","embeddingInput":"spanish civil war 스페인 내전 전쟁 시대극 파시즘 공화파 프랑코 역사 비극 저항 정치 갈등 가족 상처"}
+{"tagId":950,"tag":"special","labelKo":"특별한","embeddingInput":"special 특별한 독특한 설정 특별 편성 인상적인 순간 색다른 구성 특별 에피소드 차별화된 분위기 비범한 사건"}
+{"tagId":951,"tag":"special effects","labelKo":"특수효과","embeddingInput":"special effects 특수효과 시각효과 VFX 실물 효과 폭발 장면 괴물 구현 판타지 비주얼 기술적 볼거리 CG 효과"}
+{"tagId":952,"tag":"spelling bee","labelKo":"스펠링 대회","embeddingInput":"spelling bee 스펠링 대회 철자 맞히기 경연 어린이 경쟁 가족 드라마 학업 압박 단어 대회 성장 승부"}
+{"tagId":953,"tag":"spiders","labelKo":"거미","embeddingInput":"spiders 거미 독거미 곤충 공포 떼 습격 거미줄 괴물 생물 위협 혐오감 생존 긴장"}
+{"tagId":954,"tag":"spielberg","labelKo":"스필버그","embeddingInput":"spielberg 스필버그 모험 가족 감성 블록버스터 경이감 휴머니즘 긴장 연출 대중적 서사 스티븐 스필버그"}
+{"tagId":955,"tag":"spies","labelKo":"스파이들","embeddingInput":"spies 스파이들 첩보 요원 비밀 임무 이중생활 정보전 잠입 배신 감시 작전 냉전 스릴러"}
+{"tagId":956,"tag":"splatter","labelKo":"스플래터","embeddingInput":"splatter 스플래터 유혈 고어 피투성이 잔혹한 살육 신체 훼손 과장된 폭력 공포 충격 장면 B급 호러"}
+{"tagId":957,"tag":"spock","labelKo":"스팍","embeddingInput":"spock 스팍 논리적 캐릭터 벌컨 우주 탐사 스타 트렉 이성 감정 절제 SF 승무원 과학 장교"}
+{"tagId":958,"tag":"spoof","labelKo":"패러디","embeddingInput":"spoof 패러디 풍자 코미디 장르 비틀기 과장된 흉내 클리셰 조롱 웃긴 변주 익살스러운 모방"}
+{"tagId":959,"tag":"sports","labelKo":"스포츠","embeddingInput":"sports 스포츠 경기 승부 선수 팀워크 훈련 경쟁 열정 우승 도전 라이벌 성장 드라마"}
+{"tagId":960,"tag":"spy","labelKo":"스파이","embeddingInput":"spy 스파이 첩보 요원 비밀 임무 잠입 정보전 이중생활 배신 추적 작전 암호 스릴러"}
+{"tagId":961,"tag":"spying","labelKo":"첩보 활동","embeddingInput":"spying 첩보 활동 감시 잠입 도청 정보 수집 비밀 작전 스파이 활동 미행 은밀한 추적 배신"}
+{"tagId":962,"tag":"stage magic","labelKo":"무대 마술","embeddingInput":"stage magic 무대 마술 마술사 환상 속임수 트릭 공연 무대 비밀 장치 눈속임 쇼맨십 미스터리"}
+{"tagId":963,"tag":"stand-up comedy","labelKo":"스탠드업 코미디","embeddingInput":"stand-up comedy 스탠드업 코미디 무대 농담 코미디언 관객 토크 유머 풍자 공연 현실 농담 원맨쇼"}
+{"tagId":964,"tag":"star trek","labelKo":"스타 트렉","embeddingInput":"star trek 스타 트렉 우주 탐사 연방 엔터프라이즈 벌컨 SF 외계 문명 승무원 행성 모험 과학 낙관주의"}
+{"tagId":965,"tag":"star wars","labelKo":"스타 워즈","embeddingInput":"star wars 스타 워즈 은하 전쟁 제다이 포스 제국 반란 우주 모험 광선검 SF 판타지 영웅 서사"}
+{"tagId":966,"tag":"steampunk","labelKo":"스팀펑크","embeddingInput":"steampunk 스팀펑크 증기기관 복고 미래 빅토리아풍 기계 장치 톱니바퀴 대체 역사 판타지 산업 시대"}
+{"tagId":967,"tag":"stereotypes","labelKo":"고정관념","embeddingInput":"stereotypes 고정관념 편견 전형적 인물 클리셰 사회적 편견 낡은 관념 문화적 선입견 유형화된 캐릭터 풍자"}
+{"tagId":968,"tag":"stoner movie","labelKo":"대마초 코미디","embeddingInput":"stoner movie 대마초 코미디 마약 유머 멍한 분위기 게으른 친구들 환각 소동 엉뚱한 모험 느슨한 코미디"}
+{"tagId":969,"tag":"stop motion","labelKo":"스톱 모션","embeddingInput":"stop motion 스톱 모션 프레임 애니메이션 수작업 인형 애니 질감 있는 움직임 장인정신 미니어처 촬영 독특한 비주얼"}
+{"tagId":970,"tag":"stop-motion","labelKo":"스톱모션","embeddingInput":"stop-motion 스톱모션 프레임 애니메이션 인형 애니 수작업 촬영 미니어처 움직임 독특한 질감 장인적 표현 촉각적 비주얼"}
+{"tagId":971,"tag":"story","labelKo":"이야기","embeddingInput":"story 이야기 서사 줄거리 플롯 캐릭터 여정 사건 전개 갈등 구조 감정 흐름 결말"}
+{"tagId":972,"tag":"storytelling","labelKo":"이야기 전개","embeddingInput":"storytelling 이야기 전개 서사 방식 플롯 구성 내러티브 흐름 사건 배열 긴장 조절 캐릭터 서사 몰입감 구성력"}
+{"tagId":973,"tag":"stranded","labelKo":"고립된","embeddingInput":"stranded 고립된 조난 탈출 불가 외딴곳 생존 위기 도움 없음 갇힌 상황 표류 극한 상황孤립감"}
+{"tagId":974,"tag":"strange","labelKo":"기묘한","embeddingInput":"strange 기묘한 이상한 낯선 분위기 괴상한 설정 불가사의한 사건 비현실적 감각 묘한 긴장 특이한 전개"}
+{"tagId":975,"tag":"strippers","labelKo":"스트리퍼","embeddingInput":"strippers 스트리퍼 클럽 무대 댄서 성인 유흥 밤 문화 쇼걸 생계 범죄 드라마 화려한 공연"}
+{"tagId":976,"tag":"studio ghibli","labelKo":"스튜디오 지브리","embeddingInput":"studio ghibli 스튜디오 지브리 손그림 애니메이션 자연 판타지 따뜻한 감성 성장 모험 마법 세계 섬세한 배경"}
+{"tagId":977,"tag":"stunning","labelKo":"압도적인","embeddingInput":"stunning 압도적인 놀라운 비주얼 강렬한 인상 아름다운 장면 숨막히는 연출 감탄스러운 영상 시각적 충격 장엄함"}
+{"tagId":978,"tag":"stupid","labelKo":"멍청한","embeddingInput":"stupid 멍청한 바보 같은 어리석은 전개 허술한 판단 황당한 행동 유치한 코미디 말도 안됨 우스운 설정"}
+{"tagId":979,"tag":"stupid as hell","labelKo":"정말 멍청한","embeddingInput":"stupid as hell 정말 멍청한 극도로 바보 같은 터무니없는 전개 황당한 판단 유치한 소동 어이없는 설정 멍청한 웃음"}
+{"tagId":980,"tag":"stupidity","labelKo":"어리석음","embeddingInput":"stupidity 어리석음 바보짓 무모한 행동 멍청한 판단 황당한 실수 우스운 실패 유치한 사고 어이없는 선택"}
+{"tagId":981,"tag":"stylish","labelKo":"스타일리시한","embeddingInput":"stylish 스타일리시한 세련된 연출 감각적 화면 멋진 비주얼 패션 감각 리듬감 있는 쿨한 분위기 미장센"}
+{"tagId":982,"tag":"stylized","labelKo":"양식화된","embeddingInput":"stylized 양식화된 과장된 연출 독특한 미장센 형식미 시각적 스타일 인공적 톤 감각적 구성 비현실적 표현"}
+{"tagId":983,"tag":"submarine","labelKo":"잠수함","embeddingInput":"submarine 잠수함 해저 밀폐 공간 군사 작전 수중 항해 심해 긴장 승무원 전쟁 스릴러 산소 부족"}
+{"tagId":984,"tag":"suburbia","labelKo":"교외 생활","embeddingInput":"suburbia 교외 생활 중산층 가정 주택가 평온한 겉모습 숨겨진 갈등 이웃 관계 일상 균열 가족 드라마"}
+{"tagId":985,"tag":"suicide","labelKo":"자살","embeddingInput":"suicide 자살 죽음 충동 절망 우울 심리적 고통 비극 상실감 어두운 정서 삶의 위기 극단적 선택"}
+{"tagId":986,"tag":"suicide attempt","labelKo":"자살 시도","embeddingInput":"suicide attempt 자살 시도 극단적 선택 생존 위기 절망 심리적 고통 구조 회복 트라우마 어두운 서사 삶의 위기"}
+{"tagId":987,"tag":"super hero","labelKo":"슈퍼히어로","embeddingInput":"super hero 슈퍼히어로 초능력 영웅 악당 대결 정의 수호 비밀 정체성 코스튬 액션 세계 구원"}
+{"tagId":988,"tag":"super-hero","labelKo":"슈퍼히어로","embeddingInput":"super-hero 슈퍼히어로 초인 영웅 초능력 악당 대결 정의감 가면 정체성 액션 모험 도시 위기"}
+{"tagId":989,"tag":"superhero","labelKo":"슈퍼히어로","embeddingInput":"superhero 슈퍼히어로 초능력 영웅 히어로 액션 악당 대결 기원 서사 비밀 정체성 세계 구원 코믹스 감성"}
+{"tagId":990,"tag":"superheroes","labelKo":"슈퍼히어로들","embeddingInput":"superheroes 슈퍼히어로들 히어로 팀 초능력자들 연합 악당 대결 집단 액션 세계 위기 정의 수호 팀업"}
+{"tagId":991,"tag":"supernatural","labelKo":"초자연","embeddingInput":"supernatural 초자연 유령 악령 저주 영매 미스터리 기이한 현상 공포 판타지 영적 존재 설명 불가"}
+{"tagId":992,"tag":"suprisingly clever","labelKo":"의외로 영리한","embeddingInput":"suprisingly clever 의외로 영리한 뜻밖의 재치 똑똑한 구성 기발한 전개 예상 밖 반전 재치 있는 아이디어 영민한 플롯"}
+{"tagId":993,"tag":"surfing","labelKo":"서핑","embeddingInput":"surfing 서핑 파도 바다 서퍼 해변 스포츠 자유로운 분위기 청춘 도전 여름 감성 균형감 라이프스타일"}
+{"tagId":994,"tag":"surprise ending","labelKo":"반전 결말","embeddingInput":"surprise ending 반전 결말 뜻밖의 결말 예상 밖 전개 충격 반전 마지막 twist 복선 회수 미스터리 결말 뒤집기"}
+{"tagId":995,"tag":"surreal","labelKo":"초현실적인","embeddingInput":"surreal 초현실적인 꿈같은 기묘한 비논리적 환상 현실 왜곡 몽환적 이미지 낯선 감각 불가사의한 분위기"}
+{"tagId":996,"tag":"surrealism","labelKo":"초현실주의","embeddingInput":"surrealism 초현실주의 꿈 논리 무의식 이미지 현실 왜곡 기묘한 상징 몽환적 연출 비현실적 장면 예술적 실험"}
+{"tagId":997,"tag":"surveillance","labelKo":"감시","embeddingInput":"surveillance 감시 도청 CCTV 사생활 침해 관찰 통제 정보 수집 편집증 국가 권력 첩보 긴장"}
+{"tagId":998,"tag":"survival","labelKo":"생존","embeddingInput":"survival 생존 극한 상황 조난 위기 탈출 본능 사투 자연 재난 고립 굶주림 살아남기 긴장감"}
+{"tagId":999,"tag":"suspense","labelKo":"서스펜스","embeddingInput":"suspense 서스펜스 긴장감 불안 예측 불가 위협 임박 미스터리 스릴러 조마조마한 분위기 심리적 압박"}
+{"tagId":1000,"tag":"suspenseful","labelKo":"긴장감 넘치는","embeddingInput":"suspenseful 긴장감 넘치는 조마조마한 불안한 분위기 위협적 전개 서스펜스 심리 압박 예측 불가 손에 땀 긴박함"}
+{"tagId":1001,"tag":"swashbuckler","labelKo":"활극 모험","embeddingInput":"swashbuckler 활극 모험 검술 모험 해적 결투 영웅담 망토 액션 고전 모험 칼싸움 낭만 액션"}
+{"tagId":1002,"tag":"swedish","labelKo":"스웨덴풍","embeddingInput":"swedish 스웨덴풍 스웨덴 북유럽 정서 차분한 톤 스웨덴어 냉정한 분위기 예술적 감성 절제된 연출"}
+{"tagId":1003,"tag":"sweet","labelKo":"달콤한 정서","embeddingInput":"sweet 달콤한 정서 따뜻함 사랑스러움 순한 분위기 포근한 감성 다정한 관계 미소 감성 착한 이야기"}
+{"tagId":1004,"tag":"switching places","labelKo":"자리 바꾸기","embeddingInput":"switching places 자리 바꾸기 신분 교환 역할 전환 몸 바뀜 생활 뒤바뀜 정체성 혼란 코미디 상황 운명 교차"}
+{"tagId":1005,"tag":"sword fight","labelKo":"검투 대결","embeddingInput":"sword fight 검투 대결 칼싸움 검술 결투 백병전 검과 방패 무술 액션 중세 액션 치열한 대결"}
+{"tagId":1006,"tag":"sword fighting","labelKo":"검술 액션","embeddingInput":"sword fighting 검술 액션 칼싸움 검투 결투 무기 액션 검객 대결 전투 장면 중세 전투 날렵한 움직임"}
+{"tagId":1007,"tag":"talking animals","labelKo":"말하는 동물","embeddingInput":"talking animals 말하는 동물 의인화 동물 동물 캐릭터 동물 대화 판타지 동물 가족 모험 애니메이션 감성 귀여운 설정"}
+{"tagId":1008,"tag":"talky","labelKo":"대사 많은","embeddingInput":"talky 대사 많은 대화 중심 말 많은 토론 장면 긴 대사 언어 유희 실내극 논쟁 중심 관계 대화"}
+{"tagId":1009,"tag":"tarantino","labelKo":"타란티노식","embeddingInput":"tarantino 타란티노식 비선형 서사 장광설 대사 팝컬처 인용 잔혹 유머 복수극 범죄 누아르 스타일리시 폭력"}
+{"tagId":1010,"tag":"teacher","labelKo":"교사","embeddingInput":"teacher 교사 선생님 학교 수업 멘토 교육 성장 학생 관계 교실 갈등 인생 조언 사제 관계"}
+{"tagId":1011,"tag":"tear jerker","labelKo":"눈물 나는","embeddingInput":"tear jerker 눈물 나는 슬픈 감정 감동 비극 이별 상실 애틋함 가족 눈물 진한 여운"}
+{"tagId":1012,"tag":"technology","labelKo":"기술 소재","embeddingInput":"technology 기술 소재 첨단 기술 과학 장비 인공지능 디지털 미래 기술 기계 문명 사이버 세계 발명"}
+{"tagId":1013,"tag":"teen","labelKo":"십대","embeddingInput":"teen 십대 청소년 고등학생 사춘기 성장 학교 생활 첫사랑 친구 관계 방황 젊은 감성"}
+{"tagId":1014,"tag":"teen movie","labelKo":"틴에이지물","embeddingInput":"teen movie 틴에이지물 청소년 성장 학교 생활 하이틴 첫사랑 친구 관계 파티 사춘기 고등학생 젊은 에너지"}
+{"tagId":1015,"tag":"teenager","labelKo":"십대 청소년","embeddingInput":"teenager 십대 청소년 사춘기 학생 성장 고민 반항 첫사랑 학교 친구 관계 자아 찾기 젊은 주인공"}
+{"tagId":1016,"tag":"teenagers","labelKo":"십대들","embeddingInput":"teenagers 십대들 청소년 무리 학교 친구들 성장기 또래 관계 사춘기 갈등 첫사랑 반항 문화"}
+{"tagId":1017,"tag":"teens","labelKo":"청소년들","embeddingInput":"teens 청소년들 십대 또래 집단 학교 생활 젊은 감성 우정 연애 성장 방황 하이틴 분위기"}
+{"tagId":1018,"tag":"teleportation","labelKo":"순간이동","embeddingInput":"teleportation 순간이동 공간 이동 초능력 포털 이동 과학 판타지 장소 전환 차원 이동 기묘한 능력 이동 능력"}
+{"tagId":1019,"tag":"television","labelKo":"텔레비전 소재","embeddingInput":"television 텔레비전 소재 방송국 TV 프로그램 미디어 풍자 생방송 화면 문화 연예계 뉴스 쇼 비하인드"}
+{"tagId":1020,"tag":"tense","labelKo":"긴장감 있는","embeddingInput":"tense 긴장감 있는 팽팽한 분위기 불안감 압박감 위기감 숨막힘 초조함 긴박한 전개 서스펜스 위험 상황"}
+{"tagId":1021,"tag":"terminal illness","labelKo":"불치병","embeddingInput":"terminal illness 불치병 시한부 병마 죽음 임박 가족 이별 삶과 죽음 슬픈 드라마 마지막 시간 눈물 감성"}
+{"tagId":1022,"tag":"terrorism","labelKo":"테러리즘","embeddingInput":"terrorism 테러리즘 테러 위협 폭탄 인질 극단주의 안보 위기 정치 폭력 첩보 작전 도시 공포"}
+{"tagId":1023,"tag":"texas","labelKo":"텍사스","embeddingInput":"texas 텍사스 미국 남부 황야 카우보이 국경 마을 사막 풍경 남부 정서 서부극 분위기 거친 땅"}
+{"tagId":1024,"tag":"thought-provoking","labelKo":"생각할 거리","embeddingInput":"thought-provoking 생각할 거리 철학적 질문 도덕 딜레마 사회 비판 깊은 여운 지적 자극 인간 본성 성찰적 분위기 의미 탐구"}
+{"tagId":1025,"tag":"thriller","labelKo":"스릴러","embeddingInput":"thriller 스릴러 서스펜스 긴장감 추적 미스터리 범죄 위협 반전 음모 심리전 위험 상황"}
+{"tagId":1026,"tag":"time","labelKo":"시간 소재","embeddingInput":"time 시간 소재 시간 흐름 과거 현재 미래 시간성 기억 운명 반복 시간 제한 세월 변화"}
+{"tagId":1027,"tag":"time loop","labelKo":"시간 반복","embeddingInput":"time loop 시간 반복 루프 반복 하루 되풀이 운명 반복 원인 추적 탈출 시도 기억 유지 반복 서사"}
+{"tagId":1028,"tag":"time travel","labelKo":"시간 여행","embeddingInput":"time travel 시간 여행 과거 이동 미래 이동 타임머신 역사 변경 시간 역설 운명 개입 평행 시간 시간 모험"}
+{"tagId":1029,"tag":"tokyo","labelKo":"도쿄","embeddingInput":"tokyo 도쿄 일본 도시 네온 거리 대도시 삶 현대 일본 번화가 도시 감성 지하철 풍경 젊은 문화"}
+{"tagId":1030,"tag":"tolkien","labelKo":"톨킨 세계관","embeddingInput":"tolkien 톨킨 세계관 중간계 판타지 엘프 드워프 마법 반지 서사시 모험 선악 대립 신화적 세계"}
+{"tagId":1031,"tag":"tom clancy","labelKo":"톰 클랜시","embeddingInput":"tom clancy 톰 클랜시 군사 스릴러 첩보 작전 정치 음모 정보기관 테러 위협 잠수함 군사 전략 냉전 긴장"}
+{"tagId":1032,"tag":"too long","labelKo":"너무 긴","embeddingInput":"too long 너무 긴 긴 러닝타임 늘어지는 전개 장황함 지루한 중반 편집 아쉬움 느린 호흡 과한 분량"}
+{"tagId":1033,"tag":"too short","labelKo":"너무 짧은","embeddingInput":"too short 너무 짧은 짧은 분량 급한 전개 부족한 설명 아쉬운 마무리 압축된 서사 더 필요한 이야기 빠른 결말"}
+{"tagId":1034,"tag":"torture","labelKo":"고문","embeddingInput":"torture 고문 잔혹 행위 신체 고통 심문 폭력 감금 고통 묘사 극한 상황 잔인한 장면 심리 압박"}
+{"tagId":1035,"tag":"touching","labelKo":"뭉클한","embeddingInput":"touching 뭉클한 감동적인 따뜻한 눈물 감성 진심 어린 관계 회복 애틋함 마음 울림 잔잔한 여운"}
+{"tagId":1036,"tag":"toys","labelKo":"장난감","embeddingInput":"toys 장난감 놀이 도구 어린 시절 인형 피규어 상상력 장난감 세계 가족 감성 동심 모험 애니메이션 분위기"}
+{"tagId":1037,"tag":"tragedy","labelKo":"비극","embeddingInput":"tragedy 비극 슬픈 결말 운명적 파국 상실 고통 비극적 사랑 몰락 죽음 눈물 어두운 정서"}
+{"tagId":1038,"tag":"train","labelKo":"기차","embeddingInput":"train 기차 열차 철도 객실 여행 이동 폐쇄 공간 역 추격 기차 안 긴박한 여정"}
+{"tagId":1039,"tag":"trains","labelKo":"열차들","embeddingInput":"trains 열차들 기차 철도 여행 객차 기관차 선로 역 이동 수단 추격 장면 낭만 여정"}
+{"tagId":1040,"tag":"transformation","labelKo":"변신","embeddingInput":"transformation 변신 변화 탈바꿈 정체성 변화 외형 변화 성장 변화 마법 변신 신체 변화 새로운 모습 내면 변화"}
+{"tagId":1041,"tag":"transgender","labelKo":"트랜스젠더","embeddingInput":"transgender 트랜스젠더 성정체성 젠더 정체성 자기 발견 사회 편견 가족 갈등 정체성 서사 삶의 변화 인정과 존중"}
+{"tagId":1042,"tag":"travel","labelKo":"여행","embeddingInput":"travel 여행 여정 길 위 모험 낯선 장소 이동 로드트립 탐험 풍경 만남 떠남"}
+{"tagId":1043,"tag":"treasure","labelKo":"보물","embeddingInput":"treasure 보물 숨겨진 재물 유물 금화 비밀 지도 탐험 모험 욕망 발견 고대 유산"}
+{"tagId":1044,"tag":"treasure hunt","labelKo":"보물찾기","embeddingInput":"treasure hunt 보물찾기 숨겨진 보물 단서 추적 비밀 지도 모험 탐험 유적 수수께끼 경쟁 발견"}
+{"tagId":1045,"tag":"tricky","labelKo":"교묘한","embeddingInput":"tricky 교묘한 복잡한 속임수 함정 기발한 전개 예상 밖 심리전 꼬인 상황 영리한 구성 반전 요소"}
+{"tagId":1046,"tag":"trilogy","labelKo":"3부작","embeddingInput":"trilogy 3부작 세 편 연작 시리즈 서사 확장 완결 구조 장대한 이야기 이어지는 이야기 삼부 구성 프랜차이즈"}
+{"tagId":1047,"tag":"true story","labelKo":"실화 기반","embeddingInput":"true story 실화 기반 실제 사건 역사적 사건 전기 드라마 현실 기반 사실적 재현 실제 인물 현실감 다큐 감성"}
+{"tagId":1048,"tag":"truman capote","labelKo":"트루먼 카포티","embeddingInput":"truman capote 트루먼 카포티 작가 전기 문학 범죄 논픽션 냉혈한 집필 과정 작가 심리 문단 사회 실존 인물"}
+{"tagId":1049,"tag":"twist","labelKo":"반전","embeddingInput":"twist 반전 예상 밖 전개 숨겨진 진실 뒤집힘 놀라운 결말 서사 전환 비밀 폭로 충격 전개"}
+{"tagId":1050,"tag":"twist ending","labelKo":"반전 결말","embeddingInput":"twist ending 반전 결말 충격 결말 예상 밖 마무리 숨겨진 진실 마지막 반전 결말 뒤집기 복선 회수 놀라운 마무리"}
+{"tagId":1051,"tag":"twists & turns","labelKo":"굴곡진 전개","embeddingInput":"twists & turns 굴곡진 전개 반전 연속 예측 불가 꼬인 서사 우여곡절 급전개 비밀 변화 긴장감 변주"}
+{"tagId":1052,"tag":"undercover cop","labelKo":"잠입 경찰","embeddingInput":"undercover cop 잠입 경찰 위장 수사 범죄 조직 신분 숨김 경찰 스파이 내부 침투 정체 노출 위험 범죄 스릴러"}
+{"tagId":1053,"tag":"underdog","labelKo":"약자의 도전","embeddingInput":"underdog 약자의 도전 열세 극복 작은 주인공 승부 성장 역전 노력 도전 정신 불리한 상황 승리 서사"}
+{"tagId":1054,"tag":"underrated","labelKo":"저평가된","embeddingInput":"underrated 저평가된 숨은 가치 덜 알려진 과소평가된 의외의 완성도 재발견 가치 낮은 인지도 묻힌 명성 숨겨진 매력"}
+{"tagId":1055,"tag":"understated","labelKo":"절제된","embeddingInput":"understated 절제된 담백한 표현 과장 없음 조용한 감정 은근한 연출 미묘한 톤 차분한 분위기 섬세함 낮은 강도"}
+{"tagId":1056,"tag":"underwater","labelKo":"수중","embeddingInput":"underwater 수중 바닷속 잠수 심해 물속 위기 해저 공간 잠수함 산소 부족 폐쇄 공포 수중 생존"}
+{"tagId":1057,"tag":"unfunny","labelKo":"웃기지 않은","embeddingInput":"unfunny 웃기지 않은 재미없는 농담 실패 어색한 유머 밋밋한 코미디 썰렁함 웃음 부족 타이밍 부족 맥빠진 개그"}
+{"tagId":1058,"tag":"unintentionally funny","labelKo":"뜻밖에 웃긴","embeddingInput":"unintentionally funny 뜻밖에 웃긴 의도치 않은 웃음 진지한데 웃김 어색한 연기 과한 장면 엉뚱한 재미 실패한 진지함 묘한 유머"}
+{"tagId":1059,"tag":"unique","labelKo":"독특한","embeddingInput":"unique 독특한 개성 강한 색다른 발상 특별한 구성 낯선 분위기 참신한 설정 비범한 스타일 희소한 매력 독창성"}
+{"tagId":1060,"tag":"united nations","labelKo":"유엔","embeddingInput":"united nations 유엔 국제기구 외교 회의 평화 유지 국제 분쟁 세계 정치 안보리 인도주의 다국적 협상"}
+{"tagId":1061,"tag":"unlikeable characters","labelKo":"비호감 인물들","embeddingInput":"unlikeable characters 비호감 인물들 불편한 성격 이기적 인물 냉소적 태도 도덕적 결함 갈등 유발 반감 가는 행동 결함 많은 인물"}
+{"tagId":1062,"tag":"unlikely friendships","labelKo":"뜻밖의 우정","embeddingInput":"unlikely friendships 뜻밖의 우정 어울리지 않는 관계 다른 배경 우정 형성 갈등 후 화해 의외의 동행 세대 차이 적대에서 친구"}
+{"tagId":1063,"tag":"unrealistic","labelKo":"비현실적인","embeddingInput":"unrealistic 비현실적인 개연성 낮음 현실감 부족 과장된 설정 믿기 어려운 전개 허술한 논리 비약 많은 상황 부자연스러움"}
+{"tagId":1064,"tag":"unusual plot structure","labelKo":"특이한 구성","embeddingInput":"unusual plot structure 특이한 구성 비선형 서사 파편적 전개 실험적 구조 시간 뒤섞임 낯선 서술 다층 구성 독특한 전개"}
+{"tagId":1065,"tag":"us history","labelKo":"미국사","embeddingInput":"us history 미국사 미국 역사 역사 사건 정치 사회 남북전쟁 독립 시대 대통령 시대 변화 역사 드라마"}
+{"tagId":1066,"tag":"utopia","labelKo":"유토피아","embeddingInput":"utopia 유토피아 이상 사회 완벽한 세계 미래 사회 낙원 체제 사회 실험 평화로운 공동체 이상향 숨은 모순"}
+{"tagId":1067,"tag":"vampire","labelKo":"흡혈귀","embeddingInput":"vampire 흡혈귀 뱀파이어 불멸 피의 욕망 고딕 공포 밤의 존재 초자연 로맨스 저주 어둠의 존재"}
+{"tagId":1068,"tag":"vampire human love","labelKo":"흡혈귀와 인간 사랑","embeddingInput":"vampire human love 흡혈귀와 인간 사랑 금지된 사랑 뱀파이어 로맨스 인간 연인 불멸과 필멸 위험한 관계 초자연 로맨스 피의 유혹"}
+{"tagId":1069,"tag":"vampires","labelKo":"흡혈귀들","embeddingInput":"vampires 흡혈귀들 뱀파이어 무리 고딕 공포 피의 욕망 밤의 사냥 불멸 존재 초자연 괴물 저주 어둠"}
+{"tagId":1070,"tag":"vengeance","labelKo":"복수","embeddingInput":"vengeance 복수 원한 응징 보복 복수극 분노 정의 사적 처벌 잃어버린 가족 처절한 추적 피의 대가"}
+{"tagId":1071,"tag":"very funny","labelKo":"아주 웃긴","embeddingInput":"very funny 아주 웃긴 폭소 코미디 유쾌함 재치 있는 농담 웃음 가득 명랑한 분위기 코믹 상황 즐거운 장면"}
+{"tagId":1072,"tag":"very good","labelKo":"아주 좋은","embeddingInput":"very good 아주 좋은 완성도 높음 훌륭한 구성 만족감 높은 인상적 연출 탄탄한 서사 좋은 연기 강한 몰입"}
+{"tagId":1073,"tag":"very interesting","labelKo":"매우 흥미로운","embeddingInput":"very interesting 매우 흥미로운 호기심 자극 몰입감 강한 흥미진진한 설정 눈길 끄는 전개 지적 재미 신선한 소재 궁금한 이야기"}
+{"tagId":1074,"tag":"video game","labelKo":"비디오 게임","embeddingInput":"video game 비디오 게임 게임 세계 플레이어 캐릭터 레벨 보스전 가상 모험 콘솔 아케이드 액션 판타지"}
+{"tagId":1075,"tag":"video game adaptation","labelKo":"게임 원작","embeddingInput":"video game adaptation 게임 원작 비디오 게임 원작 게임 세계관 캐릭터 재현 레벨 구조 보스전 팬 서비스 액션 모험 픽셀 감성"}
+{"tagId":1076,"tag":"video games","labelKo":"비디오 게임들","embeddingInput":"video games 비디오 게임들 게임 문화 콘솔 아케이드 플레이어 캐릭터 가상 세계 게임 대결 레벨업 e스포츠 액션"}
+{"tagId":1077,"tag":"videogame","labelKo":"비디오게임","embeddingInput":"videogame 비디오게임 게임 설정 플레이어 모험 가상 세계 캐릭터 조작 레벨 보스전 아케이드 감성 디지털 놀이"}
+{"tagId":1078,"tag":"vienna","labelKo":"빈","embeddingInput":"vienna 빈 오스트리아 유럽 도시 클래식 음악 고풍스러운 거리 카페 문화 궁전 예술적 분위기 낭만적 도시"}
+{"tagId":1079,"tag":"vietnam","labelKo":"베트남","embeddingInput":"vietnam 베트남 동남아시아 전쟁 기억 정글 풍경 역사 상처 현지 문화 전후 사회 열대 분위기"}
+{"tagId":1080,"tag":"vietnam war","labelKo":"베트남 전쟁","embeddingInput":"vietnam war 베트남 전쟁 정글 전투 미군 참전 반전 메시지 전쟁 트라우마 전우 관계 전장 공포 역사 상처"}
+{"tagId":1081,"tag":"view askew","labelKo":"뷰 애스큐","embeddingInput":"view askew 뷰 애스큐 케빈 스미스 연결 세계 대화 중심 슬래커 코미디 팝컬처 농담 제이와 사일런트 밥 인디 감성"}
+{"tagId":1082,"tag":"vigilante","labelKo":"자경단원","embeddingInput":"vigilante 자경단원 사적 정의 법 밖 응징 복수자 거리 정의 범죄 처벌 어두운 영웅 단독 행동 폭력 응징"}
+{"tagId":1083,"tag":"vigilantism","labelKo":"자경주의","embeddingInput":"vigilantism 자경주의 사적 정의 법 밖 처벌 응징 논리 복수 행동 범죄 소탕 도덕 딜레마 폭력 정의 시민 심판"}
+{"tagId":1084,"tag":"violence","labelKo":"폭력","embeddingInput":"violence 폭력 잔혹함 격투 총격 유혈 충돌 물리적 위협 거친 액션 범죄 폭력성 강한 장면"}
+{"tagId":1085,"tag":"violent","labelKo":"폭력적인","embeddingInput":"violent 폭력적인 잔혹한 유혈 많은 거친 액션 강한 충돌 공격적 분위기 총격 격투 잔인한 장면"}
+{"tagId":1086,"tag":"virginity","labelKo":"순결 소재","embeddingInput":"virginity 순결 소재 첫 경험 성적 성장 청춘 고민 사회 압박 연애 불안 성인식 사춘기 갈등 개인 선택"}
+{"tagId":1087,"tag":"virtual reality","labelKo":"가상현실","embeddingInput":"virtual reality 가상현실 VR 디지털 세계 시뮬레이션 현실 혼동 가상 공간 몰입 장치 사이버 설정 정체성 혼란"}
+{"tagId":1088,"tag":"virus","labelKo":"바이러스","embeddingInput":"virus 바이러스 감염 전염병 확산 격리 생존 위기 팬데믹 실험실 돌연변이 공포 질병 재난"}
+{"tagId":1089,"tag":"visceral","labelKo":"본능적인 강렬함","embeddingInput":"visceral 본능적인 강렬함 육체적 반응 강한 충격 생생한 감각 거친 체험 원초적 공포 압도감 감각적 몰입"}
+{"tagId":1090,"tag":"visual","labelKo":"시각적","embeddingInput":"visual 시각적 이미지 중심 미장센 화면 구성 색감 조명 감각적 연출 눈길 끄는 장면 시각 효과"}
+{"tagId":1091,"tag":"visually appealing","labelKo":"보기 좋은","embeddingInput":"visually appealing 보기 좋은 아름다운 화면 세련된 색감 매력적 미장센 감각적 조명 눈길 끄는 구도 미적 만족"}
+{"tagId":1092,"tag":"visually stunning","labelKo":"시각적으로 압도적인","embeddingInput":"visually stunning 시각적으로 압도적인 장관 화려한 화면 압도적 이미지 뛰어난 미장센 강렬한 색감 아름다운 장면 시각 효과 경이로움"}
+{"tagId":1093,"tag":"visuals","labelKo":"시각미","embeddingInput":"visuals 시각미 화면미 이미지 연출 미장센 색감 조명 구도 시각 효과 아름다운 장면 감각적 화면"}
+{"tagId":1094,"tag":"voodoo","labelKo":"부두교 주술","embeddingInput":"voodoo 부두교 주술 저주 의식 흑마술 영혼 인형 주술사 미스터리 오컬트 공포 초자연 현상"}
+{"tagId":1095,"tag":"voyeurism","labelKo":"관음증","embeddingInput":"voyeurism 관음증 훔쳐보기 사생활 침해 감시 시선 욕망 도덕 불안 심리 스릴러 금기 은밀한 관찰"}
+{"tagId":1096,"tag":"war","labelKo":"전쟁","embeddingInput":"war 전쟁 전투 군인 전장 희생 총격 폭격 생존 반전 메시지 전우애 참혹함"}
+{"tagId":1097,"tag":"war movie","labelKo":"전쟁물","embeddingInput":"war movie 전쟁물 전투 장면 군인 이야기 전장 생존 전우애 희생 반전 메시지 폭격 총격 역사 전쟁"}
+{"tagId":1098,"tag":"wartime","labelKo":"전시","embeddingInput":"wartime 전시 전쟁 시기 피난 배급 군사 통제 점령 생활 생존 불안 가족 이별 역사적 위기"}
+{"tagId":1099,"tag":"waste of time","labelKo":"시간 낭비","embeddingInput":"waste of time 시간 낭비 지루함 실망스러움 빈약한 전개 낮은 완성도 맥빠진 결말 의미 부족 몰입 실패 아쉬운 경험"}
+{"tagId":1100,"tag":"watch the credits","labelKo":"크레딧 확인","embeddingInput":"watch the credits 크레딧 확인 엔딩 크레딧 쿠키 장면 후일담 추가 장면 숨은 장면 마지막 보너스 결말 이후 팬서비스"}
+{"tagId":1101,"tag":"weapons","labelKo":"무기","embeddingInput":"weapons 무기 총기 칼 전투 장비 화력 무장 액션 폭력 대결"}
+{"tagId":1102,"tag":"wedding","labelKo":"결혼식","embeddingInput":"wedding 결혼식 혼례 예식 신랑 신부 가족 행사 로맨스 약속 축하"}
+{"tagId":1103,"tag":"weed","labelKo":"대마","embeddingInput":"weed 대마 마리화나 약물 문화 환각 코미디 일탈 범죄 청춘 느슨한 분위기"}
+{"tagId":1104,"tag":"weird","labelKo":"기묘한","embeddingInput":"weird 기묘한 이상한 괴상한 낯선 분위기 불가사의한 전개 독특한 감각 기괴함 초현실"}
+{"tagId":1105,"tag":"werewolf","labelKo":"늑대인간","embeddingInput":"werewolf 늑대인간 변신 괴물 보름달 저주 야수성 공포 판타지 인간성 갈등"}
+{"tagId":1106,"tag":"werewolves","labelKo":"늑대인간들","embeddingInput":"werewolves 늑대인간들 변신 무리 괴물 보름달 저주 야성 공포 판타지 습격"}
+{"tagId":1107,"tag":"western","labelKo":"서부극","embeddingInput":"western 서부극 황야 총잡이 보안관 무법자 결투 개척 시대 복수 카우보이 국경지대"}
+{"tagId":1108,"tag":"whimsical","labelKo":"엉뚱한 매력","embeddingInput":"whimsical 엉뚱한 매력 기발한 상상력 장난스러운 톤 동화적 분위기 유쾌함 아기자기함 판타지 감성"}
+{"tagId":1109,"tag":"wilderness","labelKo":"야생 자연","embeddingInput":"wilderness 야생 자연 오지 생존 고립 숲 산악 거친 환경 모험 자연 속 사투"}
+{"tagId":1110,"tag":"wine","labelKo":"와인","embeddingInput":"wine 와인 포도주 시음 양조장 만찬 사교 미식 로맨스 우아한 분위기 취기"}
+{"tagId":1111,"tag":"wistful","labelKo":"아련한","embeddingInput":"wistful 아련한 그리움 쓸쓸함 회상 잔잔한 정서 미련 향수 애틋함 조용한 슬픔"}
+{"tagId":1112,"tag":"witch","labelKo":"마녀","embeddingInput":"witch 마녀 주문 마법 저주 초자연 판타지 주술 어둠 공포 신비로운 힘"}
+{"tagId":1113,"tag":"witches","labelKo":"마녀들","embeddingInput":"witches 마녀들 주문 마법 결사 주술 저주 초자연 판타지 집단 의식 어둠"}
+{"tagId":1114,"tag":"witty","labelKo":"재치 있는","embeddingInput":"witty 재치 있는 영리한 대사 말맛 유머 기지 빠른 농담 세련된 코미디 풍자"}
+{"tagId":1115,"tag":"wizards","labelKo":"마법사들","embeddingInput":"wizards 마법사들 마법 주문 현자 판타지 수련 비밀 지식 초자연 결투 신비"}
+{"tagId":1116,"tag":"women","labelKo":"여성들","embeddingInput":"women 여성들 여성 서사 자매 우정 모성 성장 연대 주체성 삶 관계"}
+{"tagId":1117,"tag":"working class","labelKo":"노동계급","embeddingInput":"working class 노동계급 서민 노동자 생계 현실 사회 계층 공장 일상 고단함 가족"}
+{"tagId":1118,"tag":"workplace","labelKo":"직장","embeddingInput":"workplace 직장 회사 사무실 동료 상사 조직 갈등 업무 경쟁 일터 관계"}
+{"tagId":1119,"tag":"world politics","labelKo":"국제 정치","embeddingInput":"world politics 국제 정치 외교 권력 국가 갈등 냉전 음모 지정학 협상 체제"}
+{"tagId":1120,"tag":"world war i","labelKo":"제1차 세계대전","embeddingInput":"world war i 제1차 세계대전 참호전 전장 병사 제국 전쟁 드라마 희생 유럽 전선 역사"}
+{"tagId":1121,"tag":"world war ii","labelKo":"제2차 세계대전","embeddingInput":"world war ii 제2차 세계대전 전쟁 나치 연합군 점령 레지스탕스 전장 홀로코스트 역사 희생"}
+{"tagId":1122,"tag":"writer's life","labelKo":"작가의 삶","embeddingInput":"writer's life 작가의 삶 창작 고뇌 원고 문단 생활 슬럼프 영감 집필 고독"}
+{"tagId":1123,"tag":"writers","labelKo":"작가들","embeddingInput":"writers 작가들 소설가 극작가 창작자 문학 원고 집필 고뇌 문단 이야기꾼"}
+{"tagId":1124,"tag":"writing","labelKo":"글쓰기","embeddingInput":"writing 글쓰기 집필 창작 원고 소설 대본 문장 영감 고뇌 기록"}
+{"tagId":1125,"tag":"wuxia","labelKo":"무협","embeddingInput":"wuxia 무협 강호 검객 무림 문파 복수 의협 경공 검술 사부 제자"}
+{"tagId":1126,"tag":"wwii","labelKo":"2차 대전","embeddingInput":"wwii 2차 대전 제2차 세계대전 나치 연합군 전장 점령 레지스탕스 역사 희생 군인"}
+{"tagId":1127,"tag":"zombie","labelKo":"좀비","embeddingInput":"zombie 좀비 감염 언데드 생존 공포 아포칼립스 물림 추격 봉쇄 혼란"}
+{"tagId":1128,"tag":"zombies","labelKo":"좀비들","embeddingInput":"zombies 좀비들 감염자 무리 언데드 생존 공포 아포칼립스 습격 추격 봉쇄"}

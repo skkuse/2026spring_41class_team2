@@ -1,0 +1,602 @@
+{
+  "generatedAt": "2026-05-21T05:23:43.826Z",
+  "termGenerationModel": "gpt-4.1-mini",
+  "embeddingModel": "text-embedding-3-small",
+  "topN": 10,
+  "minTop1Similarity": 0.45,
+  "thresholdCandidates": [
+    {
+      "minTop1Similarity": 0.45,
+      "passed": 5,
+      "failed": 2
+    },
+    {
+      "minTop1Similarity": 0.5,
+      "passed": 4,
+      "failed": 3
+    },
+    {
+      "minTop1Similarity": 0.55,
+      "passed": 3,
+      "failed": 4
+    },
+    {
+      "minTop1Similarity": 0.6,
+      "passed": 0,
+      "failed": 7
+    }
+  ],
+  "summary": {
+    "queryCount": 7,
+    "minTop1SimilarityPassed": 5,
+    "minTop1SimilarityFailed": 2,
+    "mappingExpectationCount": 7,
+    "mappingExpectationPassed": 2,
+    "mappingExpectationFailed": 5,
+    "expectedCheckCount": 0,
+    "expectedCheckPassed": 0,
+    "expectedCheckFailed": 0
+  },
+  "queries": [
+    {
+      "userTag": "아무거나",
+      "embeddingTerms": [
+        "아무거나",
+        "무작위",
+        "랜덤",
+        "다양",
+        "포괄적",
+        "일상",
+        "일상생활"
+      ],
+      "embeddingInput": "아무거나 무작위 랜덤 다양 포괄적 일상 일상생활",
+      "top1Tag": "slackers",
+      "top1Similarity": 0.470176644309572,
+      "expectedShouldMap": false,
+      "minTop1SimilarityPassed": true,
+      "mappingExpectationPassed": false,
+      "matches": [
+        {
+          "rank": 1,
+          "tagId": 925,
+          "tag": "slackers",
+          "similarity": 0.470176644309572
+        },
+        {
+          "rank": 2,
+          "tagId": 840,
+          "tag": "realistic",
+          "similarity": 0.453469414927009
+        },
+        {
+          "rank": 3,
+          "tagId": 1122,
+          "tag": "writer's life",
+          "similarity": 0.406045681666251
+        },
+        {
+          "rank": 4,
+          "tagId": 842,
+          "tag": "reality tv",
+          "similarity": 0.398969566458928
+        },
+        {
+          "rank": 5,
+          "tagId": 475,
+          "tag": "gritty",
+          "similarity": 0.391565069441496
+        },
+        {
+          "rank": 6,
+          "tagId": 1047,
+          "tag": "true story",
+          "similarity": 0.389158511410821
+        },
+        {
+          "rank": 7,
+          "tagId": 282,
+          "tag": "cynical",
+          "similarity": 0.387890127105871
+        },
+        {
+          "rank": 8,
+          "tagId": 359,
+          "tag": "epic",
+          "similarity": 0.383730337383358
+        },
+        {
+          "rank": 9,
+          "tagId": 915,
+          "tag": "shopping",
+          "similarity": 0.380720101703517
+        },
+        {
+          "rank": 10,
+          "tagId": 97,
+          "tag": "bad acting",
+          "similarity": 0.377448257084132
+        }
+      ]
+    },
+    {
+      "userTag": "볼만한",
+      "embeddingTerms": [
+        "볼만한",
+        "재미있는",
+        "흥미로운",
+        "즐길거리",
+        "드라마",
+        "코미디",
+        "일상 이야기"
+      ],
+      "embeddingInput": "볼만한 재미있는 흥미로운 즐길거리 드라마 코미디 일상 이야기",
+      "top1Tag": "very funny",
+      "top1Similarity": 0.558035603854316,
+      "expectedShouldMap": false,
+      "minTop1SimilarityPassed": true,
+      "mappingExpectationPassed": false,
+      "matches": [
+        {
+          "rank": 1,
+          "tagId": 1071,
+          "tag": "very funny",
+          "similarity": 0.558035603854316
+        },
+        {
+          "rank": 2,
+          "tagId": 659,
+          "tag": "mockumentary",
+          "similarity": 0.541698666475783
+        },
+        {
+          "rank": 3,
+          "tagId": 920,
+          "tag": "silly fun",
+          "similarity": 0.539846360603796
+        },
+        {
+          "rank": 4,
+          "tagId": 735,
+          "tag": "off-beat comedy",
+          "similarity": 0.53022552665887
+        },
+        {
+          "rank": 5,
+          "tagId": 506,
+          "tag": "hillarious",
+          "similarity": 0.521257803060146
+        },
+        {
+          "rank": 6,
+          "tagId": 505,
+          "tag": "hilarious",
+          "similarity": 0.510821271909139
+        },
+        {
+          "rank": 7,
+          "tagId": 416,
+          "tag": "funniest movies",
+          "similarity": 0.507600914857379
+        },
+        {
+          "rank": 8,
+          "tagId": 450,
+          "tag": "good romantic comedies",
+          "similarity": 0.504497652844925
+        },
+        {
+          "rank": 9,
+          "tagId": 230,
+          "tag": "comedy",
+          "similarity": 0.504113816224647
+        },
+        {
+          "rank": 10,
+          "tagId": 355,
+          "tag": "entertaining",
+          "similarity": 0.498047366838279
+        }
+      ]
+    },
+    {
+      "userTag": "요즘",
+      "embeddingTerms": [
+        "요즘",
+        "최근",
+        "최신",
+        "현대",
+        "일상",
+        "현실",
+        "현대사회"
+      ],
+      "embeddingInput": "요즘 최근 최신 현대 일상 현실 현대사회",
+      "top1Tag": "cyberpunk",
+      "top1Similarity": 0.443040641667386,
+      "expectedShouldMap": false,
+      "minTop1SimilarityPassed": false,
+      "mappingExpectationPassed": true,
+      "matches": [
+        {
+          "rank": 1,
+          "tagId": 280,
+          "tag": "cyberpunk",
+          "similarity": 0.443040641667386
+        },
+        {
+          "rank": 2,
+          "tagId": 52,
+          "tag": "alternate reality",
+          "similarity": 0.440152061296361
+        },
+        {
+          "rank": 3,
+          "tagId": 660,
+          "tag": "modern fantasy",
+          "similarity": 0.43657376076725
+        },
+        {
+          "rank": 4,
+          "tagId": 840,
+          "tag": "realistic",
+          "similarity": 0.42872066080092
+        },
+        {
+          "rank": 5,
+          "tagId": 336,
+          "tag": "dystopia",
+          "similarity": 0.423949662155862
+        },
+        {
+          "rank": 6,
+          "tagId": 419,
+          "tag": "future",
+          "similarity": 0.423511398565284
+        },
+        {
+          "rank": 7,
+          "tagId": 552,
+          "tag": "intelligent sci-fi",
+          "similarity": 0.420955736118138
+        },
+        {
+          "rank": 8,
+          "tagId": 311,
+          "tag": "distopia",
+          "similarity": 0.417785779441609
+        },
+        {
+          "rank": 9,
+          "tagId": 337,
+          "tag": "dystopic future",
+          "similarity": 0.41430257736594
+        },
+        {
+          "rank": 10,
+          "tagId": 555,
+          "tag": "internet",
+          "similarity": 0.410623223536844
+        }
+      ]
+    },
+    {
+      "userTag": "친구랑",
+      "embeddingTerms": [
+        "친구랑",
+        "친구",
+        "우정",
+        "동료",
+        "코미디",
+        "청춘",
+        "모임"
+      ],
+      "embeddingInput": "친구랑 친구 우정 동료 코미디 청춘 모임",
+      "top1Tag": "beer",
+      "top1Similarity": 0.590428842315561,
+      "expectedShouldMap": false,
+      "minTop1SimilarityPassed": true,
+      "mappingExpectationPassed": false,
+      "matches": [
+        {
+          "rank": 1,
+          "tagId": 124,
+          "tag": "beer",
+          "similarity": 0.590428842315561
+        },
+        {
+          "rank": 2,
+          "tagId": 968,
+          "tag": "stoner movie",
+          "similarity": 0.529946700270064
+        },
+        {
+          "rank": 3,
+          "tagId": 158,
+          "tag": "bowling",
+          "similarity": 0.515068505330407
+        },
+        {
+          "rank": 4,
+          "tagId": 577,
+          "tag": "jay and silent bob",
+          "similarity": 0.491399358599333
+        },
+        {
+          "rank": 5,
+          "tagId": 1071,
+          "tag": "very funny",
+          "similarity": 0.484186864947077
+        },
+        {
+          "rank": 6,
+          "tagId": 412,
+          "tag": "friendship",
+          "similarity": 0.483344136637151
+        },
+        {
+          "rank": 7,
+          "tagId": 534,
+          "tag": "imaginary friend",
+          "similarity": 0.469347718109051
+        },
+        {
+          "rank": 8,
+          "tagId": 1103,
+          "tag": "weed",
+          "similarity": 0.466128371329662
+        },
+        {
+          "rank": 9,
+          "tagId": 201,
+          "tag": "chick flick",
+          "similarity": 0.460185544165816
+        },
+        {
+          "rank": 10,
+          "tagId": 230,
+          "tag": "comedy",
+          "similarity": 0.458421839992103
+        }
+      ]
+    },
+    {
+      "userTag": "저녁에",
+      "embeddingTerms": [
+        "저녁에",
+        "밤",
+        "황혼",
+        "저녁시간",
+        "일몰",
+        "퇴근길",
+        "저녁식사"
+      ],
+      "embeddingInput": "저녁에 밤 황혼 저녁시간 일몰 퇴근길 저녁식사",
+      "top1Tag": "nocturnal",
+      "top1Similarity": 0.520795624072717,
+      "expectedShouldMap": false,
+      "minTop1SimilarityPassed": true,
+      "mappingExpectationPassed": false,
+      "matches": [
+        {
+          "rank": 1,
+          "tagId": 710,
+          "tag": "nocturnal",
+          "similarity": 0.520795624072717
+        },
+        {
+          "rank": 2,
+          "tagId": 486,
+          "tag": "halloween",
+          "similarity": 0.391914597866872
+        },
+        {
+          "rank": 3,
+          "tagId": 1069,
+          "tag": "vampires",
+          "similarity": 0.352911046511847
+        },
+        {
+          "rank": 4,
+          "tagId": 490,
+          "tag": "happy ending",
+          "similarity": 0.352452437562223
+        },
+        {
+          "rank": 5,
+          "tagId": 227,
+          "tag": "college",
+          "similarity": 0.341912355737064
+        },
+        {
+          "rank": 6,
+          "tagId": 254,
+          "tag": "cooking",
+          "similarity": 0.334242534440432
+        },
+        {
+          "rank": 7,
+          "tagId": 187,
+          "tag": "casino",
+          "similarity": 0.333160889157421
+        },
+        {
+          "rank": 8,
+          "tagId": 864,
+          "tag": "romantic",
+          "similarity": 0.331973252165613
+        },
+        {
+          "rank": 9,
+          "tagId": 716,
+          "tag": "nostalgia",
+          "similarity": 0.326692949255665
+        },
+        {
+          "rank": 10,
+          "tagId": 374,
+          "tag": "family",
+          "similarity": 0.315755888684949
+        }
+      ]
+    },
+    {
+      "userTag": "심심할 때",
+      "embeddingTerms": [
+        "심심할 때",
+        "무료한 순간",
+        "지루함 해소",
+        "일상 휴식",
+        "가벼운 코미디",
+        "편안한 드라마",
+        "소소한 이야기"
+      ],
+      "embeddingInput": "심심할 때 무료한 순간 지루함 해소 일상 휴식 가벼운 코미디 편안한 드라마 소소한 이야기",
+      "top1Tag": "intimate",
+      "top1Similarity": 0.553187473583695,
+      "expectedShouldMap": false,
+      "minTop1SimilarityPassed": true,
+      "mappingExpectationPassed": false,
+      "matches": [
+        {
+          "rank": 1,
+          "tagId": 557,
+          "tag": "intimate",
+          "similarity": 0.553187473583695
+        },
+        {
+          "rank": 2,
+          "tagId": 865,
+          "tag": "romantic comedy",
+          "similarity": 0.516890683280927
+        },
+        {
+          "rank": 3,
+          "tagId": 201,
+          "tag": "chick flick",
+          "similarity": 0.512857616290643
+        },
+        {
+          "rank": 4,
+          "tagId": 1003,
+          "tag": "sweet",
+          "similarity": 0.511177785323515
+        },
+        {
+          "rank": 5,
+          "tagId": 920,
+          "tag": "silly fun",
+          "similarity": 0.508945869431087
+        },
+        {
+          "rank": 6,
+          "tagId": 230,
+          "tag": "comedy",
+          "similarity": 0.502670029055211
+        },
+        {
+          "rank": 7,
+          "tagId": 528,
+          "tag": "humor",
+          "similarity": 0.496885066293097
+        },
+        {
+          "rank": 8,
+          "tagId": 450,
+          "tag": "good romantic comedies",
+          "similarity": 0.49459518181905
+        },
+        {
+          "rank": 9,
+          "tagId": 415,
+          "tag": "fun movie",
+          "similarity": 0.494105556469757
+        },
+        {
+          "rank": 10,
+          "tagId": 387,
+          "tag": "feel good movie",
+          "similarity": 0.486269384777965
+        }
+      ]
+    },
+    {
+      "userTag": "OTT에서",
+      "embeddingTerms": [
+        "OTT에서",
+        "온라인 스트리밍",
+        "인터넷 방송",
+        "디지털 플랫폼",
+        "콘텐츠 소비",
+        "비대면 시청",
+        "구독 서비스"
+      ],
+      "embeddingInput": "OTT에서 온라인 스트리밍 인터넷 방송 디지털 플랫폼 콘텐츠 소비 비대면 시청 구독 서비스",
+      "top1Tag": "made for tv",
+      "top1Similarity": 0.433217756431523,
+      "expectedShouldMap": false,
+      "minTop1SimilarityPassed": false,
+      "mappingExpectationPassed": true,
+      "matches": [
+        {
+          "rank": 1,
+          "tagId": 621,
+          "tag": "made for tv",
+          "similarity": 0.433217756431523
+        },
+        {
+          "rank": 2,
+          "tagId": 1019,
+          "tag": "television",
+          "similarity": 0.386667261678192
+        },
+        {
+          "rank": 3,
+          "tagId": 555,
+          "tag": "internet",
+          "similarity": 0.383045750222806
+        },
+        {
+          "rank": 4,
+          "tagId": 485,
+          "tag": "hacking",
+          "similarity": 0.368080314841639
+        },
+        {
+          "rank": 5,
+          "tagId": 836,
+          "tag": "radio",
+          "similarity": 0.364523120230422
+        },
+        {
+          "rank": 6,
+          "tagId": 1100,
+          "tag": "watch the credits",
+          "similarity": 0.362535212335465
+        },
+        {
+          "rank": 7,
+          "tagId": 11,
+          "tag": "3d",
+          "similarity": 0.358148122055244
+        },
+        {
+          "rank": 8,
+          "tagId": 672,
+          "tag": "motorcycle",
+          "similarity": 0.336007304909467
+        },
+        {
+          "rank": 9,
+          "tagId": 409,
+          "tag": "free to download",
+          "similarity": 0.333519857574031
+        },
+        {
+          "rank": 10,
+          "tagId": 751,
+          "tag": "oscar (best editing)",
+          "similarity": 0.325163644086042
+        }
+      ]
+    }
+  ]
+}

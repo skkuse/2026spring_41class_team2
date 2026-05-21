@@ -1,0 +1,737 @@
+{
+  "generatedAt": "2026-05-21T05:18:24.206Z",
+  "embeddingModel": "text-embedding-3-small",
+  "topN": 10,
+  "minTop1Similarity": 0.45,
+  "thresholdCandidates": [
+    {
+      "minTop1Similarity": 0.45,
+      "passed": 8,
+      "failed": 0
+    },
+    {
+      "minTop1Similarity": 0.5,
+      "passed": 8,
+      "failed": 0
+    },
+    {
+      "minTop1Similarity": 0.55,
+      "passed": 8,
+      "failed": 0
+    },
+    {
+      "minTop1Similarity": 0.6,
+      "passed": 3,
+      "failed": 5
+    }
+  ],
+  "summary": {
+    "queryCount": 8,
+    "minTop1SimilarityPassed": 8,
+    "minTop1SimilarityFailed": 0,
+    "expectedCheckCount": 8,
+    "expectedCheckPassed": 8,
+    "expectedCheckFailed": 0
+  },
+  "queries": [
+    {
+      "userTag": "잔잔한",
+      "embeddingTerms": [
+        "잔잔한",
+        "차분한",
+        "고요한",
+        "느린 호흡",
+        "감성적인",
+        "일상 정서",
+        "여운"
+      ],
+      "embeddingInput": "잔잔한 차분한 고요한 느린 호흡 감성적인 일상 정서 여운",
+      "top1Tag": "slow paced",
+      "top1Similarity": 0.590578761126262,
+      "minTop1SimilarityPassed": true,
+      "expectedTags": [
+        "atmospheric",
+        "wistful",
+        "slow paced",
+        "quiet",
+        "mellow"
+      ],
+      "expectedMatchFound": true,
+      "highestExpectedMatchRank": 1,
+      "matches": [
+        {
+          "rank": 1,
+          "tagId": 930,
+          "tag": "slow paced",
+          "similarity": 0.590578761126262
+        },
+        {
+          "rank": 2,
+          "tagId": 618,
+          "tag": "lyrical",
+          "similarity": 0.574753545691501
+        },
+        {
+          "rank": 3,
+          "tagId": 639,
+          "tag": "meditative",
+          "similarity": 0.574432752581172
+        },
+        {
+          "rank": 4,
+          "tagId": 640,
+          "tag": "melancholic",
+          "similarity": 0.574108587755317
+        },
+        {
+          "rank": 5,
+          "tagId": 388,
+          "tag": "feel-good",
+          "similarity": 0.543038096867023
+        },
+        {
+          "rank": 6,
+          "tagId": 1111,
+          "tag": "wistful",
+          "similarity": 0.535755989037133
+        },
+        {
+          "rank": 7,
+          "tagId": 872,
+          "tag": "sad but good",
+          "similarity": 0.534458541766701
+        },
+        {
+          "rank": 8,
+          "tagId": 138,
+          "tag": "bittersweet",
+          "similarity": 0.534363755699274
+        },
+        {
+          "rank": 9,
+          "tagId": 155,
+          "tag": "boring",
+          "similarity": 0.533064919773186
+        },
+        {
+          "rank": 10,
+          "tagId": 1035,
+          "tag": "touching",
+          "similarity": 0.529747954585649
+        }
+      ]
+    },
+    {
+      "userTag": "우울한",
+      "embeddingTerms": [
+        "우울한",
+        "침울한",
+        "먹먹한",
+        "비극적 정서",
+        "암울한 분위기",
+        "상실감",
+        "고독한 인물"
+      ],
+      "embeddingInput": "우울한 침울한 먹먹한 비극적 정서 암울한 분위기 상실감 고독한 인물",
+      "top1Tag": "downbeat",
+      "top1Similarity": 0.606944240855113,
+      "minTop1SimilarityPassed": true,
+      "expectedTags": [
+        "melancholy",
+        "depression",
+        "depressing",
+        "bleak",
+        "sad",
+        "sad but good"
+      ],
+      "expectedMatchFound": true,
+      "highestExpectedMatchRank": 2,
+      "matches": [
+        {
+          "rank": 1,
+          "tagId": 319,
+          "tag": "downbeat",
+          "similarity": 0.606944240855113
+        },
+        {
+          "rank": 2,
+          "tagId": 296,
+          "tag": "depressing",
+          "similarity": 0.57944116836825
+        },
+        {
+          "rank": 3,
+          "tagId": 640,
+          "tag": "melancholic",
+          "similarity": 0.567920725817222
+        },
+        {
+          "rank": 4,
+          "tagId": 143,
+          "tag": "bleak",
+          "similarity": 0.540329124631804
+        },
+        {
+          "rank": 5,
+          "tagId": 871,
+          "tag": "sad",
+          "similarity": 0.515299759237068
+        },
+        {
+          "rank": 6,
+          "tagId": 791,
+          "tag": "poignant",
+          "similarity": 0.509396893890286
+        },
+        {
+          "rank": 7,
+          "tagId": 872,
+          "tag": "sad but good",
+          "similarity": 0.497130474274806
+        },
+        {
+          "rank": 8,
+          "tagId": 473,
+          "tag": "grim",
+          "similarity": 0.492191488174702
+        },
+        {
+          "rank": 9,
+          "tagId": 348,
+          "tag": "emotional",
+          "similarity": 0.491241913948264
+        },
+        {
+          "rank": 10,
+          "tagId": 1061,
+          "tag": "unlikeable characters",
+          "similarity": 0.48521056104068
+        }
+      ]
+    },
+    {
+      "userTag": "액션 많은",
+      "embeddingTerms": [
+        "액션 많은",
+        "박진감",
+        "격렬한 전투",
+        "추격전",
+        "몸싸움",
+        "대규모 충돌",
+        "위기 탈출"
+      ],
+      "embeddingInput": "액션 많은 박진감 격렬한 전투 추격전 몸싸움 대규모 충돌 위기 탈출",
+      "top1Tag": "realistic action",
+      "top1Similarity": 0.662191114538926,
+      "minTop1SimilarityPassed": true,
+      "expectedTags": [
+        "action packed",
+        "action",
+        "good action",
+        "realistic action",
+        "dynamic cgi action"
+      ],
+      "expectedMatchFound": true,
+      "highestExpectedMatchRank": 1,
+      "matches": [
+        {
+          "rank": 1,
+          "tagId": 841,
+          "tag": "realistic action",
+          "similarity": 0.662191114538926
+        },
+        {
+          "rank": 2,
+          "tagId": 390,
+          "tag": "fighting",
+          "similarity": 0.642539748454642
+        },
+        {
+          "rank": 3,
+          "tagId": 19,
+          "tag": "action",
+          "similarity": 0.641731333216855
+        },
+        {
+          "rank": 4,
+          "tagId": 20,
+          "tag": "action packed",
+          "similarity": 0.610883757869553
+        },
+        {
+          "rank": 5,
+          "tagId": 389,
+          "tag": "fight scenes",
+          "similarity": 0.609070839203369
+        },
+        {
+          "rank": 6,
+          "tagId": 447,
+          "tag": "good action",
+          "similarity": 0.592459861775978
+        },
+        {
+          "rank": 7,
+          "tagId": 1085,
+          "tag": "violent",
+          "similarity": 0.574022149572503
+        },
+        {
+          "rank": 8,
+          "tagId": 369,
+          "tag": "explosions",
+          "similarity": 0.552845954488294
+        },
+        {
+          "rank": 9,
+          "tagId": 553,
+          "tag": "intense",
+          "similarity": 0.544326215247658
+        },
+        {
+          "rank": 10,
+          "tagId": 353,
+          "tag": "enormously long battle scene",
+          "similarity": 0.541584355840441
+        }
+      ]
+    },
+    {
+      "userTag": "기발하고 엉뚱한",
+      "embeddingTerms": [
+        "기발하고 엉뚱한",
+        "독특한 상상력",
+        "엉뚱한 상황",
+        "초현실 분위기",
+        "장난스러운 톤",
+        "예측 불가 전개",
+        "이상한 사건"
+      ],
+      "embeddingInput": "기발하고 엉뚱한 독특한 상상력 엉뚱한 상황 초현실 분위기 장난스러운 톤 예측 불가 전개 이상한 사건",
+      "top1Tag": "bizarre",
+      "top1Similarity": 0.558309042141022,
+      "minTop1SimilarityPassed": true,
+      "expectedTags": [
+        "whimsical",
+        "quirky",
+        "surreal",
+        "surrealism"
+      ],
+      "expectedMatchFound": true,
+      "highestExpectedMatchRank": 2,
+      "matches": [
+        {
+          "rank": 1,
+          "tagId": 139,
+          "tag": "bizarre",
+          "similarity": 0.558309042141022
+        },
+        {
+          "rank": 2,
+          "tagId": 1108,
+          "tag": "whimsical",
+          "similarity": 0.512647769277732
+        },
+        {
+          "rank": 3,
+          "tagId": 18,
+          "tag": "absurd",
+          "similarity": 0.511571551402495
+        },
+        {
+          "rank": 4,
+          "tagId": 1104,
+          "tag": "weird",
+          "similarity": 0.509066759062901
+        },
+        {
+          "rank": 5,
+          "tagId": 265,
+          "tag": "crazy",
+          "similarity": 0.503328331405029
+        },
+        {
+          "rank": 6,
+          "tagId": 93,
+          "tag": "awesome",
+          "similarity": 0.503208262924982
+        },
+        {
+          "rank": 7,
+          "tagId": 366,
+          "tag": "exceptional acting",
+          "similarity": 0.500458411062208
+        },
+        {
+          "rank": 8,
+          "tagId": 1063,
+          "tag": "unrealistic",
+          "similarity": 0.499563845064921
+        },
+        {
+          "rank": 9,
+          "tagId": 97,
+          "tag": "bad acting",
+          "similarity": 0.497168767963704
+        },
+        {
+          "rank": 10,
+          "tagId": 129,
+          "tag": "better than expected",
+          "similarity": 0.491637126477172
+        }
+      ]
+    },
+    {
+      "userTag": "어두운 범죄",
+      "embeddingTerms": [
+        "어두운 범죄",
+        "암울한 범죄",
+        "음산한 사건",
+        "느와르",
+        "거친 범죄극",
+        "살인 수사",
+        "조직 범죄"
+      ],
+      "embeddingInput": "어두운 범죄 암울한 범죄 음산한 사건 느와르 거친 범죄극 살인 수사 조직 범죄",
+      "top1Tag": "crime",
+      "top1Similarity": 0.578222652630652,
+      "minTop1SimilarityPassed": true,
+      "expectedTags": [
+        "film noir",
+        "noir thriller",
+        "crime gone awry",
+        "mob",
+        "bank robbery",
+        "robbery",
+        "hit men",
+        "gangs",
+        "gritty"
+      ],
+      "expectedMatchFound": true,
+      "highestExpectedMatchRank": 6,
+      "matches": [
+        {
+          "rank": 1,
+          "tagId": 268,
+          "tag": "crime",
+          "similarity": 0.578222652630652
+        },
+        {
+          "rank": 2,
+          "tagId": 682,
+          "tag": "murder",
+          "similarity": 0.522157138398985
+        },
+        {
+          "rank": 3,
+          "tagId": 903,
+          "tag": "serial killer",
+          "similarity": 0.510483490481991
+        },
+        {
+          "rank": 4,
+          "tagId": 1052,
+          "tag": "undercover cop",
+          "similarity": 0.468700653780103
+        },
+        {
+          "rank": 5,
+          "tagId": 329,
+          "tag": "drug abuse",
+          "similarity": 0.456251698498432
+        },
+        {
+          "rank": 6,
+          "tagId": 422,
+          "tag": "gangs",
+          "similarity": 0.439386774271687
+        },
+        {
+          "rank": 7,
+          "tagId": 658,
+          "tag": "mob",
+          "similarity": 0.438209905540654
+        },
+        {
+          "rank": 8,
+          "tagId": 248,
+          "tag": "con men",
+          "similarity": 0.436921621462372
+        },
+        {
+          "rank": 9,
+          "tagId": 797,
+          "tag": "police investigation",
+          "similarity": 0.436300549398898
+        },
+        {
+          "rank": 10,
+          "tagId": 683,
+          "tag": "murder mystery",
+          "similarity": 0.429635891203043
+        }
+      ]
+    },
+    {
+      "userTag": "가볍고 웃긴",
+      "embeddingTerms": [
+        "가볍고 웃긴",
+        "유쾌한",
+        "코믹한",
+        "밝은 분위기",
+        "장난스러운 톤",
+        "소동극",
+        "웃긴 상황"
+      ],
+      "embeddingInput": "가볍고 웃긴 유쾌한 코믹한 밝은 분위기 장난스러운 톤 소동극 웃긴 상황",
+      "top1Tag": "humorous",
+      "top1Similarity": 0.565321565422809,
+      "minTop1SimilarityPassed": true,
+      "expectedTags": [
+        "comedy",
+        "funny",
+        "funny as hell",
+        "humorous",
+        "light",
+        "goofy",
+        "screwball comedy"
+      ],
+      "expectedMatchFound": true,
+      "highestExpectedMatchRank": 1,
+      "matches": [
+        {
+          "rank": 1,
+          "tagId": 529,
+          "tag": "humorous",
+          "similarity": 0.565321565422809
+        },
+        {
+          "rank": 2,
+          "tagId": 920,
+          "tag": "silly fun",
+          "similarity": 0.562346636823875
+        },
+        {
+          "rank": 3,
+          "tagId": 1071,
+          "tag": "very funny",
+          "similarity": 0.548749970478755
+        },
+        {
+          "rank": 4,
+          "tagId": 286,
+          "tag": "dark comedy",
+          "similarity": 0.515643461863648
+        },
+        {
+          "rank": 5,
+          "tagId": 417,
+          "tag": "funny",
+          "similarity": 0.512432554716275
+        },
+        {
+          "rank": 6,
+          "tagId": 735,
+          "tag": "off-beat comedy",
+          "similarity": 0.502037209463503
+        },
+        {
+          "rank": 7,
+          "tagId": 418,
+          "tag": "funny as hell",
+          "similarity": 0.497245384304508
+        },
+        {
+          "rank": 8,
+          "tagId": 919,
+          "tag": "silly",
+          "similarity": 0.492485941161885
+        },
+        {
+          "rank": 9,
+          "tagId": 230,
+          "tag": "comedy",
+          "similarity": 0.486587051266915
+        },
+        {
+          "rank": 10,
+          "tagId": 416,
+          "tag": "funniest movies",
+          "similarity": 0.485876874419105
+        }
+      ]
+    },
+    {
+      "userTag": "좀비",
+      "embeddingTerms": [
+        "좀비",
+        "좀비물",
+        "언데드",
+        "감염 공포",
+        "생존 위기",
+        "집단 습격",
+        "폐허 탈출"
+      ],
+      "embeddingInput": "좀비 좀비물 언데드 감염 공포 생존 위기 집단 습격 폐허 탈출",
+      "top1Tag": "zombie",
+      "top1Similarity": 0.576488567099347,
+      "minTop1SimilarityPassed": true,
+      "expectedTags": [
+        "zombie",
+        "zombies"
+      ],
+      "expectedMatchFound": true,
+      "highestExpectedMatchRank": 1,
+      "matches": [
+        {
+          "rank": 1,
+          "tagId": 1127,
+          "tag": "zombie",
+          "similarity": 0.576488567099347
+        },
+        {
+          "rank": 2,
+          "tagId": 1128,
+          "tag": "zombies",
+          "similarity": 0.555257687536656
+        },
+        {
+          "rank": 3,
+          "tagId": 932,
+          "tag": "snakes",
+          "similarity": 0.50901897683067
+        },
+        {
+          "rank": 4,
+          "tagId": 998,
+          "tag": "survival",
+          "similarity": 0.47271274518819
+        },
+        {
+          "rank": 5,
+          "tagId": 953,
+          "tag": "spiders",
+          "similarity": 0.467731800736762
+        },
+        {
+          "rank": 6,
+          "tagId": 1088,
+          "tag": "virus",
+          "similarity": 0.463982706905982
+        },
+        {
+          "rank": 7,
+          "tagId": 308,
+          "tag": "disaster",
+          "similarity": 0.463912925354102
+        },
+        {
+          "rank": 8,
+          "tagId": 973,
+          "tag": "stranded",
+          "similarity": 0.459308811699045
+        },
+        {
+          "rank": 9,
+          "tagId": 148,
+          "tag": "boat",
+          "similarity": 0.458927209391421
+        },
+        {
+          "rank": 10,
+          "tagId": 369,
+          "tag": "explosions",
+          "similarity": 0.450702120164549
+        }
+      ]
+    },
+    {
+      "userTag": "우주 배경",
+      "embeddingTerms": [
+        "우주 배경",
+        "외계 공간",
+        "우주선",
+        "SF 모험",
+        "행성 탐사",
+        "우주 항해",
+        "은하 전쟁"
+      ],
+      "embeddingInput": "우주 배경 외계 공간 우주선 SF 모험 행성 탐사 우주 항해 은하 전쟁",
+      "top1Tag": "space travel",
+      "top1Similarity": 0.694039318935111,
+      "minTop1SimilarityPassed": true,
+      "expectedTags": [
+        "space",
+        "space opera",
+        "space program",
+        "space travel",
+        "sci-fi"
+      ],
+      "expectedMatchFound": true,
+      "highestExpectedMatchRank": 1,
+      "matches": [
+        {
+          "rank": 1,
+          "tagId": 945,
+          "tag": "space travel",
+          "similarity": 0.694039318935111
+        },
+        {
+          "rank": 2,
+          "tagId": 965,
+          "tag": "star wars",
+          "similarity": 0.603423886955571
+        },
+        {
+          "rank": 3,
+          "tagId": 943,
+          "tag": "space opera",
+          "similarity": 0.591278303573621
+        },
+        {
+          "rank": 4,
+          "tagId": 942,
+          "tag": "space",
+          "similarity": 0.587890174215684
+        },
+        {
+          "rank": 5,
+          "tagId": 84,
+          "tag": "astronauts",
+          "similarity": 0.504006221998416
+        },
+        {
+          "rank": 6,
+          "tagId": 630,
+          "tag": "mars",
+          "similarity": 0.503988936678657
+        },
+        {
+          "rank": 7,
+          "tagId": 53,
+          "tag": "alternate universe",
+          "similarity": 0.474343931352109
+        },
+        {
+          "rank": 8,
+          "tagId": 667,
+          "tag": "moon",
+          "similarity": 0.462193842129367
+        },
+        {
+          "rank": 9,
+          "tagId": 395,
+          "tag": "firefly",
+          "similarity": 0.461703561354913
+        },
+        {
+          "rank": 10,
+          "tagId": 734,
+          "tag": "ocean",
+          "similarity": 0.451909711786897
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2227 @@
+{
+  "generatedAt": "2026-05-21T06:27:11.304Z",
+  "model": "gpt-4.1-mini",
+  "embeddingModel": "text-embedding-3-small",
+  "summary": {
+    "caseCount": 30,
+    "passed": 28,
+    "failed": 2
+  },
+  "cases": [
+    {
+      "name": "positive lingering Japanese romance",
+      "message": "잔잔하고 여운 남는 일본 로맨스 영화 추천해줘",
+      "expectedIntent": "new_recommendation",
+      "expectedUserTags": [
+        "잔잔",
+        "여운"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "new_recommendation",
+        "genreIds": [
+          10749
+        ],
+        "countryCodes": [
+          "JP"
+        ],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [
+          {
+            "userTag": "잔잔한",
+            "embeddingTerms": [
+              "잔잔한",
+              "차분한",
+              "평화로운",
+              "조용한",
+              "부드러운",
+              "잔잔하게",
+              "잔잔함"
+            ]
+          },
+          {
+            "userTag": "여운 남는",
+            "embeddingTerms": [
+              "여운 남는",
+              "감동적인",
+              "기억에 남는",
+              "마음에 남는",
+              "잔상 있는",
+              "감성적인",
+              "오래가는"
+            ]
+          }
+        ],
+        "excludedTerms": [],
+        "confidence": 0.95
+      },
+      "vectorMatches": [
+        {
+          "userTag": "잔잔한",
+          "embeddingInput": "잔잔한 차분한 평화로운 조용한 부드러운 잔잔하게 잔잔함",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 603,
+              "tag": "light",
+              "similarity": 0.536003197531998
+            },
+            {
+              "rank": 2,
+              "tagId": 388,
+              "tag": "feel-good",
+              "similarity": 0.531627322024253
+            },
+            {
+              "rank": 3,
+              "tagId": 1055,
+              "tag": "understated",
+              "similarity": 0.509449793940405
+            }
+          ]
+        },
+        {
+          "userTag": "여운 남는",
+          "embeddingInput": "여운 남는 감동적인 기억에 남는 마음에 남는 잔상 있는 감성적인 오래가는",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 900,
+              "tag": "sentimental",
+              "similarity": 0.592620775900422
+            },
+            {
+              "rank": 2,
+              "tagId": 1035,
+              "tag": "touching",
+              "similarity": 0.562225383723894
+            },
+            {
+              "rank": 3,
+              "tagId": 872,
+              "tag": "sad but good",
+              "similarity": 0.545497685956211
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "positive tense zombie horror",
+      "message": "좀비가 등장하는 숨 막히는 공포 영화 추천해줘",
+      "expectedIntent": "new_recommendation",
+      "expectedUserTags": [
+        "좀비",
+        "숨 막히"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "new_recommendation",
+        "genreIds": [
+          27
+        ],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [
+          {
+            "userTag": "좀비",
+            "embeddingTerms": [
+              "좀비",
+              "언데드",
+              "감염자",
+              "시체",
+              "좀비떼",
+              "좀비아포칼립스",
+              "좀비바이러스"
+            ]
+          },
+          {
+            "userTag": "숨 막히는",
+            "embeddingTerms": [
+              "숨 막히는",
+              "긴장감 있는",
+              "몰입감 있는",
+              "짜릿한",
+              "긴박한",
+              "스릴 넘치는",
+              "압도적인"
+            ]
+          }
+        ],
+        "excludedTerms": [],
+        "confidence": 0.95
+      },
+      "vectorMatches": [
+        {
+          "userTag": "좀비",
+          "embeddingInput": "좀비 언데드 감염자 시체 좀비떼 좀비아포칼립스 좀비바이러스",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 1127,
+              "tag": "zombie",
+              "similarity": 0.564320593291261
+            },
+            {
+              "rank": 2,
+              "tagId": 1128,
+              "tag": "zombies",
+              "similarity": 0.525723501668817
+            },
+            {
+              "rank": 3,
+              "tagId": 1088,
+              "tag": "virus",
+              "similarity": 0.429210991077098
+            }
+          ]
+        },
+        {
+          "userTag": "숨 막히는",
+          "embeddingInput": "숨 막히는 긴장감 있는 몰입감 있는 짜릿한 긴박한 스릴 넘치는 압도적인",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 553,
+              "tag": "intense",
+              "similarity": 0.555664077429924
+            },
+            {
+              "rank": 2,
+              "tagId": 413,
+              "tag": "frightening",
+              "similarity": 0.503051327677066
+            },
+            {
+              "rank": 3,
+              "tagId": 1020,
+              "tag": "tense",
+              "similarity": 0.496563829149113
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "positive heavy dark crime thriller",
+      "message": "어두운 범죄 스릴러 중에 분위기 묵직한 거 추천해줘",
+      "expectedIntent": "new_recommendation",
+      "expectedUserTags": [
+        "어두",
+        "묵직"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "new_recommendation",
+        "genreIds": [
+          80,
+          53
+        ],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [
+          {
+            "userTag": "어두운",
+            "embeddingTerms": [
+              "어두운",
+              "침침한",
+              "암울한",
+              "우울한",
+              "음침한",
+              "그늘진",
+              "어둑한"
+            ]
+          },
+          {
+            "userTag": "묵직한 분위기",
+            "embeddingTerms": [
+              "묵직한 분위기",
+              "무거운 분위기",
+              "진중한 분위기",
+              "중후한 분위기",
+              "엄숙한 분위기",
+              "진지한 분위기",
+              "무게감 있는 분위기"
+            ]
+          }
+        ],
+        "excludedTerms": [],
+        "confidence": 0.95
+      },
+      "vectorMatches": [
+        {
+          "userTag": "어두운",
+          "embeddingInput": "어두운 침침한 암울한 우울한 음침한 그늘진 어둑한",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 285,
+              "tag": "dark",
+              "similarity": 0.531452328118364
+            },
+            {
+              "rank": 2,
+              "tagId": 143,
+              "tag": "bleak",
+              "similarity": 0.474520771695184
+            },
+            {
+              "rank": 3,
+              "tagId": 319,
+              "tag": "downbeat",
+              "similarity": 0.463503129686725
+            }
+          ]
+        },
+        {
+          "userTag": "묵직한 분위기",
+          "embeddingInput": "묵직한 분위기 무거운 분위기 진중한 분위기 중후한 분위기 엄숙한 분위기 진지한 분위기 무게감 있는 분위기",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 1055,
+              "tag": "understated",
+              "similarity": 0.52528287625416
+            },
+            {
+              "rank": 2,
+              "tagId": 86,
+              "tag": "atmospheric",
+              "similarity": 0.518048332769846
+            },
+            {
+              "rank": 3,
+              "tagId": 388,
+              "tag": "feel-good",
+              "similarity": 0.505965991432289
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "positive space sci-fi adventure",
+      "message": "우주 배경의 SF 모험 영화 찾아줘",
+      "expectedIntent": "new_recommendation",
+      "expectedUserTags": [
+        "우주"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "new_recommendation",
+        "genreIds": [
+          12,
+          878
+        ],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [
+          {
+            "userTag": "우주 배경",
+            "embeddingTerms": [
+              "우주 배경",
+              "우주 공간",
+              "우주 여행",
+              "우주 탐험",
+              "우주선",
+              "우주 정거장",
+              "우주 미션"
+            ]
+          }
+        ],
+        "excludedTerms": [],
+        "confidence": 0.95
+      },
+      "vectorMatches": [
+        {
+          "userTag": "우주 배경",
+          "embeddingInput": "우주 배경 우주 공간 우주 여행 우주 탐험 우주선 우주 정거장 우주 미션",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 945,
+              "tag": "space travel",
+              "similarity": 0.51843268198781
+            },
+            {
+              "rank": 2,
+              "tagId": 87,
+              "tag": "australia",
+              "similarity": 0.469462786430497
+            },
+            {
+              "rank": 3,
+              "tagId": 944,
+              "tag": "space program",
+              "similarity": 0.445852848813419
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "positive light funny comedy",
+      "message": "가볍고 웃긴 코미디 영화 추천해줘",
+      "expectedIntent": "new_recommendation",
+      "expectedUserTags": [
+        "가볍",
+        "웃긴"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "new_recommendation",
+        "genreIds": [
+          35
+        ],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [
+          {
+            "userTag": "가볍고",
+            "embeddingTerms": [
+              "가볍고",
+              "경쾌한",
+              "밝은",
+              "산뜻한",
+              "편안한",
+              "유쾌한",
+              "가벼운"
+            ]
+          },
+          {
+            "userTag": "웃긴",
+            "embeddingTerms": [
+              "웃긴",
+              "유머러스한",
+              "코믹한",
+              "재미있는",
+              "익살스러운",
+              "즐거운",
+              "개그"
+            ]
+          }
+        ],
+        "excludedTerms": [],
+        "confidence": 0.95
+      },
+      "vectorMatches": [
+        {
+          "userTag": "가볍고",
+          "embeddingInput": "가볍고 경쾌한 밝은 산뜻한 편안한 유쾌한 가벼운",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 603,
+              "tag": "light",
+              "similarity": 0.571991796251948
+            },
+            {
+              "rank": 2,
+              "tagId": 872,
+              "tag": "sad but good",
+              "similarity": 0.476137509271079
+            },
+            {
+              "rank": 3,
+              "tagId": 445,
+              "tag": "good",
+              "similarity": 0.435993956676717
+            }
+          ]
+        },
+        {
+          "userTag": "웃긴",
+          "embeddingInput": "웃긴 유머러스한 코믹한 재미있는 익살스러운 즐거운 개그",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 529,
+              "tag": "humorous",
+              "similarity": 0.594900012034425
+            },
+            {
+              "rank": 2,
+              "tagId": 476,
+              "tag": "gross-out",
+              "similarity": 0.591122048252813
+            },
+            {
+              "rank": 3,
+              "tagId": 417,
+              "tag": "funny",
+              "similarity": 0.570878862876563
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "positive tearful moving drama",
+      "message": "눈물 나는 감동적인 드라마 보고 싶어",
+      "expectedIntent": "new_recommendation",
+      "expectedUserTags": [
+        "눈물",
+        "감동"
+      ],
+      "passed": false,
+      "failures": [
+        "missing expected userTag containing \"눈물\""
+      ],
+      "analysis": {
+        "intent": "new_recommendation",
+        "genreIds": [
+          18
+        ],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [
+          {
+            "userTag": "감동적인",
+            "embeddingTerms": [
+              "감동적인",
+              "감격적인",
+              "가슴뭉클한",
+              "눈물나는",
+              "감성적인",
+              "따뜻한",
+              "진심어린"
+            ]
+          }
+        ],
+        "excludedTerms": [],
+        "confidence": 0.95
+      },
+      "vectorMatches": [
+        {
+          "userTag": "감동적인",
+          "embeddingInput": "감동적인 감격적인 가슴뭉클한 눈물나는 감성적인 따뜻한 진심어린",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 1035,
+              "tag": "touching",
+              "similarity": 0.676619539247687
+            },
+            {
+              "rank": 2,
+              "tagId": 900,
+              "tag": "sentimental",
+              "similarity": 0.636448803713103
+            },
+            {
+              "rank": 3,
+              "tagId": 348,
+              "tag": "emotional",
+              "similarity": 0.626921847683696
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "positive fast action",
+      "message": "빠른 전개에 액션 많은 영화 추천해줘",
+      "expectedIntent": "new_recommendation",
+      "expectedUserTags": [
+        "빠른 전개",
+        "액션"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "new_recommendation",
+        "genreIds": [],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [
+          {
+            "userTag": "빠른 전개",
+            "embeddingTerms": [
+              "빠른 전개",
+              "빠르게 진행",
+              "속도감",
+              "전개 속도",
+              "빠른 흐름",
+              "빠른 스토리",
+              "빠른 진행"
+            ]
+          },
+          {
+            "userTag": "액션 많은",
+            "embeddingTerms": [
+              "액션 많은",
+              "액션 풍부",
+              "액션 가득",
+              "액션 위주",
+              "액션 중심",
+              "액션 활발",
+              "액션 다수"
+            ]
+          }
+        ],
+        "excludedTerms": [],
+        "confidence": 0.95
+      },
+      "vectorMatches": [
+        {
+          "userTag": "빠른 전개",
+          "embeddingInput": "빠른 전개 빠르게 진행 속도감 전개 속도 빠른 흐름 빠른 스토리 빠른 진행",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 382,
+              "tag": "fast paced",
+              "similarity": 0.517258243522896
+            },
+            {
+              "rank": 2,
+              "tagId": 930,
+              "tag": "slow paced",
+              "similarity": 0.486023895630014
+            },
+            {
+              "rank": 3,
+              "tagId": 715,
+              "tag": "nonlinear",
+              "similarity": 0.434891852519573
+            }
+          ]
+        },
+        {
+          "userTag": "액션 많은",
+          "embeddingInput": "액션 많은 액션 풍부 액션 가득 액션 위주 액션 중심 액션 활발 액션 다수",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 841,
+              "tag": "realistic action",
+              "similarity": 0.457357868246824
+            },
+            {
+              "rank": 2,
+              "tagId": 482,
+              "tag": "guns",
+              "similarity": 0.439672540813535
+            },
+            {
+              "rank": 3,
+              "tagId": 20,
+              "tag": "action packed",
+              "similarity": 0.438089783059726
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "positive weird surreal",
+      "message": "기괴하고 초현실적인 분위기의 영화 추천해줘",
+      "expectedIntent": "new_recommendation",
+      "expectedUserTags": [
+        "기괴",
+        "초현실"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "new_recommendation",
+        "genreIds": [],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [
+          {
+            "userTag": "기괴한",
+            "embeddingTerms": [
+              "기괴한",
+              "이상한",
+              "괴상한",
+              "기이한",
+              "기묘한",
+              "기이한분위기",
+              "초자연적"
+            ]
+          },
+          {
+            "userTag": "초현실적인",
+            "embeddingTerms": [
+              "초현실적인",
+              "비현실적인",
+              "환상적인",
+              "몽환적인",
+              "비현실감",
+              "꿈같은",
+              "비현실적분위기"
+            ]
+          }
+        ],
+        "excludedTerms": [],
+        "confidence": 0.9
+      },
+      "vectorMatches": [
+        {
+          "userTag": "기괴한",
+          "embeddingInput": "기괴한 이상한 괴상한 기이한 기묘한 기이한분위기 초자연적",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 1104,
+              "tag": "weird",
+              "similarity": 0.470421659761079
+            },
+            {
+              "rank": 2,
+              "tagId": 974,
+              "tag": "strange",
+              "similarity": 0.464812352277707
+            },
+            {
+              "rank": 3,
+              "tagId": 829,
+              "tag": "quirky",
+              "similarity": 0.461820717595023
+            }
+          ]
+        },
+        {
+          "userTag": "초현실적인",
+          "embeddingInput": "초현실적인 비현실적인 환상적인 몽환적인 비현실감 꿈같은 비현실적분위기",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 325,
+              "tag": "dreamlike",
+              "similarity": 0.699527692655047
+            },
+            {
+              "rank": 2,
+              "tagId": 995,
+              "tag": "surreal",
+              "similarity": 0.677264428558571
+            },
+            {
+              "rank": 3,
+              "tagId": 487,
+              "tag": "hallucinatory",
+              "similarity": 0.625014486834082
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "positive warm healing family",
+      "message": "따뜻하고 힐링되는 가족 영화 보고 싶어",
+      "expectedIntent": "new_recommendation",
+      "expectedUserTags": [
+        "따뜻",
+        "힐링"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "new_recommendation",
+        "genreIds": [
+          18
+        ],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [
+          {
+            "userTag": "따뜻한",
+            "embeddingTerms": [
+              "따뜻한",
+              "포근한",
+              "온화한",
+              "감동적인",
+              "정감있는",
+              "편안한",
+              "따스한"
+            ]
+          },
+          {
+            "userTag": "힐링되는",
+            "embeddingTerms": [
+              "힐링되는",
+              "치유하는",
+              "마음이편안한",
+              "회복되는",
+              "위로가되는",
+              "평화로운",
+              "안정적인"
+            ]
+          }
+        ],
+        "excludedTerms": [
+          "가족"
+        ],
+        "confidence": 0.95
+      },
+      "vectorMatches": [
+        {
+          "userTag": "따뜻한",
+          "embeddingInput": "따뜻한 포근한 온화한 감동적인 정감있는 편안한 따스한",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 348,
+              "tag": "emotional",
+              "similarity": 0.582650797389806
+            },
+            {
+              "rank": 2,
+              "tagId": 1035,
+              "tag": "touching",
+              "similarity": 0.560880703716697
+            },
+            {
+              "rank": 3,
+              "tagId": 771,
+              "tag": "passionate",
+              "similarity": 0.536783208546185
+            }
+          ]
+        },
+        {
+          "userTag": "힐링되는",
+          "embeddingInput": "힐링되는 치유하는 마음이편안한 회복되는 위로가되는 평화로운 안정적인",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 388,
+              "tag": "feel-good",
+              "similarity": 0.560050577074348
+            },
+            {
+              "rank": 2,
+              "tagId": 845,
+              "tag": "reflective",
+              "similarity": 0.495686131949984
+            },
+            {
+              "rank": 3,
+              "tagId": 348,
+              "tag": "emotional",
+              "similarity": 0.467939839129193
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "positive brutal bloody horror",
+      "message": "잔혹하고 피 튀기는 공포 영화 추천해줘",
+      "expectedIntent": "new_recommendation",
+      "expectedUserTags": [
+        "잔혹",
+        "피"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "new_recommendation",
+        "genreIds": [
+          27
+        ],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [
+          {
+            "userTag": "잔혹한",
+            "embeddingTerms": [
+              "잔혹한",
+              "잔인한",
+              "피비린내 나는",
+              "무자비한",
+              "잔인무도한",
+              "잔혹성",
+              "피 튀기는"
+            ]
+          },
+          {
+            "userTag": "피 튀기는",
+            "embeddingTerms": [
+              "피 튀기는",
+              "피비린내 나는",
+              "잔혹한",
+              "잔인한",
+              "피 흘리는",
+              "피가 나는",
+              "피범벅"
+            ]
+          }
+        ],
+        "excludedTerms": [],
+        "confidence": 0.95
+      },
+      "vectorMatches": [
+        {
+          "userTag": "잔혹한",
+          "embeddingInput": "잔혹한 잔인한 피비린내 나는 무자비한 잔인무도한 잔혹성 피 튀기는",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 872,
+              "tag": "sad but good",
+              "similarity": 0.388885886699335
+            },
+            {
+              "rank": 2,
+              "tagId": 332,
+              "tag": "dumb",
+              "similarity": 0.37889182812596
+            },
+            {
+              "rank": 3,
+              "tagId": 146,
+              "tag": "bloody",
+              "similarity": 0.378819897452311
+            }
+          ]
+        },
+        {
+          "userTag": "피 튀기는",
+          "embeddingInput": "피 튀기는 피비린내 나는 잔혹한 잔인한 피 흘리는 피가 나는 피범벅",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 458,
+              "tag": "gory",
+              "similarity": 0.399374847839354
+            },
+            {
+              "rank": 2,
+              "tagId": 146,
+              "tag": "bloody",
+              "similarity": 0.385255004635701
+            },
+            {
+              "rank": 3,
+              "tagId": 872,
+              "tag": "sad but good",
+              "similarity": 0.363966129904724
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "positive tragic bleak ending",
+      "message": "비극적이고 암울한 결말의 영화 찾아줘",
+      "expectedIntent": "new_recommendation",
+      "expectedUserTags": [
+        "비극",
+        "암울"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "new_recommendation",
+        "genreIds": [],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [
+          {
+            "userTag": "비극적",
+            "embeddingTerms": [
+              "비극적",
+              "비극",
+              "비참한",
+              "절망적인",
+              "슬픈",
+              "비운의",
+              "비애"
+            ]
+          },
+          {
+            "userTag": "암울한 결말",
+            "embeddingTerms": [
+              "암울한 결말",
+              "어두운 결말",
+              "비관적인 결말",
+              "절망적인 결말",
+              "슬픈 결말",
+              "비극적 결말",
+              "불행한 결말"
+            ]
+          }
+        ],
+        "excludedTerms": [],
+        "confidence": 0.9
+      },
+      "vectorMatches": [
+        {
+          "userTag": "비극적",
+          "embeddingInput": "비극적 비극 비참한 절망적인 슬픈 비운의 비애",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 1037,
+              "tag": "tragedy",
+              "similarity": 0.562649757092492
+            },
+            {
+              "rank": 2,
+              "tagId": 496,
+              "tag": "heartbreaking",
+              "similarity": 0.533114939700768
+            },
+            {
+              "rank": 3,
+              "tagId": 640,
+              "tag": "melancholic",
+              "similarity": 0.518587355416455
+            }
+          ]
+        },
+        {
+          "userTag": "암울한 결말",
+          "embeddingInput": "암울한 결말 어두운 결말 비관적인 결말 절망적인 결말 슬픈 결말 비극적 결말 불행한 결말",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 99,
+              "tag": "bad ending",
+              "similarity": 0.599040485224369
+            },
+            {
+              "rank": 2,
+              "tagId": 1037,
+              "tag": "tragedy",
+              "similarity": 0.568813696113247
+            },
+            {
+              "rank": 3,
+              "tagId": 143,
+              "tag": "bleak",
+              "similarity": 0.55906119372974
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "positive twist mind game thriller",
+      "message": "두뇌 싸움이 있는 반전 스릴러 추천해줘",
+      "expectedIntent": "new_recommendation",
+      "expectedUserTags": [
+        "두뇌",
+        "반전"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "new_recommendation",
+        "genreIds": [
+          53
+        ],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [
+          {
+            "userTag": "두뇌 싸움",
+            "embeddingTerms": [
+              "두뇌 싸움",
+              "지능 대결",
+              "심리전",
+              "전략 싸움",
+              "두뇌 게임",
+              "심리 싸움",
+              "두뇌 경쟁"
+            ]
+          },
+          {
+            "userTag": "반전",
+            "embeddingTerms": [
+              "반전",
+              "예상 밖",
+              "반전 스토리",
+              "반전 결말",
+              "깜짝 전개",
+              "예상 뒤집기",
+              "반전 요소"
+            ]
+          }
+        ],
+        "excludedTerms": [],
+        "confidence": 0.95
+      },
+      "vectorMatches": [
+        {
+          "userTag": "두뇌 싸움",
+          "embeddingInput": "두뇌 싸움 지능 대결 심리전 전략 싸움 두뇌 게임 심리 싸움 두뇌 경쟁",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 199,
+              "tag": "chess",
+              "similarity": 0.621318927522722
+            },
+            {
+              "rank": 2,
+              "tagId": 551,
+              "tag": "intelligent",
+              "similarity": 0.583690649937355
+            },
+            {
+              "rank": 3,
+              "tagId": 390,
+              "tag": "fighting",
+              "similarity": 0.516434263082175
+            }
+          ]
+        },
+        {
+          "userTag": "반전",
+          "embeddingInput": "반전 예상 밖 반전 스토리 반전 결말 깜짝 전개 예상 뒤집기 반전 요소",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 129,
+              "tag": "better than expected",
+              "similarity": 0.514774508470103
+            },
+            {
+              "rank": 2,
+              "tagId": 1050,
+              "tag": "twist ending",
+              "similarity": 0.492995020550998
+            },
+            {
+              "rank": 3,
+              "tagId": 1045,
+              "tag": "tricky",
+              "similarity": 0.492195107391315
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "positive revenge rough action",
+      "message": "복수극 느낌 나는 거친 액션 영화 추천해줘",
+      "expectedIntent": "new_recommendation",
+      "expectedUserTags": [
+        "복수",
+        "거친"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "new_recommendation",
+        "genreIds": [
+          53
+        ],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [
+          {
+            "userTag": "복수극",
+            "embeddingTerms": [
+              "복수극",
+              "복수",
+              "원한",
+              "복수심",
+              "복수 이야기",
+              "복수 드라마",
+              "복수 플롯"
+            ]
+          },
+          {
+            "userTag": "거친",
+            "embeddingTerms": [
+              "거친",
+              "거칠고",
+              "거친 분위기",
+              "거친 감성",
+              "거친 스타일",
+              "거친 액션",
+              "거친 전개"
+            ]
+          }
+        ],
+        "excludedTerms": [],
+        "confidence": 0.95
+      },
+      "vectorMatches": [
+        {
+          "userTag": "복수극",
+          "embeddingInput": "복수극 복수 원한 복수심 복수 이야기 복수 드라마 복수 플롯",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 679,
+              "tag": "multiple storylines",
+              "similarity": 0.534401498856913
+            },
+            {
+              "rank": 2,
+              "tagId": 1047,
+              "tag": "true story",
+              "similarity": 0.474910674435161
+            },
+            {
+              "rank": 3,
+              "tagId": 895,
+              "tag": "script",
+              "similarity": 0.470519466451374
+            }
+          ]
+        },
+        {
+          "userTag": "거친",
+          "embeddingInput": "거친 거칠고 거친 분위기 거친 감성 거친 스타일 거친 액션 거친 전개",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 911,
+              "tag": "sexy",
+              "similarity": 0.51532256627056
+            },
+            {
+              "rank": 2,
+              "tagId": 666,
+              "tag": "moody",
+              "similarity": 0.503932151252007
+            },
+            {
+              "rank": 3,
+              "tagId": 1059,
+              "tag": "unique",
+              "similarity": 0.459112133097071
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "positive coming-of-age youth drama",
+      "message": "성장 서사가 있는 청춘 드라마 추천해줘",
+      "expectedIntent": "new_recommendation",
+      "expectedUserTags": [
+        "성장",
+        "청춘"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "new_recommendation",
+        "genreIds": [
+          18
+        ],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [
+          {
+            "userTag": "성장 서사",
+            "embeddingTerms": [
+              "성장 서사",
+              "성장 이야기",
+              "성장 과정",
+              "성장 드라마",
+              "성장 테마",
+              "성장 플롯",
+              "성장 요소"
+            ]
+          },
+          {
+            "userTag": "청춘",
+            "embeddingTerms": [
+              "청춘",
+              "젊음",
+              "청년",
+              "청소년",
+              "청춘 이야기",
+              "청춘 드라마",
+              "청춘 테마"
+            ]
+          }
+        ],
+        "excludedTerms": [],
+        "confidence": 0.95
+      },
+      "vectorMatches": [
+        {
+          "userTag": "성장 서사",
+          "embeddingInput": "성장 서사 성장 이야기 성장 과정 성장 드라마 성장 테마 성장 플롯 성장 요소",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 133,
+              "tag": "biographical",
+              "similarity": 0.527258120982364
+            },
+            {
+              "rank": 2,
+              "tagId": 323,
+              "tag": "drama",
+              "similarity": 0.469815279333904
+            },
+            {
+              "rank": 3,
+              "tagId": 1116,
+              "tag": "women",
+              "similarity": 0.462092625966883
+            }
+          ]
+        },
+        {
+          "userTag": "청춘",
+          "embeddingInput": "청춘 젊음 청년 청소년 청춘 이야기 청춘 드라마 청춘 테마",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 503,
+              "tag": "high school",
+              "similarity": 0.517270892924769
+            },
+            {
+              "rank": 2,
+              "tagId": 924,
+              "tag": "skinhead",
+              "similarity": 0.433433959596731
+            },
+            {
+              "rank": 3,
+              "tagId": 236,
+              "tag": "coming-of-age",
+              "similarity": 0.430666299496674
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "positive dreamlike beautiful visuals",
+      "message": "몽환적이고 아름다운 영상미 있는 영화 추천해줘",
+      "expectedIntent": "new_recommendation",
+      "expectedUserTags": [
+        "몽환",
+        "영상미"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "new_recommendation",
+        "genreIds": [],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [
+          {
+            "userTag": "몽환적",
+            "embeddingTerms": [
+              "몽환적",
+              "환상적인",
+              "꿈같은",
+              "신비로운",
+              "초현실적인",
+              "환상미",
+              "환상풍"
+            ]
+          },
+          {
+            "userTag": "아름다운 영상미",
+            "embeddingTerms": [
+              "아름다운 영상미",
+              "화려한 영상미",
+              "예쁜 영상미",
+              "감각적인 영상미",
+              "미려한 영상미",
+              "빛나는 영상미",
+              "화사한 영상미"
+            ]
+          }
+        ],
+        "excludedTerms": [],
+        "confidence": 0.95
+      },
+      "vectorMatches": [
+        {
+          "userTag": "몽환적",
+          "embeddingInput": "몽환적 환상적인 꿈같은 신비로운 초현실적인 환상미 환상풍",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 325,
+              "tag": "dreamlike",
+              "similarity": 0.652499212660441
+            },
+            {
+              "rank": 2,
+              "tagId": 995,
+              "tag": "surreal",
+              "similarity": 0.6234092866917
+            },
+            {
+              "rank": 3,
+              "tagId": 1104,
+              "tag": "weird",
+              "similarity": 0.522559053611364
+            }
+          ]
+        },
+        {
+          "userTag": "아름다운 영상미",
+          "embeddingInput": "아름다운 영상미 화려한 영상미 예쁜 영상미 감각적인 영상미 미려한 영상미 빛나는 영상미 화사한 영상미",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 122,
+              "tag": "beautifully filmed",
+              "similarity": 0.610258308782801
+            },
+            {
+              "rank": 2,
+              "tagId": 55,
+              "tag": "amazing photography",
+              "similarity": 0.592862917252862
+            },
+            {
+              "rank": 3,
+              "tagId": 54,
+              "tag": "amazing cinematography",
+              "similarity": 0.520638818618642
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mixed friend zombie",
+      "message": "친구랑 보기 좋은 좀비 영화 추천해줘",
+      "expectedIntent": "new_recommendation",
+      "expectedUserTags": [
+        "좀비"
+      ],
+      "forbiddenUserTags": [
+        "친구",
+        "보기 좋은"
+      ],
+      "expectedExcludedTerms": [
+        "친구"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "new_recommendation",
+        "genreIds": [
+          27
+        ],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [
+          {
+            "userTag": "좀비",
+            "embeddingTerms": [
+              "좀비",
+              "언데드",
+              "감염자",
+              "좀비떼",
+              "좀비아포칼립스",
+              "좀비생존",
+              "좀비공포"
+            ]
+          }
+        ],
+        "excludedTerms": [
+          "친구랑"
+        ],
+        "confidence": 0.95
+      },
+      "vectorMatches": [
+        {
+          "userTag": "좀비",
+          "embeddingInput": "좀비 언데드 감염자 좀비떼 좀비아포칼립스 좀비생존 좀비공포",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 1127,
+              "tag": "zombie",
+              "similarity": 0.597585416168112
+            },
+            {
+              "rank": 2,
+              "tagId": 1128,
+              "tag": "zombies",
+              "similarity": 0.576084278623762
+            },
+            {
+              "rank": 3,
+              "tagId": 998,
+              "tag": "survival",
+              "similarity": 0.441460334063425
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mixed evening calm",
+      "message": "저녁에 볼 잔잔한 영화 추천해줘",
+      "expectedIntent": "new_recommendation",
+      "expectedUserTags": [
+        "잔잔한"
+      ],
+      "forbiddenUserTags": [
+        "저녁"
+      ],
+      "expectedExcludedTerms": [
+        "저녁"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "new_recommendation",
+        "genreIds": [],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [
+          {
+            "userTag": "잔잔한",
+            "embeddingTerms": [
+              "잔잔한",
+              "평화로운",
+              "조용한",
+              "차분한",
+              "부드러운",
+              "편안한",
+              "온화한"
+            ]
+          }
+        ],
+        "excludedTerms": [
+          "저녁에"
+        ],
+        "confidence": 0.95
+      },
+      "vectorMatches": [
+        {
+          "userTag": "잔잔한",
+          "embeddingInput": "잔잔한 평화로운 조용한 차분한 부드러운 편안한 온화한",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 388,
+              "tag": "feel-good",
+              "similarity": 0.545071967668259
+            },
+            {
+              "rank": 2,
+              "tagId": 1055,
+              "tag": "understated",
+              "similarity": 0.538498718925875
+            },
+            {
+              "rank": 3,
+              "tagId": 603,
+              "tag": "light",
+              "similarity": 0.523730628884366
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mixed ott space",
+      "message": "OTT에서 볼만한 우주 배경 영화 추천해줘",
+      "expectedIntent": "new_recommendation",
+      "expectedUserTags": [
+        "우주"
+      ],
+      "forbiddenUserTags": [
+        "OTT",
+        "볼만한"
+      ],
+      "expectedExcludedTerms": [
+        "OTT"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "new_recommendation",
+        "genreIds": [
+          878
+        ],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [
+          {
+            "userTag": "우주 배경",
+            "embeddingTerms": [
+              "우주 배경",
+              "우주 공간",
+              "우주 여행",
+              "우주선",
+              "우주 탐험",
+              "우주 과학",
+              "우주 환경"
+            ]
+          }
+        ],
+        "excludedTerms": [
+          "OTT에서"
+        ],
+        "confidence": 0.95
+      },
+      "vectorMatches": [
+        {
+          "userTag": "우주 배경",
+          "embeddingInput": "우주 배경 우주 공간 우주 여행 우주선 우주 탐험 우주 과학 우주 환경",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 945,
+              "tag": "space travel",
+              "similarity": 0.526921150777598
+            },
+            {
+              "rank": 2,
+              "tagId": 942,
+              "tag": "space",
+              "similarity": 0.50532740534136
+            },
+            {
+              "rank": 3,
+              "tagId": 944,
+              "tag": "space program",
+              "similarity": 0.495680174731033
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mixed bored light funny comedy",
+      "message": "심심할 때 볼 가볍고 웃긴 코미디 추천해줘",
+      "expectedIntent": "new_recommendation",
+      "expectedUserTags": [
+        "가볍",
+        "웃긴"
+      ],
+      "forbiddenUserTags": [
+        "심심",
+        "볼"
+      ],
+      "expectedExcludedTerms": [
+        "심심"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "new_recommendation",
+        "genreIds": [
+          35
+        ],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [
+          {
+            "userTag": "가볍고 웃긴",
+            "embeddingTerms": [
+              "가볍고 웃긴",
+              "유머러스한",
+              "경쾌한",
+              "코믹한",
+              "즐거운",
+              "명랑한",
+              "재미있는"
+            ]
+          }
+        ],
+        "excludedTerms": [
+          "심심할 때"
+        ],
+        "confidence": 0.95
+      },
+      "vectorMatches": [
+        {
+          "userTag": "가볍고 웃긴",
+          "embeddingInput": "가볍고 웃긴 유머러스한 경쾌한 코믹한 즐거운 명랑한 재미있는",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 529,
+              "tag": "humorous",
+              "similarity": 0.649511025123029
+            },
+            {
+              "rank": 2,
+              "tagId": 414,
+              "tag": "fun",
+              "similarity": 0.611045850718221
+            },
+            {
+              "rank": 3,
+              "tagId": 231,
+              "tag": "comic",
+              "similarity": 0.554147567842265
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mixed weekend warm family animation",
+      "message": "주말에 가족이랑 볼 따뜻한 애니메이션 추천해줘",
+      "expectedIntent": "new_recommendation",
+      "expectedUserTags": [
+        "따뜻"
+      ],
+      "forbiddenUserTags": [
+        "주말",
+        "가족",
+        "볼"
+      ],
+      "expectedExcludedTerms": [
+        "주말",
+        "가족"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "new_recommendation",
+        "genreIds": [
+          16
+        ],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [
+          {
+            "userTag": "따뜻한",
+            "embeddingTerms": [
+              "따뜻한",
+              "훈훈한",
+              "감동적인",
+              "포근한",
+              "온화한",
+              "정감있는",
+              "따스한"
+            ]
+          }
+        ],
+        "excludedTerms": [
+          "주말에",
+          "가족이랑"
+        ],
+        "confidence": 0.95
+      },
+      "vectorMatches": [
+        {
+          "userTag": "따뜻한",
+          "embeddingInput": "따뜻한 훈훈한 감동적인 포근한 온화한 정감있는 따스한",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 497,
+              "tag": "heartwarming",
+              "similarity": 0.589902136775241
+            },
+            {
+              "rank": 2,
+              "tagId": 30,
+              "tag": "affectionate",
+              "similarity": 0.581483317253715
+            },
+            {
+              "rank": 3,
+              "tagId": 1035,
+              "tag": "touching",
+              "similarity": 0.537240795027663
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mixed alone night scary horror",
+      "message": "혼자 심야에 보기 좋은 오싹한 공포 영화 추천해줘",
+      "expectedIntent": "new_recommendation",
+      "expectedUserTags": [
+        "오싹한"
+      ],
+      "forbiddenUserTags": [
+        "혼자",
+        "심야",
+        "보기 좋은"
+      ],
+      "expectedExcludedTerms": [
+        "혼자",
+        "심야"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "new_recommendation",
+        "genreIds": [
+          27
+        ],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [
+          {
+            "userTag": "오싹한",
+            "embeddingTerms": [
+              "오싹한",
+              "무서운",
+              "소름끼치는",
+              "섬뜩한",
+              "긴장감 있는",
+              "공포스러운",
+              "으스스한"
+            ]
+          }
+        ],
+        "excludedTerms": [
+          "혼자",
+          "심야"
+        ],
+        "confidence": 0.95
+      },
+      "vectorMatches": [
+        {
+          "userTag": "오싹한",
+          "embeddingInput": "오싹한 무서운 소름끼치는 섬뜩한 긴장감 있는 공포스러운 으스스한",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 882,
+              "tag": "scary",
+              "similarity": 0.604079399141093
+            },
+            {
+              "rank": 2,
+              "tagId": 413,
+              "tag": "frightening",
+              "similarity": 0.602318998913601
+            },
+            {
+              "rank": 3,
+              "tagId": 344,
+              "tag": "eerie",
+              "similarity": 0.569092951642658
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mixed meal comfortable romance",
+      "message": "밥 먹으면서 볼 편안한 로맨스 영화 추천해줘",
+      "expectedIntent": "new_recommendation",
+      "expectedUserTags": [
+        "편안"
+      ],
+      "forbiddenUserTags": [
+        "밥",
+        "먹으면서",
+        "볼"
+      ],
+      "expectedExcludedTerms": [
+        "밥"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "new_recommendation",
+        "genreIds": [
+          10749
+        ],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [
+          {
+            "userTag": "편안한",
+            "embeddingTerms": [
+              "편안한",
+              "부드러운",
+              "안락한",
+              "평화로운",
+              "차분한",
+              "포근한",
+              "편안함"
+            ]
+          }
+        ],
+        "excludedTerms": [
+          "밥 먹으면서"
+        ],
+        "confidence": 0.95
+      },
+      "vectorMatches": [
+        {
+          "userTag": "편안한",
+          "embeddingInput": "편안한 부드러운 안락한 평화로운 차분한 포근한 편안함",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 603,
+              "tag": "light",
+              "similarity": 0.589343400093253
+            },
+            {
+              "rank": 2,
+              "tagId": 388,
+              "tag": "feel-good",
+              "similarity": 0.578382164719602
+            },
+            {
+              "rank": 3,
+              "tagId": 1055,
+              "tag": "understated",
+              "similarity": 0.552381803959758
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mixed netflix dark crime",
+      "message": "넷플릭스에 있을 법한 어두운 범죄 영화 추천해줘",
+      "expectedIntent": "new_recommendation",
+      "expectedUserTags": [
+        "어두"
+      ],
+      "forbiddenUserTags": [
+        "넷플릭스",
+        "있을 법한"
+      ],
+      "expectedExcludedTerms": [
+        "넷플릭스"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "new_recommendation",
+        "genreIds": [
+          80
+        ],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [
+          {
+            "userTag": "어두운",
+            "embeddingTerms": [
+              "어두운",
+              "침울한",
+              "암울한",
+              "우울한",
+              "음침한",
+              "어둑한",
+              "그늘진"
+            ]
+          }
+        ],
+        "excludedTerms": [
+          "넷플릭스"
+        ],
+        "confidence": 0.95
+      },
+      "vectorMatches": [
+        {
+          "userTag": "어두운",
+          "embeddingInput": "어두운 침울한 암울한 우울한 음침한 어둑한 그늘진",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 285,
+              "tag": "dark",
+              "similarity": 0.507212325240742
+            },
+            {
+              "rank": 2,
+              "tagId": 319,
+              "tag": "downbeat",
+              "similarity": 0.4997011318645
+            },
+            {
+              "rank": 3,
+              "tagId": 143,
+              "tag": "bleak",
+              "similarity": 0.465618177645146
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mixed date sweet romance",
+      "message": "데이트할 때 볼 달달한 로맨스 영화 추천해줘",
+      "expectedIntent": "new_recommendation",
+      "expectedUserTags": [
+        "달달"
+      ],
+      "forbiddenUserTags": [
+        "데이트",
+        "볼"
+      ],
+      "expectedExcludedTerms": [
+        "데이트"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "new_recommendation",
+        "genreIds": [
+          10749
+        ],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [
+          {
+            "userTag": "달달한",
+            "embeddingTerms": [
+              "달달한",
+              "달콤한",
+              "사랑스러운",
+              "로맨틱한",
+              "감미로운",
+              "포근한",
+              "따뜻한"
+            ]
+          }
+        ],
+        "excludedTerms": [
+          "데이트할 때"
+        ],
+        "confidence": 0.95
+      },
+      "vectorMatches": [
+        {
+          "userTag": "달달한",
+          "embeddingInput": "달달한 달콤한 사랑스러운 로맨틱한 감미로운 포근한 따뜻한",
+          "matches": [
+            {
+              "rank": 1,
+              "tagId": 864,
+              "tag": "romantic",
+              "similarity": 0.631274737290155
+            },
+            {
+              "rank": 2,
+              "tagId": 1003,
+              "tag": "sweet",
+              "similarity": 0.578612976715819
+            },
+            {
+              "rank": 3,
+              "tagId": 439,
+              "tag": "girlie movie",
+              "similarity": 0.517190968280067
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mixed commute short fast movie",
+      "message": "출근길에 짧게 볼 수 있는 빠른 전개의 영화 추천해줘",
+      "expectedIntent": "new_recommendation",
+      "expectedUserTags": [
+        "빠른 전개"
+      ],
+      "forbiddenUserTags": [
+        "출근길",
+        "볼 수 있는"
+      ],
+      "expectedExcludedTerms": [
+        "출근길"
+      ],
+      "passed": false,
+      "failures": [
+        "intent expected=new_recommendation actual=unsupported",
+        "missing expected userTag containing \"빠른 전개\""
+      ],
+      "analysis": {
+        "intent": "unsupported",
+        "genreIds": [],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [],
+        "excludedTerms": [
+          "출근길"
+        ],
+        "confidence": 0.9
+      },
+      "vectorMatches": []
+    },
+    {
+      "name": "negative anything",
+      "message": "재밌는 영화 하나만 골라줘",
+      "expectedIntent": "unsupported",
+      "expectedUserTags": [],
+      "forbiddenUserTags": [
+        "재밌는",
+        "하나만"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "unsupported",
+        "genreIds": [],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [],
+        "excludedTerms": [],
+        "confidence": 0.9
+      },
+      "vectorMatches": []
+    },
+    {
+      "name": "negative friend only",
+      "message": "친구들이랑 같이 볼 영화 추천해줘",
+      "expectedIntent": "unsupported",
+      "expectedUserTags": [],
+      "forbiddenUserTags": [
+        "친구",
+        "같이"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "unsupported",
+        "genreIds": [],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [],
+        "excludedTerms": [
+          "친구들이랑",
+          "같이"
+        ],
+        "confidence": 0.9
+      },
+      "vectorMatches": []
+    },
+    {
+      "name": "negative bored only",
+      "message": "심심할 때 볼 거 추천해줘",
+      "expectedIntent": "unsupported",
+      "expectedUserTags": [],
+      "forbiddenUserTags": [
+        "심심"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "unsupported",
+        "genreIds": [],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [],
+        "excludedTerms": [
+          "심심할 때"
+        ],
+        "confidence": 0.9
+      },
+      "vectorMatches": []
+    },
+    {
+      "name": "negative ott only",
+      "message": "OTT에서 볼 거 추천해줘",
+      "expectedIntent": "unsupported",
+      "expectedUserTags": [],
+      "forbiddenUserTags": [
+        "OTT",
+        "볼"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "unsupported",
+        "genreIds": [],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [],
+        "excludedTerms": [
+          "OTT"
+        ],
+        "confidence": 0.9
+      },
+      "vectorMatches": []
+    },
+    {
+      "name": "negative my style only",
+      "message": "내 스타일 영화 추천해줘",
+      "expectedIntent": "unsupported",
+      "expectedUserTags": [],
+      "forbiddenUserTags": [
+        "내 스타일"
+      ],
+      "passed": true,
+      "failures": [],
+      "analysis": {
+        "intent": "unsupported",
+        "genreIds": [],
+        "countryCodes": [],
+        "languageCodes": [],
+        "yearRange": null,
+        "runtimeRange": null,
+        "userTagQueries": [],
+        "excludedTerms": [],
+        "confidence": 0.9
+      },
+      "vectorMatches": []
+    }
+  ]
+}
