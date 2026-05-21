@@ -15,6 +15,7 @@ import {
   timestamp,
   uniqueIndex,
   uuid,
+  vector,
 } from "drizzle-orm/pg-core"
 
 export const movies = pgTable(
@@ -189,6 +190,25 @@ export const movieTagRelevances = pgTable(
   ],
 )
 
+export const movieTagMappingEmbeddings = pgTable(
+  "movie_tag_mapping_embeddings",
+  {
+    tagId: integer("tag_id")
+      .notNull()
+      .references(() => movieTags.tagId, { onDelete: "restrict" }),
+    embeddingModel: text("embedding_model").notNull(),
+    embedding: vector("embedding", { dimensions: 1536 }).notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    primaryKey({ columns: [table.tagId, table.embeddingModel] }),
+    index("movie_tag_mapping_embeddings_embedding_hnsw_idx").using(
+      "hnsw",
+      table.embedding.op("vector_cosine_ops"),
+    ),
+  ],
+)
+
 export const profiles = pgTable("profiles", {
   id: uuid("id").primaryKey(),
   name: text("name").notNull(),
@@ -273,5 +293,58 @@ export const reviewLikes = pgTable(
   (table) => [
     primaryKey({ columns: [table.reviewId, table.userId] }),
     index("review_likes_user_id_idx").on(table.userId),
+  ],
+)
+
+export const recommendationChatConversations = pgTable(
+  "recommendation_chat_conversations",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => profiles.id, { onDelete: "cascade" }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    uniqueIndex("recommendation_chat_conversations_user_id_key").on(table.userId),
+    index("recommendation_chat_conversations_user_updated_at_idx").on(table.userId, table.updatedAt.desc()),
+  ],
+)
+
+export const recommendationChatConversationMessages = pgTable(
+  "recommendation_chat_conversation_messages",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    conversationId: uuid("conversation_id")
+      .notNull()
+      .references(() => recommendationChatConversations.id, { onDelete: "cascade" }),
+    role: text("role").notNull(),
+    content: text("content").notNull(),
+    analysisResult: jsonb("analysis_result"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    index("recommendation_chat_messages_conversation_created_at_idx").on(table.conversationId, table.createdAt),
+    check("recommendation_chat_messages_role_check", sql`${table.role} in ('request', 'response')`),
+  ],
+)
+
+export const recommendationChatConversationMessageMovies = pgTable(
+  "recommendation_chat_conversation_message_movies",
+  {
+    messageId: uuid("message_id")
+      .notNull()
+      .references(() => recommendationChatConversationMessages.id, { onDelete: "cascade" }),
+    movieId: bigint("movie_id", { mode: "number" })
+      .notNull()
+      .references(() => movies.id, { onDelete: "cascade" }),
+    rank: integer("rank").notNull(),
+    reason: text("reason").notNull(),
+  },
+  (table) => [
+    primaryKey({ columns: [table.messageId, table.movieId] }),
+    index("recommendation_chat_message_movies_movie_id_idx").on(table.movieId),
+    check("recommendation_chat_message_movies_rank_check", sql`${table.rank} > 0`),
   ],
 )

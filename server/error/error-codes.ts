@@ -22,6 +22,10 @@ export const apiErrorCodes = {
   onboardingPreferencesFailed: "onboarding_preferences_failed",
   onboardingRequired: "onboarding_required",
   itemCfRecommendationsFailed: "item_cf_recommendations_failed",
+  recommendationChatFailed: "recommendation_chat_failed",
+  recommendationChatLlmApiFailed: "recommendation_chat_llm_api_failed",
+  recommendationChatEmbeddingApiFailed: "recommendation_chat_embedding_api_failed",
+  recommendationChatVectorSearchFailed: "recommendation_chat_vector_search_failed",
 } as const
 
 export type ApiErrorCode = typeof apiErrorCodes[keyof typeof apiErrorCodes]

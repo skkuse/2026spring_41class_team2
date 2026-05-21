@@ -108,6 +108,24 @@ describe("API error responses", () => {
       },
     })
   })
+
+  it("creates a typed recommendation chat vector search failure response", async () => {
+    const response = createApiFailureResponse({
+      requestId: "request-1",
+      code: apiErrorCodes.recommendationChatVectorSearchFailed,
+      message: "추천 후보를 조회하지 못했습니다.",
+    })
+
+    await expect(readResponse(response)).resolves.toMatchObject({
+      status: 500,
+      body: {
+        error: {
+          code: apiErrorCodes.recommendationChatVectorSearchFailed,
+          requestId: "request-1",
+        },
+      },
+    })
+  })
 })
 
 async function readResponse(response: Response) {
