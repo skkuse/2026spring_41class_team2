@@ -288,9 +288,9 @@ async function main() {
   const options = parseArgs(process.argv.slice(2))
   const model = process.env.OPENAI_RECOMMENDATION_CHAT_MODEL ?? "gpt-4.1-mini"
   const embeddingModel = process.env.OPENAI_RECOMMENDATION_CHAT_EMBEDDING_MODEL ?? "text-embedding-3-small"
-  const databaseUrl = process.env.DATABASE_URL ?? process.env.POSTGRES_URL
+  const databaseUrl = process.env.SUPABASE_POOLER_DATABASE_URL
   if (!databaseUrl) {
-    throw new Error("DATABASE_URL or POSTGRES_URL is required.")
+    throw new Error("SUPABASE_POOLER_DATABASE_URL is required.")
   }
   const openai = new OpenAI()
   const sql = postgres(databaseUrl, { max: options.concurrency, prepare: false })

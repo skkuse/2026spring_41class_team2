@@ -11,9 +11,9 @@ export function getDb() {
     return dbClient
   }
 
-  const databaseUrl = process.env.DATABASE_URL ?? process.env.POSTGRES_URL
+  const databaseUrl = process.env.SUPABASE_POOLER_DATABASE_URL
   if (!databaseUrl) {
-    throw new Error("DATABASE_URL or POSTGRES_URL is required")
+    throw new Error("SUPABASE_POOLER_DATABASE_URL is required")
   }
 
   const client = postgres(databaseUrl, {
@@ -23,4 +23,3 @@ export function getDb() {
 
   return dbClient
 }
-
