@@ -169,7 +169,7 @@ describe("recommendation chat service", () => {
     const response = await createService(repository, llmClient, embeddingClient).submitRecommendationChatMessage(context(), { message: "친구랑 볼만한 거 추천해줘" })
 
     expect(response.movies).toEqual([])
-    expect(response.answer).toContain("영화 추천")
+    expect(response.answer).toContain("추천 채팅")
     expect(embeddingClient.embedUserTagQueries).not.toHaveBeenCalled()
     expect(repository.listTaglessCandidates).not.toHaveBeenCalled()
   })

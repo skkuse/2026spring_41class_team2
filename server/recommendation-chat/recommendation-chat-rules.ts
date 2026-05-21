@@ -12,7 +12,7 @@ export const MIN_USER_TAG_MAPPING_SIMILARITY = 0.45
 export const FINAL_RECOMMENDATION_LIMIT = 5
 
 export function buildUnsupportedRecommendationChatAnswer() {
-  return "저는 영화 추천을 위한 질문에만 답변할 수 있어요. 장르, 국가, 언어, 개봉 시기, 러닝타임, 분위기나 소재를 담아 다시 물어봐 주세요."
+  return "현재 추천 채팅은 배우, 감독, 특정 영화와 비슷한 작품, 줄거리/영화 정보, 관람 상황, OTT, 평점/인기도만으로는 추천할 수 없어요. 장르, 제작 국가, 언어, 개봉 시기, 러닝타임 같은 영화 메타데이터나 분위기, 감정, 소재 같은 영화 속성 정보를 포함해서 다시 물어봐 주세요."
 }
 
 export function buildNoRecommendationChatCandidatesAnswer() {

@@ -77,7 +77,10 @@ describe("recommendation chat rules", () => {
   })
 
   it("builds fixed answer strings", () => {
-    expect(buildUnsupportedRecommendationChatAnswer()).toContain("영화 추천")
+    expect(buildUnsupportedRecommendationChatAnswer()).toContain("추천 채팅")
+    expect(buildUnsupportedRecommendationChatAnswer()).toContain("배우")
+    expect(buildUnsupportedRecommendationChatAnswer()).toContain("감독")
+    expect(buildUnsupportedRecommendationChatAnswer()).toContain("평점/인기도")
     expect(buildNoRecommendationChatCandidatesAnswer()).toContain("찾지 못했어요")
     expect(buildRecommendationChatAnswer()).toBe("요청하신 조건에 맞는 영화를 골라봤어요.")
   })

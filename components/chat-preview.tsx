@@ -5,10 +5,10 @@ import { Button } from "@/components/ui/button"
 import { MessageCircle, ArrowRight, Sparkles } from "lucide-react"
 
 const popularQuestions = [
-  "크리스토퍼 놀란 영화 중 입문용 추천해줘",
-  "가족이랑 보기 좋은 감동 영화 알려줘",
-  "기생충 좋아한 사람이 볼 만한 한국 영화는?",
-  "넷플릭스에서 볼 수 있는 스릴러 영화 추천해줘",
+  "잔잔하고 여운 남는 일본 로맨스 영화 추천해줘",
+  "좀비가 등장하는 숨 막히는 공포 영화 추천해줘",
+  "어두운 범죄 스릴러 중에 분위기 묵직한 거 추천해줘",
+  "우주 배경의 SF 모험 영화 찾아줘",
 ]
 
 export function ChatPreview() {
@@ -22,10 +22,10 @@ export function ChatPreview() {
               <span className="text-sm font-medium text-primary">AI 영화 추천</span>
             </div>
             <h2 className="mt-3 text-3xl font-bold tracking-tight">
-              무엇이든 물어보세요
+              조건에 맞는 영화를 찾아보세요
             </h2>
             <p className="mt-3 text-muted-foreground">
-              자연어로 질문하면 AI가 당신의 취향에 맞는 영화를 추천해드립니다.
+              장르, 제작 국가, 언어, 러닝타임, 분위기나 소재를 입력하면 AI가 조건에 맞는 영화를 추천해드립니다.
               연속 대화로 원하는 영화를 점진적으로 찾아보세요.
             </p>
             <Link href="/chat">
