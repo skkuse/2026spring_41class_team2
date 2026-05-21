@@ -16,7 +16,13 @@
     "seed:movie-credits:upload-csv-to-supabase": "tsx scripts/seeds/movie-credits/upload-csv-to-supabase.ts",
     "seed:movie-recommendation:generate-csv-from-movielens": "tsx scripts/seeds/movie-recommendation/generate-csv-from-movielens.ts",
     "seed:movie-recommendation:validate-upload-csv-to-supabase": "tsx scripts/seeds/movie-recommendation/upload-csv-to-supabase.ts --validate-only",
-    "seed:movie-recommendation:upload-csv-to-supabase": "tsx scripts/seeds/movie-recommendation/upload-csv-to-supabase.ts"
+    "seed:movie-recommendation:upload-csv-to-supabase": "tsx scripts/seeds/movie-recommendation/upload-csv-to-supabase.ts",
+    "seed:recommendation-chat:generate-tag-embedding-file": "tsx scripts/seeds/recommendation-chat/generate-tag-embedding-file.ts",
+    "seed:recommendation-chat:generate-tag-embedding-vectors": "tsx scripts/seeds/recommendation-chat/generate-tag-embedding-vectors.ts",
+    "seed:recommendation-chat:validate-tag-embedding-vectors": "tsx scripts/seeds/recommendation-chat/validate-tag-embedding-vectors.ts",
+    "seed:recommendation-chat:check-analysis-smoke": "tsx scripts/seeds/recommendation-chat/check-analysis-smoke.ts",
+    "seed:recommendation-chat:check-tag-vector-search": "tsx scripts/seeds/recommendation-chat/check-tag-vector-search.ts",
+    "seed:recommendation-chat:upload-tag-embeddings-to-supabase": "tsx scripts/seeds/recommendation-chat/upload-tag-embeddings-to-supabase.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
@@ -62,6 +68,7 @@
     "lucide-react": "^0.564.0",
     "next": "16.2.0",
     "next-themes": "^0.4.6",
+    "openai": "^6.38.0",
     "postgres": "^3.4.9",
     "react": "19.2.4",
     "react-day-picker": "9.13.2",
