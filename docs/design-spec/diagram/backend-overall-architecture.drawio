@@ -1,0 +1,52 @@
+<mxfile host="Electron">
+  <diagram name="Backend Overall Architecture" id="backend-overall-architecture">
+    <mxGraphModel dx="1144" dy="696" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1180" pageHeight="760" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="frame-backend" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontStyle=1;fontSize=18;verticalAlign=top;spacingTop=14;" value="Cinemate Backend" vertex="1">
+          <mxGeometry height="560" width="270" x="445" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="node-frontend" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;strokeWidth=2;fontSize=16;fontStyle=1;fontColor=#111827;align=center;verticalAlign=middle;" value="Frontend&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;Next.js UI Pages&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="170" x="180" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="node-route-handler" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#1f5f9f;strokeWidth=2;fontSize=16;fontStyle=1;fontColor=#111827;align=center;verticalAlign=middle;" value="Route Handler&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;app/api/**/route.ts&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="180" x="490" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="node-service" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#1f5f9f;strokeWidth=2;fontSize=16;fontStyle=1;fontColor=#111827;align=center;verticalAlign=middle;" value="Service&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;usecase / rules&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="180" x="490" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="node-repository" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#1f5f9f;strokeWidth=2;fontSize=16;fontStyle=1;fontColor=#111827;align=center;verticalAlign=middle;" value="Repository&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;Drizzle queries&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="180" x="490" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="node-supabase-auth" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#2f855a;strokeWidth=2;fontSize=16;fontStyle=1;fontColor=#111827;align=center;verticalAlign=middle;" value="Supabase Auth&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;session / user&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="180" x="770" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="node-openai" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff7ed;strokeColor=#c05621;strokeWidth=2;fontSize=16;fontStyle=1;fontColor=#111827;align=center;verticalAlign=middle;" value="OpenAI API&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;chat / response&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="180" x="770" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="node-supabase-db" parent="1" style="shape=cylinder3d;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ecfdf5;strokeColor=#2f855a;strokeWidth=2;fontSize=16;fontStyle=1;fontColor=#111827;align=center;verticalAlign=middle;" value="Supabase DB&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;PostgreSQL&lt;/font&gt;" vertex="1">
+          <mxGeometry height="120" width="180" x="770" y="465" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-frontend-route" edge="1" parent="1" source="node-frontend" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#4d4d4d;fontSize=12;fontColor=#404040;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="node-route-handler" value="HTTP request">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-route-service" edge="1" parent="1" source="node-route-handler" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#4d4d4d;fontSize=12;fontColor=#404040;" target="node-service" value="validated request">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-service-repository" edge="1" parent="1" source="node-service" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#4d4d4d;fontSize=12;fontColor=#404040;" target="node-repository" value="repository call">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-route-auth" edge="1" parent="1" source="node-route-handler" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#4d4d4d;fontSize=12;fontColor=#404040;" target="node-supabase-auth" value="auth check">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-service-openai" edge="1" parent="1" source="node-service" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#4d4d4d;fontSize=12;fontColor=#404040;" target="node-openai" value="LLM request">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-repository-db" edge="1" parent="1" source="node-repository" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#4d4d4d;fontSize=12;fontColor=#404040;" target="node-supabase-db" value="SQL query">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,28 @@
+@startuml
+actor User
+participant "Frontend" as Frontend
+participant "Route Handler\nPOST /api/character-chat/messages" as Route
+participant "Supabase Auth" as Auth
+participant "Character Chat Service" as Service
+participant "Character Repository" as Repository
+database "Supabase DB\ncharacters, events, messages" as Database
+participant "OpenAI API" as OpenAI
+
+User -> Frontend: 캐릭터에게 메시지 입력
+Frontend -> Route: POST /api/character-chat/messages
+Route -> Auth: 현재 세션 확인
+Auth --> Route: userId 반환
+Route -> Service: 캐릭터 대화 메시지 처리
+Service -> Repository: conversation과 캐릭터 정보 조회
+Repository -> Database: characters, events, conversations 조회
+Database --> Repository: character context
+Repository --> Service: 캐릭터 대화 context
+Service -> OpenAI: 캐릭터 응답 생성 요청
+OpenAI --> Service: 캐릭터 응답
+Service -> Repository: 사용자 메시지와 응답 저장
+Repository -> Database: conversation_messages insert
+Repository --> Service: 저장 결과
+Service --> Route: 캐릭터 대화 응답
+Route --> Frontend: 200 OK
+Frontend --> User: 캐릭터 응답 표시
+@enduml

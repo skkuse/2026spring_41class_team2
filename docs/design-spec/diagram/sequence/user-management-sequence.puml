@@ -1,0 +1,29 @@
+@startuml
+actor User
+participant "Frontend" as Frontend
+participant "Route Handler\nGET /api/me" as Route
+participant "Supabase Auth" as Auth
+participant "User Service" as Service
+participant "User Repository" as Repository
+database "Supabase DB\nprofiles" as Database
+
+User -> Frontend: 사용자 정보 요청
+Frontend -> Route: GET /api/me
+Route -> Auth: 현재 세션 확인
+
+alt 인증된 사용자
+    Auth --> Route: userId 반환
+    Route -> Service: 사용자 정보 조회 요청
+    Service -> Repository: 프로필 조회
+    Repository -> Database: profiles 조회
+    Database --> Repository: profile row
+    Repository --> Service: profile
+    Service --> Route: 사용자 정보
+    Route --> Frontend: 200 OK
+    Frontend --> User: 사용자 정보 표시
+else 인증되지 않은 사용자
+    Auth --> Route: 세션 없음
+    Route --> Frontend: 401 Unauthorized
+    Frontend --> User: 로그인 필요 상태 표시
+end
+@enduml

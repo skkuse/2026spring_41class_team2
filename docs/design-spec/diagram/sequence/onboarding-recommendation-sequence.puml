@@ -1,0 +1,25 @@
+@startuml
+actor User
+participant "Frontend" as Frontend
+participant "Route Handler\nGET /api/recommendations" as Route
+participant "Supabase Auth" as Auth
+participant "Recommendation Service" as Service
+participant "Recommendation Repository" as Repository
+database "Supabase DB\nonboarding, similarities" as Database
+
+User -> Frontend: 맞춤 추천 조회
+Frontend -> Route: GET /api/recommendations
+Route -> Auth: 현재 세션 확인
+Auth --> Route: userId 반환
+Route -> Service: 맞춤 추천 요청
+Service -> Repository: 온보딩 선호 영화 조회
+Repository -> Database: user_onboarding_movies 조회
+Database --> Repository: seed movies
+Service -> Repository: 추천 후보 조회
+Repository -> Database: movie_similarities, movie_stats 조회
+Database --> Repository: recommendation rows
+Repository --> Service: 추천 후보
+Service --> Route: 추천 영화 목록
+Route --> Frontend: 200 OK
+Frontend --> User: 맞춤 추천 표시
+@enduml

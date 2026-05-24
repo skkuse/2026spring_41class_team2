@@ -1,0 +1,32 @@
+@startuml
+actor User
+participant "Frontend" as Frontend
+participant "Route Handler\nPOST /api/movies/{movieId}/reviews" as Route
+participant "Supabase Auth" as Auth
+participant "Review Service" as Service
+participant "Review Repository" as Repository
+database "Supabase DB\nreviews, movies" as Database
+
+User -> Frontend: 리뷰 작성
+Frontend -> Route: POST /api/movies/{movieId}/reviews
+Route -> Auth: 현재 세션 확인
+
+alt 인증된 사용자
+    Auth --> Route: userId 반환
+    Route -> Service: 리뷰 작성 요청
+    Service -> Repository: 영화 존재 여부 확인
+    Repository -> Database: movies 조회
+    Database --> Repository: movie row
+    Service -> Repository: 리뷰 저장
+    Repository -> Database: reviews insert
+    Database --> Repository: review row
+    Repository --> Service: 저장된 리뷰
+    Service --> Route: 리뷰 작성 결과
+    Route --> Frontend: 201 Created
+    Frontend --> User: 작성된 리뷰 표시
+else 인증되지 않은 사용자
+    Auth --> Route: 세션 없음
+    Route --> Frontend: 401 Unauthorized
+    Frontend --> User: 로그인 필요 상태 표시
+end
+@enduml

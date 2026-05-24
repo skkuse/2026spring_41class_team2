@@ -1,0 +1,31 @@
+@startuml
+actor User
+participant "Frontend" as Frontend
+participant "Route Handler\nPOST /api/recommendation-chat/messages" as Route
+participant "Supabase Auth" as Auth
+participant "Recommendation Chat Service" as Service
+participant "OpenAI API" as OpenAI
+participant "Chat Repository" as Repository
+database "Supabase DB\nchat, movies, tags" as Database
+
+User -> Frontend: 추천 질문 입력
+Frontend -> Route: POST /api/recommendation-chat/messages
+Route -> Auth: 현재 세션 확인
+Auth --> Route: userId 반환
+Route -> Service: 추천 채팅 메시지 처리
+Service -> Repository: conversation 조회 또는 생성
+Repository -> Database: conversation select/insert
+Service -> OpenAI: 추천 의도 분석 요청
+OpenAI --> Service: 분석 결과
+Service -> Repository: 추천 후보 조회
+Repository -> Database: tags, similarities, movies 조회
+Database --> Repository: candidate movies
+Service -> OpenAI: 추천 사유 생성 요청
+OpenAI --> Service: 추천 사유
+Service -> Repository: 메시지와 추천 영화 저장
+Repository -> Database: messages, message_movies insert
+Repository --> Service: 저장 결과
+Service --> Route: 추천 채팅 응답
+Route --> Frontend: 200 OK
+Frontend --> User: 추천 응답 표시
+@enduml
