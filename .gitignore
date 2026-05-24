@@ -49,5 +49,9 @@ next-env.d.ts
 .stfolder/
 .stignore
 
+# local editor/download metadata
+*:Zone.Identifier
+.$*.drawio.bkp
+
 # local Playwright MCP artifacts
 .playwright-mcp/
