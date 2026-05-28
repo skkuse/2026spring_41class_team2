@@ -64,6 +64,27 @@
 
 `suggestedQuestions`는 `character_chat_default_questions`에 seed된 캐릭터별 기본 추천 질문이다. 초기 seed 기준으로 캐릭터당 정확히 4개이며, `display_order` 오름차순으로 반환한다.
 
+## `GET /api/character-chat/conversations`
+
+선택한 영화/캐릭터 조합에 대해 로그인 사용자의 최신 대화 상태를 조회한다.
+
+| 항목 | 내용 |
+|---|---|
+| 인증 | 필요 |
+| 관련 화면 | `/character-chat` |
+| Query | `movieId`, `characterId` |
+| Response | `conversationId`, `initialMessage`, `messages`, `suggestedQuestions` |
+
+`movieId`와 `characterId` 조합은 검증한다. `characterId`가 요청한 `movieId`에 속하지 않으면 실패한다.
+
+`conversationId`는 기존 대화가 없으면 `null`이다.
+
+`initialMessage`는 `characters.greeting`을 사용하며, `messages`에는 포함하지 않는다.
+
+`messages`는 저장된 사용자/캐릭터 메시지를 생성 시각 오름차순으로 반환한다.
+
+`suggestedQuestions`는 저장된 마지막 캐릭터 메시지의 후속 질문을 반환한다. 기존 대화가 없거나 저장된 후속 질문이 없으면 `character_chat_default_questions`에 seed된 기본 추천 질문을 반환한다.
+
 ## `POST /api/character-chat/conversations/{conversationId}/messages`
 
 사용자 메시지를 저장하고 캐릭터 응답을 생성한다.
@@ -78,7 +99,7 @@
 
 `message`는 비어 있지 않은 사용자 입력 문자열이다.
 
-`suggestedQuestions`는 현재 대화 맥락 기반 동적 추천 질문이다. 이 값은 seed 테이블에 저장하지 않는다.
+`suggestedQuestions`는 현재 대화 맥락 기반 동적 추천 질문이다. 이 값은 캐릭터 응답 메시지의 `suggested_questions`에 저장하여 대화 복원 시 다시 사용한다.
 
 ## API 없음
 

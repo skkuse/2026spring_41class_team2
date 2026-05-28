@@ -101,7 +101,7 @@ RLS:
 제약/메모:
 
 - 이 테이블은 대화 시작 전에 보여줄 고정 seed 질문만 저장한다.
-- 대화 중 다음 질문 후보는 현재 대화 맥락에 따라 API 응답에서 동적으로 반환하고, 이 테이블에 저장하지 않는다.
+- 대화 중 다음 질문 후보는 현재 대화 맥락에 따라 API 응답에서 동적으로 반환하고, 캐릭터 응답 메시지의 `suggested_questions`에 저장한다.
 
 RLS:
 
@@ -138,6 +138,7 @@ RLS:
 | `conversation_id` | uuid | FK `character_chat_conversations(id)`, not null | 대화 ID |
 | `sender_type` | text | not null | `user` 또는 `character` |
 | `content` | text | not null | 메시지 본문 |
+| `suggested_questions` | jsonb | nullable | 캐릭터 응답 뒤에 표시할 후속 질문 목록. 사용자 메시지는 null |
 | `created_at` | timestamptz | not null, default now() | 생성 시각 |
 
 RLS:
