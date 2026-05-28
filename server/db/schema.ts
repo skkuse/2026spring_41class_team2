@@ -348,3 +348,126 @@ export const recommendationChatConversationMessageMovies = pgTable(
     check("recommendation_chat_message_movies_rank_check", sql`${table.rank} > 0`),
   ],
 )
+
+export const characters = pgTable(
+  "characters",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    movieId: bigint("movie_id", { mode: "number" })
+      .notNull()
+      .references(() => movies.id, { onDelete: "cascade" }),
+    actorPersonId: bigint("actor_person_id", { mode: "number" }).references(() => people.id, {
+      onDelete: "set null",
+    }),
+    name: text("name").notNull(),
+    description: text("description").notNull(),
+    greeting: text("greeting").notNull(),
+    personaPrompt: text("persona_prompt").notNull(),
+    avatarStoragePath: text("avatar_storage_path").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    uniqueIndex("characters_movie_name_key").on(table.movieId, table.name),
+    index("characters_movie_id_idx").on(table.movieId),
+    index("characters_actor_person_id_idx").on(table.actorPersonId),
+  ],
+)
+
+export const characterChatEvents = pgTable(
+  "character_chat_events",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    movieId: bigint("movie_id", { mode: "number" })
+      .notNull()
+      .references(() => movies.id, { onDelete: "cascade" }),
+    eventOrder: integer("event_order").notNull(),
+    title: text("title").notNull(),
+    summary: text("summary").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    uniqueIndex("character_chat_events_movie_event_order_key").on(table.movieId, table.eventOrder),
+    index("character_chat_events_movie_event_order_idx").on(table.movieId, table.eventOrder),
+  ],
+)
+
+export const characterChatEventParticipants = pgTable(
+  "character_chat_event_participants",
+  {
+    eventId: uuid("event_id")
+      .notNull()
+      .references(() => characterChatEvents.id, { onDelete: "cascade" }),
+    characterId: uuid("character_id")
+      .notNull()
+      .references(() => characters.id, { onDelete: "cascade" }),
+    role: text("role").notNull(),
+    perspectiveSummary: text("perspective_summary").notNull(),
+    emotionalImpact: text("emotional_impact").notNull(),
+    knowledgeState: text("knowledge_state").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    primaryKey({ columns: [table.eventId, table.characterId] }),
+    index("character_chat_event_participants_character_id_idx").on(table.characterId),
+  ],
+)
+
+export const characterChatDefaultQuestions = pgTable(
+  "character_chat_default_questions",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    characterId: uuid("character_id")
+      .notNull()
+      .references(() => characters.id, { onDelete: "cascade" }),
+    question: text("question").notNull(),
+    displayOrder: integer("display_order").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    uniqueIndex("character_chat_default_questions_character_display_order_key").on(
+      table.characterId,
+      table.displayOrder,
+    ),
+    check("character_chat_default_questions_display_order_check", sql`${table.displayOrder} > 0`),
+  ],
+)
+
+export const characterChatConversations = pgTable(
+  "character_chat_conversations",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => profiles.id, { onDelete: "cascade" }),
+    characterId: uuid("character_id")
+      .notNull()
+      .references(() => characters.id, { onDelete: "cascade" }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    index("character_chat_conversations_user_updated_at_idx").on(table.userId, table.updatedAt.desc()),
+    index("character_chat_conversations_character_id_idx").on(table.characterId),
+  ],
+)
+
+export const characterChatConversationMessages = pgTable(
+  "character_chat_conversation_messages",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    conversationId: uuid("conversation_id")
+      .notNull()
+      .references(() => characterChatConversations.id, { onDelete: "cascade" }),
+    senderType: text("sender_type").notNull().$type<"user" | "character">(),
+    content: text("content").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    index("character_chat_messages_conversation_created_at_idx").on(table.conversationId, table.createdAt),
+    check("character_chat_conversation_messages_sender_type_check", sql`${table.senderType} in ('user', 'character')`),
+  ],
+)
