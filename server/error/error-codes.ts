@@ -26,6 +26,10 @@ export const apiErrorCodes = {
   recommendationChatLlmApiFailed: "recommendation_chat_llm_api_failed",
   recommendationChatEmbeddingApiFailed: "recommendation_chat_embedding_api_failed",
   recommendationChatVectorSearchFailed: "recommendation_chat_vector_search_failed",
+  characterChatFailed: "character_chat_failed",
+  characterChatInvalidCharacter: "character_chat_invalid_character",
+  characterChatConversationNotFound: "character_chat_conversation_not_found",
+  characterChatLlmApiFailed: "character_chat_llm_api_failed",
 } as const
 
 export type ApiErrorCode = typeof apiErrorCodes[keyof typeof apiErrorCodes]
