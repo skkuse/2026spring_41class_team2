@@ -22,7 +22,11 @@
     "seed:recommendation-chat:validate-tag-embedding-vectors": "tsx scripts/seeds/recommendation-chat/validate-tag-embedding-vectors.ts",
     "seed:recommendation-chat:check-analysis-smoke": "tsx scripts/seeds/recommendation-chat/check-analysis-smoke.ts",
     "seed:recommendation-chat:check-tag-vector-search": "tsx scripts/seeds/recommendation-chat/check-tag-vector-search.ts",
-    "seed:recommendation-chat:upload-tag-embeddings-to-supabase": "tsx scripts/seeds/recommendation-chat/upload-tag-embeddings-to-supabase.ts"
+    "seed:recommendation-chat:upload-tag-embeddings-to-supabase": "tsx scripts/seeds/recommendation-chat/upload-tag-embeddings-to-supabase.ts",
+    "seed:character-chat:upload-images": "tsx scripts/seeds/character-chat/upload-images.ts",
+    "seed:character-chat:generate-csv": "tsx scripts/seeds/character-chat/generate-csv.ts",
+    "seed:character-chat:validate-upload": "tsx scripts/seeds/character-chat/upload-csv-to-supabase.ts --validate-only",
+    "seed:character-chat:upload": "tsx scripts/seeds/character-chat/upload-csv-to-supabase.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

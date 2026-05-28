@@ -464,6 +464,7 @@ export const characterChatConversationMessages = pgTable(
       .references(() => characterChatConversations.id, { onDelete: "cascade" }),
     senderType: text("sender_type").notNull().$type<"user" | "character">(),
     content: text("content").notNull(),
+    suggestedQuestions: jsonb("suggested_questions").$type<string[] | null>(),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (table) => [
