@@ -116,7 +116,6 @@ export default async function HomePage() {
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <div className="flex items-center gap-2">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-                {/*<span className="text-sm font-bold text-primary-foreground">S</span>*/}
                 <Film className="h-5 w-5 text-primary-foreground" />
               </div>
               <span className="text-xl font-bold">씨네메이트</span>
