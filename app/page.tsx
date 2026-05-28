@@ -21,7 +21,7 @@ export default async function HomePage() {
       
       {/* Hero Section */}
       <section className="relative overflow-hidden border-b border-border">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background" />
+        <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-background to-background" />
         <div className="container relative mx-auto px-4 py-20 md:py-32">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
@@ -123,7 +123,7 @@ export default async function HomePage() {
             <nav className="flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground">
             </nav>
             <p className="text-sm text-muted-foreground">
-              2024 씨네메이트. All rights reserved.
+              2026 씨네메이트. All rights reserved.
             </p>
           </div>
         </div>
