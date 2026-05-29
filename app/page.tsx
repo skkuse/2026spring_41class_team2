@@ -2,11 +2,12 @@ import { Header } from "@/components/header"
 import { MovieSection } from "@/components/movie-section"
 import { ChatPreview } from "@/components/chat-preview"
 import { Button } from "@/components/ui/button"
-import { Search, TrendingUp, Star, Clock, Film } from "lucide-react"
+import { Search, TrendingUp, Star, Clock} from "lucide-react"
 import Link from "next/link"
 import { createOptionalRequestContext } from "@/server/auth/request-context"
 import { movieService } from "@/server/movies"
 import { mapMovieCardToView } from "@/lib/movies/movie-view"
+import Image from "next/image"
 
 export default async function HomePage() {
   const context = await createOptionalRequestContext()
@@ -115,8 +116,13 @@ export default async function HomePage() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <div className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-                <Film className="h-5 w-5 text-primary-foreground" />
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/40">
+                <Image
+                  src="/cinemate_logo.png"
+                  alt="Cinemate Logo"
+                  width={32}
+                  height={32}
+                />
               </div>
               <span className="text-xl font-bold">씨네메이트</span>
             </div>
