@@ -1,5 +1,6 @@
 "use client"
 
+import { ProtectedPage } from "@/components/auth/protected-page"
 import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { MessageCircle, Send, User } from "lucide-react"
@@ -53,6 +54,14 @@ function errorMessage(error: unknown) {
 }
 
 export default function CharacterChatPage() {
+  return (
+    <ProtectedPage>
+      <CharacterChatPageContent/>
+    </ProtectedPage>
+  )
+}
+
+function CharacterChatPageContent() {
   const [movies, setMovies] = useState<CharacterChatMovie[]>([])
   const [selectedMovie, setSelectedMovie] = useState<CharacterChatMovie | null>(null)
   const [selectedCharacter, setSelectedCharacter] = useState<CharacterChatCharacter | null>(null)
@@ -203,7 +212,7 @@ export default function CharacterChatPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-
+      
       <main className="container mx-auto px-4 py-6">
         <div className="mb-6">
           <h1 className="text-2xl font-bold text-balance">영화 속 등장인물과 대화하기</h1>
@@ -458,3 +467,4 @@ export default function CharacterChatPage() {
     </div>
   )
 }
+
