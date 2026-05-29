@@ -2,11 +2,12 @@ import { Header } from "@/components/header"
 import { MovieSection } from "@/components/movie-section"
 import { ChatPreview } from "@/components/chat-preview"
 import { Button } from "@/components/ui/button"
-import { Search, TrendingUp, Star, Clock } from "lucide-react"
+import { Search} from "lucide-react"
 import Link from "next/link"
 import { createOptionalRequestContext } from "@/server/auth/request-context"
 import { movieService } from "@/server/movies"
 import { mapMovieCardToView } from "@/lib/movies/movie-view"
+import Image from "next/image"
 
 export default async function HomePage() {
   const context = await createOptionalRequestContext()
@@ -19,9 +20,8 @@ export default async function HomePage() {
     <div className="min-h-screen bg-background">
       <Header />
       
-      {/* Hero Section */}
       <section className="relative overflow-hidden border-b border-border">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background" />
+        <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-background to-background" />
         <div className="container relative mx-auto px-4 py-20 md:py-32">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
@@ -50,13 +50,17 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Features */}
       <section className="border-b border-border py-12">
         <div className="container mx-auto px-4">
           <div className="grid gap-6 md:grid-cols-3">
             <div className="flex items-start gap-4 rounded-xl bg-card p-6">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                <TrendingUp className="h-5 w-5 text-primary" />
+                <Image 
+                  src="/person.png" 
+                  alt="Personalization Icon" 
+                  width={30} 
+                  height={30} 
+                />
               </div>
               <div>
                 <h3 className="font-semibold">리뷰 기반 개인화</h3>
@@ -67,7 +71,12 @@ export default async function HomePage() {
             </div>
             <div className="flex items-start gap-4 rounded-xl bg-card p-6">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                <Star className="h-5 w-5 text-primary" />
+                <Image 
+                  src="/AI.png" 
+                  alt="AI Icon" 
+                  width={30} 
+                  height={30} 
+                />
               </div>
               <div>
                 <h3 className="font-semibold">대화형 검색</h3>
@@ -78,7 +87,12 @@ export default async function HomePage() {
             </div>
             <div className="flex items-start gap-4 rounded-xl bg-card p-6">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                <Clock className="h-5 w-5 text-primary" />
+                <Image 
+                  src="/chat.png" 
+                  alt="Chat Icon" 
+                  width={30} 
+                  height={30} 
+                />
               </div>
               <div>
                 <h3 className="font-semibold">연속 대화 탐색</h3>
@@ -115,15 +129,20 @@ export default async function HomePage() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <div className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-                <span className="text-sm font-bold text-primary-foreground">S</span>
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/40">
+                <Image
+                  src="/cinemate_logo.png"
+                  alt="Cinemate Logo"
+                  width={32}
+                  height={32}
+                />
               </div>
               <span className="text-xl font-bold">씨네메이트</span>
             </div>
             <nav className="flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground">
             </nav>
             <p className="text-sm text-muted-foreground">
-              2024 씨네메이트. All rights reserved.
+              2026 씨네메이트. All rights reserved.
             </p>
           </div>
         </div>

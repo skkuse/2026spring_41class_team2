@@ -5,7 +5,8 @@ import { useEffect, useState } from "react"
 import { usePathname, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { signOut } from "@/lib/auth/auth-client"
-import { Film, LogOut, User } from "lucide-react"
+import { LogOut, User } from "lucide-react"
+import Image from "next/image"
 
 type HeaderUser = {
   name: string
@@ -64,11 +65,16 @@ export function Header() {
   const loginHref = pathname === "/login" ? "/login" : `/login?returnTo=${encodeURIComponent(pathname)}`
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-            <Film className="h-5 w-5 text-primary-foreground" />
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/40">
+            <Image
+              src="/cinemate_logo.png"
+              alt="Cinemate Logo"
+              width={32}
+              height={32}
+            />
           </div>
           <span className="text-xl font-bold tracking-tight">씨네메이트</span>
         </Link>
