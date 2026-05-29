@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation"
 import { Header } from "@/components/header"
 import { LoginButtons } from "@/components/auth/login-buttons"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Film } from "lucide-react"
+import Image from "next/image"
 
 const errorMessages: Record<string, string> = {
   oauth_failed: "소셜 로그인 요청이 취소되었거나 실패했습니다.",
@@ -34,8 +34,13 @@ function LoginPageContent() {
       <main className="container mx-auto flex min-h-[calc(100vh-4rem)] items-center justify-center px-4 py-12">
         <Card className="w-full max-w-sm">
           <CardHeader className="space-y-4 text-center">
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
-              <Film className="h-7 w-7 text-primary" />
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary">
+              <Image
+                src="/cinemate_logo.png"
+                alt="Cinemate Logo"
+                width={40}
+                height={40}
+              />
             </div>
             <div>
               <CardTitle className="text-2xl">씨네메이트</CardTitle>
@@ -54,6 +59,7 @@ function LoginPageContent() {
             <LoginButtons returnTo={returnTo} />
           </CardContent>
         </Card>
+
       </main>
     </div>
   )
