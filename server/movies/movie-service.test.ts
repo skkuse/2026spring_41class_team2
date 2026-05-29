@@ -53,6 +53,19 @@ describe("movieService.listMovies", () => {
     expect(repository.findBookmarkedMovieIds).not.toHaveBeenCalled()
   })
 
+  it("passes genreId to the repository when provided", async () => {
+    const repository = createRepository({
+      listMovies: vi.fn().mockResolvedValue({ movies: [], totalCount: 0 }),
+    })
+    const service = createMovieService({ repository })
+
+    await service.listMovies(context, { sort: "popular", page: 1, size: 20, genreId: 28 })
+
+    expect(repository.listMovies).toHaveBeenCalledWith(
+      expect.objectContaining({ genreId: 28 }),
+    )
+  })
+
   it("merges bookmark state for authenticated users", async () => {
     const repository = createRepository({
       listMovies: vi.fn().mockResolvedValue({

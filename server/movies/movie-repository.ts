@@ -151,6 +151,10 @@ function buildListWhere(params: ListMoviesRepoParams) {
     conditions.push(sql`${movieStats.movielensRatingCount} >= ${params.minMovielensRatingCount}`)
   }
 
+  if (params.genreId) {
+    conditions.push(sql`${movies.id} in (select movie_id from movie_genres where genre_id = ${params.genreId})`)
+  }
+
   return conditions.length > 0 ? and(...conditions) : undefined
 }
 

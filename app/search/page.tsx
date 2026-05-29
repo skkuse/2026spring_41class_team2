@@ -1,17 +1,18 @@
 import { Suspense } from "react"
 import { Header } from "@/components/header"
-import { Input } from "@/components/ui/input"
-import { Search } from "lucide-react"
+import { SearchFilters } from "./_components/search-filters"
 import { SearchResults } from "./_components/search-results"
 import { SearchResultsSkeleton } from "./_components/search-results-skeleton"
 import { normalizeSearchPageParams, type SearchPageParams } from "./search-params"
+import { movieService } from "@/server/movies"
 
 type SearchPageProps = {
   searchParams: Promise<SearchPageParams>
 }
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {
-  const { q, sort } = normalizeSearchPageParams(await searchParams)
+  const { q, sort, genreId } = normalizeSearchPageParams(await searchParams)
+  const { genres } = await movieService.listGenres()
 
   return (
     <div className="min-h-screen bg-background">
@@ -23,15 +24,15 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           <p className="mt-2 text-muted-foreground">원하는 영화를 검색하세요</p>
         </div>
 
-        <form action="/search">
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
-            <Input name="q" placeholder="영화 제목 검색..." defaultValue={q} className="pl-10" />
-          </div>
-        </form>
+        <SearchFilters
+          genres={genres}
+          currentQ={q}
+          currentSort={sort}
+          currentGenreId={genreId}
+        />
 
-        <Suspense key={`${q}:${sort}`} fallback={<SearchResultsSkeleton />}>
-          <SearchResults q={q} sort={sort} />
+        <Suspense key={`${q}:${sort}:${genreId}`} fallback={<SearchResultsSkeleton />}>
+          <SearchResults q={q} sort={sort} genreId={genreId} />
         </Suspense>
       </main>
     </div>

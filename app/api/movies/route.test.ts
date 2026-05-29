@@ -69,6 +69,23 @@ describe("GET /api/movies", () => {
     )
   })
 
+  it("passes genreId to movieService when provided", async () => {
+    const response = await GET(new Request("http://localhost/api/movies?genreId=28"))
+
+    await expect(readResponse(response)).resolves.toMatchObject({ status: 200 })
+    expect(mocks.movieService.listMovies).toHaveBeenCalledWith(
+      { requestId: "request-1", user: null },
+      expect.objectContaining({ genreId: 28 }),
+    )
+  })
+
+  it("returns 400 for invalid genreId", async () => {
+    const response = await GET(new Request("http://localhost/api/movies?genreId=0"))
+
+    await expect(readResponse(response)).resolves.toMatchObject({ status: 400 })
+    expect(mocks.movieService.listMovies).not.toHaveBeenCalled()
+  })
+
   it("returns 500 when listMovies fails", async () => {
     mocks.movieService.listMovies.mockRejectedValue(new Error("DB failed"))
 

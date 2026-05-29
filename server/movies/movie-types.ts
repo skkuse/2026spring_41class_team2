@@ -66,6 +66,7 @@ export type ListMoviesInput = {
   sort?: MovieSort
   page?: number
   size?: number
+  genreId?: number
 }
 
 // Repository params
@@ -75,6 +76,7 @@ export type ListMoviesRepoParams = {
   limit: number
   offset: number
   minMovielensRatingCount?: number
+  genreId?: number
 }
 
 export type MovieListRepoResult = {

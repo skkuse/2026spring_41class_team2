@@ -7,11 +7,12 @@ import { mapMovieCardToView } from "@/lib/movies/movie-view"
 type SearchResultsProps = {
   q: string
   sort: "popular" | "rating"
+  genreId?: number
 }
 
-export async function SearchResults({ q, sort }: SearchResultsProps) {
+export async function SearchResults({ q, sort, genreId }: SearchResultsProps) {
   const context = await createOptionalRequestContext()
-  const { movies } = await movieService.listMovies(context, { q, sort, page: 1, size: 50 })
+  const { movies } = await movieService.listMovies(context, { q, sort, page: 1, size: 50, genreId })
   const movieViews = movies.map(mapMovieCardToView)
 
   return (

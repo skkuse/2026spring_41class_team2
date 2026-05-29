@@ -26,6 +26,7 @@ export function createMovieService(deps: MovieServiceDeps): MovieService {
         limit: normalized.size,
         offset: normalized.offset,
         ...(normalized.sort === "rating" ? { minMovielensRatingCount: MIN_RATING_SORT_MOVIELENS_COUNT } : {}),
+        ...(normalized.genreId ? { genreId: normalized.genreId } : {}),
       })
       const movieIds = result.movies.map((row) => row.id)
       const bookmarkedMovieIds =
