@@ -23,6 +23,7 @@ export const movieListQuerySchema = z
       .max(MAX_MOVIE_PAGE_SIZE)
       .optional()
       .default(DEFAULT_MOVIE_PAGE_SIZE),
+    genreId: z.coerce.number().int().positive().optional(),
   })
   .strict()
   .transform((value) => ({
@@ -30,6 +31,7 @@ export const movieListQuerySchema = z
     sort: value.sort,
     page: value.page,
     size: value.size,
+    ...(value.genreId ? { genreId: value.genreId } : {}),
   }))
 
 export const movieIdParamsSchema = z.object({

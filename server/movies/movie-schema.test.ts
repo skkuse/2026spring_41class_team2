@@ -35,6 +35,27 @@ describe("movieListQuerySchema", () => {
   it("rejects legacy limit query", () => {
     expect(() => movieListQuerySchema.parse({ limit: "50" })).toThrow()
   })
+
+  it("parses genreId as a positive integer", () => {
+    expect(movieListQuerySchema.parse({ genreId: "28" })).toEqual({
+      sort: "popular",
+      page: 1,
+      size: 20,
+      genreId: 28,
+    })
+  })
+
+  it("omits genreId from output when not provided", () => {
+    expect(movieListQuerySchema.parse({})).not.toHaveProperty("genreId")
+  })
+
+  it("rejects genreId of 0", () => {
+    expect(() => movieListQuerySchema.parse({ genreId: "0" })).toThrow()
+  })
+
+  it("rejects negative genreId", () => {
+    expect(() => movieListQuerySchema.parse({ genreId: "-1" })).toThrow()
+  })
 })
 
 describe("movieIdParamsSchema", () => {

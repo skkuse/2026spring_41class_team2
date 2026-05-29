@@ -54,4 +54,18 @@ describe("normalizeMovieListInput", () => {
       offset: 0,
     })
   })
+
+  it("passes genreId through when provided", () => {
+    expect(normalizeMovieListInput({ sort: "popular", genreId: 28 })).toEqual({
+      sort: "popular",
+      page: 1,
+      size: 20,
+      offset: 0,
+      genreId: 28,
+    })
+  })
+
+  it("omits genreId when not provided", () => {
+    expect(normalizeMovieListInput({ sort: "popular" })).not.toHaveProperty("genreId")
+  })
 })

@@ -41,6 +41,7 @@ export function normalizeMovieListInput(input: ListMoviesInput) {
     page,
     size,
     offset: (page - 1) * size,
+    ...(input.genreId ? { genreId: input.genreId } : {}),
   }
 }
 
