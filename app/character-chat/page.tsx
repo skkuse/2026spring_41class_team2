@@ -25,6 +25,8 @@ type Message = {
   content: string
 }
 
+const SPOILER_INPUT_NOTICE = "스포일러가 포함될 수 있습니다. 계속하려면 이 문구를 지우고 메시지를 입력하세요."
+
 function buildInitialMessage(content: string): Message {
   return {
     id: "init-0",
@@ -149,6 +151,7 @@ function CharacterChatPageContent() {
         setConversationId(conversation.conversationId)
         setMessages([buildInitialMessage(conversation.initialMessage), ...conversation.messages.map(mapConversationMessage)])
         setSuggestedQuestions(conversation.suggestedQuestions)
+        setInputValue(conversation.messages.length === 0 ? SPOILER_INPUT_NOTICE : "")
         return
       }
 
@@ -162,6 +165,7 @@ function CharacterChatPageContent() {
       setConversationId(createdConversation.conversationId)
       setMessages([buildInitialMessage(createdConversation.initialMessage)])
       setSuggestedQuestions(createdConversation.suggestedQuestions)
+      setInputValue(SPOILER_INPUT_NOTICE)
     } catch (createError) {
       if (selectionRequestRef.current === requestKey) {
         setError(errorMessage(createError))
@@ -175,7 +179,7 @@ function CharacterChatPageContent() {
 
   async function handleSendMessage(content: string) {
     const message = content.trim()
-    if (!message || !selectedCharacter || !conversationId || isTyping) {
+    if (!message || message === SPOILER_INPUT_NOTICE || !selectedCharacter || !conversationId || isTyping) {
       return
     }
 
@@ -217,6 +221,9 @@ function CharacterChatPageContent() {
         <div className="mb-6">
           <h1 className="text-2xl font-bold text-balance">영화 속 등장인물과 대화하기</h1>
           <p className="mt-1 text-sm text-muted-foreground">영화를 선택하고 캐릭터를 골라 대화해보세요.</p>
+          <p className="mt-3 rounded-lg border border-yellow-500/30 bg-yellow-500/10 px-4 py-2 text-sm font-medium text-yellow-700 dark:text-yellow-300">
+            스포일러 주의: 캐릭터 대화에는 영화의 주요 사건과 결말에 관한 내용이 포함될 수 있습니다.
+          </p>
         </div>
 
         <div className="mb-6 flex gap-3 overflow-x-auto pb-2">
@@ -408,7 +415,7 @@ function CharacterChatPageContent() {
               <Button
                 size="icon"
                 onClick={() => void handleSendMessage(inputValue)}
-                disabled={inputDisabled || !inputValue.trim()}
+                disabled={inputDisabled || !inputValue.trim() || inputValue.trim() === SPOILER_INPUT_NOTICE}
               >
                 <Send className="h-4 w-4" />
               </Button>
@@ -467,4 +474,3 @@ function CharacterChatPageContent() {
     </div>
   )
 }
-
