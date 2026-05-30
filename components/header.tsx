@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useEffect, useState } from "react"
 import { usePathname, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 import { signOut } from "@/lib/auth/auth-client"
 import { LogOut, User } from "lucide-react"
 import Image from "next/image"
@@ -15,6 +16,22 @@ type HeaderUser = {
 type MeResponse =
   | { authenticated: false; user: null }
   | { authenticated: true; user: HeaderUser }
+
+const navItems = [
+  { href: "/", label: "홈" },
+  { href: "/search", label: "영화 탐색" },
+  { href: "/chat", label: "AI 추천" },
+  { href: "/recommend", label: "맞춤 추천" },
+  { href: "/character-chat", label: "캐릭터 대화" },
+] as const
+
+export function isHeaderNavItemActive(pathname: string, href: string) {
+  if (href === "/") {
+    return pathname === href
+  }
+
+  return pathname === href || pathname.startsWith(`${href}/`)
+}
 
 export function Header() {
   const router = useRouter()
@@ -80,21 +97,24 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
-          <Link href="/" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
-            홈
-          </Link>
-          <Link href="/search" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
-            영화 탐색
-          </Link>
-          <Link href="/chat" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
-            AI 추천
-          </Link>
-          <Link href="/recommend" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
-            맞춤 추천
-          </Link>
-          <Link href="/character-chat" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
-            캐릭터 대화
-          </Link>
+          {navItems.map((item) => {
+            const isActive = isHeaderNavItemActive(pathname, item.href)
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={isActive ? "page" : undefined}
+                className={cn(
+                  "relative rounded-sm text-sm font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background",
+                  isActive &&
+                    "font-semibold text-foreground after:absolute after:-bottom-2 after:left-0 after:h-0.5 after:w-full after:rounded-full after:bg-primary",
+                )}
+              >
+                {item.label}
+              </Link>
+            )
+          })}
         </nav>
 
         <div className="flex items-center gap-2">
