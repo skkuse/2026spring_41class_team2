@@ -14,6 +14,7 @@ import {
   recommendationChatConversationMessageMovies,
   recommendationChatConversationMessages,
   recommendationChatConversations,
+  recommendationChatDebugQuestions,
 } from "@/server/db/schema"
 import type {
   RecommendationChatCandidate,
@@ -184,6 +185,36 @@ export function createRecommendationChatRepository(): RecommendationChatReposito
         countries: rowsFromExecute<{ code: string }>(countryRows).filter((row) => row.code),
         languages: languageRows.flatMap((row) => (row.code ? [{ code: row.code }] : [])),
       }
+    },
+
+    async listDebugQuestions() {
+      return getDb()
+        .select({
+          id: recommendationChatDebugQuestions.id,
+          text: recommendationChatDebugQuestions.text,
+          createdAt: recommendationChatDebugQuestions.createdAt,
+        })
+        .from(recommendationChatDebugQuestions)
+        .orderBy(desc(recommendationChatDebugQuestions.createdAt))
+    },
+
+    async insertDebugQuestion(params) {
+      const [row] = await getDb()
+        .insert(recommendationChatDebugQuestions)
+        .values({ text: params.text })
+        .returning({
+          id: recommendationChatDebugQuestions.id,
+          text: recommendationChatDebugQuestions.text,
+          createdAt: recommendationChatDebugQuestions.createdAt,
+        })
+
+      return row
+    },
+
+    async deleteDebugQuestion(params) {
+      await getDb()
+        .delete(recommendationChatDebugQuestions)
+        .where(eq(recommendationChatDebugQuestions.id, params.questionId))
     },
 
     async listTagMappingTopN(params) {

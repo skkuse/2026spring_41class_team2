@@ -12,11 +12,15 @@ export const MIN_USER_TAG_MAPPING_SIMILARITY = 0.45
 export const FINAL_RECOMMENDATION_LIMIT = 5
 
 export function buildUnsupportedRecommendationChatAnswer() {
-  return "현재 추천 채팅은 배우, 감독, 특정 영화와 비슷한 작품, 줄거리/영화 정보, 관람 상황, OTT, 평점/인기도만으로는 추천할 수 없어요. 장르, 제작 국가, 언어, 개봉 시기, 러닝타임 같은 영화 메타데이터나 분위기, 감정, 소재 같은 영화 속성 정보를 포함해서 다시 물어봐 주세요."
+  return "지원하지 않는 요청입니다. 영화 추천 조건으로 다시 요청해 주세요. 장르, 제작 국가, 언어, 개봉 시기, 러닝타임, 분위기/소재 조건을 사용할 수 있어요."
 }
 
-export function buildNoRecommendationChatCandidatesAnswer() {
-  return "조건에 맞는 영화를 찾지 못했어요. 조건을 조금 바꾸거나 더 넓게 표현해서 다시 요청해 주세요."
+export function buildTagMappingFailedRecommendationChatAnswer() {
+  return "내부 추천 데이터 오류: 입력 조건과 연결되는 태그를 찾지 못했습니다. 분위기나 소재 조건을 조금 다르게 표현해 주세요."
+}
+
+export function buildCandidateQueryFailedRecommendationChatAnswer() {
+  return "내부 후보 조회 오류: 조건에 맞는 추천 후보를 찾거나 조회하지 못했습니다. 조건을 조금 넓혀서 다시 요청해 주세요."
 }
 
 export function buildRecommendationChatAnswer() {
@@ -65,7 +69,7 @@ export function selectMappedTags(params: {
     }
 
     for (const row of rows.slice(0, USER_TAG_MAPPING_LIMIT)) {
-      result.push({ userTag, tagId: row.tagId, relevance: row.relevance })
+      result.push({ userTag, tagId: row.tagId, tag: row.tag, relevance: row.relevance })
     }
   }
 

@@ -2,8 +2,13 @@ import { beforeEach, describe, expect, it, vi } from "vitest"
 
 const mocks = vi.hoisted(() => {
   class UnauthorizedRecommendationChatError extends Error {}
-  class RecommendationChatLlmApiError extends Error {}
+  class RecommendationChatLlmApiError extends Error {
+    constructor(public readonly failureStage = "analysis") {
+      super()
+    }
+  }
   class RecommendationChatEmbeddingApiError extends Error {}
+  class RecommendationChatPersistenceError extends Error {}
   class RecommendationChatVectorSearchError extends Error {}
 
   return {
@@ -15,6 +20,7 @@ const mocks = vi.hoisted(() => {
     UnauthorizedRecommendationChatError,
     RecommendationChatLlmApiError,
     RecommendationChatEmbeddingApiError,
+    RecommendationChatPersistenceError,
     RecommendationChatVectorSearchError,
   }
 })
@@ -32,6 +38,7 @@ vi.mock("@/server/recommendation-chat", () => ({
   UnauthorizedRecommendationChatError: mocks.UnauthorizedRecommendationChatError,
   RecommendationChatLlmApiError: mocks.RecommendationChatLlmApiError,
   RecommendationChatEmbeddingApiError: mocks.RecommendationChatEmbeddingApiError,
+  RecommendationChatPersistenceError: mocks.RecommendationChatPersistenceError,
   RecommendationChatVectorSearchError: mocks.RecommendationChatVectorSearchError,
 }))
 
@@ -82,7 +89,31 @@ describe("POST /api/recommendation-chat/messages", () => {
 
     await expect(readResponse(response)).resolves.toMatchObject({
       status: 500,
-      body: { error: { code: apiErrorCodes.recommendationChatVectorSearchFailed, requestId: "request-1" } },
+      body: {
+        error: {
+          code: apiErrorCodes.recommendationChatVectorSearchFailed,
+          requestId: "request-1",
+          details: { failureStage: "candidate_query", failureSource: "internal_candidate_query" },
+        },
+      },
+    })
+  })
+
+  it("includes recommendation chat LLM failure stage details", async () => {
+    mocks.recommendationChatService.submitRecommendationChatMessage.mockRejectedValue(
+      new mocks.RecommendationChatLlmApiError("reason_generation"),
+    )
+
+    const response = await POST(jsonRequest({ message: "코미디 추천" }))
+
+    await expect(readResponse(response)).resolves.toMatchObject({
+      status: 500,
+      body: {
+        error: {
+          code: apiErrorCodes.recommendationChatLlmApiFailed,
+          details: { failureStage: "reason_generation", failureSource: "external_ai_service" },
+        },
+      },
     })
   })
 })

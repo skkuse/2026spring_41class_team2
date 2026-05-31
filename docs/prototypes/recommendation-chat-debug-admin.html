@@ -1,0 +1,1742 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cinemate Recommendation Debug Admin Prototype</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f8fb;
+        --surface: #ffffff;
+        --surface-2: #f1f5f9;
+        --text: #172033;
+        --muted: #64748b;
+        --line: #d8dee8;
+        --primary: #2364d2;
+        --primary-dark: #174ba0;
+        --success: #16784f;
+        --warning: #b45309;
+        --danger: #b42318;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      button,
+      input,
+      select {
+        font: inherit;
+      }
+
+      .app {
+        min-height: 100vh;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        min-height: 64px;
+        padding: 0 28px;
+        border-bottom: 1px solid var(--line);
+        background: var(--surface);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+      }
+
+      .logo {
+        display: grid;
+        width: 32px;
+        height: 32px;
+        place-items: center;
+        border-radius: 8px;
+        background: var(--primary);
+        color: white;
+        font-weight: 800;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.2;
+      }
+
+      .topbar-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+      }
+
+      .session-state {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 10px;
+        border: 1px solid #bfdbfe;
+        border-radius: 999px;
+        background: #eff6ff;
+        color: #1d4ed8;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .session-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #2563eb;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+        gap: 20px;
+        padding: 20px 28px 32px;
+      }
+
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+      }
+
+      .panel-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 16px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .panel-title {
+        margin: 0;
+        font-size: 15px;
+      }
+
+      .panel-body {
+        padding: 16px;
+      }
+
+      .question-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .question {
+        display: grid;
+        gap: 8px;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: white;
+      }
+
+      .question-text {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 36px;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        border: 1px solid transparent;
+        border-radius: 7px;
+        padding: 0 12px;
+        background: var(--primary);
+        color: white;
+        cursor: pointer;
+        font-weight: 700;
+      }
+
+      .button:hover {
+        background: var(--primary-dark);
+      }
+
+      .button.secondary {
+        border-color: var(--line);
+        background: white;
+        color: var(--text);
+      }
+
+      .button.secondary:hover {
+        background: var(--surface-2);
+      }
+
+      .button.small {
+        min-height: 30px;
+        padding: 0 9px;
+        font-size: 13px;
+      }
+
+      .input-row {
+        display: flex;
+        gap: 8px;
+        margin-top: 14px;
+      }
+
+      .input-row input {
+        min-width: 0;
+        flex: 1;
+        min-height: 38px;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        padding: 0 10px;
+        background: white;
+      }
+
+      .question-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+
+      .metric {
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: white;
+      }
+
+      .metric-label {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .metric-value {
+        display: block;
+        margin-top: 6px;
+        font-size: 22px;
+        font-weight: 800;
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        min-width: 980px;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+
+      th,
+      td {
+        border-bottom: 1px solid var(--line);
+        padding: 10px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        background: #f8fafc;
+        color: #475569;
+        font-size: 12px;
+        white-space: nowrap;
+      }
+
+      tr[data-selected="true"] td {
+        background: #eff6ff;
+      }
+
+      .status {
+        display: inline-flex;
+        align-items: center;
+        min-height: 24px;
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .status.ok {
+        background: #dcfce7;
+        color: var(--success);
+      }
+
+      .status.warn {
+        background: #fef3c7;
+        color: var(--warning);
+      }
+
+      .status.bad {
+        background: #fee2e2;
+        color: var(--danger);
+      }
+
+      .mono {
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+        font-size: 12px;
+      }
+
+      .details {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 460px);
+        align-items: start;
+        gap: 18px;
+        margin-top: 20px;
+      }
+
+      .flow {
+        display: grid;
+        gap: 12px;
+      }
+
+      .flow-step {
+        display: grid;
+        grid-template-columns: 42px minmax(0, 1fr);
+        gap: 12px;
+      }
+
+      .flow-index {
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--primary);
+        color: white;
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .flow-card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: white;
+      }
+
+      .flow-card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .flow-card-title {
+        margin: 0;
+        font-size: 14px;
+      }
+
+      .json-panel {
+        position: sticky;
+        top: 18px;
+      }
+
+      .json-context-card {
+        display: grid;
+        gap: 6px;
+        margin-bottom: 12px;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: white;
+      }
+
+      .json-view-card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: white;
+      }
+
+      .json-panel-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin: 0;
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .json-panel h3 {
+        margin: 0;
+        font-size: 14px;
+      }
+
+      .json-context-label {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .json-context-value {
+        line-height: 1.45;
+      }
+
+      .raw-json-button {
+        min-height: 30px;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: white;
+        color: var(--text);
+        cursor: pointer;
+        padding: 0 9px;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .raw-json-button:hover,
+      .raw-json-button[aria-pressed="true"] {
+        border-color: #bfdbfe;
+        background: #eff6ff;
+        color: #1d4ed8;
+      }
+
+      .kv {
+        display: grid;
+      }
+
+      .kv-row {
+        display: grid;
+        grid-template-columns: 190px minmax(0, 1fr);
+        gap: 12px;
+        padding: 10px 14px;
+        border-bottom: 1px solid #eef2f7;
+      }
+
+      .kv-row:last-child {
+        border-bottom: 0;
+      }
+
+      .kv-key {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .kv-value {
+        min-width: 0;
+        line-height: 1.45;
+      }
+
+      pre {
+        max-height: 380px;
+        margin: 0;
+        overflow: auto;
+        padding: 14px;
+        border-radius: 0 0 8px 8px;
+        background: #0f172a;
+        color: #e2e8f0;
+        line-height: 1.5;
+        white-space: pre-wrap;
+      }
+
+      .json-viewer {
+        max-height: 380px;
+        overflow: auto;
+        padding: 14px;
+        border-radius: 0 0 8px 8px;
+        background: #0f172a;
+        color: #e2e8f0;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+        font-size: 12px;
+        line-height: 1.6;
+      }
+
+      .json-viewer details {
+        margin-left: 16px;
+      }
+
+      .json-viewer details.root {
+        margin-left: 0;
+      }
+
+      .json-viewer summary {
+        cursor: pointer;
+        list-style: none;
+      }
+
+      .json-viewer summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .json-viewer summary::before {
+        content: "▾";
+        display: inline-block;
+        width: 14px;
+        color: #93c5fd;
+      }
+
+      .json-viewer details:not([open]) > summary::before {
+        content: "▸";
+      }
+
+      .json-key {
+        color: #93c5fd;
+      }
+
+      .json-string {
+        color: #86efac;
+      }
+
+      .json-number,
+      .json-boolean {
+        color: #fbbf24;
+      }
+
+      .json-null {
+        color: #c4b5fd;
+      }
+
+      .json-line {
+        margin-left: 16px;
+      }
+
+      .json-line::before {
+        content: "";
+        display: inline-block;
+        width: 14px;
+      }
+
+      .value-toggle {
+        display: inline-flex;
+        min-height: 22px;
+        align-items: center;
+        border: 1px solid #bfdbfe;
+        border-radius: 6px;
+        padding: 1px 6px;
+        background: #eff6ff;
+        color: #1d4ed8;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: 800;
+      }
+
+      .json-viewer .value-toggle {
+        border-color: #1e3a8a;
+        background: #172554;
+        color: #bfdbfe;
+      }
+
+      .subrows {
+        display: grid;
+        gap: 6px;
+      }
+
+      .subrow {
+        display: grid;
+        grid-template-columns: minmax(80px, 140px) minmax(0, 1fr);
+        gap: 8px;
+        align-items: start;
+        padding: 6px 8px;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        background: #f8fafc;
+      }
+
+      .subrow-key {
+        color: #334155;
+        font-weight: 800;
+      }
+
+      .subrow-value {
+        min-width: 0;
+      }
+
+      .subrow-lines {
+        display: grid;
+        gap: 3px;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .truncate {
+        max-width: 300px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      @media (max-width: 1080px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        .details {
+          grid-template-columns: 1fr;
+        }
+
+        .json-panel {
+          position: static;
+        }
+
+        .summary-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 640px) {
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 14px 16px;
+        }
+
+        .topbar-actions {
+          justify-content: flex-start;
+        }
+
+        .layout {
+          padding: 16px;
+        }
+
+        .summary-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .kv-row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div class="brand">
+          <div class="logo">C</div>
+          <div>
+            <h1>Recommendation Chat Debug</h1>
+            <div class="muted">준비 질문 실행 결과와 추천 파이프라인 중간값 확인</div>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <div class="session-state"><span class="session-dot"></span> 로그인 필요</div>
+          <button class="button secondary small" id="loginButton">로그인</button>
+          <button class="button secondary small" id="resetConversationButton">추천 채팅 초기화</button>
+        </div>
+      </header>
+
+      <div class="layout">
+        <aside class="panel">
+          <div class="panel-header">
+            <h2 class="panel-title">준비 질문</h2>
+            <button class="button small" id="runAllButton">전체 실행</button>
+          </div>
+          <div class="panel-body">
+            <div class="question-list" id="questionList"></div>
+            <div class="input-row">
+              <input id="customQuestionInput" placeholder="직접 입력 질문" />
+              <button class="button secondary" id="addCustomButton">추가</button>
+            </div>
+          </div>
+        </aside>
+
+        <main>
+          <section class="summary-grid" aria-label="실행 요약">
+            <div class="metric">
+              <span class="metric-label">실행 질문</span>
+              <span class="metric-value" id="metricTotal">0</span>
+            </div>
+            <div class="metric">
+              <span class="metric-label">추천 성공</span>
+              <span class="metric-value" id="metricSuccess">0</span>
+            </div>
+            <div class="metric">
+              <span class="metric-label">Unsupported</span>
+              <span class="metric-value" id="metricUnsupported">0</span>
+            </div>
+            <div class="metric">
+              <span class="metric-label">후보 없음</span>
+              <span class="metric-value" id="metricNoCandidate">0</span>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-header">
+              <h2 class="panel-title">실행 결과</h2>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>상태</th>
+                    <th>질문</th>
+                    <th>Intent</th>
+                    <th>장르</th>
+                    <th>국가</th>
+                    <th>언어</th>
+                    <th>연도</th>
+                    <th>러닝타임</th>
+                    <th>태그</th>
+                    <th>Excluded</th>
+                    <th>실패 단계</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="resultTableBody"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="details" id="details" hidden>
+            <div class="flow" id="flowDetails"></div>
+            <aside class="json-panel" aria-label="Raw JSON">
+              <div class="json-context-card">
+                <div class="json-context-label">사용자 입력</div>
+                <div class="json-context-value" id="jsonPanelQuestion">-</div>
+              </div>
+              <div class="json-view-card">
+                <div class="json-panel-header">
+                  <h3 id="jsonPanelTitle">Raw JSON</h3>
+                </div>
+                <div class="json-viewer" id="jsonPanelBody"></div>
+              </div>
+            </aside>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script>
+      const seedQuestions = [
+        {
+          id: "question-001",
+          text: "잔잔하고 여운 남는 일본 로맨스 영화 추천해줘",
+          sampleKey: "quietJapanRomance",
+        },
+        {
+          id: "question-002",
+          text: "좀비가 등장하는 숨 막히는 공포 영화 추천해줘",
+          sampleKey: "quietJapanRomance",
+        },
+        {
+          id: "question-003",
+          text: "어두운 범죄 스릴러 중에 분위기 묵직한 거 추천해줘",
+          sampleKey: "quietJapanRomance",
+        },
+        {
+          id: "question-004",
+          text: "우주 배경의 SF 모험 영화 찾아줘",
+          sampleKey: "quietJapanRomance",
+        },
+        {
+          id: "question-005",
+          text: "가볍고 웃긴 코미디 영화 추천해줘",
+          sampleKey: "runtimeComedy",
+        },
+        {
+          id: "question-006",
+          text: "러닝타임 2시간 이하 코미디 추천해줘",
+          sampleKey: "runtimeComedy",
+        },
+      ]
+
+      const defaultAvailableOptions = {
+        genres: [
+          { id: 18, name: "Drama", nameKo: "드라마" },
+          { id: 35, name: "Comedy", nameKo: "코미디" },
+          { id: 10749, name: "Romance", nameKo: "로맨스" },
+          { id: 16, name: "Animation", nameKo: "애니메이션" },
+          { id: 27, name: "Horror", nameKo: "공포" },
+          { id: 878, name: "Science Fiction", nameKo: "SF" },
+        ],
+        countries: [{ code: "FR" }, { code: "JP" }, { code: "KR" }, { code: "US" }],
+        languages: [{ code: "fr" }, { code: "ja" }, { code: "ko" }, { code: "en" }],
+      }
+
+      const quietJapanRomanceExchange = {
+        request: "잔잔한 일본 로맨스 영화 추천해줘",
+        response: "요청하신 조건에 맞는 영화를 골라봤어요.",
+        movies: [
+          { id: 372058, title: "너의 이름은." },
+          { id: 504253, title: "나는 내일, 어제의 너와 만난다" },
+        ],
+      }
+
+      const samples = {
+        runtimeComedy: {
+          status: "success",
+          answer: "요청하신 조건에 맞는 영화를 골라봤어요.",
+          failureStage: null,
+          availableOptions: defaultAvailableOptions,
+          recentExchanges: [],
+          excludedMovieIds: [],
+          rawAnalysis: {
+            intent: "new_recommendation",
+            genreIds: [35],
+            countryCodes: [],
+            languageCodes: [],
+            yearRange: null,
+            runtimeRange: { from: null, to: 90 },
+            userTagQueries: [],
+            excludedTerms: ["영화", "추천해줘"],
+            confidence: 0.91,
+          },
+          normalizedAnalysis: {
+            intent: "new_recommendation",
+            genreIds: [35],
+            countryCodes: [],
+            languageCodes: [],
+            yearRange: null,
+            runtimeRange: { from: null, to: 90 },
+            userTagQueries: [],
+            excludedTerms: ["영화", "추천해줘"],
+            confidence: 0.91,
+          },
+          filters: {
+            genreIds: [35],
+            countryCodes: [],
+            languageCodes: [],
+            yearRange: null,
+            runtimeRange: { from: null, to: 90 },
+          },
+          mappedTagsByUserTag: {},
+          candidateQueryType: "tagless",
+          candidateCount: 18,
+          selectedMovies: [
+            { id: 862, title: "Toy Story", year: 1995, runtime: 81, genres: ["Comedy", "Animation"], matchedUserTags: [] },
+            { id: 585, title: "Monsters, Inc.", year: 2001, runtime: 92, genres: ["Comedy", "Animation"], matchedUserTags: [] },
+          ],
+          generatedReasons: [
+            { movieId: 862, reason: "짧은 러닝타임에 가볍게 볼 수 있는 코미디예요." },
+            { movieId: 585, reason: "밝은 분위기와 코미디 요소가 요청과 잘 맞아요." },
+          ],
+        },
+        japanCountry: {
+          status: "success",
+          answer: "요청하신 조건에 맞는 영화를 골라봤어요.",
+          failureStage: null,
+          availableOptions: defaultAvailableOptions,
+          recentExchanges: [],
+          excludedMovieIds: [],
+          rawAnalysis: {
+            intent: "new_recommendation",
+            genreIds: [],
+            countryCodes: ["JP"],
+            languageCodes: [],
+            yearRange: null,
+            runtimeRange: null,
+            userTagQueries: [],
+            excludedTerms: ["제작국가", "영화", "추천해줘"],
+            confidence: 0.87,
+          },
+          normalizedAnalysis: {
+            intent: "new_recommendation",
+            genreIds: [],
+            countryCodes: ["JP"],
+            languageCodes: [],
+            yearRange: null,
+            runtimeRange: null,
+            userTagQueries: [],
+            excludedTerms: ["제작국가", "영화", "추천해줘"],
+            confidence: 0.87,
+          },
+          filters: {
+            genreIds: [],
+            countryCodes: ["JP"],
+            languageCodes: [],
+            yearRange: null,
+            runtimeRange: null,
+          },
+          mappedTagsByUserTag: {},
+          candidateQueryType: "tagless",
+          candidateCount: 42,
+          selectedMovies: [
+            { id: 129, title: "센과 치히로의 행방불명", year: 2001, runtime: 125, genres: ["Animation", "Family"], matchedUserTags: [] },
+            { id: 4935, title: "하울의 움직이는 성", year: 2004, runtime: 119, genres: ["Animation", "Fantasy"], matchedUserTags: [] },
+          ],
+          generatedReasons: [
+            { movieId: 129, reason: "일본 제작 애니메이션 중 높은 평가를 받은 작품이에요." },
+            { movieId: 4935, reason: "일본 영화 조건에 맞고 판타지적 매력이 뚜렷해요." },
+          ],
+        },
+        quietJapanRomance: {
+          status: "success",
+          answer: "요청하신 조건에 맞는 영화를 골라봤어요.",
+          failureStage: null,
+          availableOptions: defaultAvailableOptions,
+          recentExchanges: [quietJapanRomanceExchange],
+          excludedMovieIds: [372058, 504253],
+          rawAnalysis: {
+            intent: "new_recommendation",
+            genreIds: [10749],
+            countryCodes: ["JP"],
+            languageCodes: [],
+            yearRange: null,
+            runtimeRange: null,
+            userTagQueries: [
+              {
+                userTag: "잔잔한",
+                embeddingTerms: ["잔잔한", "차분한", "고요한", "느린 호흡", "감성적인", "일상 정서", "여운"],
+              },
+              {
+                userTag: "여운 남는",
+                embeddingTerms: ["여운 남는", "긴 여운", "먹먹한", "감정적인", "서정적인", "기억에 남는 결말", "깊은 감상"],
+              },
+            ],
+            excludedTerms: ["영화", "추천해줘"],
+            confidence: 0.93,
+          },
+          normalizedAnalysis: {
+            intent: "new_recommendation",
+            genreIds: [10749],
+            countryCodes: ["JP"],
+            languageCodes: [],
+            yearRange: null,
+            runtimeRange: null,
+            userTagQueries: [
+              {
+                userTag: "잔잔한",
+                embeddingTerms: ["잔잔한", "차분한", "고요한", "느린 호흡", "감성적인", "일상 정서", "여운"],
+              },
+              {
+                userTag: "여운 남는",
+                embeddingTerms: ["여운 남는", "긴 여운", "먹먹한", "감정적인", "서정적인", "기억에 남는 결말", "깊은 감상"],
+              },
+            ],
+            excludedTerms: ["영화", "추천해줘"],
+            confidence: 0.93,
+          },
+          filters: {
+            genreIds: [10749],
+            countryCodes: ["JP"],
+            languageCodes: [],
+            yearRange: null,
+            runtimeRange: null,
+          },
+          embeddingInputs: [
+            "잔잔한 차분한 고요한 느린 호흡 감성적인 일상 정서 여운",
+            "여운 남는 긴 여운 먹먹한 감정적인 서정적인 기억에 남는 결말 깊은 감상",
+          ],
+          mappedTagsByUserTag: {
+            "잔잔한": [
+              { tagId: 312, tag: "quiet", relevance: 0.82 },
+              { tagId: 742, tag: "reflective", relevance: 0.77 },
+              { tagId: 188, tag: "bittersweet", relevance: 0.69 },
+            ],
+            "여운 남는": [
+              { tagId: 188, tag: "bittersweet", relevance: 0.84 },
+              { tagId: 591, tag: "emotional", relevance: 0.78 },
+              { tagId: 903, tag: "thought-provoking", relevance: 0.72 },
+            ],
+          },
+          candidateQueryType: "tagged",
+          candidateCount: 11,
+          selectedMovies: [
+            {
+              id: 372058,
+              title: "너의 이름은.",
+              year: 2016,
+              runtime: 106,
+              genres: ["Romance", "Animation"],
+              matchedUserTags: ["잔잔한", "여운 남는"],
+              userTagScores: { "잔잔한": 0.74, "여운 남는": 0.68 },
+              finalTagScore: 0.7,
+            },
+            {
+              id: 504253,
+              title: "나는 내일, 어제의 너와 만난다",
+              year: 2016,
+              runtime: 111,
+              genres: ["Romance", "Drama"],
+              matchedUserTags: ["잔잔한"],
+              userTagScores: { "잔잔한": 0.61, "여운 남는": 0 },
+              finalTagScore: 0.34,
+            },
+          ],
+          generatedReasons: [
+            { movieId: 372058, reason: "일본 로맨스와 여운 있는 정서가 함께 느껴지는 작품이에요." },
+            { movieId: 504253, reason: "차분한 감성과 로맨스 조건이 잘 맞아요." },
+          ],
+        },
+        unsupportedRating: {
+          status: "unsupported",
+          answer:
+            "현재 추천 채팅은 배우, 감독, 특정 영화와 비슷한 작품, 줄거리/영화 정보, 관람 상황, OTT, 평점/인기도만으로는 추천할 수 없어요.",
+          failureStage: "unsupported",
+          availableOptions: defaultAvailableOptions,
+          recentExchanges: [],
+          excludedMovieIds: [],
+          rawAnalysis: {
+            intent: "unsupported",
+            genreIds: [],
+            countryCodes: [],
+            languageCodes: [],
+            yearRange: null,
+            runtimeRange: null,
+            userTagQueries: [],
+            excludedTerms: ["평점 높은", "영화", "추천해줘"],
+            confidence: 0.89,
+          },
+          normalizedAnalysis: {
+            intent: "unsupported",
+            genreIds: [],
+            countryCodes: [],
+            languageCodes: [],
+            yearRange: null,
+            runtimeRange: null,
+            userTagQueries: [],
+            excludedTerms: ["평점 높은", "영화", "추천해줘"],
+            confidence: 0.89,
+          },
+          filters: null,
+          mappedTagsByUserTag: {},
+          candidateQueryType: null,
+          candidateCount: 0,
+          selectedMovies: [],
+          generatedReasons: [],
+        },
+        noCandidate: {
+          status: "no_candidate",
+          answer: "조건에 맞는 영화를 찾지 못했어요. 조건을 조금 바꾸거나 더 넓게 표현해서 다시 요청해 주세요.",
+          failureStage: "candidate_lookup",
+          availableOptions: defaultAvailableOptions,
+          recentExchanges: [],
+          excludedMovieIds: [],
+          rawAnalysis: {
+            intent: "new_recommendation",
+            genreIds: [18],
+            countryCodes: ["FR"],
+            languageCodes: [],
+            yearRange: null,
+            runtimeRange: { from: null, to: 120 },
+            userTagQueries: [],
+            excludedTerms: ["영화", "추천해줘"],
+            confidence: 0.86,
+          },
+          normalizedAnalysis: {
+            intent: "new_recommendation",
+            genreIds: [18],
+            countryCodes: ["FR"],
+            languageCodes: [],
+            yearRange: null,
+            runtimeRange: { from: null, to: 120 },
+            userTagQueries: [],
+            excludedTerms: ["영화", "추천해줘"],
+            confidence: 0.86,
+          },
+          filters: {
+            genreIds: [18],
+            countryCodes: ["FR"],
+            languageCodes: [],
+            yearRange: null,
+            runtimeRange: { from: null, to: 120 },
+          },
+          mappedTagsByUserTag: {},
+          candidateQueryType: "tagless",
+          candidateCount: 0,
+          selectedMovies: [],
+          generatedReasons: [],
+        },
+      }
+
+      let questions = [...seedQuestions]
+      let results = []
+      let selectedId = null
+
+      const questionList = document.getElementById("questionList")
+      const resultTableBody = document.getElementById("resultTableBody")
+      const details = document.getElementById("details")
+
+      function renderQuestions() {
+        questionList.innerHTML = questions
+          .map(
+            (question, index) => `
+              <div class="question">
+                <p class="question-text">${escapeHtml(question.text)}</p>
+                <div class="question-actions">
+                  <button class="button secondary small" data-run-index="${index}">실행</button>
+                  <button class="button secondary small" data-delete-question-id="${escapeHtml(question.id)}">삭제</button>
+                </div>
+              </div>
+            `,
+          )
+          .join("")
+      }
+
+      function runQuestion(question) {
+        const sample = samples[question.sampleKey] || samples.runtimeComedy
+        const llmAnalysisInput = {
+          currentMessage: question.text,
+          availableOptions: sample.availableOptions,
+          recentExchanges: sample.recentExchanges,
+        }
+        const id = `run-${Date.now()}-${Math.random().toString(16).slice(2)}`
+        const result = {
+          id,
+          question: question.text,
+          db: buildDbValues(question.text, sample),
+          debug: { ...sample, llmAnalysisInput },
+          createdAt: new Date().toISOString(),
+        }
+        results = [result, ...results]
+        selectedId = id
+        renderResults()
+        renderDetails(result)
+      }
+
+      function buildDbValues(questionText, sample) {
+        return {
+          conversationId: "8f3f3c17-a2d4-4421-a771-7e4c50c42a91",
+          userId: "user-123",
+          requestMessage: {
+            id: "msg-request-001",
+            role: "request",
+            content: questionText,
+          },
+          responseMessage: {
+            id: "msg-response-001",
+            role: "response",
+            content: sample.answer,
+            analysisResult: sample.normalizedAnalysis,
+          },
+          recommendedMovies: sample.selectedMovies.map((movie, index) => ({
+            messageId: "msg-response-001",
+            movieId: movie.id,
+            rank: index + 1,
+            reason: sample.generatedReasons[index]?.reason || "",
+          })),
+        }
+      }
+
+      function renderResults() {
+        updateMetrics()
+        if (results.length === 0) {
+          resultTableBody.innerHTML = `
+            <tr>
+              <td colspan="12" class="muted">아직 실행 결과가 없습니다.</td>
+            </tr>
+          `
+          details.hidden = true
+          return
+        }
+
+        resultTableBody.innerHTML = results
+          .map((result) => {
+            const analysis = result.debug.normalizedAnalysis
+            const status = statusMeta(result.debug.status)
+            return `
+              <tr data-result-id="${result.id}" data-selected="${result.id === selectedId}">
+                <td><span class="status ${status.className}">${status.label}</span></td>
+                <td class="truncate">${escapeHtml(result.question)}</td>
+                <td class="mono">${escapeHtml(analysis.intent)}</td>
+                <td class="mono">${genreToggleHtml(analysis.genreIds, result.debug.availableOptions)}</td>
+                <td class="mono">${escapeHtml(formatArray(analysis.countryCodes))}</td>
+                <td class="mono">${escapeHtml(formatArray(analysis.languageCodes))}</td>
+                <td class="mono">${escapeHtml(formatRange(analysis.yearRange))}</td>
+                <td class="mono">${escapeHtml(formatRange(analysis.runtimeRange))}</td>
+                <td>${escapeHtml(analysis.userTagQueries.map((query) => query.userTag).join(", ") || "-")}</td>
+                <td>${escapeHtml(formatArray(analysis.excludedTerms))}</td>
+                <td>${escapeHtml(result.debug.failureStage || "-")}</td>
+                <td><button class="button secondary small" data-select-id="${result.id}">상세</button></td>
+              </tr>
+            `
+          })
+          .join("")
+      }
+
+      function renderDetails(result) {
+        if (!result) {
+          details.hidden = true
+          return
+        }
+
+        details.hidden = false
+        document.getElementById("flowDetails").innerHTML = flowSteps(result)
+        renderJsonPanel(result, 0)
+      }
+
+      function renderJson(targetId, value, availableOptions) {
+        document.getElementById(targetId).innerHTML = jsonNode(value, { key: null, isRoot: true, availableOptions })
+      }
+
+      function jsonNode(value, options) {
+        const key = options.key
+        const isRoot = options.isRoot === true
+        const keyPrefix = key === null ? "" : `<span class="json-key">"${escapeHtml(key)}"</span>: `
+
+        if (Array.isArray(value)) {
+          if (key === "genreIds" && value.length > 0) {
+            return `<div class="json-line">${keyPrefix}${genreToggleHtml(value, options.availableOptions)}</div>`
+          }
+
+          const open = key === "availableOptions" ? "" : " open"
+          if (value.length === 0) {
+            return `<div class="json-line">${keyPrefix}[]</div>`
+          }
+          return `
+            <details${open}${isRoot ? ' class="root"' : ""}>
+              <summary>${keyPrefix}[ ${value.length} ]</summary>
+              ${value.map((item, index) => jsonNode(item, { key: String(index), isRoot: false, availableOptions: options.availableOptions })).join("")}
+            </details>
+          `
+        }
+
+        if (value && typeof value === "object") {
+          const entries = Object.entries(value)
+          const open = key === "availableOptions" ? "" : " open"
+          if (entries.length === 0) {
+            return `<div class="json-line">${keyPrefix}{}</div>`
+          }
+          return `
+            <details${open}${isRoot ? ' class="root"' : ""}>
+              <summary>${keyPrefix}{ ${entries.length} }</summary>
+              ${entries.map(([entryKey, entryValue]) => jsonNode(entryValue, { key: entryKey, isRoot: false, availableOptions: options.availableOptions })).join("")}
+            </details>
+          `
+        }
+
+        return `<div class="json-line">${keyPrefix}${jsonScalar(value)}</div>`
+      }
+
+      function jsonScalar(value) {
+        if (typeof value === "string") {
+          return `<span class="json-string">"${escapeHtml(value)}"</span>`
+        }
+        if (typeof value === "number") {
+          return `<span class="json-number">${value}</span>`
+        }
+        if (typeof value === "boolean") {
+          return `<span class="json-boolean">${value}</span>`
+        }
+        if (value === null) {
+          return `<span class="json-null">null</span>`
+        }
+        return escapeHtml(String(value))
+      }
+
+      function flowSteps(result) {
+        const steps = [
+          {
+            title: "요청 컨텍스트 준비",
+            rows: [
+              ["message", result.question],
+              ["userId", result.db.userId],
+              ["requestId", "debug-request-001"],
+              ["conversation.id", result.db.conversationId],
+              ["requestMessage.id", result.db.requestMessage.id],
+              ["requestMessage.role", result.db.requestMessage.role],
+              ["availableOptions", `${result.debug.availableOptions.genres.length} genres / ${result.debug.availableOptions.countries.length} countries / ${result.debug.availableOptions.languages.length} languages`],
+              ["recentExchanges", `${result.debug.recentExchanges.length} pairs`],
+              ["excludedMovieIds", formatArray(result.debug.excludedMovieIds)],
+            ],
+          },
+          {
+            title: "LLM 분석 요청 준비",
+            rows: [
+              ["currentMessage", result.debug.llmAnalysisInput.currentMessage],
+              ["availableOptions", `${result.debug.llmAnalysisInput.availableOptions.genres.length} genres / ${result.debug.llmAnalysisInput.availableOptions.countries.length} countries / ${result.debug.llmAnalysisInput.availableOptions.languages.length} languages`],
+              ["recentExchanges", `${result.debug.llmAnalysisInput.recentExchanges.length} pairs`],
+            ],
+          },
+          {
+            title: "LLM 추천 조건 분석",
+            rows: [
+              ["intent", result.debug.rawAnalysis.intent],
+              ["genreIds", htmlValue(genreToggleHtml(result.debug.rawAnalysis.genreIds, result.debug.availableOptions))],
+              ["countryCodes", formatArray(result.debug.rawAnalysis.countryCodes)],
+              ["languageCodes", formatArray(result.debug.rawAnalysis.languageCodes)],
+              ["yearRange", formatRange(result.debug.rawAnalysis.yearRange)],
+              ["runtimeRange", formatRange(result.debug.rawAnalysis.runtimeRange)],
+              ["userTagQueries", result.debug.rawAnalysis.userTagQueries.map((query) => query.userTag).join(", ") || "-"],
+              ["excludedTerms", formatArray(result.debug.rawAnalysis.excludedTerms)],
+              ["confidence", String(result.debug.rawAnalysis.confidence)],
+            ],
+          },
+          {
+            title: "분석 결과 정규화",
+            rows: [
+              ["intent", result.debug.normalizedAnalysis.intent],
+              ["genreIds", htmlValue(genreToggleHtml(result.debug.normalizedAnalysis.genreIds, result.debug.availableOptions))],
+              ["countryCodes", formatArray(result.debug.normalizedAnalysis.countryCodes)],
+              ["languageCodes", formatArray(result.debug.normalizedAnalysis.languageCodes)],
+              ["yearRange", formatRange(result.debug.normalizedAnalysis.yearRange)],
+              ["runtimeRange", formatRange(result.debug.normalizedAnalysis.runtimeRange)],
+              ["userTagQueries", result.debug.normalizedAnalysis.userTagQueries.map((query) => query.userTag).join(", ") || "-"],
+              ["excludedTerms", formatArray(result.debug.normalizedAnalysis.excludedTerms)],
+              ["confidence", String(result.debug.normalizedAnalysis.confidence)],
+              ["hasRecommendationConditions", String(hasRecommendationConditions(result.debug.normalizedAnalysis))],
+            ],
+          },
+          {
+            title: "사용자 태그 매핑 및 추천 후보 조회",
+            rows: [
+              ["userTagQueries", `${result.debug.normalizedAnalysis.userTagQueries.length}개`],
+              ["embeddingInputs", htmlValue(embeddingInputsSubRowsHtml(result.debug.normalizedAnalysis.userTagQueries, result.debug.embeddingInputs || []))],
+              ["mappedTagsByUserTag", htmlValue(mappedTagsSubRowsHtml(result.debug.mappedTagsByUserTag))],
+              ["uniqueMappedTagIds", htmlValue(mappedTagIdsToggleHtml(result.debug.mappedTagsByUserTag))],
+              ["candidateQueryType", result.debug.candidateQueryType || "-"],
+              ["filters", stringify(result.debug.filters)],
+              ["candidateCount", String(result.debug.candidateCount)],
+            ],
+          },
+          {
+            title: "추천 후보 선별 및 추천 이유 생성",
+            rows: [
+              ["selectedMovies", htmlValue(selectedMoviesSubRowsHtml(result.debug.selectedMovies))],
+              ["generatedReasons", htmlValue(generatedReasonsSubRowsHtml(result.debug.selectedMovies, result.debug.generatedReasons))],
+              ["failureStage", result.debug.failureStage || "-"],
+            ],
+          },
+          {
+            title: "최종 결과",
+            rows: [
+              ["answer", result.debug.answer],
+              ["movies", htmlValue(movieTitleSubRowsHtml(result.debug.selectedMovies))],
+              ["status", result.debug.status],
+              ["failureStage", result.debug.failureStage || "-"],
+              ["response.message.id", result.db.responseMessage.id],
+              ["response.content", result.db.responseMessage.content],
+            ],
+          },
+        ]
+
+        return steps
+          .map(
+            (step, index) => `
+              <div class="flow-step">
+                <div class="flow-index">${index + 1}</div>
+                <div class="flow-card">
+                  <div class="flow-card-header">
+                    <h3 class="flow-card-title">${escapeHtml(step.title)}</h3>
+                    <button type="button" class="raw-json-button" data-json-index="${index}">Raw JSON</button>
+                  </div>
+                  <div class="kv">${rows(step.rows)}</div>
+                </div>
+              </div>
+            `,
+          )
+          .join("")
+      }
+
+      function renderJsonPanel(result, index) {
+        const payloads = rawJsonPayloads(result)
+        const payload = payloads[index] || payloads[0]
+        document.getElementById("jsonPanelTitle").textContent = payload.title
+        document.getElementById("jsonPanelQuestion").textContent = result.question
+        renderJson("jsonPanelBody", payload.value, result.debug.availableOptions)
+        document.querySelectorAll(".raw-json-button").forEach((button) => {
+          button.setAttribute("aria-pressed", String(button.getAttribute("data-json-index") === String(index)))
+        })
+      }
+
+      function rawJsonPayloads(result) {
+        return [
+          {
+            title: "요청 컨텍스트 준비 JSON",
+            value: {
+              request: {
+                message: result.question,
+                userId: result.db.userId,
+                requestId: "debug-request-001",
+              },
+              conversation: {
+                id: result.db.conversationId,
+              },
+              requestMessage: result.db.requestMessage,
+              analysisPrep: {
+                availableOptions: result.debug.availableOptions,
+                recentExchanges: result.debug.recentExchanges,
+                excludedMovieIds: result.debug.excludedMovieIds,
+              },
+            },
+          },
+          {
+            title: "LLM 분석 요청 JSON",
+            value: result.debug.llmAnalysisInput,
+          },
+          {
+            title: "LLM 분석 결과 JSON",
+            value: result.debug.rawAnalysis,
+          },
+          {
+            title: "정규화된 분석 결과 JSON",
+            value: result.debug.normalizedAnalysis,
+          },
+          {
+            title: "태그 매핑 및 후보 조회 JSON",
+            value: {
+              userTagQueries: result.debug.normalizedAnalysis.userTagQueries,
+              embeddingInputs: result.debug.embeddingInputs || [],
+              mappedTagsByUserTag: result.debug.mappedTagsByUserTag,
+              uniqueMappedTagIds: uniqueMappedTagIds(result.debug.mappedTagsByUserTag),
+              candidateQueryType: result.debug.candidateQueryType,
+              filters: result.debug.filters,
+              candidateCount: result.debug.candidateCount,
+            },
+          },
+          {
+            title: "후보 선별 및 추천 이유 JSON",
+            value: {
+              selectedMovies: result.debug.selectedMovies,
+              generatedReasons: result.debug.generatedReasons,
+            },
+          },
+          {
+            title: "최종 결과 JSON",
+            value: {
+              answer: result.debug.answer,
+              movies: result.debug.selectedMovies.map((movie) => ({
+                id: movie.id,
+                title: movie.title,
+              })),
+              status: result.debug.status,
+              failureStage: result.debug.failureStage,
+              responseMessage: result.db.responseMessage,
+            },
+          },
+        ]
+      }
+
+      function summarizeMappedTags(mappedTagsByUserTag) {
+        const entries = Object.entries(mappedTagsByUserTag || {})
+        if (entries.length === 0) {
+          return "-"
+        }
+
+        return entries
+          .map(([userTag, tags]) => `${userTag}: ${tags.map((tag) => `${tag.tag}(${tag.relevance})`).join(", ")}`)
+          .join(" / ")
+      }
+
+      function embeddingInputsSubRowsHtml(userTagQueries, embeddingInputs) {
+        if (!embeddingInputs || embeddingInputs.length === 0) {
+          return "-"
+        }
+
+        return subRowsHtml(
+          embeddingInputs.map((input, index) => [
+            userTagQueries[index]?.userTag || `tag-${index + 1}`,
+            input,
+          ]),
+        )
+      }
+
+      function mappedTagsSubRowsHtml(mappedTagsByUserTag) {
+        const entries = Object.entries(mappedTagsByUserTag || {})
+        if (entries.length === 0) {
+          return "-"
+        }
+
+        return subRowsHtml(
+          entries.map(([userTag, tags]) => [
+            userTag,
+            tags.map((tag) => `${tag.tag}(${tag.relevance})`).join(", "),
+          ]),
+        )
+      }
+
+      function subRowsHtml(items) {
+        return `
+          <div class="subrows">
+            ${items
+              .map(
+                ([key, value]) => `
+                  <div class="subrow">
+                    <div class="subrow-key">${escapeHtml(key)}</div>
+                    <div class="subrow-value">${escapeHtml(value)}</div>
+                  </div>
+                `,
+              )
+              .join("")}
+          </div>
+        `
+      }
+
+      function uniqueMappedTagIds(mappedTagsByUserTag) {
+        return [
+          ...new Set(
+            Object.values(mappedTagsByUserTag || {})
+              .flat()
+              .map((tag) => tag.tagId),
+          ),
+        ]
+      }
+
+      function summarizeSelectedMovies(selectedMovies) {
+        if (!selectedMovies || selectedMovies.length === 0) {
+          return "-"
+        }
+
+        return selectedMovies
+          .map((movie) => {
+            const matched = movie.matchedUserTags?.length ? ` [${movie.matchedUserTags.join(", ")}]` : ""
+            return `${movie.title}(${movie.id})${matched}`
+          })
+          .join(" / ")
+      }
+
+      function selectedMoviesSubRowsHtml(selectedMovies) {
+        if (!selectedMovies || selectedMovies.length === 0) {
+          return "-"
+        }
+
+        return `
+          <div class="subrows">
+            ${selectedMovies
+              .map((movie) => {
+                const matched = movie.matchedUserTags?.length ? movie.matchedUserTags.join(", ") : "-"
+                const scoreRows = Object.entries(movie.userTagScores || {}).map(
+                  ([userTag, score]) => `<div>${escapeHtml(userTag)} score: ${escapeHtml(formatScore(score))}</div>`,
+                )
+                return `
+                  <div class="subrow">
+                    <div class="subrow-key">${escapeHtml(movie.title)}</div>
+                    <div class="subrow-value">
+                      <div class="subrow-lines">
+                        <div>movieId: ${escapeHtml(movie.id)}</div>
+                        ${scoreRows.join("")}
+                        <div>finalTagScore: ${escapeHtml(formatScore(movie.finalTagScore))}</div>
+                        <div>matchedUserTags: ${escapeHtml(matched)}</div>
+                      </div>
+                    </div>
+                  </div>
+                `
+              })
+              .join("")}
+          </div>
+        `
+      }
+
+      function generatedReasonsSubRowsHtml(selectedMovies, generatedReasons) {
+        if (!generatedReasons || generatedReasons.length === 0) {
+          return "-"
+        }
+
+        const titleById = new Map((selectedMovies || []).map((movie) => [movie.id, movie.title]))
+        return subRowsHtml(
+          generatedReasons.map((reason) => [
+            titleById.get(reason.movieId) || `movieId ${reason.movieId}`,
+            reason.reason,
+          ]),
+        )
+      }
+
+      function movieTitleSubRowsHtml(movies) {
+        if (!movies || movies.length === 0) {
+          return "-"
+        }
+
+        return subRowsHtml(movies.map((movie, index) => [`${index + 1}`, movie.title]))
+      }
+
+      function formatScore(score) {
+        return typeof score === "number" ? score.toFixed(2) : "-"
+      }
+
+      function summarizeOptions(options, labelKey) {
+        if (!options || options.length === 0) {
+          return "[]"
+        }
+
+        return options.map((option) => option[labelKey] || option.name || option.code || option.id).join(", ")
+      }
+
+      function htmlValue(value) {
+        return { __html: value }
+      }
+
+      function rows(items) {
+        return items
+          .map(
+            ([key, value]) => {
+              const renderedValue = value && typeof value === "object" && "__html" in value ? value.__html : escapeHtml(value)
+              return `
+                <div class="kv-row">
+                  <div class="kv-key">${escapeHtml(key)}</div>
+                  <div class="kv-value">${renderedValue}</div>
+                </div>
+              `
+            },
+          )
+          .join("")
+      }
+
+      function updateMetrics() {
+        document.getElementById("metricTotal").textContent = String(results.length)
+        document.getElementById("metricSuccess").textContent = String(results.filter((r) => r.debug.status === "success").length)
+        document.getElementById("metricUnsupported").textContent = String(
+          results.filter((r) => r.debug.status === "unsupported").length,
+        )
+        document.getElementById("metricNoCandidate").textContent = String(
+          results.filter((r) => r.debug.status === "no_candidate").length,
+        )
+      }
+
+      function statusMeta(status) {
+        if (status === "success") {
+          return { label: "success", className: "ok" }
+        }
+        if (status === "unsupported") {
+          return { label: "unsupported", className: "warn" }
+        }
+        return { label: "no candidate", className: "bad" }
+      }
+
+      function formatArray(value) {
+        return value && value.length > 0 ? JSON.stringify(value) : "[]"
+      }
+
+      function genreToggleHtml(genreIds, availableOptions) {
+        if (!genreIds || genreIds.length === 0) {
+          return "[]"
+        }
+
+        const genreNames = genreIds.map((id) => genreName(id, availableOptions))
+        return valueToggleHtml({ ids: genreIds, names: genreNames })
+      }
+
+      function genreName(id, availableOptions) {
+        const genre = availableOptions?.genres?.find((item) => item.id === id)
+        return genre?.nameKo || genre?.name || `unknown(${id})`
+      }
+
+      function mappedTagIdsToggleHtml(mappedTagsByUserTag) {
+        const ids = uniqueMappedTagIds(mappedTagsByUserTag)
+        if (ids.length === 0) {
+          return "[]"
+        }
+
+        const tagNamesById = new Map(
+          Object.values(mappedTagsByUserTag || {})
+            .flat()
+            .map((tag) => [tag.tagId, tag.tag]),
+        )
+        return valueToggleHtml({ ids, names: ids.map((id) => tagNamesById.get(id) || `unknown(${id})`) })
+      }
+
+      function valueToggleHtml(params) {
+        return `<button type="button" class="value-toggle" data-mode="ids" data-ids="${escapeHtml(JSON.stringify(params.ids))}" data-names="${escapeHtml(JSON.stringify(params.names))}">${escapeHtml(JSON.stringify(params.ids))}</button>`
+      }
+
+      function formatRange(value) {
+        return value ? JSON.stringify(value) : "null"
+      }
+
+      function stringify(value) {
+        return JSON.stringify(value, null, 2)
+      }
+
+      function hasRecommendationConditions(analysis) {
+        return Boolean(
+          analysis.genreIds.length ||
+            analysis.countryCodes.length ||
+            analysis.languageCodes.length ||
+            analysis.yearRange ||
+            analysis.runtimeRange ||
+            analysis.userTagQueries.length,
+        )
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;")
+      }
+
+      document.addEventListener("click", (event) => {
+        const valueToggle = event.target.closest(".value-toggle")
+        if (valueToggle) {
+          const nextMode = valueToggle.dataset.mode === "ids" ? "names" : "ids"
+          const value = nextMode === "ids" ? valueToggle.dataset.ids : valueToggle.dataset.names
+          valueToggle.dataset.mode = nextMode
+          valueToggle.textContent = value || "[]"
+          return
+        }
+
+        const rawJsonButton = event.target.closest(".raw-json-button")
+        if (rawJsonButton) {
+          const result = results.find((item) => item.id === selectedId)
+          if (result) {
+            renderJsonPanel(result, Number(rawJsonButton.getAttribute("data-json-index")))
+          }
+          return
+        }
+
+        const runIndex = event.target.getAttribute("data-run-index")
+        if (runIndex !== null) {
+          runQuestion(questions[Number(runIndex)])
+        }
+
+        const deleteQuestionId = event.target.getAttribute("data-delete-question-id")
+        if (deleteQuestionId) {
+          questions = questions.filter((question) => question.id !== deleteQuestionId)
+          renderQuestions()
+          return
+        }
+
+        const selectId = event.target.getAttribute("data-select-id")
+        if (selectId) {
+          selectedId = selectId
+          renderResults()
+          renderDetails(results.find((result) => result.id === selectId))
+        }
+      })
+
+      document.getElementById("runAllButton").addEventListener("click", () => {
+        questions.forEach(runQuestion)
+      })
+
+      document.getElementById("loginButton").addEventListener("click", () => {
+        window.alert("실제 구현에서는 /login?returnTo=/debug/recommendation-chat로 이동합니다.")
+      })
+
+      document.getElementById("resetConversationButton").addEventListener("click", () => {
+        window.alert("실제 구현에서는 DELETE /api/recommendation-chat/conversation을 호출합니다.")
+      })
+
+      document.getElementById("addCustomButton").addEventListener("click", () => {
+        const input = document.getElementById("customQuestionInput")
+        const text = input.value.trim()
+        if (!text) {
+          return
+        }
+        questions = [{ id: `question-${Date.now()}`, text, sampleKey: "runtimeComedy" }, ...questions]
+        input.value = ""
+        renderQuestions()
+      })
+
+      renderQuestions()
+      renderResults()
+    </script>
+  </body>
+</html>

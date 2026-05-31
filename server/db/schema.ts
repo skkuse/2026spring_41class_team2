@@ -349,6 +349,16 @@ export const recommendationChatConversationMessageMovies = pgTable(
   ],
 )
 
+export const recommendationChatDebugQuestions = pgTable(
+  "recommendation_chat_debug_questions",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    text: text("text").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [index("recommendation_chat_debug_questions_created_at_idx").on(table.createdAt.desc())],
+)
+
 export const characters = pgTable(
   "characters",
   {

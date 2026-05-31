@@ -5,6 +5,7 @@ import type { RequestContext } from "@/server/auth/auth-types"
 import {
   RecommendationChatEmbeddingApiError,
   RecommendationChatLlmApiError,
+  RecommendationChatPersistenceError,
   RecommendationChatVectorSearchError,
   UnauthorizedRecommendationChatError,
 } from "./recommendation-chat-errors"
@@ -12,8 +13,9 @@ import { createOpenAiRecommendationChatEmbeddingClient } from "./recommendation-
 import { createOpenAiRecommendationChatLlmClient } from "./recommendation-chat-openai-llm-client"
 import { createRecommendationChatRepository } from "./recommendation-chat-repository"
 import {
-  buildNoRecommendationChatCandidatesAnswer,
+  buildCandidateQueryFailedRecommendationChatAnswer,
   buildRecommendationChatAnswer,
+  buildTagMappingFailedRecommendationChatAnswer,
   buildUnsupportedRecommendationChatAnswer,
   FINAL_RECOMMENDATION_LIMIT,
   MAX_USER_TAGS,
@@ -26,6 +28,8 @@ import type {
   RecommendationChatAnalysis,
   RecommendationChatCandidate,
   RecommendationChatEmbeddingClient,
+  RecommendationChatDebugFailureStage,
+  RecommendationChatDebugTraceDto,
   RecommendationChatLlmClient,
   RecommendationChatMappedTag,
   RecommendationChatMovieDto,
@@ -69,6 +73,8 @@ const FORBIDDEN_USER_TAG_QUERY_TERMS = [
   "피하고 싶은",
 ]
 
+const FALLBACK_RECOMMENDATION_REASON = "요청하신 조건과 잘 어울리는 영화라 추천드려요."
+
 export type RecommendationChatServiceDeps = {
   repository: RecommendationChatRepository
   llmClient: RecommendationChatLlmClient
@@ -79,6 +85,32 @@ export function createRecommendationChatService(deps: RecommendationChatServiceD
   return {
     listInitialQuestions() {
       return { questions: RECOMMENDATION_CHAT_INITIAL_QUESTIONS }
+    },
+
+    async listDebugQuestions() {
+      const questions = await deps.repository.listDebugQuestions()
+      return {
+        questions: questions.map((question) => ({
+          id: question.id,
+          text: question.text,
+          createdAt: question.createdAt.toISOString(),
+        })),
+      }
+    },
+
+    async createDebugQuestion(input) {
+      const question = await deps.repository.insertDebugQuestion({ text: input.text })
+      return {
+        question: {
+          id: question.id,
+          text: question.text,
+          createdAt: question.createdAt.toISOString(),
+        },
+      }
+    },
+
+    async deleteDebugQuestion(input) {
+      await deps.repository.deleteDebugQuestion(input)
     },
 
     async getMyRecommendationChatConversation(context: RequestContext) {
@@ -108,92 +140,36 @@ export function createRecommendationChatService(deps: RecommendationChatServiceD
     },
 
     async submitRecommendationChatMessage(context: RequestContext, input: SubmitRecommendationChatMessageInput) {
-      const userId = requireUserId(context)
-      const conversation = await deps.repository.findOrCreateConversation({ userId })
-      await deps.repository.insertRequestMessage({ conversationId: conversation.id, content: input.message })
-
-      const [availableOptions, recentExchanges, excludedMovieIds] = await Promise.all([
-        deps.repository.listAvailableOptions(),
-        deps.repository.listRecentRecommendationExchanges({ conversationId: conversation.id, limit: 3 }),
-        deps.repository.listRecommendedMovieIds({ conversationId: conversation.id }),
-      ])
-
-      const analysis = await analyzeRequest(deps.llmClient, {
-        currentMessage: input.message,
-        availableOptions,
-        recentExchanges,
-      })
-      const normalizedAnalysis = normalizeAnalysis(analysis, availableOptions)
-      if (normalizedAnalysis.intent !== "unsupported" && !hasRecommendationConditions(normalizedAnalysis)) {
-        normalizedAnalysis.intent = "unsupported"
-      }
-
-      if (normalizedAnalysis.intent === "unsupported") {
-        const answer = buildUnsupportedRecommendationChatAnswer()
-        await deps.repository.insertResponseMessage({
-          conversationId: conversation.id,
-          content: answer,
-          analysisResult: normalizedAnalysis,
-        })
-        return { conversationId: conversation.id, answer, movies: [] }
-      }
-
-      const mappedTagsByUserTag = await mapUserTags(deps, normalizedAnalysis)
-      if (normalizedAnalysis.userTagQueries.length > 0 && mappedTagsByUserTag.size === 0) {
-        const answer = buildNoRecommendationChatCandidatesAnswer()
-        await deps.repository.insertResponseMessage({
-          conversationId: conversation.id,
-          content: answer,
-          analysisResult: normalizedAnalysis,
-        })
-        return { conversationId: conversation.id, answer, movies: [] }
-      }
-
-      const filters = toFilters(normalizedAnalysis)
-      const candidates =
-        mappedTagsByUserTag.size > 0
-          ? await listTaggedCandidates(deps.repository, {
-              filters,
-              mappedTagIds: uniqueMappedTagIds(mappedTagsByUserTag),
-              excludedMovieIds: [...excludedMovieIds],
-            })
-          : await deps.repository.listTaglessCandidates({
-              filters,
-              excludedMovieIds: [...excludedMovieIds],
-              limit: FINAL_RECOMMENDATION_LIMIT,
-            })
-
-      if (candidates.length === 0) {
-        const answer = buildNoRecommendationChatCandidatesAnswer()
-        await deps.repository.insertResponseMessage({
-          conversationId: conversation.id,
-          content: answer,
-          analysisResult: normalizedAnalysis,
-        })
-        return { conversationId: conversation.id, answer, movies: [] }
-      }
-
-      const selectedMovies = selectRecommendationMovies({ candidates, mappedTagsByUserTag })
-      const reasons = await generateReasons(deps.llmClient, input.message, normalizedAnalysis, selectedMovies)
-      const answer = buildRecommendationChatAnswer()
-      const responseMessage = await deps.repository.insertResponseMessage({
-        conversationId: conversation.id,
-        content: answer,
-        analysisResult: normalizedAnalysis,
-      })
-      await deps.repository.insertRecommendedMovies({
-        messageId: responseMessage.id,
-        movies: selectedMovies.map((movie, index) => ({
-          movieId: movie.id,
-          rank: index + 1,
-          reason: reasons.get(movie.id)!,
-        })),
-      })
-
+      const result = await executeRecommendationChatMessage(deps, context, input)
       return {
-        conversationId: conversation.id,
-        answer,
-        movies: selectedMovies.map((movie) => mapSelectedMovieDto(movie, reasons.get(movie.id)!)),
+        conversationId: result.conversationId,
+        answer: result.trace.answer ?? "",
+        movies: result.trace.movies,
+      }
+    },
+
+    async runDebugRecommendationChatMessage(context: RequestContext, input: SubmitRecommendationChatMessageInput) {
+      try {
+        return await executeRecommendationChatMessage(deps, context, input)
+      } catch (error) {
+        if (error instanceof UnauthorizedRecommendationChatError) {
+          throw error
+        }
+
+        const debugError = error as Error & {
+          debugConversationId?: string | null
+          debugTrace?: RecommendationChatDebugTraceDto
+        }
+
+        return {
+          conversationId: debugError.debugConversationId ?? null,
+          status: "error",
+          trace: debugError.debugTrace ?? {
+            ...createEmptyDebugTrace(),
+            failureStage: toFailureStage(error),
+            error: toDebugError(error),
+          },
+        }
       }
     },
   }
@@ -207,6 +183,176 @@ function requireUserId(context: RequestContext) {
   return context.user.id
 }
 
+async function executeRecommendationChatMessage(
+  deps: RecommendationChatServiceDeps,
+  context: RequestContext,
+  input: SubmitRecommendationChatMessageInput,
+) {
+  const trace = createEmptyDebugTrace()
+  let conversationId: string | null = null
+
+  try {
+    const userId = requireUserId(context)
+
+    const conversation = await deps.repository.findOrCreateConversation({ userId })
+    conversationId = conversation.id
+
+    await persist(() => deps.repository.insertRequestMessage({ conversationId: conversation.id, content: input.message }))
+
+    const [availableOptions, recentExchanges, excludedMovieIds] = await Promise.all([
+      deps.repository.listAvailableOptions(),
+      deps.repository.listRecentRecommendationExchanges({ conversationId: conversation.id, limit: 3 }),
+      deps.repository.listRecommendedMovieIds({ conversationId: conversation.id }),
+    ])
+    trace.availableOptions = availableOptions
+    trace.recentExchanges = recentExchanges
+    trace.excludedMovieIds = [...excludedMovieIds]
+
+    const analysis = await analyzeRequest(deps.llmClient, {
+      currentMessage: input.message,
+      availableOptions,
+      recentExchanges,
+    })
+    trace.rawAnalysis = analysis
+
+    const normalizedAnalysis = normalizeAnalysis(analysis, availableOptions)
+    if (normalizedAnalysis.intent !== "unsupported" && !hasRecommendationConditions(normalizedAnalysis)) {
+      normalizedAnalysis.intent = "unsupported"
+    }
+    trace.normalizedAnalysis = normalizedAnalysis
+
+    if (normalizedAnalysis.intent === "unsupported") {
+      const answer = buildUnsupportedRecommendationChatAnswer()
+      trace.answer = answer
+      trace.failureStage = "unsupported"
+      await persist(() =>
+        deps.repository.insertResponseMessage({
+          conversationId: conversation.id,
+          content: answer,
+          analysisResult: normalizedAnalysis,
+        }),
+      )
+      return { conversationId: conversation.id, status: "unsupported" as const, trace }
+    }
+
+    const tagMapping = await mapUserTags(deps, normalizedAnalysis)
+    trace.embeddingInputs = tagMapping.embeddingInputs
+    trace.mappedTagsByUserTag = mapToRecord(tagMapping.mappedTagsByUserTag)
+    if (normalizedAnalysis.userTagQueries.length > 0 && tagMapping.mappedTagsByUserTag.size === 0) {
+      const answer = buildTagMappingFailedRecommendationChatAnswer()
+      trace.answer = answer
+      trace.failureStage = "tag_mapping"
+      await persist(() =>
+        deps.repository.insertResponseMessage({
+          conversationId: conversation.id,
+          content: answer,
+          analysisResult: normalizedAnalysis,
+        }),
+      )
+      return { conversationId: conversation.id, status: "no_candidate" as const, trace }
+    }
+
+    const filters = toFilters(normalizedAnalysis)
+    trace.filters = filters
+    trace.candidateQueryType = tagMapping.mappedTagsByUserTag.size > 0 ? "tagged" : "tagless"
+    const candidates =
+      tagMapping.mappedTagsByUserTag.size > 0
+        ? await listTaggedCandidates(deps.repository, {
+            filters,
+            mappedTagIds: uniqueMappedTagIds(tagMapping.mappedTagsByUserTag),
+            excludedMovieIds: [...excludedMovieIds],
+          })
+        : await deps.repository.listTaglessCandidates({
+            filters,
+            excludedMovieIds: [...excludedMovieIds],
+            limit: FINAL_RECOMMENDATION_LIMIT,
+          })
+    trace.candidateCount = candidates.length
+
+    if (candidates.length === 0) {
+      const answer = buildCandidateQueryFailedRecommendationChatAnswer()
+      trace.answer = answer
+      trace.failureStage = "candidate_query"
+      await persist(() =>
+        deps.repository.insertResponseMessage({
+          conversationId: conversation.id,
+          content: answer,
+          analysisResult: normalizedAnalysis,
+        }),
+      )
+      return { conversationId: conversation.id, status: "no_candidate" as const, trace }
+    }
+
+    const selectedMovies = selectRecommendationMovies({
+      candidates,
+      mappedTagsByUserTag: tagMapping.mappedTagsByUserTag,
+    })
+    trace.selectedMovies = selectedMovies.map((movie) => ({
+      id: movie.id,
+      title: movie.title,
+      year: movie.releaseYear,
+      matchedUserTags: movie.matchedUserTags,
+    }))
+
+    const reasons = await generateReasons(deps.llmClient, input.message, normalizedAnalysis, selectedMovies)
+    trace.generatedReasons = Object.fromEntries([...reasons.entries()].map(([movieId, reason]) => [String(movieId), reason]))
+    const answer = buildRecommendationChatAnswer()
+    trace.answer = answer
+
+    const responseMessage = await persist(() =>
+      deps.repository.insertResponseMessage({
+        conversationId: conversation.id,
+        content: answer,
+        analysisResult: normalizedAnalysis,
+      }),
+    )
+    await persist(() =>
+      deps.repository.insertRecommendedMovies({
+        messageId: responseMessage.id,
+        movies: selectedMovies.map((movie, index) => ({
+          movieId: movie.id,
+          rank: index + 1,
+          reason: reasons.get(movie.id)!,
+        })),
+      }),
+    )
+
+    trace.movies = selectedMovies.map((movie) => mapSelectedMovieDto(movie, reasons.get(movie.id)!))
+    return { conversationId: conversation.id, status: "success" as const, trace }
+  } catch (error) {
+    trace.failureStage = toFailureStage(error)
+    trace.error = toDebugError(error)
+    if (error instanceof UnauthorizedRecommendationChatError) {
+      trace.failureStage = "auth"
+    }
+    ;(error as Error & { debugConversationId?: string | null; debugTrace?: RecommendationChatDebugTraceDto }).debugConversationId =
+      conversationId
+    ;(error as Error & { debugTrace?: RecommendationChatDebugTraceDto }).debugTrace = trace
+    throw error
+  }
+}
+
+function createEmptyDebugTrace(): RecommendationChatDebugTraceDto {
+  return {
+    availableOptions: null,
+    recentExchanges: [],
+    excludedMovieIds: [],
+    rawAnalysis: null,
+    normalizedAnalysis: null,
+    filters: null,
+    embeddingInputs: [],
+    mappedTagsByUserTag: {},
+    candidateQueryType: null,
+    candidateCount: null,
+    selectedMovies: [],
+    generatedReasons: {},
+    answer: null,
+    movies: [],
+    failureStage: null,
+    error: null,
+  }
+}
+
 async function analyzeRequest(
   llmClient: RecommendationChatLlmClient,
   input: Parameters<RecommendationChatLlmClient["analyzeRequest"]>[0],
@@ -214,7 +360,15 @@ async function analyzeRequest(
   try {
     return await llmClient.analyzeRequest(input)
   } catch (error) {
-    throw error instanceof RecommendationChatLlmApiError ? error : new RecommendationChatLlmApiError(error)
+    throw error instanceof RecommendationChatLlmApiError ? error : new RecommendationChatLlmApiError("analysis", error)
+  }
+}
+
+async function persist<T>(operation: () => Promise<T>) {
+  try {
+    return await operation()
+  } catch (error) {
+    throw error instanceof RecommendationChatPersistenceError ? error : new RecommendationChatPersistenceError(error)
   }
 }
 
@@ -224,7 +378,7 @@ async function mapUserTags(deps: RecommendationChatServiceDeps, analysis: Recomm
   const embeddingInputs = userTagQueries.map((query) => query.embeddingTerms.join(" "))
   const mappedTagsByUserTag = new Map<string, RecommendationChatMappedTag[]>()
   if (userTagQueries.length === 0) {
-    return mappedTagsByUserTag
+    return { embeddingInputs, mappedTagsByUserTag }
   }
 
   let embeddings: number[][]
@@ -255,7 +409,7 @@ async function mapUserTags(deps: RecommendationChatServiceDeps, analysis: Recomm
       tags.push(mappedTag)
       mappedTagsByUserTag.set(mappedTag.userTag, tags)
     }
-    return mappedTagsByUserTag
+    return { embeddingInputs, mappedTagsByUserTag }
   } catch (error) {
     throw error instanceof RecommendationChatVectorSearchError
       ? error
@@ -283,6 +437,19 @@ async function generateReasons(
   selectedMovies: ReturnType<typeof selectRecommendationMovies>,
 ) {
   try {
+    return await generateReasonsOnce(llmClient, currentMessage, conditions, selectedMovies)
+  } catch {
+    return buildFallbackReasons(selectedMovies)
+  }
+}
+
+async function generateReasonsOnce(
+  llmClient: RecommendationChatLlmClient,
+  currentMessage: string,
+  conditions: RecommendationChatAnalysis,
+  selectedMovies: ReturnType<typeof selectRecommendationMovies>,
+) {
+  try {
     const result = await llmClient.generateMovieReasons({
       currentMessage,
       conditions,
@@ -300,22 +467,36 @@ async function generateReasons(
 
     for (const reason of result.reasons) {
       if (!selectedMovieIds.has(reason.movieId)) {
-        throw new RecommendationChatLlmApiError()
+        throw new RecommendationChatLlmApiError(
+          "reason_generation",
+          new Error(`Reason response included unexpected movieId: ${reason.movieId}.`),
+        )
       }
       reasons.set(reason.movieId, reason.reason)
     }
 
     if (reasons.size !== selectedMovieIds.size) {
-      throw new RecommendationChatLlmApiError()
+      const missingMovieIds = [...selectedMovieIds].filter((movieId) => !reasons.has(movieId))
+      throw new RecommendationChatLlmApiError(
+        "reason_generation",
+        new Error(`Reason response omitted selected movieIds: ${missingMovieIds.join(", ")}.`),
+      )
     }
 
     return reasons
   } catch (error) {
-    throw error instanceof RecommendationChatLlmApiError ? error : new RecommendationChatLlmApiError(error)
+    throw error instanceof RecommendationChatLlmApiError
+      ? error
+      : new RecommendationChatLlmApiError("reason_generation", error)
   }
 }
 
+function buildFallbackReasons(selectedMovies: ReturnType<typeof selectRecommendationMovies>) {
+  return new Map(selectedMovies.map((movie) => [movie.id, FALLBACK_RECOMMENDATION_REASON]))
+}
+
 function normalizeAnalysis(analysis: RecommendationChatAnalysis, availableOptions: AvailableRecommendationChatOptions) {
+  // LLM이 임의 값을 만들 수 있으므로 DB에서 조회한 선택 가능 목록만 허용한다.
   const genreIds = new Set(availableOptions.genres.map((genre) => genre.id))
   const countryCodes = new Set(availableOptions.countries.map((country) => country.code))
   const languageCodes = new Set(availableOptions.languages.map((language) => language.code))
@@ -326,10 +507,12 @@ function normalizeAnalysis(analysis: RecommendationChatAnalysis, availableOption
     countryCodes: analysis.countryCodes.filter((code) => countryCodes.has(code)),
     languageCodes: analysis.languageCodes.filter((code) => languageCodes.has(code)),
     userTagQueries: analysis.userTagQueries
+      // 사용자 태그와 embedding term의 앞뒤 공백을 제거하고 빈 term은 버린다.
       .map((query) => ({
         userTag: query.userTag.trim(),
         embeddingTerms: query.embeddingTerms.map((term) => term.trim()).filter(Boolean),
       }))
+      // Cinemate 태그 매핑에 쓸 수 있는 형식과 콘텐츠 속성 표현만 남긴다.
       .filter(
         (query) =>
           query.userTag &&
@@ -338,6 +521,7 @@ function normalizeAnalysis(analysis: RecommendationChatAnalysis, availableOption
           !containsForbiddenUserTagQueryTerm(query.userTag) &&
           query.embeddingTerms.every((term) => !containsForbiddenUserTagQueryTerm(term)),
       )
+      // 한 요청에서 태그 매핑 비용과 후보 점수화 범위를 제한한다.
       .slice(0, MAX_USER_TAGS),
   }
 }
@@ -370,6 +554,73 @@ function hasRecommendationConditions(analysis: RecommendationChatAnalysis) {
 
 function uniqueMappedTagIds(mappedTagsByUserTag: Map<string, RecommendationChatMappedTag[]>) {
   return [...new Set([...mappedTagsByUserTag.values()].flat().map((tag) => tag.tagId))]
+}
+
+function mapToRecord(mappedTagsByUserTag: Map<string, RecommendationChatMappedTag[]>) {
+  return Object.fromEntries(mappedTagsByUserTag.entries())
+}
+
+function toFailureStage(error: unknown): RecommendationChatDebugFailureStage {
+  if (error instanceof UnauthorizedRecommendationChatError) {
+    return "auth"
+  }
+  if (error instanceof RecommendationChatLlmApiError) {
+    return error.failureStage
+  }
+  if (error instanceof RecommendationChatEmbeddingApiError) {
+    return "embedding"
+  }
+  if (error instanceof RecommendationChatVectorSearchError) {
+    return "candidate_query"
+  }
+  if (error instanceof RecommendationChatPersistenceError) {
+    return "persistence"
+  }
+
+  return "unknown"
+}
+
+function toDebugError(error: unknown) {
+  if (error instanceof Error) {
+    const cause = toDebugErrorCause(error)
+    return {
+      name: error.name,
+      message: error.message,
+      ...(cause.length === 0 ? {} : { cause }),
+    }
+  }
+
+  return { name: "Error", message: "Unknown error" }
+}
+
+function toDebugErrorCause(error: Error) {
+  const cause: { name: string; message: string }[] = []
+  let currentCause = error.cause
+
+  while (cause.length < 3 && currentCause !== undefined) {
+    if (currentCause instanceof Error) {
+      cause.push({ name: currentCause.name, message: currentCause.message })
+      currentCause = currentCause.cause
+      continue
+    }
+
+    cause.push({ name: typeof currentCause, message: stringifyDebugCause(currentCause) })
+    break
+  }
+
+  return cause
+}
+
+function stringifyDebugCause(cause: unknown) {
+  if (typeof cause === "string") {
+    return cause
+  }
+
+  try {
+    return JSON.stringify(cause)
+  } catch {
+    return String(cause)
+  }
 }
 
 function mapSelectedMovieDto(movie: RecommendationChatCandidate, reason: string): RecommendationChatMovieDto {

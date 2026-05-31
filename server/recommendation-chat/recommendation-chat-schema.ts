@@ -4,9 +4,29 @@ export const recommendationChatInitialQuestionsResponseSchema = z.object({
   questions: z.array(z.string().min(1)).length(6),
 })
 
+export const recommendationChatDebugQuestionSchema = z.object({
+  id: z.string().uuid(),
+  text: z.string().trim().min(1).max(1000),
+  createdAt: z.string(),
+})
+
+export const listRecommendationChatDebugQuestionsResponseSchema = z.object({
+  questions: z.array(recommendationChatDebugQuestionSchema),
+})
+
+export const createRecommendationChatDebugQuestionRequestSchema = z.object({
+  text: z.string().trim().min(1).max(1000),
+})
+
+export const createRecommendationChatDebugQuestionResponseSchema = z.object({
+  question: recommendationChatDebugQuestionSchema,
+})
+
 export const submitRecommendationChatMessageRequestSchema = z.object({
   message: z.string().trim().min(1).max(1000),
 })
+
+export const runRecommendationChatDebugRequestSchema = submitRecommendationChatMessageRequestSchema
 
 export const recommendationChatRangeSchema = z
   .object({
@@ -73,6 +93,86 @@ export const submitRecommendationChatMessageResponseSchema = z.object({
 export const getRecommendationChatConversationResponseSchema = z.object({
   conversationId: z.string().uuid().nullable(),
   messages: z.array(recommendationChatMessageSchema),
+})
+
+export const recommendationChatMappedTagSchema = z.object({
+  userTag: z.string(),
+  tagId: z.number().int(),
+  tag: z.string(),
+  relevance: z.number(),
+})
+
+export const recommendationChatDebugTraceSchema = z.object({
+  availableOptions: z
+    .object({
+      genres: z.array(z.object({ id: z.number().int(), name: z.string(), nameKo: z.string().nullable() })),
+      countries: z.array(z.object({ code: z.string() })),
+      languages: z.array(z.object({ code: z.string() })),
+    })
+    .nullable(),
+  recentExchanges: z.array(
+    z.object({
+      request: z.string(),
+      response: z.string(),
+      movies: z.array(z.object({ id: z.number().int(), title: z.string() })),
+    }),
+  ),
+  excludedMovieIds: z.array(z.number().int()),
+  rawAnalysis: recommendationChatAnalysisSchema.nullable(),
+  normalizedAnalysis: recommendationChatAnalysisSchema.nullable(),
+  filters: z
+    .object({
+      genreIds: z.array(z.number().int()),
+      countryCodes: z.array(z.string()),
+      languageCodes: z.array(z.string()),
+      yearRange: recommendationChatRangeSchema.nullable(),
+      runtimeRange: recommendationChatRangeSchema.nullable(),
+    })
+    .nullable(),
+  embeddingInputs: z.array(z.string()),
+  mappedTagsByUserTag: z.record(z.array(recommendationChatMappedTagSchema)),
+  candidateQueryType: z.enum(["tagged", "tagless"]).nullable(),
+  candidateCount: z.number().int().nullable(),
+  selectedMovies: z.array(
+    z.object({
+      id: z.number().int(),
+      title: z.string(),
+      year: z.number().int().nullable(),
+      matchedUserTags: z.array(z.string()),
+    }),
+  ),
+  generatedReasons: z.record(z.string()),
+  answer: z.string().nullable(),
+  movies: z.array(recommendationChatMovieSchema),
+  failureStage: z
+    .enum([
+      "auth",
+      "unsupported",
+      "conversation",
+      "context",
+      "analysis",
+      "embedding",
+      "tag_mapping",
+      "candidate_query",
+      "reason_generation",
+      "persistence",
+      "response_validation",
+      "unknown",
+    ])
+    .nullable(),
+  error: z
+    .object({
+      name: z.string(),
+      message: z.string(),
+      cause: z.array(z.object({ name: z.string(), message: z.string() })).optional(),
+    })
+    .nullable(),
+})
+
+export const runRecommendationChatDebugResponseSchema = z.object({
+  conversationId: z.string().uuid().nullable(),
+  status: z.enum(["success", "unsupported", "no_candidate", "error"]),
+  trace: recommendationChatDebugTraceSchema,
 })
 
 export type RecommendationChatAnalysisSchema = z.infer<typeof recommendationChatAnalysisSchema>

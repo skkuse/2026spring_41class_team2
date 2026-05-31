@@ -9,6 +9,7 @@ import {
   getRecommendationChatInitialQuestions,
   RecommendationChatApiError,
   resetMyRecommendationChatConversation,
+  type RecommendationChatFailureStage,
   type RecommendationChatMovie,
   type RecommendationChatMessage,
   submitRecommendationChatMessage,
@@ -345,10 +346,31 @@ function mapApiMessage(message: RecommendationChatMessage): UiMessage {
 
 function toErrorMessage(error: unknown) {
   if (error instanceof RecommendationChatApiError) {
+    if (error.failureStage) {
+      return recommendationChatFailureMessages[error.failureStage]
+    }
+
     return error.message
   }
 
   return "추천 채팅을 처리하지 못했습니다. 잠시 후 다시 시도해 주세요."
+}
+
+const recommendationChatFailureMessages: Record<RecommendationChatFailureStage, string> = {
+  analysis: "외부 AI 서비스 오류: 사용자 요청 분석 LLM 호출에 실패했습니다. 추천 조건을 해석하지 못했어요.",
+  reason_generation:
+    "외부 AI 서비스 오류: 추천 이유 생성 LLM 호출에 실패했습니다. 후보 영화는 찾았지만 추천 이유를 만들지 못했어요.",
+  embedding:
+    "외부 AI 서비스 오류: OpenAI embedding 호출에 실패했습니다. 분위기/소재 조건을 검색용 벡터로 변환하지 못했어요.",
+  tag_mapping:
+    "내부 추천 데이터 오류: 입력 조건과 연결되는 태그를 찾지 못했습니다. 분위기나 소재 조건을 조금 다르게 표현해 주세요.",
+  candidate_query:
+    "내부 후보 조회 오류: 조건에 맞는 추천 후보를 찾거나 조회하지 못했습니다. 조건을 조금 넓혀서 다시 요청해 주세요.",
+  persistence: "내부 저장소 오류: 추천 결과를 저장하지 못했습니다. 대화 기록 또는 추천 영화 저장 중 문제가 발생했어요.",
+  response_validation: "내부 응답 검증 오류: 추천 응답 형식이 올바르지 않습니다.",
+  unsupported: "지원하지 않는 요청입니다. 영화 추천 조건으로 다시 요청해 주세요.",
+  auth: "인증 오류: 다시 로그인한 뒤 이용해 주세요.",
+  unknown: "미분류 오류: 추천 채팅 처리 중 알 수 없는 문제가 발생했습니다.",
 }
 
 export default function ChatPage() {

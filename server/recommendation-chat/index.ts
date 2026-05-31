@@ -1,6 +1,7 @@
 export {
   RecommendationChatEmbeddingApiError,
   RecommendationChatLlmApiError,
+  RecommendationChatPersistenceError,
   RecommendationChatVectorSearchError,
   UnauthorizedRecommendationChatError,
 } from "./recommendation-chat-errors"

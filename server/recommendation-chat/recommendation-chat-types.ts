@@ -23,6 +23,24 @@ export type InitialQuestionsResponseDto = {
   questions: string[]
 }
 
+export type RecommendationChatDebugQuestionDto = {
+  id: string
+  text: string
+  createdAt: string
+}
+
+export type ListRecommendationChatDebugQuestionsResponseDto = {
+  questions: RecommendationChatDebugQuestionDto[]
+}
+
+export type CreateRecommendationChatDebugQuestionRequestDto = {
+  text: string
+}
+
+export type CreateRecommendationChatDebugQuestionResponseDto = {
+  question: RecommendationChatDebugQuestionDto
+}
+
 export type SubmitRecommendationChatMessageRequestDto = {
   message: string
 }
@@ -38,9 +56,71 @@ export type GetRecommendationChatConversationResponseDto = {
   messages: RecommendationChatMessageDto[]
 }
 
+export type RunRecommendationChatDebugRequestDto = {
+  message: string
+}
+
+export type RecommendationChatDebugRunStatus = "success" | "unsupported" | "no_candidate" | "error"
+
+export type RecommendationChatDebugTraceDto = {
+  availableOptions: AvailableRecommendationChatOptions | null
+  recentExchanges: RecommendationChatRecentExchange[]
+  excludedMovieIds: number[]
+  rawAnalysis: RecommendationChatAnalysis | null
+  normalizedAnalysis: RecommendationChatAnalysis | null
+  filters: RecommendationChatFilters | null
+  embeddingInputs: string[]
+  mappedTagsByUserTag: Record<string, RecommendationChatMappedTag[]>
+  candidateQueryType: "tagged" | "tagless" | null
+  candidateCount: number | null
+  selectedMovies: RecommendationChatDebugMovieTraceDto[]
+  generatedReasons: Record<string, string>
+  answer: string | null
+  movies: RecommendationChatMovieDto[]
+  failureStage: RecommendationChatDebugFailureStage | null
+  error: RecommendationChatDebugErrorDto | null
+}
+
+export type RecommendationChatDebugErrorDto = {
+  name: string
+  message: string
+  cause?: { name: string; message: string }[]
+}
+
+export type RecommendationChatDebugMovieTraceDto = {
+  id: number
+  title: string
+  year: number | null
+  matchedUserTags: string[]
+}
+
+export type RecommendationChatDebugFailureStage =
+  | "auth"
+  | "unsupported"
+  | "conversation"
+  | "context"
+  | "analysis"
+  | "embedding"
+  | "tag_mapping"
+  | "candidate_query"
+  | "reason_generation"
+  | "persistence"
+  | "response_validation"
+  | "unknown"
+
+export type RunRecommendationChatDebugResponseDto = {
+  conversationId: string | null
+  status: RecommendationChatDebugRunStatus
+  trace: RecommendationChatDebugTraceDto
+}
+
 // Service input
 export type SubmitRecommendationChatMessageInput = {
   message: string
+}
+
+export type CreateRecommendationChatDebugQuestionInput = {
+  text: string
 }
 
 export type RecommendationChatAnalysis = {
@@ -67,10 +147,19 @@ export type RecommendationChatFilters = Omit<
 
 export type RecommendationChatService = {
   listInitialQuestions(): InitialQuestionsResponseDto
+  listDebugQuestions(): Promise<ListRecommendationChatDebugQuestionsResponseDto>
+  createDebugQuestion(
+    input: CreateRecommendationChatDebugQuestionInput,
+  ): Promise<CreateRecommendationChatDebugQuestionResponseDto>
+  deleteDebugQuestion(input: DeleteRecommendationChatDebugQuestionRepoParams): Promise<void>
   submitRecommendationChatMessage(
     context: RequestContext,
     input: SubmitRecommendationChatMessageInput,
   ): Promise<SubmitRecommendationChatMessageResponseDto>
+  runDebugRecommendationChatMessage(
+    context: RequestContext,
+    input: SubmitRecommendationChatMessageInput,
+  ): Promise<RunRecommendationChatDebugResponseDto>
   getMyRecommendationChatConversation(context: RequestContext): Promise<GetRecommendationChatConversationResponseDto>
   resetMyRecommendationChatConversation(context: RequestContext): Promise<GetRecommendationChatConversationResponseDto>
 }
@@ -95,6 +184,7 @@ export type RecommendationChatSelectedMovie = RecommendationChatCandidate & {
 export type RecommendationChatMappedTag = {
   userTag: string
   tagId: number
+  tag: string
   relevance: number
 }
 
@@ -158,7 +248,21 @@ export type ListTaglessCandidatesRepoParams = {
   limit: number
 }
 
+export type InsertRecommendationChatDebugQuestionRepoParams = {
+  text: string
+}
+
+export type DeleteRecommendationChatDebugQuestionRepoParams = {
+  questionId: string
+}
+
 // Repository results
+export type RecommendationChatDebugQuestionRow = {
+  id: string
+  text: string
+  createdAt: Date
+}
+
 export type RecommendationChatConversationRow = {
   id: string
   userId: string
@@ -216,6 +320,11 @@ export type RecommendationChatRepository = {
   listRecommendedMovieIds(params: ListRecommendedMovieIdsRepoParams): Promise<Set<number>>
   getConversationMessages(params: GetConversationMessagesRepoParams): Promise<RecommendationChatStoredMessageRepoResult[]>
   listAvailableOptions(): Promise<AvailableRecommendationChatOptions>
+  listDebugQuestions(): Promise<RecommendationChatDebugQuestionRow[]>
+  insertDebugQuestion(
+    params: InsertRecommendationChatDebugQuestionRepoParams,
+  ): Promise<RecommendationChatDebugQuestionRow>
+  deleteDebugQuestion(params: DeleteRecommendationChatDebugQuestionRepoParams): Promise<void>
   listTagMappingTopN(params: ListTagMappingTopNRepoParams): Promise<RecommendationChatTagMappingRepoResult[]>
   listTaggedCandidates(params: ListTaggedCandidatesRepoParams): Promise<RecommendationChatCandidate[]>
   listTaglessCandidates(params: ListTaglessCandidatesRepoParams): Promise<RecommendationChatCandidate[]>

@@ -32,8 +32,10 @@ export function createOpenAiRecommendationChatLlmClient(client = new OpenAI()): 
                   "Put removed request/situation/platform/vague terms into excludedTerms.",
                   "Do not put recognized supported metadata or content attributes into excludedTerms.",
                   "Do not treat rating, popularity, famousness, or hidden-gem requests as supported recommendation conditions.",
+                  "Country-only, language-only, genre-only, year-only, and runtime-only recommendation requests are supported. Set intent to new_recommendation when any one supported metadata condition is present.",
                   "If no supported genre, country, language, year, runtime, or content-attribute userTag remains after exclusions, set intent to unsupported and userTagQueries to an empty array.",
                   'Example: "잔잔한 일본 로맨스 영화 추천해줘" is new_recommendation with Romance genre, JP country, and a 잔잔한 userTagQuery.',
+                  'Example: "제작국가가 일본인 영화 추천해줘" is new_recommendation with JP country and empty userTagQueries.',
                   'Example: "좀비가 나오는 긴장감 있는 공포 영화 보고 싶어" is new_recommendation with Horror genre and userTagQueries for 좀비 and 긴장감 있는.',
                   'Example: "혼자 밤에 볼 무서운 공포 영화 추천해줘" is new_recommendation with Horror genre and a 무서운 userTagQuery. Put 혼자 and 밤에 in excludedTerms.',
                   'Example: "친구랑 볼만한 거 추천해줘" is unsupported with empty userTagQueries.',
@@ -51,11 +53,11 @@ export function createOpenAiRecommendationChatLlmClient(client = new OpenAI()): 
 
         const parsed = completion.choices[0]?.message.parsed
         if (!parsed) {
-          throw new RecommendationChatLlmApiError()
+          throw new RecommendationChatLlmApiError("analysis")
         }
         return parsed
       } catch (error) {
-        throw error instanceof RecommendationChatLlmApiError ? error : new RecommendationChatLlmApiError(error)
+        throw error instanceof RecommendationChatLlmApiError ? error : new RecommendationChatLlmApiError("analysis", error)
       }
     },
 
@@ -68,7 +70,14 @@ export function createOpenAiRecommendationChatLlmClient(client = new OpenAI()): 
             {
               role: "system",
               content:
-                "Write concise Korean recommendation reasons for every selected movie. Return only valid JSON matching the schema. Use exactly the provided movie ids.",
+                [
+                  "Write concise Korean recommendation reasons for every selected movie. Return only valid JSON matching the schema.",
+                  "Return exactly one reason object for each selectedMovies item.",
+                  "Use exactly the provided selectedMovies ids as movieId values.",
+                  "Do not omit, duplicate, invent, reorder, or replace movie ids.",
+                  "The reasons array length must equal selectedMovies.length.",
+                  "Each reason must be Korean, concise, and specific to the user's conditions and the movie information.",
+                ].join(" "),
             },
             {
               role: "user",
@@ -80,11 +89,13 @@ export function createOpenAiRecommendationChatLlmClient(client = new OpenAI()): 
 
         const parsed = completion.choices[0]?.message.parsed
         if (!parsed) {
-          throw new RecommendationChatLlmApiError()
+          throw new RecommendationChatLlmApiError("reason_generation")
         }
         return parsed
       } catch (error) {
-        throw error instanceof RecommendationChatLlmApiError ? error : new RecommendationChatLlmApiError(error)
+        throw error instanceof RecommendationChatLlmApiError
+          ? error
+          : new RecommendationChatLlmApiError("reason_generation", error)
       }
     },
   }

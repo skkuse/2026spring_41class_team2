@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest"
 import {
   RecommendationChatEmbeddingApiError,
   RecommendationChatLlmApiError,
+  RecommendationChatPersistenceError,
   RecommendationChatVectorSearchError,
   UnauthorizedRecommendationChatError,
 } from "./recommendation-chat-errors"
@@ -84,13 +85,45 @@ describe("recommendation chat service", () => {
     expect(repository.deleteConversationByUserId).toHaveBeenCalledWith({ userId: "user-1" })
   })
 
+  it("manages shared debug questions", async () => {
+    repository.listDebugQuestions.mockResolvedValue([
+      { id: "00000000-0000-4000-8000-000000000001", text: "코미디 추천", createdAt: new Date("2026-05-31T00:00:00.000Z") },
+    ])
+    repository.insertDebugQuestion.mockResolvedValue({
+      id: "00000000-0000-4000-8000-000000000002",
+      text: "공포 추천",
+      createdAt: new Date("2026-05-31T00:01:00.000Z"),
+    })
+
+    const service = createService(repository, llmClient, embeddingClient)
+
+    await expect(service.listDebugQuestions()).resolves.toEqual({
+      questions: [
+        {
+          id: "00000000-0000-4000-8000-000000000001",
+          text: "코미디 추천",
+          createdAt: "2026-05-31T00:00:00.000Z",
+        },
+      ],
+    })
+    await expect(service.createDebugQuestion({ text: "공포 추천" })).resolves.toMatchObject({
+      question: { text: "공포 추천" },
+    })
+    await service.deleteDebugQuestion({ questionId: "00000000-0000-4000-8000-000000000002" })
+
+    expect(repository.insertDebugQuestion).toHaveBeenCalledWith({ text: "공포 추천" })
+    expect(repository.deleteDebugQuestion).toHaveBeenCalledWith({
+      questionId: "00000000-0000-4000-8000-000000000002",
+    })
+  })
+
   it("returns fallback when user tags have no valid mapping", async () => {
     llmClient.analyzeRequest.mockResolvedValue({ ...baseAnalysis(), userTagQueries: [userTagQuery("잔잔한")] })
     repository.listTagMappingTopN.mockResolvedValue([{ tagId: 1, tag: "quiet", relevance: 0.44 }])
 
     const response = await createService(repository, llmClient, embeddingClient).submitRecommendationChatMessage(context(), { message: "잔잔한 영화" })
 
-    expect(response.answer).toContain("찾지 못했어요")
+    expect(response.answer).toContain("내부 추천 데이터 오류")
     expect(embeddingClient.embedUserTagQueries).toHaveBeenCalledWith({
       embeddingInputs: ["잔잔한 차분한 고요한 느린 호흡 감성적인 일상 정서 여운"],
       embeddingModel: "text-embedding-3-small",
@@ -169,7 +202,7 @@ describe("recommendation chat service", () => {
     const response = await createService(repository, llmClient, embeddingClient).submitRecommendationChatMessage(context(), { message: "친구랑 볼만한 거 추천해줘" })
 
     expect(response.movies).toEqual([])
-    expect(response.answer).toContain("추천 채팅")
+    expect(response.answer).toContain("지원하지 않는 요청입니다")
     expect(embeddingClient.embedUserTagQueries).not.toHaveBeenCalled()
     expect(repository.listTaglessCandidates).not.toHaveBeenCalled()
   })
@@ -196,13 +229,111 @@ describe("recommendation chat service", () => {
     })
   })
 
-  it("fails when reason generation omits a selected movie", async () => {
+  it("returns debug success trace from the shared pipeline", async () => {
+    llmClient.analyzeRequest.mockResolvedValue(baseAnalysis())
+    repository.listTaglessCandidates.mockResolvedValue([candidate(1)])
+    llmClient.generateMovieReasons.mockResolvedValue({ reasons: [{ movieId: 1, reason: "조건과 잘 맞아요." }] })
+
+    const response = await createService(repository, llmClient, embeddingClient).runDebugRecommendationChatMessage(context(), { message: "코미디 추천" })
+
+    expect(response.status).toBe("success")
+    expect(response.trace.rawAnalysis).toMatchObject({ intent: "new_recommendation" })
+    expect(response.trace.normalizedAnalysis).toMatchObject({ genreIds: [1] })
+    expect(response.trace.filters).toMatchObject({ genreIds: [1] })
+    expect(response.trace.candidateQueryType).toBe("tagless")
+    expect(response.trace.candidateCount).toBe(1)
+    expect(response.trace.selectedMovies).toEqual([
+      { id: 1, title: "movie-1", year: 2020, matchedUserTags: [] },
+    ])
+    expect(response.trace.generatedReasons).toEqual({ "1": "조건과 잘 맞아요." })
+    expect(response.trace.movies).toHaveLength(1)
+  })
+
+  it("returns debug error trace without forcing a response message on pipeline failure", async () => {
+    llmClient.analyzeRequest.mockResolvedValue({ ...baseAnalysis(), userTagQueries: [userTagQuery("잔잔한")] })
+    embeddingClient.embedUserTagQueries.mockRejectedValue(new Error("embedding failed"))
+
+    const response = await createService(repository, llmClient, embeddingClient).runDebugRecommendationChatMessage(context(), { message: "잔잔한 영화" })
+
+    expect(response.status).toBe("error")
+    expect(response.conversationId).toBe("conversation-1")
+    expect(response.trace.failureStage).toBe("embedding")
+    expect(response.trace.error).toMatchObject({ name: "RecommendationChatEmbeddingApiError" })
+    expect(repository.insertRequestMessage).toHaveBeenCalled()
+    expect(repository.insertResponseMessage).not.toHaveBeenCalled()
+  })
+
+  it("uses fallback reasons when reason generation omits selected movies", async () => {
     llmClient.analyzeRequest.mockResolvedValue(baseAnalysis())
     repository.listTaglessCandidates.mockResolvedValue([candidate(1)])
     llmClient.generateMovieReasons.mockResolvedValue({ reasons: [] })
 
+    const response = await createService(repository, llmClient, embeddingClient).submitRecommendationChatMessage(context(), { message: "추천" })
+
+    expect(response.movies).toEqual([
+      expect.objectContaining({ id: 1, reason: "요청하신 조건과 잘 어울리는 영화라 추천드려요." }),
+    ])
+    expect(repository.insertRecommendedMovies).toHaveBeenCalledWith({
+      messageId: "message-response-1",
+      movies: [{ movieId: 1, rank: 1, reason: "요청하신 조건과 잘 어울리는 영화라 추천드려요." }],
+    })
+    expect(llmClient.generateMovieReasons).toHaveBeenCalledTimes(1)
+  })
+
+  it("uses fallback reasons when reason generation request fails", async () => {
+    llmClient.analyzeRequest.mockResolvedValue(baseAnalysis())
+    repository.listTaglessCandidates.mockResolvedValue([candidate(1)])
+    llmClient.generateMovieReasons.mockRejectedValue(new Error("openai failed"))
+
+    const response = await createService(repository, llmClient, embeddingClient).submitRecommendationChatMessage(context(), { message: "추천" })
+
+    expect(response.movies).toEqual([
+      expect.objectContaining({ id: 1, reason: "요청하신 조건과 잘 어울리는 영화라 추천드려요." }),
+    ])
+    expect(llmClient.generateMovieReasons).toHaveBeenCalledTimes(1)
+  })
+
+  it("records debug fallback reasons when recommendation reason generation is incomplete", async () => {
+    llmClient.analyzeRequest.mockResolvedValue(baseAnalysis())
+    repository.listTaglessCandidates.mockResolvedValue([candidate(1)])
+    llmClient.generateMovieReasons.mockResolvedValue({ reasons: [] })
+
+    const response = await createService(repository, llmClient, embeddingClient).runDebugRecommendationChatMessage(context(), { message: "추천" })
+
+    expect(response.status).toBe("success")
+    expect(response.trace.failureStage).toBeNull()
+    expect(response.trace.selectedMovies).toEqual([{ id: 1, title: "movie-1", year: 2020, matchedUserTags: [] }])
+    expect(response.trace.generatedReasons).toEqual({ "1": "요청하신 조건과 잘 어울리는 영화라 추천드려요." })
+    expect(response.trace.error).toBeNull()
+  })
+
+  it("includes wrapped error causes in debug traces", async () => {
+    llmClient.analyzeRequest.mockRejectedValue(new Error("openai parse failed"))
+
+    const response = await createService(repository, llmClient, embeddingClient).runDebugRecommendationChatMessage(context(), { message: "추천" })
+
+    expect(response.status).toBe("error")
+    expect(response.trace.failureStage).toBe("analysis")
+    expect(response.trace.error).toMatchObject({
+      name: "RecommendationChatLlmApiError",
+      message: "Recommendation chat LLM request failed.",
+      cause: [{ name: "Error", message: "openai parse failed" }],
+    })
+  })
+
+  it("maps response persistence failures to persistence stage", async () => {
+    llmClient.analyzeRequest.mockResolvedValue(baseAnalysis())
+    repository.listTaglessCandidates.mockResolvedValue([candidate(1)])
+    llmClient.generateMovieReasons.mockResolvedValue({ reasons: [{ movieId: 1, reason: "조건과 잘 맞아요." }] })
+    repository.insertResponseMessage.mockRejectedValue(new Error("db failed"))
+
+    const response = await createService(repository, llmClient, embeddingClient).runDebugRecommendationChatMessage(context(), { message: "추천" })
+
+    expect(response.status).toBe("error")
+    expect(response.trace.failureStage).toBe("persistence")
+    expect(response.trace.error).toMatchObject({ name: "RecommendationChatPersistenceError" })
     await expect(createService(repository, llmClient, embeddingClient).submitRecommendationChatMessage(context(), { message: "추천" })).rejects.toBeInstanceOf(
-      RecommendationChatLlmApiError,
+      RecommendationChatPersistenceError,
     )
   })
 
@@ -242,6 +373,9 @@ function createMockRepository(): MockRepository {
       countries: [{ code: "US" }],
       languages: [{ code: "en" }],
     }),
+    listDebugQuestions: vi.fn().mockResolvedValue([]),
+    insertDebugQuestion: vi.fn(),
+    deleteDebugQuestion: vi.fn().mockResolvedValue(undefined),
     listTagMappingTopN: vi.fn().mockResolvedValue([{ tagId: 10, tag: "quiet", relevance: 0.9 }]),
     listTaggedCandidates: vi.fn().mockResolvedValue([]),
     listTaglessCandidates: vi.fn().mockResolvedValue([]),

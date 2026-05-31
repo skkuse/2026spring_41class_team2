@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { ZodError } from "zod"
 import { createOptionalRequestContext, createRequestId } from "@/server/auth/request-context"
 import {
   apiErrorCodes,
@@ -10,6 +11,7 @@ import { logger } from "@/server/logger"
 import {
   RecommendationChatEmbeddingApiError,
   RecommendationChatLlmApiError,
+  RecommendationChatPersistenceError,
   recommendationChatService,
   RecommendationChatVectorSearchError,
   UnauthorizedRecommendationChatError,
@@ -47,7 +49,7 @@ export async function POST(request: Request) {
   } catch (error) {
     if (error instanceof UnauthorizedRecommendationChatError) {
       logger.warn("recommendation_chat.unauthorized", { requestId, route, error })
-      return createUnauthorizedResponse({ requestId })
+      return createUnauthorizedResponse({ requestId, details: recommendationChatFailureDetails("auth") })
     }
 
     if (error instanceof RecommendationChatLlmApiError) {
@@ -56,6 +58,7 @@ export async function POST(request: Request) {
         requestId,
         code: apiErrorCodes.recommendationChatLlmApiFailed,
         message: "추천 요청을 분석하지 못했습니다.",
+        details: recommendationChatFailureDetails(error.failureStage),
       })
     }
 
@@ -65,6 +68,7 @@ export async function POST(request: Request) {
         requestId,
         code: apiErrorCodes.recommendationChatEmbeddingApiFailed,
         message: "추천 태그를 처리하지 못했습니다.",
+        details: recommendationChatFailureDetails("embedding"),
       })
     }
 
@@ -74,6 +78,27 @@ export async function POST(request: Request) {
         requestId,
         code: apiErrorCodes.recommendationChatVectorSearchFailed,
         message: "추천 후보를 조회하지 못했습니다.",
+        details: recommendationChatFailureDetails("candidate_query"),
+      })
+    }
+
+    if (error instanceof RecommendationChatPersistenceError) {
+      logger.error("recommendation_chat.persistence_failed", { requestId, route, error })
+      return createApiFailureResponse({
+        requestId,
+        code: apiErrorCodes.recommendationChatFailed,
+        message: "추천 결과를 저장하지 못했습니다.",
+        details: recommendationChatFailureDetails("persistence"),
+      })
+    }
+
+    if (error instanceof ZodError) {
+      logger.error("recommendation_chat.response_validation_failed", { requestId, route, error })
+      return createApiFailureResponse({
+        requestId,
+        code: apiErrorCodes.recommendationChatFailed,
+        message: "추천 응답 형식이 올바르지 않습니다.",
+        details: recommendationChatFailureDetails("response_validation"),
       })
     }
 
@@ -82,6 +107,33 @@ export async function POST(request: Request) {
       requestId,
       code: apiErrorCodes.recommendationChatFailed,
       message: "추천 채팅 메시지를 처리하지 못했습니다.",
+      details: recommendationChatFailureDetails("unknown"),
     })
   }
+}
+
+function recommendationChatFailureDetails(failureStage: string) {
+  return {
+    failureStage,
+    failureSource: recommendationChatFailureSource(failureStage),
+  }
+}
+
+function recommendationChatFailureSource(failureStage: string) {
+  if (failureStage === "analysis" || failureStage === "reason_generation" || failureStage === "embedding") {
+    return "external_ai_service"
+  }
+  if (failureStage === "auth") {
+    return "auth"
+  }
+  if (failureStage === "persistence") {
+    return "internal_storage"
+  }
+  if (failureStage === "response_validation") {
+    return "internal_response_validation"
+  }
+  if (failureStage === "candidate_query") {
+    return "internal_candidate_query"
+  }
+  return "unknown"
 }
