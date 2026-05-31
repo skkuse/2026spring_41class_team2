@@ -1,6 +1,7 @@
 "use client"
 
 import { Header } from "@/components/header"
+import { MovieCard } from "@/components/movie-card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Textarea } from "@/components/ui/textarea"
@@ -16,6 +17,8 @@ import {
   toggleReviewLike,
   type MovieReview,
 } from "@/lib/reviews/reviews-client"
+import { getSimilarMovies } from "@/lib/movies/similar-movies-client"
+import { mapMovieCardToView, type MovieCardView } from "@/lib/movies/movie-view"
 
 const movieData: Record<string, {
   title: string
@@ -147,13 +150,6 @@ const defaultMovie = {
   reviews: []
 }
 
-const similarMovies = [
-  { id: "2", title: "올드보이", posterUrl: "https://image.tmdb.org/t/p/w500/pWDtjs568ZfOTMbURQBYuT4Qxka.jpg" },
-  { id: "13", title: "쇼생크 탈출", posterUrl: "https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg" },
-  { id: "15", title: "다크 나이트", posterUrl: "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg" },
-  { id: "17", title: "펄프 픽션", posterUrl: "https://image.tmdb.org/t/p/w500/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg" },
-]
-
 export default function MovieDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params)
   const router = useRouter()
@@ -168,6 +164,9 @@ export default function MovieDetailPage({ params }: { params: Promise<{ id: stri
   const [reviewFormError, setReviewFormError] = useState<string | null>(null)
   const [reviewListError, setReviewListError] = useState<string | null>(null)
   const [likePendingReviewId, setLikePendingReviewId] = useState<string | null>(null)
+  const [similarMovieViews, setSimilarMovieViews] = useState<MovieCardView[]>([])
+  const [similarMoviesLoading, setSimilarMoviesLoading] = useState(true)
+  const [similarMoviesError, setSimilarMoviesError] = useState<string | null>(null)
 
   const movieId = Number(id)
 
@@ -220,15 +219,43 @@ export default function MovieDetailPage({ params }: { params: Promise<{ id: stri
     }
   }, [movieId])
 
+  const loadSimilarMovies = useCallback(async (cancelled?: () => boolean) => {
+    if (!Number.isInteger(movieId) || movieId <= 0) {
+      setSimilarMoviesLoading(false)
+      setSimilarMovieViews([])
+      return
+    }
+
+    setSimilarMoviesLoading(true)
+    setSimilarMoviesError(null)
+
+    try {
+      const response = await getSimilarMovies(movieId, { limit: 4 })
+      if (!cancelled?.()) {
+        setSimilarMovieViews(response.movies.map(mapMovieCardToView))
+      }
+    } catch {
+      if (!cancelled?.()) {
+        setSimilarMoviesError("비슷한 영화를 불러오지 못했습니다.")
+        setSimilarMovieViews([])
+      }
+    } finally {
+      if (!cancelled?.()) {
+        setSimilarMoviesLoading(false)
+      }
+    }
+  }, [movieId])
+
   useEffect(() => {
     let cancelled = false
     void loadMovie(() => cancelled)
     void loadReviews(() => cancelled)
+    void loadSimilarMovies(() => cancelled)
 
     return () => {
       cancelled = true
     }
-  }, [loadMovie, loadReviews])
+  }, [loadMovie, loadReviews, loadSimilarMovies])
 
   const handleBookmarkClick = async () => {
     if (bookmarkPending) {
@@ -535,21 +562,28 @@ export default function MovieDetailPage({ params }: { params: Promise<{ id: stri
       <section className="border-t border-border py-12">
         <div className="container mx-auto px-4">
           <h2 className="text-xl font-semibold">비슷한 영화</h2>
-          <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
-            {/* TODO: replace hardcoded similar movies with the Item-CF similar movies API. */}
-            {similarMovies.map((m) => (
-              <Link key={m.id} href={`/movie/${m.id}`} className="group">
-                <div className="overflow-hidden rounded-xl">
-                  <img
-                    src={m.posterUrl}
-                    alt={m.title}
-                    className="aspect-[2/3] w-full object-cover transition-transform group-hover:scale-105"
-                  />
-                </div>
-                <p className="mt-2 font-medium">{m.title}</p>
-              </Link>
-            ))}
-          </div>
+          {similarMoviesLoading ? (
+            <div className="mt-6 rounded-xl bg-card p-8 text-center">
+              <p className="text-muted-foreground">비슷한 영화를 불러오는 중입니다.</p>
+            </div>
+          ) : similarMoviesError ? (
+            <div className="mt-6 rounded-xl bg-card p-8 text-center">
+              <p className="text-muted-foreground">{similarMoviesError}</p>
+              <Button variant="outline" size="sm" className="mt-4" onClick={() => void loadSimilarMovies()}>
+                다시 시도
+              </Button>
+            </div>
+          ) : similarMovieViews.length > 0 ? (
+            <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
+              {similarMovieViews.map((similarMovie) => (
+                <MovieCard key={similarMovie.id} {...similarMovie} compact showLikeButton={false} />
+              ))}
+            </div>
+          ) : (
+            <div className="mt-6 rounded-xl bg-card p-8 text-center">
+              <p className="text-muted-foreground">비슷한 영화가 아직 없습니다.</p>
+            </div>
+          )}
         </div>
       </section>
     </div>

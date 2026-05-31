@@ -23,6 +23,10 @@ export type MovieListResponseDto = {
   totalCount: number
 }
 
+export type SimilarMoviesResponseDto = {
+  movies: MovieCardDto[]
+}
+
 export type MovieCastMemberDto = {
   id: number
   name: string
@@ -67,6 +71,10 @@ export type ListMoviesInput = {
   page?: number
   size?: number
   genreId?: number
+}
+
+export type ListSimilarMoviesInput = {
+  limit?: number
 }
 
 // Repository params
@@ -147,5 +155,6 @@ export type MovieRepository = {
 export type MovieService = {
   listMovies(context: RequestContext, input: ListMoviesInput): Promise<MovieListResponseDto>
   getMovieDetail(context: RequestContext, movieId: number): Promise<MovieDetailDto>
+  listSimilarMovies(context: RequestContext, movieId: number, input: ListSimilarMoviesInput): Promise<SimilarMoviesResponseDto>
   listGenres(): Promise<GenreListResponseDto>
 }

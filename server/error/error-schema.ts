@@ -17,6 +17,7 @@ export const apiErrorResponseSchema = z.object({
       apiErrorCodes.duplicateReview,
       apiErrorCodes.movieListFailed,
       apiErrorCodes.movieDetailFailed,
+      apiErrorCodes.similarMoviesFailed,
       apiErrorCodes.genreListFailed,
       apiErrorCodes.bookmarkedMoviesFailed,
       apiErrorCodes.bookmarkMutationFailed,

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest"
-import { movieIdParamsSchema, movieListQuerySchema } from "./movie-schema"
+import { movieIdParamsSchema, movieListQuerySchema, similarMoviesQuerySchema, similarMoviesResponseSchema } from "./movie-schema"
 
 describe("movieListQuerySchema", () => {
   it("defaults sort and pagination fields", () => {
@@ -65,5 +65,56 @@ describe("movieIdParamsSchema", () => {
 
   it("rejects non-numeric movie ids", () => {
     expect(() => movieIdParamsSchema.parse({ movieId: "abc" })).toThrow()
+  })
+})
+
+describe("similarMoviesQuerySchema", () => {
+  it("defaults limit", () => {
+    expect(similarMoviesQuerySchema.parse({})).toEqual({ limit: 4 })
+  })
+
+  it("parses limit as a positive integer", () => {
+    expect(similarMoviesQuerySchema.parse({ limit: "12" })).toEqual({ limit: 12 })
+  })
+
+  it("rejects out-of-range limits", () => {
+    expect(() => similarMoviesQuerySchema.parse({ limit: "0" })).toThrow()
+    expect(() => similarMoviesQuerySchema.parse({ limit: "21" })).toThrow()
+  })
+
+  it("rejects unknown query fields", () => {
+    expect(() => similarMoviesQuerySchema.parse({ limit: "4", page: "1" })).toThrow()
+  })
+})
+
+describe("similarMoviesResponseSchema", () => {
+  it("accepts a movie card list response", () => {
+    expect(
+      similarMoviesResponseSchema.parse({
+        movies: [
+          {
+            id: 550,
+            title: "Fight Club",
+            year: 1999,
+            rating: 4.2,
+            genres: [{ id: 18, name: "Drama" }],
+            posterUrl: null,
+            isBookmarked: false,
+          },
+        ],
+      }),
+    ).toEqual({
+      movies: [
+        {
+          id: 550,
+          title: "Fight Club",
+          year: 1999,
+          rating: 4.2,
+          genres: [{ id: 18, name: "Drama" }],
+          posterUrl: null,
+          isBookmarked: false,
+        },
+      ],
+    })
   })
 })

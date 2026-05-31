@@ -11,6 +11,7 @@ export const apiErrorCodes = {
   duplicateReview: "duplicate_review",
   movieListFailed: "movie_list_failed",
   movieDetailFailed: "movie_detail_failed",
+  similarMoviesFailed: "similar_movies_failed",
   genreListFailed: "genre_list_failed",
   bookmarkedMoviesFailed: "bookmarked_movies_failed",
   bookmarkMutationFailed: "bookmark_mutation_failed",

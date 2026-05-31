@@ -10,13 +10,28 @@ import {
 } from "./movie-rules"
 import { MovieNotFoundError } from "./movie-errors"
 import { createMovieRepository } from "./movie-repository"
+import { createItemCfRecommendationRepository } from "@/server/recommendations/item-cf-repository"
+import {
+  calculateFallbackCandidateFetchLimit,
+  calculateItemCfCandidateFetchLimit,
+  pickSectionMovies,
+  toFallbackCandidates,
+  toItemCfCandidates,
+} from "@/server/recommendations/item-cf-rules"
+import type { ItemCfRecommendationRepository } from "@/server/recommendations/item-cf-types"
 import type { ListMoviesInput, MovieDetailDto, MovieRepository, MovieService } from "./movie-types"
 
 export type MovieServiceDeps = {
   repository: MovieRepository
+  itemCfRepository?: Pick<
+    ItemCfRecommendationRepository,
+    "findExcludedMovieIds" | "listItemCfCandidates" | "listFallbackCandidates"
+  >
 }
 
 export function createMovieService(deps: MovieServiceDeps): MovieService {
+  const itemCfRepository = deps.itemCfRepository ?? createItemCfRecommendationRepository()
+
   return {
     async listMovies(context: RequestContext, input: ListMoviesInput) {
       const normalized = normalizeMovieListInput(input)
@@ -86,6 +101,55 @@ export function createMovieService(deps: MovieServiceDeps): MovieService {
       }
     },
 
+    async listSimilarMovies(context: RequestContext, movieId: number, input) {
+      const sourceMovie = await deps.repository.getMovieDetail(movieId)
+      if (!sourceMovie) {
+        throw new MovieNotFoundError(movieId)
+      }
+
+      const limit = input.limit ?? 4
+      const excludedMovieIds = context.user
+        ? new Set([movieId, ...(await itemCfRepository.findExcludedMovieIds({ userId: context.user.id }))])
+        : new Set([movieId])
+      const usedMovieIds = new Set<number>()
+      const itemCfRows = await itemCfRepository.listItemCfCandidates({
+        sourceMovieId: movieId,
+        limit: calculateItemCfCandidateFetchLimit(limit),
+      })
+      const itemCfMovies = pickSectionMovies({
+        candidates: toItemCfCandidates(itemCfRows),
+        excludedMovieIds,
+        usedMovieIds,
+        limit,
+      })
+      const fallbackMovies =
+        itemCfMovies.length < limit
+          ? pickSectionMovies({
+              candidates: toFallbackCandidates(
+                await itemCfRepository.listFallbackCandidates({
+                  excludedMovieIds: [...excludedMovieIds],
+                  limit: calculateFallbackCandidateFetchLimit(1, limit),
+                }),
+              ),
+              excludedMovieIds,
+              usedMovieIds,
+              limit: limit - itemCfMovies.length,
+            })
+          : []
+
+      return {
+        movies: [...itemCfMovies, ...fallbackMovies].map((row) => ({
+          id: row.id,
+          title: row.title,
+          year: row.releaseYear,
+          rating: calculateMovieRating(row),
+          genres: row.genres,
+          posterUrl: buildTmdbImageUrl(row.posterPath, "w500"),
+          isBookmarked: false,
+        })),
+      }
+    },
+
     async listGenres() {
       return {
         genres: await deps.repository.listGenres(),
@@ -96,4 +160,5 @@ export function createMovieService(deps: MovieServiceDeps): MovieService {
 
 export const movieService = createMovieService({
   repository: createMovieRepository(),
+  itemCfRepository: createItemCfRecommendationRepository(),
 })

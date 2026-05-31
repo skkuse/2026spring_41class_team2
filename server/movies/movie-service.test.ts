@@ -5,6 +5,7 @@ vi.mock("server-only", () => ({}))
 import { MovieNotFoundError } from "./movie-errors"
 import { createMovieService } from "./movie-service"
 import type { MovieRepository } from "./movie-types"
+import type { ItemCfRecommendationRepository } from "@/server/recommendations/item-cf-types"
 
 const context = {
   requestId: "request-1",
@@ -129,6 +130,88 @@ describe("movieService.getMovieDetail", () => {
   })
 })
 
+describe("movieService.listSimilarMovies", () => {
+  it("throws MovieNotFoundError when the source movie does not exist", async () => {
+    const service = createMovieService({
+      repository: createRepository({ getMovieDetail: vi.fn().mockResolvedValue(null) }),
+      itemCfRepository: createItemCfRepository(),
+    })
+
+    await expect(service.listSimilarMovies(context, 404, {})).rejects.toBeInstanceOf(MovieNotFoundError)
+  })
+
+  it("returns Item CF movies first and fills shortages with fallback popular movies", async () => {
+    const itemCfRepository = createItemCfRepository({
+      findExcludedMovieIds: vi.fn().mockResolvedValue(new Set([10, 101])),
+      listItemCfCandidates: vi
+        .fn()
+        .mockResolvedValue([createRecommendationMovie(101), createRecommendationMovie(102, { score: 0.9 })]),
+      listFallbackCandidates: vi.fn().mockResolvedValue([
+        createRecommendationMovie(102),
+        createRecommendationMovie(103, { posterPath: null }),
+        createRecommendationMovie(104),
+      ]),
+    })
+    const service = createMovieService({
+      repository: createRepository({ getMovieDetail: vi.fn().mockResolvedValue(createDetailRow({ id: 10 })) }),
+      itemCfRepository,
+    })
+
+    await expect(
+      service.listSimilarMovies({ requestId: "request-1", user: { id: "user-1", email: "a@b.com" } }, 10, { limit: 3 }),
+    ).resolves.toEqual({
+      movies: [
+        {
+          id: 102,
+          title: "Movie 102",
+          year: 2000,
+          rating: 4,
+          genres: [],
+          posterUrl: "https://image.tmdb.org/t/p/w500/poster-102.jpg",
+          isBookmarked: false,
+        },
+        {
+          id: 103,
+          title: "Movie 103",
+          year: 2000,
+          rating: 4,
+          genres: [],
+          posterUrl: null,
+          isBookmarked: false,
+        },
+        {
+          id: 104,
+          title: "Movie 104",
+          year: 2000,
+          rating: 4,
+          genres: [],
+          posterUrl: "https://image.tmdb.org/t/p/w500/poster-104.jpg",
+          isBookmarked: false,
+        },
+      ],
+    })
+    expect(itemCfRepository.findExcludedMovieIds).toHaveBeenCalledWith({ userId: "user-1" })
+    expect(itemCfRepository.listItemCfCandidates).toHaveBeenCalledWith({ sourceMovieId: 10, limit: 15 })
+    expect(itemCfRepository.listFallbackCandidates).toHaveBeenCalledWith({ excludedMovieIds: [10, 101], limit: 15 })
+  })
+
+  it("does not load user exclusions for guests", async () => {
+    const itemCfRepository = createItemCfRepository({
+      listItemCfCandidates: vi.fn().mockResolvedValue([createRecommendationMovie(10), createRecommendationMovie(20)]),
+    })
+    const service = createMovieService({
+      repository: createRepository({ getMovieDetail: vi.fn().mockResolvedValue(createDetailRow({ id: 10 })) }),
+      itemCfRepository,
+    })
+
+    const result = await service.listSimilarMovies(context, 10, { limit: 1 })
+
+    expect(result.movies.map((movie) => movie.id)).toEqual([20])
+    expect(itemCfRepository.findExcludedMovieIds).not.toHaveBeenCalled()
+    expect(itemCfRepository.listFallbackCandidates).not.toHaveBeenCalled()
+  })
+})
+
 function createListRow(input: { id: number }) {
   return {
     id: input.id,
@@ -143,6 +226,42 @@ function createListRow(input: { id: number }) {
   }
 }
 
+function createDetailRow(input: { id: number }) {
+  return {
+    ...createListRow(input),
+    originalTitle: `Original ${input.id}`,
+    runtime: 120,
+    originalLanguage: "en",
+    productionCountries: [],
+    overview: null,
+    backdropPath: null,
+    trailerUrl: null,
+    director: null,
+    cast: [],
+    reviewCount: 0,
+  }
+}
+
+function createRecommendationMovie(
+  id: number,
+  overrides: Partial<ReturnType<typeof createRecommendationMovieBase>> = {},
+) {
+  return {
+    ...createRecommendationMovieBase(id),
+    ...overrides,
+  }
+}
+
+function createRecommendationMovieBase(id: number) {
+  return {
+    ...createListRow({ id }),
+    posterPath: `/poster-${id}.jpg`,
+    isBookmarked: false,
+    score: 0.8,
+    coRatingCount: 20,
+  }
+}
+
 function createRepository(overrides: Partial<MovieRepository>): MovieRepository {
   return {
     listMovies: vi.fn().mockResolvedValue({ movies: [], totalCount: 0 }),
@@ -150,6 +269,16 @@ function createRepository(overrides: Partial<MovieRepository>): MovieRepository 
     listGenres: vi.fn().mockResolvedValue([]),
     findBookmarkedMovieIds: vi.fn().mockResolvedValue(new Set<number>()),
     isMovieBookmarked: vi.fn().mockResolvedValue(false),
+    ...overrides,
+  }
+}
+
+function createItemCfRepository(overrides: Partial<ItemCfRecommendationRepository> = {}): ItemCfRecommendationRepository {
+  return {
+    listSeedMovies: vi.fn().mockResolvedValue([]),
+    findExcludedMovieIds: vi.fn().mockResolvedValue(new Set<number>()),
+    listItemCfCandidates: vi.fn().mockResolvedValue([]),
+    listFallbackCandidates: vi.fn().mockResolvedValue([]),
     ...overrides,
   }
 }

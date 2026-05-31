@@ -1,6 +1,10 @@
 import { z } from "zod"
 import { DEFAULT_MOVIE_PAGE, DEFAULT_MOVIE_PAGE_SIZE, MAX_MOVIE_PAGE_SIZE } from "./movie-rules"
 
+export const DEFAULT_SIMILAR_MOVIES_LIMIT = 4
+export const MIN_SIMILAR_MOVIES_LIMIT = 1
+export const MAX_SIMILAR_MOVIES_LIMIT = 20
+
 export const genreSchema = z.object({
   id: z.number().int().positive(),
   name: z.string(),
@@ -56,6 +60,22 @@ export const movieListResponseSchema = z.object({
   page: z.number().int().positive(),
   size: z.number().int().positive(),
   totalCount: z.number().int().nonnegative(),
+})
+
+export const similarMoviesQuerySchema = z
+  .object({
+    limit: z.coerce
+      .number()
+      .int()
+      .min(MIN_SIMILAR_MOVIES_LIMIT)
+      .max(MAX_SIMILAR_MOVIES_LIMIT)
+      .optional()
+      .default(DEFAULT_SIMILAR_MOVIES_LIMIT),
+  })
+  .strict()
+
+export const similarMoviesResponseSchema = z.object({
+  movies: z.array(movieCardSchema),
 })
 
 export const movieCastMemberSchema = z.object({
