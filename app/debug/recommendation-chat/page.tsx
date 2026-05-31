@@ -135,14 +135,18 @@ export default function RecommendationChatDebugPage() {
     setIsRunning(true)
     setErrorMessage(null)
     try {
-      const runResults = await runWithConcurrency(
+      const shouldAutoSelectFirstResult = selectedResult === null
+      await runSequentially(
         questions.map((question) => question.text),
-        3,
         runOneDebugMessage,
+        (result, index) => {
+          setResults((prev) => [result, ...prev])
+          if (shouldAutoSelectFirstResult && index === 0) {
+            setSelectedId(result.id)
+            setRawJsonIndex(0)
+          }
+        },
       )
-      setResults((prev) => [...runResults.reverse(), ...prev])
-      setSelectedId(runResults[runResults.length - 1]?.id ?? null)
-      setRawJsonIndex(0)
     } catch (error) {
       setErrorMessage(toErrorMessage(error))
     } finally {
@@ -732,23 +736,17 @@ async function getMe(): Promise<MeResponse> {
   return body as MeResponse
 }
 
-export async function runWithConcurrency<T, R>(
+export async function runSequentially<T, R>(
   items: T[],
-  concurrency: number,
   worker: (item: T, index: number) => Promise<R>,
+  onResult: (result: R, index: number, item: T) => void,
 ) {
-  const results = new Array<R>(items.length)
-  let nextIndex = 0
-
-  async function runWorker() {
-    while (nextIndex < items.length) {
-      const currentIndex = nextIndex
-      nextIndex += 1
-      results[currentIndex] = await worker(items[currentIndex], currentIndex)
-    }
+  const results: R[] = []
+  for (const [index, item] of items.entries()) {
+    const result = await worker(item, index)
+    results.push(result)
+    onResult(result, index, item)
   }
-
-  await Promise.all(Array.from({ length: Math.min(concurrency, items.length) }, runWorker))
   return results
 }
 
