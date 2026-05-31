@@ -9,6 +9,7 @@ import {
   resetMyRecommendationChatConversation,
   runRecommendationChatDebug,
   submitRecommendationChatMessage,
+  updateRecommendationChatDebugQuestion,
 } from "./recommendation-chat-client"
 
 describe("recommendation chat client", () => {
@@ -22,15 +23,19 @@ describe("recommendation chat client", () => {
   it("manages debug questions", async () => {
     const fetchImpl = vi
       .fn()
-      .mockResolvedValueOnce(jsonResponse({ questions: [{ id: "question-1", text: "코미디 추천", createdAt: "now" }] }))
-      .mockResolvedValueOnce(jsonResponse({ question: { id: "question-2", text: "공포 추천", createdAt: "now" } }))
+      .mockResolvedValueOnce(jsonResponse({ questions: [{ id: "question-1", text: "코미디 추천", isBuggy: true, createdAt: "now" }] }))
+      .mockResolvedValueOnce(jsonResponse({ question: { id: "question-2", text: "공포 추천", isBuggy: false, createdAt: "now" } }))
+      .mockResolvedValueOnce(jsonResponse({ question: { id: "question-2", text: "공포 추천", isBuggy: true, createdAt: "now" } }))
       .mockResolvedValueOnce(new Response(null, { status: 204 }))
 
     await expect(getRecommendationChatDebugQuestions(fetchImpl)).resolves.toEqual({
-      questions: [{ id: "question-1", text: "코미디 추천", createdAt: "now" }],
+      questions: [{ id: "question-1", text: "코미디 추천", isBuggy: true, createdAt: "now" }],
     })
     await expect(createRecommendationChatDebugQuestion({ text: "공포 추천" }, fetchImpl)).resolves.toEqual({
-      question: { id: "question-2", text: "공포 추천", createdAt: "now" },
+      question: { id: "question-2", text: "공포 추천", isBuggy: false, createdAt: "now" },
+    })
+    await expect(updateRecommendationChatDebugQuestion({ questionId: "question-2", isBuggy: true }, fetchImpl)).resolves.toEqual({
+      question: { id: "question-2", text: "공포 추천", isBuggy: true, createdAt: "now" },
     })
     await expect(deleteRecommendationChatDebugQuestion({ questionId: "question-2" }, fetchImpl)).resolves.toBeUndefined()
 
@@ -41,6 +46,11 @@ describe("recommendation chat client", () => {
       body: JSON.stringify({ text: "공포 추천" }),
     })
     expect(fetchImpl).toHaveBeenNthCalledWith(3, "/api/recommendation-chat/debug/questions/question-2", {
+      method: "PATCH",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ isBuggy: true }),
+    })
+    expect(fetchImpl).toHaveBeenNthCalledWith(4, "/api/recommendation-chat/debug/questions/question-2", {
       method: "DELETE",
     })
   })

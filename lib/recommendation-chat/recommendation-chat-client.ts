@@ -23,6 +23,7 @@ export type RecommendationChatInitialQuestionsResponse = {
 export type RecommendationChatDebugQuestion = {
   id: string
   text: string
+  isBuggy: boolean
   createdAt: string
 }
 
@@ -161,6 +162,18 @@ export async function deleteRecommendationChatDebugQuestion(
   if (response.status === 204) {
     return
   }
+  return parseJsonResponse(response)
+}
+
+export async function updateRecommendationChatDebugQuestion(
+  input: { questionId: string; isBuggy: boolean },
+  fetchImpl: typeof fetch = fetch,
+): Promise<{ question: RecommendationChatDebugQuestion }> {
+  const response = await fetchImpl(`/api/recommendation-chat/debug/questions/${input.questionId}`, {
+    method: "PATCH",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ isBuggy: input.isBuggy }),
+  })
   return parseJsonResponse(response)
 }
 

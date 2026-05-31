@@ -25,10 +25,22 @@ describe("/api/recommendation-chat/debug/questions", () => {
     vi.clearAllMocks()
     mocks.createRequestId.mockReturnValue("request-1")
     mocks.recommendationChatService.listDebugQuestions.mockResolvedValue({
-      questions: [{ id: "00000000-0000-4000-8000-000000000001", text: "코미디 추천", createdAt: "2026-05-31T00:00:00.000Z" }],
+      questions: [
+        {
+          id: "00000000-0000-4000-8000-000000000001",
+          text: "코미디 추천",
+          isBuggy: true,
+          createdAt: "2026-05-31T00:00:00.000Z",
+        },
+      ],
     })
     mocks.recommendationChatService.createDebugQuestion.mockResolvedValue({
-      question: { id: "00000000-0000-4000-8000-000000000002", text: "공포 추천", createdAt: "2026-05-31T00:00:00.000Z" },
+      question: {
+        id: "00000000-0000-4000-8000-000000000002",
+        text: "공포 추천",
+        isBuggy: false,
+        createdAt: "2026-05-31T00:00:00.000Z",
+      },
     })
   })
 
@@ -37,7 +49,7 @@ describe("/api/recommendation-chat/debug/questions", () => {
 
     await expect(readResponse(response)).resolves.toMatchObject({
       status: 200,
-      body: { questions: [{ text: "코미디 추천" }] },
+      body: { questions: [{ text: "코미디 추천", isBuggy: true }] },
     })
   })
 
@@ -46,7 +58,7 @@ describe("/api/recommendation-chat/debug/questions", () => {
 
     await expect(readResponse(response)).resolves.toMatchObject({
       status: 201,
-      body: { question: { text: "공포 추천" } },
+      body: { question: { text: "공포 추천", isBuggy: false } },
     })
     expect(mocks.recommendationChatService.createDebugQuestion).toHaveBeenCalledWith({ text: "공포 추천" })
   })

@@ -7,6 +7,7 @@ export const recommendationChatInitialQuestionsResponseSchema = z.object({
 export const recommendationChatDebugQuestionSchema = z.object({
   id: z.string().uuid(),
   text: z.string().trim().min(1).max(1000),
+  isBuggy: z.boolean(),
   createdAt: z.string(),
 })
 
@@ -19,6 +20,14 @@ export const createRecommendationChatDebugQuestionRequestSchema = z.object({
 })
 
 export const createRecommendationChatDebugQuestionResponseSchema = z.object({
+  question: recommendationChatDebugQuestionSchema,
+})
+
+export const updateRecommendationChatDebugQuestionRequestSchema = z.object({
+  isBuggy: z.boolean(),
+})
+
+export const updateRecommendationChatDebugQuestionResponseSchema = z.object({
   question: recommendationChatDebugQuestionSchema,
 })
 

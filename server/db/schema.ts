@@ -354,6 +354,7 @@ export const recommendationChatDebugQuestions = pgTable(
   {
     id: uuid("id").primaryKey().defaultRandom(),
     text: text("text").notNull(),
+    isBuggy: boolean("is_buggy").notNull().default(false),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (table) => [index("recommendation_chat_debug_questions_created_at_idx").on(table.createdAt.desc())],

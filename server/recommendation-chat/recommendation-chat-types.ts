@@ -26,6 +26,7 @@ export type InitialQuestionsResponseDto = {
 export type RecommendationChatDebugQuestionDto = {
   id: string
   text: string
+  isBuggy: boolean
   createdAt: string
 }
 
@@ -38,6 +39,14 @@ export type CreateRecommendationChatDebugQuestionRequestDto = {
 }
 
 export type CreateRecommendationChatDebugQuestionResponseDto = {
+  question: RecommendationChatDebugQuestionDto
+}
+
+export type UpdateRecommendationChatDebugQuestionRequestDto = {
+  isBuggy: boolean
+}
+
+export type UpdateRecommendationChatDebugQuestionResponseDto = {
   question: RecommendationChatDebugQuestionDto
 }
 
@@ -151,6 +160,9 @@ export type RecommendationChatService = {
   createDebugQuestion(
     input: CreateRecommendationChatDebugQuestionInput,
   ): Promise<CreateRecommendationChatDebugQuestionResponseDto>
+  updateDebugQuestion(
+    input: UpdateRecommendationChatDebugQuestionRepoParams,
+  ): Promise<UpdateRecommendationChatDebugQuestionResponseDto>
   deleteDebugQuestion(input: DeleteRecommendationChatDebugQuestionRepoParams): Promise<void>
   submitRecommendationChatMessage(
     context: RequestContext,
@@ -256,10 +268,16 @@ export type DeleteRecommendationChatDebugQuestionRepoParams = {
   questionId: string
 }
 
+export type UpdateRecommendationChatDebugQuestionRepoParams = {
+  questionId: string
+  isBuggy: boolean
+}
+
 // Repository results
 export type RecommendationChatDebugQuestionRow = {
   id: string
   text: string
+  isBuggy: boolean
   createdAt: Date
 }
 
@@ -324,6 +342,9 @@ export type RecommendationChatRepository = {
   insertDebugQuestion(
     params: InsertRecommendationChatDebugQuestionRepoParams,
   ): Promise<RecommendationChatDebugQuestionRow>
+  updateDebugQuestion(
+    params: UpdateRecommendationChatDebugQuestionRepoParams,
+  ): Promise<RecommendationChatDebugQuestionRow | null>
   deleteDebugQuestion(params: DeleteRecommendationChatDebugQuestionRepoParams): Promise<void>
   listTagMappingTopN(params: ListTagMappingTopNRepoParams): Promise<RecommendationChatTagMappingRepoResult[]>
   listTaggedCandidates(params: ListTaggedCandidatesRepoParams): Promise<RecommendationChatCandidate[]>

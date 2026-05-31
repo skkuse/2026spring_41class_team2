@@ -4,6 +4,7 @@ const mocks = vi.hoisted(() => ({
   createRequestId: vi.fn(),
   recommendationChatService: {
     deleteDebugQuestion: vi.fn(),
+    updateDebugQuestion: vi.fn(),
   },
 }))
 
@@ -17,13 +18,21 @@ vi.mock("@/server/recommendation-chat", () => ({
 }))
 
 import { apiErrorCodes } from "@/server/error"
-import { DELETE } from "./route"
+import { DELETE, PATCH } from "./route"
 
 describe("DELETE /api/recommendation-chat/debug/questions/{questionId}", () => {
   beforeEach(() => {
     vi.clearAllMocks()
     mocks.createRequestId.mockReturnValue("request-1")
     mocks.recommendationChatService.deleteDebugQuestion.mockResolvedValue(undefined)
+    mocks.recommendationChatService.updateDebugQuestion.mockResolvedValue({
+      question: {
+        id: "00000000-0000-4000-8000-000000000001",
+        text: "코미디 추천",
+        isBuggy: true,
+        createdAt: "2026-05-31T00:00:00.000Z",
+      },
+    })
   })
 
   it("deletes a debug question", async () => {
@@ -47,7 +56,40 @@ describe("DELETE /api/recommendation-chat/debug/questions/{questionId}", () => {
       body: { error: { code: apiErrorCodes.invalidQuery, requestId: "request-1" } },
     })
   })
+
+  it("updates a debug question bug marker", async () => {
+    const response = await PATCH(jsonRequest({ isBuggy: true }), {
+      params: Promise.resolve({ questionId: "00000000-0000-4000-8000-000000000001" }),
+    })
+
+    await expect(readResponse(response)).resolves.toMatchObject({
+      status: 200,
+      body: { question: { text: "코미디 추천", isBuggy: true } },
+    })
+    expect(mocks.recommendationChatService.updateDebugQuestion).toHaveBeenCalledWith({
+      questionId: "00000000-0000-4000-8000-000000000001",
+      isBuggy: true,
+    })
+  })
+
+  it("rejects invalid update body", async () => {
+    const response = await PATCH(jsonRequest({ isBuggy: "yes" }), {
+      params: Promise.resolve({ questionId: "00000000-0000-4000-8000-000000000001" }),
+    })
+
+    await expect(readResponse(response)).resolves.toMatchObject({
+      status: 400,
+      body: { error: { code: apiErrorCodes.invalidBody, requestId: "request-1" } },
+    })
+  })
 })
+
+function jsonRequest(body: unknown) {
+  return new Request("http://localhost", {
+    method: "PATCH",
+    body: JSON.stringify(body),
+  })
+}
 
 async function readResponse(response: Response) {
   return { status: response.status, body: await response.json() }

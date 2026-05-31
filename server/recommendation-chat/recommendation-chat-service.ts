@@ -93,6 +93,7 @@ export function createRecommendationChatService(deps: RecommendationChatServiceD
         questions: questions.map((question) => ({
           id: question.id,
           text: question.text,
+          isBuggy: question.isBuggy,
           createdAt: question.createdAt.toISOString(),
         })),
       }
@@ -104,6 +105,22 @@ export function createRecommendationChatService(deps: RecommendationChatServiceD
         question: {
           id: question.id,
           text: question.text,
+          isBuggy: question.isBuggy,
+          createdAt: question.createdAt.toISOString(),
+        },
+      }
+    },
+
+    async updateDebugQuestion(input) {
+      const question = await deps.repository.updateDebugQuestion(input)
+      if (!question) {
+        throw new RecommendationChatPersistenceError("Recommendation chat debug question not found.")
+      }
+      return {
+        question: {
+          id: question.id,
+          text: question.text,
+          isBuggy: question.isBuggy,
           createdAt: question.createdAt.toISOString(),
         },
       }

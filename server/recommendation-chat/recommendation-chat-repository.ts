@@ -192,6 +192,7 @@ export function createRecommendationChatRepository(): RecommendationChatReposito
         .select({
           id: recommendationChatDebugQuestions.id,
           text: recommendationChatDebugQuestions.text,
+          isBuggy: recommendationChatDebugQuestions.isBuggy,
           createdAt: recommendationChatDebugQuestions.createdAt,
         })
         .from(recommendationChatDebugQuestions)
@@ -205,10 +206,26 @@ export function createRecommendationChatRepository(): RecommendationChatReposito
         .returning({
           id: recommendationChatDebugQuestions.id,
           text: recommendationChatDebugQuestions.text,
+          isBuggy: recommendationChatDebugQuestions.isBuggy,
           createdAt: recommendationChatDebugQuestions.createdAt,
         })
 
       return row
+    },
+
+    async updateDebugQuestion(params) {
+      const [row] = await getDb()
+        .update(recommendationChatDebugQuestions)
+        .set({ isBuggy: params.isBuggy })
+        .where(eq(recommendationChatDebugQuestions.id, params.questionId))
+        .returning({
+          id: recommendationChatDebugQuestions.id,
+          text: recommendationChatDebugQuestions.text,
+          isBuggy: recommendationChatDebugQuestions.isBuggy,
+          createdAt: recommendationChatDebugQuestions.createdAt,
+        })
+
+      return row ?? null
     },
 
     async deleteDebugQuestion(params) {

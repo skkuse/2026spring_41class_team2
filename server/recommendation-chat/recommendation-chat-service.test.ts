@@ -1,7 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest"
 import {
   RecommendationChatEmbeddingApiError,
-  RecommendationChatLlmApiError,
   RecommendationChatPersistenceError,
   RecommendationChatVectorSearchError,
   UnauthorizedRecommendationChatError,
@@ -87,11 +86,18 @@ describe("recommendation chat service", () => {
 
   it("manages shared debug questions", async () => {
     repository.listDebugQuestions.mockResolvedValue([
-      { id: "00000000-0000-4000-8000-000000000001", text: "코미디 추천", createdAt: new Date("2026-05-31T00:00:00.000Z") },
+      { id: "00000000-0000-4000-8000-000000000001", text: "코미디 추천", isBuggy: true, createdAt: new Date("2026-05-31T00:00:00.000Z") },
     ])
     repository.insertDebugQuestion.mockResolvedValue({
       id: "00000000-0000-4000-8000-000000000002",
       text: "공포 추천",
+      isBuggy: false,
+      createdAt: new Date("2026-05-31T00:01:00.000Z"),
+    })
+    repository.updateDebugQuestion.mockResolvedValue({
+      id: "00000000-0000-4000-8000-000000000002",
+      text: "공포 추천",
+      isBuggy: true,
       createdAt: new Date("2026-05-31T00:01:00.000Z"),
     })
 
@@ -102,16 +108,26 @@ describe("recommendation chat service", () => {
         {
           id: "00000000-0000-4000-8000-000000000001",
           text: "코미디 추천",
+          isBuggy: true,
           createdAt: "2026-05-31T00:00:00.000Z",
         },
       ],
     })
     await expect(service.createDebugQuestion({ text: "공포 추천" })).resolves.toMatchObject({
-      question: { text: "공포 추천" },
+      question: { text: "공포 추천", isBuggy: false },
+    })
+    await expect(
+      service.updateDebugQuestion({ questionId: "00000000-0000-4000-8000-000000000002", isBuggy: true }),
+    ).resolves.toMatchObject({
+      question: { text: "공포 추천", isBuggy: true },
     })
     await service.deleteDebugQuestion({ questionId: "00000000-0000-4000-8000-000000000002" })
 
     expect(repository.insertDebugQuestion).toHaveBeenCalledWith({ text: "공포 추천" })
+    expect(repository.updateDebugQuestion).toHaveBeenCalledWith({
+      questionId: "00000000-0000-4000-8000-000000000002",
+      isBuggy: true,
+    })
     expect(repository.deleteDebugQuestion).toHaveBeenCalledWith({
       questionId: "00000000-0000-4000-8000-000000000002",
     })
@@ -375,6 +391,7 @@ function createMockRepository(): MockRepository {
     }),
     listDebugQuestions: vi.fn().mockResolvedValue([]),
     insertDebugQuestion: vi.fn(),
+    updateDebugQuestion: vi.fn(),
     deleteDebugQuestion: vi.fn().mockResolvedValue(undefined),
     listTagMappingTopN: vi.fn().mockResolvedValue([{ tagId: 10, tag: "quiet", relevance: 0.9 }]),
     listTaggedCandidates: vi.fn().mockResolvedValue([]),

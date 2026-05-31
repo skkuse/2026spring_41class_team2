@@ -8,6 +8,7 @@ import {
   RecommendationChatApiError,
   resetMyRecommendationChatConversation,
   runRecommendationChatDebug,
+  updateRecommendationChatDebugQuestion,
   type RecommendationChatAnalysis,
   type RecommendationChatDebugQuestion,
   type RecommendationChatDebugRunResponse,
@@ -53,6 +54,8 @@ export default function RecommendationChatDebugPage() {
   const [customQuestion, setCustomQuestion] = useState("")
   const [results, setResults] = useState<DebugResult[]>([])
   const [selectedId, setSelectedId] = useState<string | null>(null)
+  const [updatingBugQuestionIds, setUpdatingBugQuestionIds] = useState<Set<string>>(() => new Set())
+  const [showBugQuestionsOnly, setShowBugQuestionsOnly] = useState(false)
   const [rawJsonIndex, setRawJsonIndex] = useState(0)
   const [isLoadingQuestions, setIsLoadingQuestions] = useState(true)
   const [isRunning, setIsRunning] = useState(false)
@@ -97,6 +100,11 @@ export default function RecommendationChatDebugPage() {
     () => results.find((result) => result.id === selectedId) ?? results[0] ?? null,
     [results, selectedId],
   )
+  const displayedQuestions = useMemo(
+    () => (showBugQuestionsOnly ? questions.filter((question) => question.isBuggy) : questions),
+    [questions, showBugQuestionsOnly],
+  )
+  const bugQuestionCount = questions.filter((question) => question.isBuggy).length
   const flowSteps = selectedResult ? buildFlowSteps(selectedResult) : []
   const rawPayload = flowSteps[rawJsonIndex] ?? flowSteps[0]
 
@@ -184,6 +192,33 @@ export default function RecommendationChatDebugPage() {
     }
   }
 
+  const handleToggleBugQuestion = async (questionId: string, checked: boolean) => {
+    if (isRunning || updatingBugQuestionIds.has(questionId)) {
+      return
+    }
+
+    setErrorMessage(null)
+    setQuestions((prev) =>
+      prev.map((question) => (question.id === questionId ? { ...question, isBuggy: checked } : question)),
+    )
+    setUpdatingBugQuestionIds((prev) => new Set(prev).add(questionId))
+    try {
+      const response = await updateRecommendationChatDebugQuestion({ questionId, isBuggy: checked })
+      setQuestions((prev) => prev.map((question) => (question.id === questionId ? response.question : question)))
+    } catch (error) {
+      setQuestions((prev) =>
+        prev.map((question) => (question.id === questionId ? { ...question, isBuggy: !checked } : question)),
+      )
+      setErrorMessage(toErrorMessage(error))
+    } finally {
+      setUpdatingBugQuestionIds((prev) => {
+        const next = new Set(prev)
+        next.delete(questionId)
+        return next
+      })
+    }
+  }
+
   const handleResetConversation = async () => {
     if (isRunning) {
       return
@@ -252,31 +287,66 @@ export default function RecommendationChatDebugPage() {
         <aside className="panel">
           <div className="panel-header">
             <h2 className="panel-title">준비 질문</h2>
-            <button className="button small" type="button" onClick={handleRunAll} disabled={questions.length === 0 || isRunning}>
-              전체 실행
-            </button>
+            <div className="panel-actions">
+              <label className="filter-toggle">
+                <input
+                  type="checkbox"
+                  checked={showBugQuestionsOnly}
+                  onChange={(event) => setShowBugQuestionsOnly(event.target.checked)}
+                  disabled={isRunning}
+                />
+                버그만
+              </label>
+              <button className="button small" type="button" onClick={handleRunAll} disabled={questions.length === 0 || isRunning}>
+                전체 실행
+              </button>
+            </div>
           </div>
           <div className="panel-body">
+            <div className="question-toolbar">
+              <span className="muted">
+                버그 표시 {bugQuestionCount}개
+                {showBugQuestionsOnly ? ` / 표시 ${displayedQuestions.length}개` : ""}
+              </span>
+            </div>
             <div className="question-list">
               {isLoadingQuestions ? <p className="muted">질문을 불러오는 중입니다.</p> : null}
-              {questions.map((question) => (
-                <div className="question" key={question.id}>
-                  <p className="question-text">{question.text}</p>
-                  <div className="question-actions">
-                    <button className="button secondary small" type="button" onClick={() => handleRun(question.text)} disabled={isRunning}>
-                      실행
-                    </button>
-                    <button
-                      className="button secondary small"
-                      type="button"
-                      onClick={() => handleDeleteQuestion(question.id)}
-                      disabled={isRunning}
-                    >
-                      삭제
-                    </button>
+              {!isLoadingQuestions && displayedQuestions.length === 0 ? (
+                <p className="muted">{showBugQuestionsOnly ? "버그로 표시한 질문이 없습니다." : "준비 질문이 없습니다."}</p>
+              ) : null}
+              {displayedQuestions.map((question) => {
+                const isBugQuestion = question.isBuggy
+                const isUpdatingBugQuestion = updatingBugQuestionIds.has(question.id)
+                return (
+                  <div className={`question${isBugQuestion ? " bug-marked" : ""}`} key={question.id}>
+                    <div className="question-main">
+                      <p className="question-text">{question.text}</p>
+                      <label className="bug-checkbox">
+                        <input
+                          type="checkbox"
+                          checked={isBugQuestion}
+                          onChange={(event) => void handleToggleBugQuestion(question.id, event.target.checked)}
+                          disabled={isRunning || isUpdatingBugQuestion}
+                        />
+                        버그
+                      </label>
+                    </div>
+                    <div className="question-actions">
+                      <button className="button secondary small" type="button" onClick={() => handleRun(question.text)} disabled={isRunning}>
+                        실행
+                      </button>
+                      <button
+                        className="button secondary small"
+                        type="button"
+                        onClick={() => handleDeleteQuestion(question.id)}
+                        disabled={isRunning}
+                      >
+                        삭제
+                      </button>
+                    </div>
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
             <div className="input-row">
               <input
@@ -977,8 +1047,20 @@ const debugPageCss = `
     font-weight: 700;
   }
 
+  .panel-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
   .panel-body {
     padding: 16px;
+  }
+
+  .question-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
   }
 
   .question-list {
@@ -995,10 +1077,45 @@ const debugPageCss = `
     background: white;
   }
 
+  .question.bug-marked {
+    border-color: #fca5a5;
+    background: #fff7f7;
+  }
+
+  .question-main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 10px;
+  }
+
   .question-text {
     margin: 0;
     font-size: 14px;
     line-height: 1.45;
+  }
+
+  .filter-toggle,
+  .bug-checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #475569;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .filter-toggle input,
+  .bug-checkbox input {
+    width: 15px;
+    height: 15px;
+    margin: 0;
+    accent-color: #dc2626;
+  }
+
+  .bug-checkbox {
+    padding: 3px 0;
   }
 
   .button {
