@@ -29,6 +29,12 @@ export type CreateReviewResponseDto = {
   date: string
 }
 
+export type UpdateReviewResponseDto = {
+  reviewId: string
+  rating: number
+  content: string
+}
+
 export type ReviewLikeResponseDto = {
   reviewId: string
   likes: number
@@ -72,6 +78,16 @@ export type SetReviewLikeInput = {
   liked: boolean
 }
 
+export type UpdateReviewInput = {
+  reviewId: string
+  rating: number
+  content: string
+}
+
+export type DeleteReviewInput = {
+  reviewId: string
+}
+
 export type ListMyReviewsInput = {
   page?: number
   size?: number
@@ -96,6 +112,20 @@ export type CreateReviewRepoParams = {
 export type ReviewLikeRepoParams = {
   reviewId: string
   userId: string
+}
+
+export type UpdateReviewRepoParams = {
+  reviewId: string
+  rating: number
+  content: string
+  ratingDelta: number
+  movieId: number
+}
+
+export type DeleteReviewRepoParams = {
+  reviewId: string
+  oldRating: number
+  movieId: number
 }
 
 export type ListReviewsByUserRepoParams = {
@@ -127,6 +157,13 @@ export type CreatedReviewRepoResult = {
   date: Date
 }
 
+export type FindReviewByIdRepoResult = {
+  id: string
+  userId: string
+  movieId: number
+  rating: string | number
+}
+
 export type MyReviewRepoResult = {
   id: string
   movieId: number
@@ -148,8 +185,11 @@ export type ReviewRepository = {
   movieExists(movieId: number): Promise<boolean>
   reviewExists(reviewId: string): Promise<boolean>
   findReviewByUserAndMovie(userId: string, movieId: number): Promise<{ id: string } | null>
+  findReviewById(reviewId: string): Promise<FindReviewByIdRepoResult | null>
   listMovieReviews(params: ListMovieReviewsRepoParams): Promise<MovieReviewsRepoResult>
   createReviewWithStats(params: CreateReviewRepoParams): Promise<CreatedReviewRepoResult>
+  updateReviewWithStats(params: UpdateReviewRepoParams): Promise<void>
+  deleteReviewWithStats(params: DeleteReviewRepoParams): Promise<void>
   likeReview(params: ReviewLikeRepoParams): Promise<void>
   unlikeReview(params: ReviewLikeRepoParams): Promise<void>
   countReviewLikes(reviewId: string): Promise<number>
@@ -159,6 +199,8 @@ export type ReviewRepository = {
 export type ReviewService = {
   listMovieReviews(context: RequestContext, input: ListMovieReviewsInput): Promise<MovieReviewsResponseDto>
   createReview(context: RequestContext, input: CreateReviewInput): Promise<CreateReviewResponseDto>
+  updateReview(context: RequestContext, input: UpdateReviewInput): Promise<UpdateReviewResponseDto>
+  deleteReview(context: RequestContext, input: DeleteReviewInput): Promise<void>
   setReviewLike(context: RequestContext, input: SetReviewLikeInput): Promise<ReviewLikeResponseDto>
   listMyReviews(context: RequestContext, input: ListMyReviewsInput): Promise<MyReviewsResponseDto>
 }

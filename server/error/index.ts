@@ -4,6 +4,7 @@ export {
   createApiErrorResponse,
   createApiFailureResponse,
   createDuplicateReviewResponse,
+  createForbiddenReviewResponse,
   createInvalidBodyResponse,
   createInvalidMovieIdResponse,
   createInvalidQueryResponse,

@@ -4,6 +4,7 @@ import {
   movieReviewsQuerySchema,
   myReviewsQuerySchema,
   reviewIdParamsSchema,
+  updateReviewBodySchema,
 } from "./review-schema"
 
 describe("movieReviewsQuerySchema", () => {
@@ -32,6 +33,31 @@ describe("createReviewBodySchema", () => {
 
   it("rejects blank content", () => {
     expect(createReviewBodySchema.safeParse({ rating: 4.5, content: "   " }).success).toBe(false)
+  })
+})
+
+describe("updateReviewBodySchema", () => {
+  it("trims content and accepts half-point rating", () => {
+    expect(updateReviewBodySchema.parse({ rating: 3.5, content: "  수정된 내용  " })).toEqual({
+      rating: 3.5,
+      content: "수정된 내용",
+    })
+  })
+
+  it("rejects rating below 0.5", () => {
+    expect(updateReviewBodySchema.safeParse({ rating: 0, content: "내용" }).success).toBe(false)
+  })
+
+  it("rejects rating above 5", () => {
+    expect(updateReviewBodySchema.safeParse({ rating: 5.5, content: "내용" }).success).toBe(false)
+  })
+
+  it("rejects non-half-point rating", () => {
+    expect(updateReviewBodySchema.safeParse({ rating: 3.3, content: "내용" }).success).toBe(false)
+  })
+
+  it("rejects blank content", () => {
+    expect(updateReviewBodySchema.safeParse({ rating: 4.0, content: "   " }).success).toBe(false)
   })
 })
 
