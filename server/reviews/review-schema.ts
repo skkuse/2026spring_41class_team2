@@ -38,10 +38,17 @@ export const myReviewsQuerySchema = paginationQuerySchema.transform((value) => (
   size: value.size,
 }))
 
+const ratingSchema = z.number().min(0.5).max(5).refine((value) => Number.isInteger(value * 2), {
+  message: "평점은 0.5 단위여야 합니다.",
+})
+
 export const createReviewBodySchema = z.object({
-  rating: z.number().min(0.5).max(5).refine((value) => Number.isInteger(value * 2), {
-    message: "평점은 0.5 단위여야 합니다.",
-  }),
+  rating: ratingSchema,
+  content: z.string().trim().min(1).max(2000),
+})
+
+export const updateReviewBodySchema = z.object({
+  rating: ratingSchema,
   content: z.string().trim().min(1).max(2000),
 })
 
@@ -71,6 +78,12 @@ export const createReviewResponseSchema = z.object({
   rating: z.number(),
   content: z.string(),
   date: z.string(),
+})
+
+export const updateReviewResponseSchema = z.object({
+  reviewId: z.string().uuid(),
+  rating: z.number(),
+  content: z.string(),
 })
 
 export const reviewLikeResponseSchema = z.object({

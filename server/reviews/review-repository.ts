@@ -26,6 +26,15 @@ export function createReviewRepository(): ReviewRepository {
       return row ?? null
     },
 
+    async findReviewById(reviewId) {
+      const [row] = await getDb()
+        .select({ id: reviews.id, userId: reviews.userId, movieId: reviews.movieId, rating: reviews.rating })
+        .from(reviews)
+        .where(eq(reviews.id, reviewId))
+        .limit(1)
+      return row ?? null
+    },
+
     async listMovieReviews(params) {
       const [totalRow] = await getDb()
         .select({ count: count() })
@@ -101,6 +110,38 @@ export function createReviewRepository(): ReviewRepository {
           .where(eq(movieStats.movieId, params.movieId))
 
         return created
+      })
+    },
+
+    async updateReviewWithStats(params) {
+      await getDb().transaction(async (tx) => {
+        await tx
+          .update(reviews)
+          .set({ rating: params.rating.toFixed(1), content: params.content })
+          .where(eq(reviews.id, params.reviewId))
+
+        await tx
+          .update(movieStats)
+          .set({
+            cinemateRatingSum: sql`${movieStats.cinemateRatingSum} + ${params.ratingDelta}`,
+            updatedAt: sql`now()`,
+          })
+          .where(eq(movieStats.movieId, params.movieId))
+      })
+    },
+
+    async deleteReviewWithStats(params) {
+      await getDb().transaction(async (tx) => {
+        await tx.delete(reviews).where(eq(reviews.id, params.reviewId))
+
+        await tx
+          .update(movieStats)
+          .set({
+            cinemateRatingSum: sql`${movieStats.cinemateRatingSum} - ${params.oldRating}`,
+            cinemateReviewCount: sql`${movieStats.cinemateReviewCount} - 1`,
+            updatedAt: sql`now()`,
+          })
+          .where(eq(movieStats.movieId, params.movieId))
       })
     },
 

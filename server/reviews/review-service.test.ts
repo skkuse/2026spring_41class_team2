@@ -4,6 +4,7 @@ vi.mock("server-only", () => ({}))
 
 import {
   DuplicateReviewError,
+  ForbiddenReviewError,
   ReviewMovieNotFoundError,
   ReviewNotFoundError,
   UnauthorizedReviewError,
@@ -163,6 +164,12 @@ function createRepository(overrides: Partial<ReviewRepository> = {}): ReviewRepo
     movieExists: vi.fn().mockResolvedValue(true),
     reviewExists: vi.fn().mockResolvedValue(true),
     findReviewByUserAndMovie: vi.fn().mockResolvedValue(null),
+    findReviewById: vi.fn().mockResolvedValue({
+      id: "review-1",
+      userId: "user-1",
+      movieId: 550,
+      rating: "4.5",
+    }),
     listMovieReviews: vi.fn().mockResolvedValue({ reviews: [], totalCount: 0 }),
     createReviewWithStats: vi.fn().mockResolvedValue({
       id: "review-1",
@@ -170,6 +177,8 @@ function createRepository(overrides: Partial<ReviewRepository> = {}): ReviewRepo
       content: "좋았어요",
       date: new Date("2026-05-01T00:00:00.000Z"),
     }),
+    updateReviewWithStats: vi.fn().mockResolvedValue(undefined),
+    deleteReviewWithStats: vi.fn().mockResolvedValue(undefined),
     likeReview: vi.fn().mockResolvedValue(undefined),
     unlikeReview: vi.fn().mockResolvedValue(undefined),
     countReviewLikes: vi.fn().mockResolvedValue(4),

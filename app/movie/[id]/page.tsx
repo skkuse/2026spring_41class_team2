@@ -5,7 +5,7 @@ import { MovieCard } from "@/components/movie-card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Textarea } from "@/components/ui/textarea"
-import { Star, Heart, Clock, Calendar, Globe, Play, MessageCircle, ThumbsUp } from "lucide-react"
+import { Star, Heart, Clock, Calendar, Globe, Play, MessageCircle, ThumbsUp, Pencil, Trash2, X, Check } from "lucide-react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { useCallback, useEffect, useState, use } from "react"
@@ -13,8 +13,10 @@ import { BookmarkedMoviesApiError, toggleMovieBookmark } from "@/lib/bookmarks/b
 import {
   ReviewsApiError,
   createMovieReview,
+  deleteReview,
   getMovieReviews,
   toggleReviewLike,
+  updateReview,
   type MovieReview,
 } from "@/lib/reviews/reviews-client"
 import { getSimilarMovies } from "@/lib/movies/similar-movies-client"
@@ -52,9 +54,9 @@ const movieData: Record<string, {
     posterUrl: "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
     reviewCount: 3,
     reviews: [
-      { id: "r1", user: "영화광", rating: 5, content: "봉준호 감독의 역작. 계층간의 갈등을 유머와 스릴러로 풀어낸 걸작입니다.", date: "2024-01-15", likes: 234, isLiked: false },
-      { id: "r2", user: "시네필", rating: 4.5, content: "사회적 메시지와 오락성을 모두 잡은 완벽한 영화. 칸 황금종려상이 아깝지 않습니다.", date: "2024-01-10", likes: 156, isLiked: false },
-      { id: "r3", user: "무비러버", rating: 5, content: "몇 번을 봐도 새로운 디테일을 발견하게 되는 영화. 연기, 연출, 음악 모두 완벽합니다.", date: "2024-01-05", likes: 89, isLiked: false },
+      { id: "r1", user: "영화광", rating: 5, content: "봉준호 감독의 역작. 계층간의 갈등을 유머와 스릴러로 풀어낸 걸작입니다.", date: "2024-01-15", likes: 234, isLiked: false, userId: "" },
+      { id: "r2", user: "시네필", rating: 4.5, content: "사회적 메시지와 오락성을 모두 잡은 완벽한 영화. 칸 황금종려상이 아깝지 않습니다.", date: "2024-01-10", likes: 156, isLiked: false, userId: "" },
+      { id: "r3", user: "무비러버", rating: 5, content: "몇 번을 봐도 새로운 디테일을 발견하게 되는 영화. 연기, 연출, 음악 모두 완벽합니다.", date: "2024-01-05", likes: 89, isLiked: false, userId: "" },
     ]
   },
   "2": {
@@ -71,8 +73,8 @@ const movieData: Record<string, {
     posterUrl: "https://image.tmdb.org/t/p/w500/uDO8zWDhfWwoFdKS4fzkUJt0Rf0.jpg",
     reviewCount: 2,
     reviews: [
-      { id: "r6", user: "뮤지컬팬", rating: 5, content: "음악과 영상미가 완벽한 현대판 뮤지컬 걸작. 엠마 스톤의 연기가 압도적입니다.", date: "2024-03-01", likes: 198, isLiked: false },
-      { id: "r7", user: "로맨스러버", rating: 4.5, content: "꿈과 사랑 사이의 갈등을 아름답게 그려낸 영화. 결말이 너무 인상적이에요.", date: "2024-02-15", likes: 143, isLiked: false },
+      { id: "r6", user: "뮤지컬팬", rating: 5, content: "음악과 영상미가 완벽한 현대판 뮤지컬 걸작. 엠마 스톤의 연기가 압도적입니다.", date: "2024-03-01", likes: 198, isLiked: false, userId: "" },
+      { id: "r7", user: "로맨스러버", rating: 4.5, content: "꿈과 사랑 사이의 갈등을 아름답게 그려낸 영화. 결말이 너무 인상적이에요.", date: "2024-02-15", likes: 143, isLiked: false, userId: "" },
     ]
   },
   "3": {
@@ -89,8 +91,8 @@ const movieData: Record<string, {
     posterUrl: "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
     reviewCount: 2,
     reviews: [
-      { id: "r4", user: "SF팬", rating: 5, content: "과학적 고증과 감동적인 스토리의 완벽한 조합. 한스 짐머의 음악이 영화를 더욱 빛나게 합니다.", date: "2024-02-01", likes: 312, isLiked: false },
-      { id: "r5", user: "놀란빠", rating: 5, content: "놀란 감독 최고의 작품. 우주의 광활함과 인간의 사랑을 동시에 담아낸 걸작.", date: "2024-01-28", likes: 278, isLiked: false },
+      { id: "r4", user: "SF팬", rating: 5, content: "과학적 고증과 감동적인 스토리의 완벽한 조합. 한스 짐머의 음악이 영화를 더욱 빛나게 합니다.", date: "2024-02-01", likes: 312, isLiked: false, userId: "" },
+      { id: "r5", user: "놀란빠", rating: 5, content: "놀란 감독 최고의 작품. 우주의 광활함과 인간의 사랑을 동시에 담아낸 걸작.", date: "2024-01-28", likes: 278, isLiked: false, userId: "" },
     ]
   },
   "4": {
@@ -107,8 +109,8 @@ const movieData: Record<string, {
     posterUrl: "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
     reviewCount: 2,
     reviews: [
-      { id: "r8", user: "DC팬", rating: 5, content: "히스 레저의 조커는 영화사에 길이 남을 연기. 슈퍼히어로 영화의 새로운 지평을 열었습니다.", date: "2024-03-10", likes: 421, isLiked: false },
-      { id: "r9", user: "놀란마니아", rating: 5, content: "선과 악, 혼돈과 질서에 대한 철학적 질문을 던지는 완벽한 영화.", date: "2024-03-05", likes: 287, isLiked: false },
+      { id: "r8", user: "DC팬", rating: 5, content: "히스 레저의 조커는 영화사에 길이 남을 연기. 슈퍼히어로 영화의 새로운 지평을 열었습니다.", date: "2024-03-10", likes: 421, isLiked: false, userId: "" },
+      { id: "r9", user: "놀란마니아", rating: 5, content: "선과 악, 혼돈과 질서에 대한 철학적 질문을 던지는 완벽한 영화.", date: "2024-03-05", likes: 287, isLiked: false, userId: "" },
     ]
   },
   "5": {
@@ -125,8 +127,8 @@ const movieData: Record<string, {
     posterUrl: "https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg",
     reviewCount: 2,
     reviews: [
-      { id: "r10", user: "영화마니아", rating: 5, content: "희망과 자유에 대한 가장 아름다운 이야기. 모건 프리먼의 내레이션이 영화를 완성시킵니다.", date: "2024-04-01", likes: 534, isLiked: false },
-      { id: "r11", user: "클래식무비", rating: 5, content: "시대를 초월하는 명작. 볼 때마다 새로운 감동을 줍니다.", date: "2024-03-20", likes: 312, isLiked: false },
+      { id: "r10", user: "영화마니아", rating: 5, content: "희망과 자유에 대한 가장 아름다운 이야기. 모건 프리먼의 내레이션이 영화를 완성시킵니다.", date: "2024-04-01", likes: 534, isLiked: false, userId: "" },
+      { id: "r11", user: "클래식무비", rating: 5, content: "시대를 초월하는 명작. 볼 때마다 새로운 감동을 줍니다.", date: "2024-03-20", likes: 312, isLiked: false, userId: "" },
     ]
   }
 }
@@ -167,6 +169,14 @@ export default function MovieDetailPage({ params }: { params: Promise<{ id: stri
   const [similarMovieViews, setSimilarMovieViews] = useState<MovieCardView[]>([])
   const [similarMoviesLoading, setSimilarMoviesLoading] = useState(true)
   const [similarMoviesError, setSimilarMoviesError] = useState<string | null>(null)
+  const [currentUserId, setCurrentUserId] = useState<string | null>(null)
+  const [editingReviewId, setEditingReviewId] = useState<string | null>(null)
+  const [editRating, setEditRating] = useState(0)
+  const [editContent, setEditContent] = useState("")
+  const [editSubmitting, setEditSubmitting] = useState(false)
+  const [editError, setEditError] = useState<string | null>(null)
+  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null)
+  const [deleteSubmitting, setDeleteSubmitting] = useState(false)
 
   const movieId = Number(id)
 
@@ -252,6 +262,11 @@ export default function MovieDetailPage({ params }: { params: Promise<{ id: stri
     void loadReviews(() => cancelled)
     void loadSimilarMovies(() => cancelled)
 
+    fetch("/api/me", { cache: "no-store" })
+      .then((r) => r.json())
+      .then((data) => { if (!cancelled && data?.user?.id) setCurrentUserId(data.user.id) })
+      .catch(() => {})
+
     return () => {
       cancelled = true
     }
@@ -305,6 +320,59 @@ export default function MovieDetailPage({ params }: { params: Promise<{ id: stri
       setReviewFormError(error instanceof ReviewsApiError ? error.message : "리뷰를 등록하지 못했습니다.")
     } finally {
       setReviewSubmitting(false)
+    }
+  }
+
+  const handleEditStart = (review: DisplayReview) => {
+    setEditingReviewId(review.id)
+    setEditRating(review.rating)
+    setEditContent(review.content)
+    setEditError(null)
+  }
+
+  const handleEditCancel = () => {
+    setEditingReviewId(null)
+    setEditError(null)
+  }
+
+  const handleEditSave = async (reviewId: string) => {
+    if (editSubmitting || editRating <= 0 || editContent.trim().length === 0) return
+    setEditError(null)
+    setEditSubmitting(true)
+    try {
+      const result = await updateReview(reviewId, { rating: editRating, content: editContent })
+      setMovie((current) => ({
+        ...current,
+        reviews: current.reviews.map((r) =>
+          r.id === reviewId ? { ...r, rating: result.rating, content: result.content } : r,
+        ),
+      }))
+      setEditingReviewId(null)
+    } catch (error) {
+      setEditError(error instanceof ReviewsApiError ? error.message : "리뷰를 수정하지 못했습니다.")
+    } finally {
+      setEditSubmitting(false)
+    }
+  }
+
+  const handleDeleteConfirm = async (reviewId: string) => {
+    if (deleteSubmitting) return
+    setDeleteSubmitting(true)
+    try {
+      await deleteReview(reviewId)
+      setMovie((current) => ({
+        ...current,
+        reviews: current.reviews.filter((r) => r.id !== reviewId),
+        reviewCount: current.reviewCount - 1,
+      }))
+      setConfirmDeleteId(null)
+      await loadMovie()
+    } catch (error) {
+      if (error instanceof ReviewsApiError) {
+        router.push(`/login?returnTo=${encodeURIComponent(pathname)}`)
+      }
+    } finally {
+      setDeleteSubmitting(false)
     }
   }
 
@@ -510,38 +578,100 @@ export default function MovieDetailPage({ params }: { params: Promise<{ id: stri
                 <p className="text-muted-foreground">리뷰를 불러오는 중입니다.</p>
               </div>
             ) : movie.reviews.length > 0 ? (
-              movie.reviews.map((review) => (
-                <div key={review.id} className="rounded-xl bg-card p-6">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary">
-                        <span className="font-medium">{review.user.charAt(0)}</span>
+              movie.reviews.map((review) => {
+                const isOwn = currentUserId !== null && review.userId === currentUserId
+                const isEditing = editingReviewId === review.id
+                const isConfirmingDelete = confirmDeleteId === review.id
+
+                return (
+                  <div key={review.id} className="rounded-xl bg-card p-6">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary">
+                          <span className="font-medium">{review.user.charAt(0)}</span>
+                        </div>
+                        <div>
+                          <p className="font-medium">{review.user}</p>
+                          <p className="text-sm text-muted-foreground">{formatDate(review.date)}</p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="font-medium">{review.user}</p>
-                        <p className="text-sm text-muted-foreground">{formatDate(review.date)}</p>
+                      <div className="flex items-center gap-2">
+                        {!isEditing && (
+                          <div className="flex items-center gap-1">
+                            <Star className="h-4 w-4 fill-primary text-primary" />
+                            <span className="font-medium">{review.rating}</span>
+                          </div>
+                        )}
+                        {isOwn && !isEditing && !isConfirmingDelete && (
+                          <div className="flex items-center gap-1">
+                            <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleEditStart(review)}>
+                              <Pencil className="h-4 w-4" />
+                            </Button>
+                            <Button variant="ghost" size="icon" className="h-8 w-8 text-destructive hover:text-destructive" onClick={() => setConfirmDeleteId(review.id)}>
+                              <Trash2 className="h-4 w-4" />
+                            </Button>
+                          </div>
+                        )}
                       </div>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <Star className="h-4 w-4 fill-primary text-primary" />
-                      <span className="font-medium">{review.rating}</span>
-                    </div>
+
+                    {isEditing ? (
+                      <div className="mt-4 space-y-3">
+                        <div className="flex gap-1">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <button key={star} type="button" onClick={() => setEditRating(star)}>
+                              <Star className={`h-6 w-6 transition-colors ${star <= editRating ? "fill-primary text-primary" : "text-muted-foreground hover:text-primary"}`} />
+                            </button>
+                          ))}
+                        </div>
+                        <Textarea
+                          value={editContent}
+                          onChange={(e) => setEditContent(e.target.value)}
+                          className="min-h-24"
+                        />
+                        {editError && <p className="text-sm text-destructive">{editError}</p>}
+                        <div className="flex gap-2">
+                          <Button size="sm" disabled={editSubmitting || editRating <= 0 || editContent.trim().length === 0} onClick={() => void handleEditSave(review.id)}>
+                            <Check className="mr-1 h-4 w-4" />
+                            {editSubmitting ? "저장 중" : "저장"}
+                          </Button>
+                          <Button size="sm" variant="ghost" onClick={handleEditCancel}>
+                            <X className="mr-1 h-4 w-4" />
+                            취소
+                          </Button>
+                        </div>
+                      </div>
+                    ) : (
+                      <p className="mt-4 text-muted-foreground">{review.content}</p>
+                    )}
+
+                    {isConfirmingDelete && (
+                      <div className="mt-4 flex items-center gap-3 rounded-lg border border-destructive/30 bg-destructive/5 p-3 text-sm">
+                        <span className="flex-1 text-destructive">리뷰를 삭제할까요?</span>
+                        <Button size="sm" variant="destructive" disabled={deleteSubmitting} onClick={() => void handleDeleteConfirm(review.id)}>
+                          {deleteSubmitting ? "삭제 중" : "삭제"}
+                        </Button>
+                        <Button size="sm" variant="ghost" onClick={() => setConfirmDeleteId(null)}>취소</Button>
+                      </div>
+                    )}
+
+                    {!isEditing && (
+                      <div className="mt-4 flex items-center gap-2">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          aria-pressed={review.isLiked}
+                          disabled={likePendingReviewId === review.id}
+                          onClick={() => void handleReviewLikeClick(review)}
+                        >
+                          <ThumbsUp className={`mr-1 h-4 w-4 ${review.isLiked ? "fill-primary text-primary" : ""}`} />
+                          {review.likes}
+                        </Button>
+                      </div>
+                    )}
                   </div>
-                  <p className="mt-4 text-muted-foreground">{review.content}</p>
-                  <div className="mt-4 flex items-center gap-2">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      aria-pressed={review.isLiked}
-                      disabled={likePendingReviewId === review.id}
-                      onClick={() => void handleReviewLikeClick(review)}
-                    >
-                      <ThumbsUp className={`mr-1 h-4 w-4 ${review.isLiked ? "fill-primary text-primary" : ""}`} />
-                      {review.likes}
-                    </Button>
-                  </div>
-                </div>
-              ))
+                )
+              })
             ) : reviewListError ? (
               <div className="rounded-xl bg-card p-8 text-center">
                 <p className="text-muted-foreground">{reviewListError}</p>
@@ -610,6 +740,7 @@ type MovieDetailApi = {
 
 type DisplayReview = {
   id: string
+  userId: string
   user: string
   rating: number
   content: string
@@ -642,6 +773,7 @@ function mapMovieDetailResponse(movie: MovieDetailApi) {
 function mapReview(review: MovieReview): DisplayReview {
   return {
     id: review.id,
+    userId: review.user.id,
     user: review.user.name,
     rating: review.rating,
     content: review.content,

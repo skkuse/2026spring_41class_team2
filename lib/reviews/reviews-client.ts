@@ -48,6 +48,12 @@ export type MyReviewsResponse = {
   totalCount: number
 }
 
+export type UpdateReviewResponse = {
+  reviewId: string
+  rating: number
+  content: string
+}
+
 export class ReviewsApiError extends Error {
   constructor(
     message: string,
@@ -61,6 +67,10 @@ export class ReviewsApiError extends Error {
 
   get isUnauthorized() {
     return this.status === 401
+  }
+
+  get isForbidden() {
+    return this.status === 403
   }
 
   get isConflict() {
@@ -103,6 +113,36 @@ export async function toggleReviewLike(
     method: nextLiked ? "PUT" : "DELETE",
   })
   return parseJsonResponse<ReviewLikeResponse>(response)
+}
+
+export async function updateReview(
+  reviewId: string,
+  input: { rating: number; content: string },
+  fetchImpl: typeof fetch = fetch,
+): Promise<UpdateReviewResponse> {
+  const response = await fetchImpl(`/api/reviews/${reviewId}`, {
+    method: "PATCH",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(input),
+  })
+  return parseJsonResponse<UpdateReviewResponse>(response)
+}
+
+export async function deleteReview(
+  reviewId: string,
+  fetchImpl: typeof fetch = fetch,
+): Promise<void> {
+  const response = await fetchImpl(`/api/reviews/${reviewId}`, { method: "DELETE" })
+  if (!response.ok) {
+    const body = await response.json().catch(() => null)
+    const error = body?.error
+    throw new ReviewsApiError(
+      typeof error?.message === "string" ? error.message : "요청을 처리하지 못했습니다.",
+      response.status,
+      typeof error?.code === "string" ? error.code : undefined,
+      typeof error?.requestId === "string" ? error.requestId : undefined,
+    )
+  }
 }
 
 export async function getMyReviews(

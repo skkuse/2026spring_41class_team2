@@ -27,3 +27,10 @@ export class DuplicateReviewError extends Error {
     this.name = "DuplicateReviewError"
   }
 }
+
+export class ForbiddenReviewError extends Error {
+  constructor(reviewId: string) {
+    super(`Not allowed to modify review: ${reviewId}`)
+    this.name = "ForbiddenReviewError"
+  }
+}

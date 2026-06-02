@@ -5,6 +5,7 @@ import { isPostgresErrorCode } from "@/server/db/postgres-errors"
 import { buildTmdbImageUrl } from "@/server/movies/movie-rules"
 import {
   DuplicateReviewError,
+  ForbiddenReviewError,
   ReviewMovieNotFoundError,
   ReviewNotFoundError,
   UnauthorizedReviewError,
@@ -14,12 +15,15 @@ import { normalizeReviewContent, normalizeReviewPagination } from "./review-rule
 import type {
   CreateReviewInput,
   CreateReviewResponseDto,
+  DeleteReviewInput,
   ListMovieReviewsInput,
   ListMyReviewsInput,
   MovieReviewsResponseDto,
   ReviewRepository,
   ReviewService,
   SetReviewLikeInput,
+  UpdateReviewInput,
+  UpdateReviewResponseDto,
 } from "./review-types"
 
 export type ReviewServiceDeps = {
@@ -83,6 +87,48 @@ export function createReviewService(deps: ReviewServiceDeps): ReviewService {
         }
         throw error
       }
+    },
+
+    async updateReview(context: RequestContext, input: UpdateReviewInput): Promise<UpdateReviewResponseDto> {
+      const userId = requireUserId(context)
+      const review = await deps.repository.findReviewById(input.reviewId)
+      if (!review) {
+        throw new ReviewNotFoundError(input.reviewId)
+      }
+      if (review.userId !== userId) {
+        throw new ForbiddenReviewError(input.reviewId)
+      }
+
+      const content = normalizeReviewContent(input.content)
+      const oldRating = Number(review.rating)
+      const ratingDelta = input.rating - oldRating
+
+      await deps.repository.updateReviewWithStats({
+        reviewId: input.reviewId,
+        rating: input.rating,
+        content,
+        ratingDelta,
+        movieId: review.movieId,
+      })
+
+      return { reviewId: input.reviewId, rating: input.rating, content }
+    },
+
+    async deleteReview(context: RequestContext, input: DeleteReviewInput): Promise<void> {
+      const userId = requireUserId(context)
+      const review = await deps.repository.findReviewById(input.reviewId)
+      if (!review) {
+        throw new ReviewNotFoundError(input.reviewId)
+      }
+      if (review.userId !== userId) {
+        throw new ForbiddenReviewError(input.reviewId)
+      }
+
+      await deps.repository.deleteReviewWithStats({
+        reviewId: input.reviewId,
+        oldRating: Number(review.rating),
+        movieId: review.movieId,
+      })
     },
 
     async setReviewLike(context: RequestContext, input: SetReviewLikeInput) {

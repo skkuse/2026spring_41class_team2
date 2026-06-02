@@ -104,6 +104,16 @@ export function createReviewNotFoundResponse(input: CreatePresetApiErrorResponse
   })
 }
 
+export function createForbiddenReviewResponse(input: CreatePresetApiErrorResponseInput) {
+  return createApiErrorResponse({
+    status: 403,
+    code: apiErrorCodes.forbiddenReview,
+    message: "본인이 작성한 리뷰만 수정/삭제할 수 있습니다.",
+    requestId: input.requestId,
+    details: input.details,
+  })
+}
+
 export function createDuplicateReviewResponse(input: CreatePresetApiErrorResponseInput) {
   return createApiErrorResponse({
     status: 409,

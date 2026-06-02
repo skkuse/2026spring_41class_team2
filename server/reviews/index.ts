@@ -1,5 +1,6 @@
 export {
   DuplicateReviewError,
+  ForbiddenReviewError,
   ReviewMovieNotFoundError,
   ReviewNotFoundError,
   UnauthorizedReviewError,
