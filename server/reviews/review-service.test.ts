@@ -98,6 +98,87 @@ describe("reviewService.createReview", () => {
   })
 })
 
+describe("reviewService.updateReview", () => {
+  it("requires authentication", async () => {
+    const service = createReviewService({ repository: createRepository() })
+    await expect(service.updateReview(guestContext, { reviewId: "review-1", rating: 3.0, content: "수정" }))
+      .rejects.toBeInstanceOf(UnauthorizedReviewError)
+  })
+
+  it("throws ReviewNotFoundError when review does not exist", async () => {
+    const service = createReviewService({
+      repository: createRepository({ findReviewById: vi.fn().mockResolvedValue(null) }),
+    })
+    await expect(service.updateReview(userContext, { reviewId: "review-1", rating: 3.0, content: "수정" }))
+      .rejects.toBeInstanceOf(ReviewNotFoundError)
+  })
+
+  it("throws ForbiddenReviewError when user is not the author", async () => {
+    const service = createReviewService({
+      repository: createRepository({
+        findReviewById: vi.fn().mockResolvedValue({ id: "review-1", userId: "other-user", movieId: 550, rating: "4.5" }),
+      }),
+    })
+    await expect(service.updateReview(userContext, { reviewId: "review-1", content: "수정", rating: 3.0 }))
+      .rejects.toBeInstanceOf(ForbiddenReviewError)
+  })
+
+  it("trims content and calls updateReviewWithStats with the rating delta", async () => {
+    const repository = createRepository()
+    const service = createReviewService({ repository })
+
+    const result = await service.updateReview(userContext, { reviewId: "review-1", rating: 3.0, content: "  수정된 내용  " })
+
+    expect(result).toEqual({ reviewId: "review-1", rating: 3.0, content: "수정된 내용" })
+    expect(repository.updateReviewWithStats).toHaveBeenCalledWith({
+      reviewId: "review-1",
+      rating: 3.0,
+      content: "수정된 내용",
+      ratingDelta: 3.0 - 4.5,
+      movieId: 550,
+    })
+  })
+})
+
+describe("reviewService.deleteReview", () => {
+  it("requires authentication", async () => {
+    const service = createReviewService({ repository: createRepository() })
+    await expect(service.deleteReview(guestContext, { reviewId: "review-1" }))
+      .rejects.toBeInstanceOf(UnauthorizedReviewError)
+  })
+
+  it("throws ReviewNotFoundError when review does not exist", async () => {
+    const service = createReviewService({
+      repository: createRepository({ findReviewById: vi.fn().mockResolvedValue(null) }),
+    })
+    await expect(service.deleteReview(userContext, { reviewId: "review-1" }))
+      .rejects.toBeInstanceOf(ReviewNotFoundError)
+  })
+
+  it("throws ForbiddenReviewError when user is not the author", async () => {
+    const service = createReviewService({
+      repository: createRepository({
+        findReviewById: vi.fn().mockResolvedValue({ id: "review-1", userId: "other-user", movieId: 550, rating: "4.5" }),
+      }),
+    })
+    await expect(service.deleteReview(userContext, { reviewId: "review-1" }))
+      .rejects.toBeInstanceOf(ForbiddenReviewError)
+  })
+
+  it("calls deleteReviewWithStats with old rating and movieId", async () => {
+    const repository = createRepository()
+    const service = createReviewService({ repository })
+
+    await service.deleteReview(userContext, { reviewId: "review-1" })
+
+    expect(repository.deleteReviewWithStats).toHaveBeenCalledWith({
+      reviewId: "review-1",
+      oldRating: 4.5,
+      movieId: 550,
+    })
+  })
+})
+
 describe("reviewService.setReviewLike", () => {
   it("adds likes idempotently", async () => {
     const repository = createRepository()
